@@ -23,9 +23,6 @@ public class MainController {
         if(dbController.checkUser(user)) {
             mainFrame.updateLogin();
         } else {
-            user.setUsername(null);
-            user.setPassword(null);
-            user.setUserID(-1);
             mainFrame.showMsg("Wrong login");
         }
 
