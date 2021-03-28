@@ -10,6 +10,7 @@ public class DatabaseController {
     }
 
     public boolean checkUser(User user) {
+        
         if(user.getUsername().equals("inventory") && user.getPassword().equals("system")){
             user.setUserID(1);
             return true;
