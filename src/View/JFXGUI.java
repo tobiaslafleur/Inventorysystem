@@ -17,5 +17,6 @@ public class JFXGUI extends Application {
         primaryStage.setTitle("ECINV 1.0");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+
     }
 }
