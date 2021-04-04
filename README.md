@@ -18,16 +18,8 @@
 ![Screenshot](src/resources/images/readme/library.png)
 
 7. Go to Run -> Edit Configurations and write either of the following, depending on your operating system
-<br/>
-<br/>
-Linux/Mac
-<br/>
---module-path /path/to/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml
-<br/>
-<br/>
-Windows
-<br/>
---module-path "\path\to\javafx-sdk-15.0.1\lib" --add-modules javafx.controls,javafx.fxml
+![Screenshot](src/resources/images/readme/linux_mac.png)<br/><br/>
+![Screenshot](src/resources/images/readme/windows.png)<br/><br/>
 ![Screenshot](src/resources/images/readme/vm_options.png)
 
-8. Now simply run Main.java
+8. Now go to src/java/Controller and run Main.java
