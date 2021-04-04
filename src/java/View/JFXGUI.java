@@ -13,7 +13,7 @@ public class JFXGUI extends Application {
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginPage.fxml"));
         primaryStage.setTitle("ECINV 1.0");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
