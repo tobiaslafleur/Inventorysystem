@@ -41,7 +41,7 @@ public class DBController {
     }
 
     public void createUser(User user) {
-        dbUser.createUser(user);
         System.out.println(user.toString());
+        dbUser.createUser(user);
     }
 }

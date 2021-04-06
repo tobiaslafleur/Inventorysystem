@@ -21,10 +21,8 @@ public class Controller {
 
     public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
        User user = new User(username, password, emailAddress, phoneNr, address);
-        System.out.println(user.toString());
+       dbController.createUser(user);
 
-//       dbController.createUser(user);
-//        System.out.println("WHY the fuck");
 
     }
 }
