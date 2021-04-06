@@ -21,11 +21,13 @@ public class RegistrationPage {
     private PasswordField repeatedPW = new PasswordField();
     @FXML
     private Button registerBtn = new Button();
+
     private GUIFacilitator facilitator = new GUIFacilitator(this);
 
 
     public void register(javafx.event.ActionEvent event) {
         System.out.println("Registration complete");
+        facilitator.createUser(username.getText(),password.getText(), "dfa", "asfa", "sa");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginPage.fxml"));

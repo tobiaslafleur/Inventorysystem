@@ -15,10 +15,16 @@ public class Controller {
         dbController = new DBController(this);
         facilitator = new GUIFacilitator(this);
     }
+    public Controller(GUIFacilitator facilitator) {
+        this.facilitator = facilitator;
+    }
 
     public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
        User user = new User(username, password, emailAddress, phoneNr, address);
-       dbController.createUser(user);
+        System.out.println(user.toString());
+
+//       dbController.createUser(user);
+//        System.out.println("WHY the fuck");
 
     }
 }

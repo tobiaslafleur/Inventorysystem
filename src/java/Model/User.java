@@ -30,7 +30,7 @@ public class User {
     }
 
     public String toString(){
-        return String.format("username: %s | password: %s | userID: %s", username, password, userID);
+        return String.format("username: %s | password: %s | userID: %s | email: %s | phone: %s | address: %s |", username, password, userID, emailAddress, phoneNr, address);
     }
 
     //<editor-fold desc="getters and setters"

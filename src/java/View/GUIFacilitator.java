@@ -22,7 +22,12 @@ public class GUIFacilitator {
     }
 
     public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
-       controller.createUser(username, password, emailAddress, phoneNr, address);
-
+        initiateController();
+        controller.createUser(username, password, emailAddress, phoneNr, address);
+    }
+    public void initiateController() {
+        if(controller == null) {
+            controller = new Controller(this);
+        }
     }
 }
