@@ -1,7 +1,12 @@
 package Controller;
 
 import Controller.Database.DBUser;
+import Model.User;
+import View.ApplicationPage;
+import View.LoginPage;
+import View.RegistrationPage;
 
+import java.nio.file.attribute.UserPrincipal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,13 +14,17 @@ import java.sql.SQLException;
 public class DBController {
     private Controller controller;
     private DBUser dbUser;
-
     private Connection conn;
 
+    /**
+     * Constructor to instantiate controller object as well as the database controller classes
+     * @param controller is the controller to be instantiated
+     */
     public DBController(Controller controller) {
         this.controller = controller;
         dbUser = new DBUser(this);
     }
+
 
     public void connectToDatabase() {
         try {
@@ -31,4 +40,8 @@ public class DBController {
 
     }
 
+    public void createUser(User user) {
+        dbUser.createUser(user);
+        System.out.println(user.toString());
+    }
 }

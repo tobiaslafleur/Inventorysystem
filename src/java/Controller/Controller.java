@@ -1,20 +1,24 @@
 package Controller;
 
+import Model.User;
+import View.GUIFacilitator;
 import View.LoginPage;
 import View.MainWindow;
 import javafx.application.Application;
 
 public class Controller {
     private DBController dbController;
-    private LoginPage loginPage;
+    private GUIFacilitator facilitator;
 
     public Controller(){
         Application.launch(MainWindow.class);
         dbController = new DBController(this);
-        //loginPage = new LoginPage(this);
+        facilitator = new GUIFacilitator(this);
     }
 
-    public void login() {
-        System.out.println("Login from controller");
+    public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
+       User user = new User(username, password, emailAddress, phoneNr, address);
+       dbController.createUser(user);
+
     }
 }

@@ -1,6 +1,7 @@
 package Controller.Database;
 
 import Controller.DBController;
+import Model.User;
 
 public class DBUser {
     private DBController dbController;
@@ -13,4 +14,7 @@ public class DBUser {
 
     }
 
+    public void createUser(User user) {
+
+    }
 }
