@@ -1,18 +1,20 @@
 package Controller;
 
+import Controller.Database.DBUser;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseController {
-    private MainController mainController;
+public class DBController {
+    private Controller controller;
+    private DBUser dbUser;
 
     private Connection conn;
 
-    public DatabaseController(MainController mainController) {
-        this.mainController = mainController;
-
-        connectToDatabase();
+    public DBController(Controller controller) {
+        this.controller = controller;
+        dbUser = new DBUser(this);
     }
 
     public void connectToDatabase() {
@@ -23,6 +25,10 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.out.println("Connection to database failed");
         }
+    }
+
+    public void login(String username, String password) {
+
     }
 
 }
