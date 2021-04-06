@@ -1,11 +1,12 @@
 package View;
 
+import Controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class LoginPage {
     @FXML
     private TextField username = new TextField();
     @FXML
