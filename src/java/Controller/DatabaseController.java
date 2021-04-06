@@ -17,14 +17,11 @@ public class DatabaseController {
 
     public void connectToDatabase() {
         try {
-            String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net;databaseName=ecinv;";
-            String user = "ecinv";
-            String password = "mau123456!";
+            String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net:1433;database=ecinv;user=ecinv@ecinv;password=mau123456!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
-            conn = DriverManager.getConnection(dbUrl, user, password);
-            System.out.println("Connected");
+            conn = DriverManager.getConnection(dbUrl);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Connection to database failed");
         }
     }
 
