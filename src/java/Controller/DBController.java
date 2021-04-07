@@ -25,7 +25,6 @@ public class DBController {
         dbUser = new DBUser(this);
     }
 
-
     public void connectToDatabase() {
         try {
             String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net:1433;database=ecinv;user=ecinv@ecinv;password=mau123456!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -36,12 +35,8 @@ public class DBController {
         }
     }
 
-    public void login(String username, String password) {
-
-    }
-
-    public void createUser(User user) {
-        System.out.println(user.toString());
+    public void createUser(String username, String password, String email, String phone, String address) {
+        User user = new User(username, password, email, phone, address);
         dbUser.createUser(user);
     }
 }

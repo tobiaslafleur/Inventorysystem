@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DBController;
+import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,24 +15,24 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginPage {
-    @FXML
-    private TextField username = new TextField();
-    @FXML
-    private PasswordField password = new PasswordField();
-    @FXML
-    private Button loginBtn = new Button();
+    private static LoginPage instance;
+    private GUIFacilitator facilitator;
 
-    private GUIFacilitator facilitator = new GUIFacilitator(this);
+    @FXML private TextField username = new TextField();
+    @FXML private PasswordField password = new PasswordField();
+    @FXML private Button loginBtn = new Button();
 
+    @FXML public void initialize() {
+        instance = this;
+        facilitator = Main.getInstance().getFacilitator();
+        setInstance();
+    }
+
+    public void setInstance() {
+        facilitator.setLoginInstance(instance);
+    }
 
     public void login(ActionEvent event) {
-//        if(username.getText().equals("admin") && password.getText().equals("admin")) {
-//            System.out.println("Login Successful");
-//        }
-//        else{
-//            System.out.println("Login Unsuccessful");
-//
-//        }
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/applicationPage.fxml"));
             Scene scene = new Scene(root);

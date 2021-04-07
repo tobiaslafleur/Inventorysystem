@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DBController;
+import Controller.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,26 +13,28 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegistrationPage {
-    @FXML
-    private TextField username = new TextField();
-    @FXML
-    private TextField email = new TextField();
-    @FXML
-    private TextField phone = new TextField();
-    @FXML
-    private TextField address = new TextField();
-    @FXML
-    private PasswordField password = new PasswordField();
-    @FXML
-    private PasswordField repeatedPW = new PasswordField();
-    @FXML
-    private Button registerBtn = new Button();
+    private static RegistrationPage instance;
+    private GUIFacilitator facilitator;
 
-    private GUIFacilitator facilitator = new GUIFacilitator(this);
+    @FXML private TextField username = new TextField();
+    @FXML private TextField email = new TextField();
+    @FXML private TextField phone = new TextField();
+    @FXML private TextField address = new TextField();
+    @FXML private PasswordField password = new PasswordField();
+    @FXML private PasswordField repeatedPW = new PasswordField();
+    @FXML private Button registerBtn = new Button();
 
+    @FXML public void initialize() {
+        instance = this;
+        facilitator = Main.getInstance().getFacilitator();
+        setInstance();
+    }
+
+    private void setInstance() {
+        facilitator.setRegistrationInstance(instance);
+    }
 
     public void register(javafx.event.ActionEvent event) {
-        System.out.println("Registration complete");
         facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText());
 
         try {

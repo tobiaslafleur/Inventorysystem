@@ -8,26 +8,23 @@ public class GUIFacilitator {
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
 
-    public GUIFacilitator(Controller controller) {
-        this.controller = controller;
-    }
-    public GUIFacilitator(LoginPage loginPage) {
-        this.loginPage = loginPage;
-    }
-    public GUIFacilitator(RegistrationPage registrationPage) {
-        this.registrationPage = registrationPage;
-    }
-    public GUIFacilitator(ApplicationPage applicationPage) {
-        this.applicationPage = applicationPage;
+    public void createUser(String username, String password, String email, String phone, String address) {
+        controller.createUser(username, password, email, phone, address);
     }
 
-    public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
-        initiateController();
-        controller.createUser(username, password, emailAddress, phoneNr, address);
+    public void setController(Controller controller) {
+        this.controller = controller;
     }
-    public void initiateController() {
-        if(controller == null) {
-            controller = new Controller(this);
-        }
+
+    public void setLoginInstance(LoginPage loginPage) {
+        this.loginPage = loginPage;
+    }
+
+    public void setRegistrationInstance(RegistrationPage registrationPage) {
+        this.registrationPage = registrationPage;
+    }
+
+    public void setApplicationInstance(ApplicationPage applicationPage) {
+        this.applicationPage = applicationPage;
     }
 }
