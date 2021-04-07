@@ -16,6 +16,12 @@ public class RegistrationPage {
     @FXML
     private TextField username = new TextField();
     @FXML
+    private TextField email = new TextField();
+    @FXML
+    private TextField phone = new TextField();
+    @FXML
+    private TextField address = new TextField();
+    @FXML
     private PasswordField password = new PasswordField();
     @FXML
     private PasswordField repeatedPW = new PasswordField();
@@ -27,7 +33,7 @@ public class RegistrationPage {
 
     public void register(javafx.event.ActionEvent event) {
         System.out.println("Registration complete");
-        facilitator.createUser(username.getText(),password.getText(), "dfa", "asfa", "sa");
+        facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText());
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginPage.fxml"));

@@ -20,9 +20,10 @@ public class Controller {
     }
 
     public void createUser(String username, String password, String emailAddress, String phoneNr, String address) {
-       User user = new User(username, password, emailAddress, phoneNr, address);
-       dbController.createUser(user);
-
-
+        User user = new User(username, password, emailAddress, phoneNr, address);
+        if(dbController == null){
+            dbController = new DBController(this);
+        }
+        dbController.createUser(user);
     }
 }
