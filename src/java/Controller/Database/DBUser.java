@@ -10,11 +10,7 @@ public class DBUser {
         this.dbController = dbController;
     }
 
-    public void login(String username, String password) {
-
-    }
-
     public void createUser(User user) {
-
+        System.out.println(user);
     }
 }

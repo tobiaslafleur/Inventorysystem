@@ -1,6 +1,6 @@
 package View;
 
-import Controller.DBController;
+import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,11 +13,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ApplicationPage {
-    @FXML
-    private ListView<String> infoList = new ListView<>();
+    private static ApplicationPage instance;
+    private GUIFacilitator facilitator;
 
-    private GUIFacilitator facilitator = new GUIFacilitator(this);
+    @FXML private ListView<String> infoList = new ListView<>();
 
+    @FXML public void initialize() {
+        instance = this;
+        facilitator = Main.getInstance().getFacilitator();
+        setInstance();
+    }
+
+    public void setInstance() {
+        facilitator.setApplicationInstance(instance);
+    }
 
     public void logOut(ActionEvent event) {
         try {
