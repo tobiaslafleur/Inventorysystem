@@ -1,13 +1,11 @@
 package Model;
 
-import java.util.logging.StreamHandler;
-
 public class User {
     private String username;
     private String password;
     private int userID;
     private String emailAddress;
-    private String phoneNr;
+    private String phone;
     private String address;
 
 
@@ -21,16 +19,16 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    public User(String username, String password, String emailAddress, String phoneNr, String address) {
+    public User(String username, String password, String emailAddress, String phone, String address) {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
-        this.phoneNr = phoneNr;
+        this.phone = phone;
         this.address = address;
     }
 
     public String toString(){
-        return String.format("username: %s | password: %s | userID: %s | email: %s | phone: %s | address: %s |", username, password, userID, emailAddress, phoneNr, address);
+        return String.format("username: %s | password: %s | userID: %s | email: %s | phone: %s | address: %s |", username, password, userID, emailAddress, phone, address);
     }
 
     //<editor-fold desc="getters and setters"
@@ -42,12 +40,12 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    public String getPhoneNr() {
-        return phoneNr;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNr(String phoneNr) {
-        this.phoneNr = phoneNr;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAddress() {
