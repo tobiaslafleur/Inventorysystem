@@ -1,11 +1,14 @@
 package Controller;
 
 import Controller.Database.DBUser;
+import Model.Product;
+import Model.Supplier;
 import Model.User;
 import View.ApplicationPage;
 import View.LoginPage;
 import View.RegistrationPage;
 
+import java.math.BigDecimal;
 import java.nio.file.attribute.UserPrincipal;
 import java.sql.Connection;
 import java.sql.DriverManager;

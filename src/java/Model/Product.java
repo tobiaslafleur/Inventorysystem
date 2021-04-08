@@ -24,7 +24,7 @@ public class Product {
     }
 
     public String toString() {
-        return String.format("name: %s | stock: %s | price: %s | categoryID: %s | shelfID: %s | supplierID: %s | cost: | userID: %s ", name, stock, price, categoryID, shelfID, supplierID, cost, userID);
+        return String.format("name: %s | stock: %s | price: %s SEK | categoryID: %s | shelfID: %s | supplierID: %s | cost: %s SEK | userID: %s ", name, stock, price, categoryID, shelfID, supplierID, cost, userID);
     }
     //<editor-fold desc="getters and setters"
     public String getName() {
