@@ -6,26 +6,27 @@ public class Product {
     private String name;
     private int stock;
     private BigDecimal price;
-    private int categoryID;
-    private int shelfID;
-    private int supplierID;
+    private String category;
+    private String shelfPosition;
+    private String supplier;
     private BigDecimal cost;
     private int userID;
 
-    public Product(String name, int stock, BigDecimal price, int categoryID, int shelfID, int supplierID, BigDecimal cost, int userID) {
+    public Product(String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, BigDecimal cost, int userID) {
         this.name = name;
         this.stock = stock;
         this.price = price;
-        this.categoryID = categoryID;
-        this.shelfID = shelfID;
-        this.supplierID = supplierID;
+        this.category = category;
+        this.shelfPosition = shelfPosition;
+        this.supplier = supplier;
         this.cost = cost;
         this.userID = userID;
     }
 
     public String toString() {
-        return String.format("name: %s | stock: %s | price: %s SEK | categoryID: %s | shelfID: %s | supplierID: %s | cost: %s SEK | userID: %s ", name, stock, price, categoryID, shelfID, supplierID, cost, userID);
+        return String.format("name: %s | stock: %s | price: %s SEK | category: %s | shelf position: %s | supplier: %s | cost: %s SEK | userID: %s ", name, stock, price, category, shelfPosition, supplier, cost, userID);
     }
+    
     //<editor-fold desc="getters and setters"
     public String getName() {
         return name;
@@ -51,28 +52,28 @@ public class Product {
         this.price = price;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getShelfID() {
-        return shelfID;
+    public String getShelfPosition() {
+        return shelfPosition;
     }
 
-    public void setShelfID(int shelfID) {
-        this.shelfID = shelfID;
+    public void setShelfPosition(String shelfPosition) {
+        this.shelfPosition = shelfPosition;
     }
 
-    public int getSupplierID() {
-        return supplierID;
+    public String getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
     }
 
     public BigDecimal getCost() {
