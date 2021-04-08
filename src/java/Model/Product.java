@@ -8,7 +8,24 @@ public class Product {
     private BigDecimal price;
     private int categoryID;
     private int shelfID;
+    private int supplierID;
+    private BigDecimal cost;
+    private int userID;
 
+    public Product(String name, int stock, BigDecimal price, int categoryID, int shelfID, int supplierID, BigDecimal cost, int userID) {
+        this.name = name;
+        this.stock = stock;
+        this.price = price;
+        this.categoryID = categoryID;
+        this.shelfID = shelfID;
+        this.supplierID = supplierID;
+        this.cost = cost;
+        this.userID = userID;
+    }
+
+    public String toString() {
+        return String.format("name: %s | stock: %s | price: %s | categoryID: %s | shelfID: %s | supplierID: %s | cost: | userID: %s ", name, stock, price, categoryID, shelfID, supplierID, cost, userID);
+    }
     //<editor-fold desc="getters and setters"
     public String getName() {
         return name;
@@ -73,23 +90,5 @@ public class Product {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-
-    private int supplierID;
-    private BigDecimal cost;
-    private int userID;
-
-    public Product(String name, int stock, BigDecimal price, int categoryID, int shelfID, int supplierID, BigDecimal cost, int userID) {
-        this.name = name;
-        this.stock = stock;
-        this.price = price;
-        this.categoryID = categoryID;
-        this.shelfID = shelfID;
-        this.supplierID = supplierID;
-        this.cost = cost;
-        this.userID = userID;
-    }
     //</editor-fold>
-    public String toString() {
-        return String.format("name: %s | stock: %s | price: %s | categoryID: %s | shelfID: %s | supplierID: %s | cost: | userID: %s ", name, stock, price, categoryID, shelfID, supplierID, cost, userID);
-    }
 }
