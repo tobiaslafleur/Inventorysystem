@@ -42,17 +42,7 @@ public class RegistrationPage {
             //Check if password is same as repeated password
             if(password.getText().equals(repeatedPW.getText())){
                 facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText());
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginPage.fxml"));
-                    Scene scene = new Scene(root);
-                    Node button =(Node) event.getSource();
-                    Stage stage = (Stage) button.getScene().getWindow();
-
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                facilitator.changeWindow(event, "/fxml/loginPage.fxml");
             } else {
                 //Display text: Passwords must match
                 //Temp:
