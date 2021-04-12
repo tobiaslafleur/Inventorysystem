@@ -33,31 +33,9 @@ public class LoginPage {
     }
 
     public void login(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/applicationPage.fxml"));
-            Scene scene = new Scene(root);
-            Node button =(Node) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
     }
     public void register(ActionEvent event) {
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/registrationPage.fxml"));
-            Scene scene = new Scene(root);
-            Node button =(Node) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        facilitator.changeWindow(event, "/fxml/registrationPage.fxml");
     }
-
 }

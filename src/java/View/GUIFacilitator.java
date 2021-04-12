@@ -1,6 +1,14 @@
 package View;
 
 import Controller.Controller;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GUIFacilitator {
     private Controller controller;
@@ -26,5 +34,19 @@ public class GUIFacilitator {
 
     public void setApplicationInstance(ApplicationPage applicationPage) {
         this.applicationPage = applicationPage;
+    }
+
+    public void changeWindow(ActionEvent event, String path){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(path));
+            Scene scene = new Scene(root);
+            Node button =(Node) event.getSource();
+            Stage stage = (Stage) button.getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
