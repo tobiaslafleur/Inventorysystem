@@ -41,4 +41,8 @@ public class ApplicationPage {
             e.printStackTrace();
         }
     }
+
+    public void addSupplier(ActionEvent event){
+        facilitator.changeWindow(event, "/fxml/addSupplierPage.fxml");
+    }
 }

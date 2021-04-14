@@ -30,4 +30,8 @@ public class Controller {
     public boolean checkUser(String username, String password) {
         return dbController.checkUser(username, password);
     }
+
+    public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
+        return dbController.addSupplier(supName, supPhone, supAddress, supEmail);
+    }
 }

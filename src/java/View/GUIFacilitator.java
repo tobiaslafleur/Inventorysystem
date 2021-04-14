@@ -15,6 +15,7 @@ public class GUIFacilitator {
     private LoginPage loginPage;
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
+    private AddSupplierPage addSupplierPage;
 
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
@@ -55,5 +56,13 @@ public class GUIFacilitator {
 
     public boolean checkUser(String username, String password) {
         return controller.checkUser(username, password);
+    }
+
+    public void setAddSupplierInstance(AddSupplierPage addSupplierPage) {
+        this.addSupplierPage = addSupplierPage;
+    }
+
+    public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
+        return controller.addSupplier(supName, supPhone, supAddress, supEmail);
     }
 }
