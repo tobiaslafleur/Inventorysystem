@@ -41,8 +41,12 @@ public class RegistrationPage {
         if(!username.getText().isEmpty() && !password.getText().isEmpty() && !email.getText().isEmpty() && !phone.getText().isEmpty() && !address.getText().isEmpty() && !repeatedPW.getText().isEmpty()){
             //Check if password is same as repeated password
             if(password.getText().equals(repeatedPW.getText())){
-                facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText());
-                facilitator.changeWindow(event, "/fxml/loginPage.fxml");
+                if(facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText())) {
+                    facilitator.changeWindow(event, "/fxml/loginPage.fxml");
+                } else {
+                    //Todo: Update label on GUI: "Account creation failed"
+                }
+
             } else {
                 //Display text: Passwords must match
                 //Temp:

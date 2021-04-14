@@ -10,6 +10,7 @@ public class DBController {
     private Controller controller;
     private DBUser dbUser;
     private Connection conn;
+    private User user;
 
     /**
      * Constructor to instantiate controller object as well as the database controller classes
@@ -20,7 +21,7 @@ public class DBController {
         dbUser = new DBUser(this);
     }
 
-    public void connectToDatabase() {
+    public void connect() {
         try {
             String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net:1433;database=ecinv;user=ecinv@ecinv;password=mau123456!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
@@ -30,11 +31,30 @@ public class DBController {
         }
     }
 
-    public void createUser(String username, String password, String email, String phone, String address) {
+    public void disconnect(){
+        try {
+            if(conn != null && !conn.isClosed()) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean createUser(String username, String password, String email, String phone, String address) {
         User user = new User(username, password, email, phone, address);
-        dbUser.createUser(user);
+        return dbUser.createUser(user);
     }
     public Connection getConnection() {
         return conn;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+        controller.setUser(user);
+    }
+
+    public boolean checkUser(String username, String password) {
+        return dbUser.checkUser(username, password);
     }
 }

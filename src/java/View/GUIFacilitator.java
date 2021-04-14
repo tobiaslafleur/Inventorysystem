@@ -16,8 +16,8 @@ public class GUIFacilitator {
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
 
-    public void createUser(String username, String password, String email, String phone, String address) {
-        controller.createUser(username, password, email, phone, address);
+    public boolean createUser(String username, String password, String email, String phone, String address) {
+        return controller.createUser(username, password, email, phone, address);
     }
 
     public void setController(Controller controller) {
@@ -48,5 +48,9 @@ public class GUIFacilitator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean checkUser(String username, String password) {
+        return controller.checkUser(username, password);
     }
 }
