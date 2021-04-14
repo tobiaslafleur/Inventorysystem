@@ -1,8 +1,10 @@
 package Controller;
 
 import Controller.Database.DBCategory;
+import Controller.Database.DBSupplier;
 import Controller.Database.DBUser;
 import Model.Category;
+import Model.Supplier;
 import Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +14,7 @@ public class DBController {
     private Controller controller;
     private DBUser dbUser;
     private DBCategory dbCategory;
+    private DBSupplier dbSupplier;
     private Connection conn;
     private User user;
 
@@ -22,6 +25,7 @@ public class DBController {
     public DBController(Controller controller) {
         this.controller = controller;
         dbUser = new DBUser(this);
+        dbSupplier = new DBSupplier(this);
     }
 
     public void connect() {
@@ -65,5 +69,10 @@ public class DBController {
     public boolean createCategory(String name) {
         Category category = new Category(name);
         return dbCategory.createCategory(category);
+    }
+
+    public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
+        Supplier supplier = new Supplier(supName, supPhone, supAddress, supEmail);
+        return dbSupplier.addSupplier(supplier);
     }
 }
