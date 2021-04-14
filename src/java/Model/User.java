@@ -27,6 +27,15 @@ public class User {
         this.address = address;
     }
 
+    public User(int userID, String username, String password, String emailAddress, String phone, String address) {
+        this.userID = userID;
+        this.username = username;
+        this.password = password;
+        this.emailAddress = emailAddress;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public String toString(){
         return String.format("username: %s | password: %s | userID: %s | email: %s | phone: %s | address: %s |", username, password, userID, emailAddress, phone, address);
     }

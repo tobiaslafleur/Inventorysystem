@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class LoginPage {
@@ -33,7 +34,14 @@ public class LoginPage {
     }
 
     public void login(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+        if(facilitator.checkUser(username.getText(), password.getText())){
+            facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+        } else {
+            //TODO: Label saying "login failed"
+            //Temp:
+            JOptionPane.showMessageDialog(null, "Login failed");
+        }
+
     }
     public void register(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/registrationPage.fxml");
