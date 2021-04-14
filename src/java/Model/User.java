@@ -8,17 +8,6 @@ public class User {
     private String phone;
     private String address;
 
-
-
-    public User(String username, String password, int userID) {
-        this.username = username;
-        this.password = password;
-        this.userID = userID;
-    }
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
     public User(String username, String password, String emailAddress, String phone, String address) {
         this.username = username;
         this.password = password;
