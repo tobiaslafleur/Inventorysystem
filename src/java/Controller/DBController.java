@@ -1,15 +1,7 @@
 package Controller;
 
 import Controller.Database.DBUser;
-import Model.Product;
-import Model.Supplier;
 import Model.User;
-import View.ApplicationPage;
-import View.LoginPage;
-import View.RegistrationPage;
-
-import java.math.BigDecimal;
-import java.nio.file.attribute.UserPrincipal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -41,5 +33,8 @@ public class DBController {
     public void createUser(String username, String password, String email, String phone, String address) {
         User user = new User(username, password, email, phone, address);
         dbUser.createUser(user);
+    }
+    public Connection getConnection() {
+        return conn;
     }
 }
