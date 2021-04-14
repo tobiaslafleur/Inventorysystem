@@ -73,6 +73,6 @@ public class DBController {
 
     public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
         Supplier supplier = new Supplier(supName, supPhone, supAddress, supEmail);
-        return dbSupplier.addSupplier(supplier);
+        return dbSupplier.addSupplier(supName, supPhone, supAddress, supEmail);
     }
 }
