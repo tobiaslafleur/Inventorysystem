@@ -3,7 +3,7 @@ import Controller.*;
 import Controller.Database.DBProduct;
 import Controller.Database.DBSupplier;
 
-public class SupplierSQLTest {
+public class AddSupplierTest {
 
     public static void testAddSupplier() {
         DBSupplier dbSupplier = new DBSupplier(new DBController(new Controller()));
