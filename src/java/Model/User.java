@@ -27,13 +27,13 @@ public class User {
         this.address = address;
     }
 
-    public User(int userID, String username, String password, String emailAddress, String phone, String address) {
+    public User(int userID, String username, String password, String emailAddress, String address, String phone) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
-        this.phone = phone;
         this.address = address;
+        this.phone = phone;
     }
 
     public String toString(){

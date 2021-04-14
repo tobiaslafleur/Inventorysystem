@@ -57,16 +57,19 @@ public class DBUser {
             ResultSet rs = preparedStatement.executeQuery();
 
             while(rs.next()){
-                if(rs.getString(1).toLowerCase().equals(username) && rs.getString(2).equals(password)){
+                if(rs.getString(2).toLowerCase().equals(username) && rs.getString(3).equals(password)){
+
                     User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),
-                            rs.getString(4), rs.getString(5), rs.getString(6));
+                    rs.getString(4), rs.getString(5), rs.getString(6));
+
                     dbController.setUser(user);
+                    return true;
                 }
             }
             preparedStatement.close();
             conn.close();
             dbController.disconnect();
-            return true;
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
