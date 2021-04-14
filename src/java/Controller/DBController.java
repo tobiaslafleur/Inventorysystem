@@ -28,6 +28,7 @@ public class DBController {
      */
     public DBController(Controller controller) {
         this.controller = controller;
+        dbCategory = new DBCategory(this);
         dbUser = new DBUser(this);
         dbSupplier = new DBSupplier(this);
         this.dbProduct = new DBProduct(this);

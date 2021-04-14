@@ -48,4 +48,7 @@ public class ApplicationPage {
     public void addProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
     }
+    public void addCategory(ActionEvent e) {
+        facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
+    }
 }
