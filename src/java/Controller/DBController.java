@@ -64,7 +64,6 @@ public class DBController {
     public void setUser(User user) {
         this.user = user;
         controller.setUser(user);
-        System.out.println(user);
     }
 
     public boolean checkUser(String username, String password) {

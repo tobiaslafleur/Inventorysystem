@@ -10,7 +10,7 @@ public class CreateUserSQLTest {
         DBUser dbUser = new DBUser(new DBController(new Controller()));
         User user = new User("Orenthal James", "murderer", "pang pang", "555-55-55", "Why not in jail");
         if(dbUser.createUser(user)) {
-            System.out.println("Test successful");
+            System.out.println("Create User test successful");
         }
     }
 }

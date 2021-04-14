@@ -12,7 +12,7 @@ public class AddCategoryTest {
         DBCategory dbCategory = new DBCategory(new DBController(new Controller()));
         Category category = new Category("Cups");
         if(dbCategory.createCategory(category)) {
-            System.out.println("Test Successful");
+            System.out.println("Add Category test Successful");
         }
     }
 }
