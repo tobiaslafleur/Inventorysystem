@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
    <children>
-      <Button fx:id="loginBtn" blendMode="SCREEN" layoutX="274.0" layoutY="329.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #2F3537;" text="Log In" textFill="WHITE" />
-      <PasswordField fx:id="password" blendMode="SCREEN" layoutX="209.0" layoutY="280.0" prefHeight="25.0" prefWidth="179.0" promptText="Password" />
       <TextField fx:id="username" blendMode="SCREEN" layoutX="209.0" layoutY="245.0" prefHeight="25.0" prefWidth="179.0" promptText="Username" />
+      <PasswordField fx:id="password" blendMode="SCREEN" layoutX="209.0" layoutY="280.0" prefHeight="25.0" prefWidth="179.0" promptText="Password" />
+      <Button fx:id="loginBtn" blendMode="SCREEN" layoutX="274.0" layoutY="329.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #2F3537;" text="Log In" textFill="WHITE" />
       <ImageView blendMode="DARKEN" fitHeight="33.0" fitWidth="42.0" layoutX="159.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user.jpg" />
