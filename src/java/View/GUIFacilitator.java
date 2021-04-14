@@ -56,4 +56,8 @@ public class GUIFacilitator {
     public boolean checkUser(String username, String password) {
         return controller.checkUser(username, password);
     }
+
+    public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
+        return controller.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
+    }
 }

@@ -3,6 +3,8 @@ package Controller;
 import Model.User;
 import View.GUIFacilitator;
 
+import java.math.BigDecimal;
+
 public class Controller {
     private DBController dbController;
     private GUIFacilitator facilitator;
@@ -29,5 +31,8 @@ public class Controller {
 
     public boolean checkUser(String username, String password) {
         return dbController.checkUser(username, password);
+    }
+    public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
+         return dbController.addProduct(name, Integer.parseInt(stock), new BigDecimal(price), Integer.parseInt(categoryID), shelfPosition, Integer.parseInt(supplierID), new BigDecimal(cost),Integer.parseInt(userID));
     }
 }

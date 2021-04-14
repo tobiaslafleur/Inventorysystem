@@ -2,6 +2,7 @@ package View;
 
 import Controller.Main;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -40,5 +41,8 @@ public class ApplicationPage {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void addProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
     }
 }
