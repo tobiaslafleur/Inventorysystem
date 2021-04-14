@@ -45,4 +45,7 @@ public class ApplicationPage {
     public void addSupplier(ActionEvent event){
         facilitator.changeWindow(event, "/fxml/addSupplierPage.fxml");
     }
+    public void addProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
+    }
 }

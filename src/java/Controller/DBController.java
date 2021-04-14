@@ -1,11 +1,14 @@
 package Controller;
 
 import Controller.Database.DBCategory;
+import Controller.Database.DBProduct;
 import Controller.Database.DBSupplier;
 import Controller.Database.DBUser;
 import Model.Category;
 import Model.Supplier;
 import Model.User;
+
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 public class DBController {
     private Controller controller;
     private DBUser dbUser;
+    private DBProduct dbProduct;
     private DBCategory dbCategory;
     private DBSupplier dbSupplier;
     private Connection conn;
@@ -26,6 +30,7 @@ public class DBController {
         this.controller = controller;
         dbUser = new DBUser(this);
         dbSupplier = new DBSupplier(this);
+        this.dbProduct = new DBProduct(this);
     }
 
     public void connect() {
@@ -74,5 +79,9 @@ public class DBController {
     public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
         Supplier supplier = new Supplier(supName, supPhone, supAddress, supEmail);
         return dbSupplier.addSupplier(supName, supPhone, supAddress, supEmail);
+    }
+
+    public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
+        return dbProduct.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
     }
 }
