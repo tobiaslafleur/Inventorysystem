@@ -15,6 +15,9 @@ public class Controller {
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return dbController.createUser(username, password, email, phone, address);
     }
+    public boolean createCategory(String name) {
+        return dbController.createCategory(name);
+    }
 
     public void setFacilitator(GUIFacilitator facilitator) {
         this.facilitator = facilitator;

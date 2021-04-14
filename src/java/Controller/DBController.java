@@ -1,6 +1,8 @@
 package Controller;
 
+import Controller.Database.DBCategory;
 import Controller.Database.DBUser;
+import Model.Category;
 import Model.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +11,7 @@ import java.sql.SQLException;
 public class DBController {
     private Controller controller;
     private DBUser dbUser;
+    private DBCategory dbCategory;
     private Connection conn;
     private User user;
 
@@ -57,5 +60,10 @@ public class DBController {
 
     public boolean checkUser(String username, String password) {
         return dbUser.checkUser(username, password);
+    }
+
+    public boolean createCategory(String name) {
+        Category category = new Category(name);
+        return dbCategory.createCategory(category);
     }
 }

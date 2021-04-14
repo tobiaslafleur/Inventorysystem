@@ -19,6 +19,9 @@ public class GUIFacilitator {
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
     }
+    public boolean createCategory(String name){
+        return controller.createCategory(name);
+    }
 
     public void setController(Controller controller) {
         this.controller = controller;
