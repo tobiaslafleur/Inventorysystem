@@ -7,7 +7,7 @@ public class AddSupplierTest {
 
     public static void testAddSupplier() {
         DBSupplier dbSupplier = new DBSupplier(new DBController(new Controller()));
-        if(dbSupplier.addSupplier("Villduha Vev", "555-55-55", "The Streets", "byRaven")) {
+        if(dbSupplier.addSupplier("name", "phone", "address", "email")) {
             System.out.println("Supplier test successful");
         }
     }

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class AddProductTest {
     public static void main(String[] args) {
         DBProduct dbProduct = new DBProduct(new DBController(new Controller()));
-        if(dbProduct.addProduct("PS5", 5, new BigDecimal("5999.99"), 1, "somewhere", 2, new BigDecimal("2999.99"), 2)) {
+        if(dbProduct.addProduct("name", 5, new BigDecimal("price"), 1, "shelfPosition", 2, new BigDecimal("cost"), 1)) {
             System.out.println("Add product test Successful");
         }
     }

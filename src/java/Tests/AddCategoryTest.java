@@ -10,7 +10,7 @@ import javax.security.auth.callback.Callback;
 public class AddCategoryTest {
     public static void main(String[] args) {
         DBCategory dbCategory = new DBCategory(new DBController(new Controller()));
-        Category category = new Category("Cups");
+        Category category = new Category("Category");
         if(dbCategory.createCategory(category)) {
             System.out.println("Add Category test Successful");
         }
