@@ -2,12 +2,14 @@ package Tests;
 import Controller.*;
 import Controller.Database.DBProduct;
 import Controller.Database.DBSupplier;
+import Model.Supplier;
 
 public class AddSupplierTest {
 
     public static void testAddSupplier() {
         DBSupplier dbSupplier = new DBSupplier(new DBController(new Controller()));
-        if(dbSupplier.addSupplier("name", "phone", "address", "email")) {
+        Supplier supplier = new Supplier("name", "phone", "address", "email");
+        if(dbSupplier.addSupplier(supplier)) {
             System.out.println("Supplier test successful");
         }
     }

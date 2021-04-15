@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Supplier;
 import Model.User;
 import View.GUIFacilitator;
 
@@ -34,7 +35,8 @@ public class Controller {
     }
 
     public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
-        return dbController.addSupplier(supName, supPhone, supAddress, supEmail);
+        Supplier supplier = new Supplier(supName, supPhone, supAddress, supEmail);
+        return dbController.addSupplier(supplier);
     }
 
     public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
