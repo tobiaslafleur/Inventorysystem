@@ -1,6 +1,7 @@
 package Controller.Database;
 
 import Controller.DBController;
+import Model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ public class DBSupplier {
         this.dbController = dbController;
     }
 
-    public boolean addSupplier(String name, String phone, String address, String email) {
+    public boolean addSupplier(Supplier supplier) {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
@@ -23,10 +24,10 @@ public class DBSupplier {
                             "VALUES(?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, phone);
-            preparedStatement.setString(3, address);
-            preparedStatement.setString(4, email);
+            preparedStatement.setString(1, supplier.getName());
+            preparedStatement.setString(2, supplier.getPhone());
+            preparedStatement.setString(3, supplier.getAddress());
+            preparedStatement.setString(4, supplier.getEmail());
 
             preparedStatement.execute();
             preparedStatement.close();

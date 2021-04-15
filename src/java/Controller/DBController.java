@@ -76,9 +76,8 @@ public class DBController {
         return dbCategory.createCategory(category);
     }
 
-    public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
-        Supplier supplier = new Supplier(supName, supPhone, supAddress, supEmail);
-        return dbSupplier.addSupplier(supName, supPhone, supAddress, supEmail);
+    public boolean addSupplier(Supplier supplier) {
+        return dbSupplier.addSupplier(supplier);
     }
 
     public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
