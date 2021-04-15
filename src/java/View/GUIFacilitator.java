@@ -20,9 +20,6 @@ public class GUIFacilitator {
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
     }
-    public boolean createCategory(String name){
-        return controller.createCategory(name);
-    }
 
     public void setController(Controller controller) {
         this.controller = controller;
@@ -69,7 +66,8 @@ public class GUIFacilitator {
     public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
         return controller.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
     }
-    public boolean addCategoryBtn(String name) {
+
+    public boolean createCategory(String name) {
         return controller.createCategory(name);
     }
 }

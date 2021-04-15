@@ -15,7 +15,7 @@ public class AddCategoryPage {
     }
 
     public void addCategory(ActionEvent e) {
-        facilitator.addCategoryBtn(categoryName.getText());
+        facilitator.createCategory(categoryName.getText());
         facilitator.changeWindow(e, "/fxml/categoryPage.fxml");
     }
 }
