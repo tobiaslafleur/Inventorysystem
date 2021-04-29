@@ -32,6 +32,21 @@
                   <TableColumn prefWidth="75.0" text="Shelf" />
                   <TableColumn prefWidth="75.0" text="Supplier" />
                   <TableColumn prefWidth="75.0" text="Cost" />
+
+      <ScrollPane layoutX="100.0" layoutY="7.0" prefHeight="387.0" prefWidth="493.0">
+         <content>
+            <TableView prefHeight="386.0" prefWidth="491.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ProductID" />
+                <TableColumn prefWidth="75.0" text="Name" />
+                  <TableColumn prefWidth="75.0" text="Quantity" />
+                  <TableColumn prefWidth="75.0" text="Price" />
+                  <TableColumn prefWidth="75.0" text="CategoryID" />
+                  <TableColumn prefWidth="75.0" text="Shelf" />
+                  <TableColumn prefWidth="75.0" text="SupplierID" />
+                  <TableColumn prefWidth="75.0" text="Cost" />
+                  <TableColumn prefWidth="75.0" text="UserID" />
+
               </columns>
             </TableView>
          </content>
