@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Main;
+import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,7 +19,16 @@ public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
 
-    @FXML private ListView<String> infoList = new ListView<>();
+    @FXML private TableView<String> infoTable;
+    @FXML private TableColumn<Product, String> colName;
+    @FXML private TableColumn<Product, String> colQuantity;
+    @FXML private TableColumn<Product, String> colPrice;
+    @FXML private TableColumn<Product, String> colCategory;
+    @FXML private TableColumn<Product, String> colShelf;
+    @FXML private TableColumn<Product, String> colSupplier;
+    @FXML private TableColumn<Product, String> colCost;
+
+
 
     @FXML public void initialize() {
         instance = this;
