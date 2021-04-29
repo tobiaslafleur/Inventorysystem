@@ -50,7 +50,7 @@ public class DBProduct {
         return false;
     }
 
-    public void getProductTable(int userID) {
+    public void createProductTable(int userID) {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
@@ -81,4 +81,11 @@ public class DBProduct {
         }
     }
 
+    public ArrayList<Product> getProductList() {
+        if(!productList.isEmpty()) {
+            productList.clear();
+            createProductTable(dbController.getUser().getUserID());
+        }
+        return productList;
+    }
 }

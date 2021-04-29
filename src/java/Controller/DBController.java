@@ -5,6 +5,7 @@ import Controller.Database.DBProduct;
 import Controller.Database.DBSupplier;
 import Controller.Database.DBUser;
 import Model.Category;
+import Model.Product;
 import Model.Supplier;
 import Model.User;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DBController {
     private Controller controller;
@@ -65,6 +67,11 @@ public class DBController {
     public void setUser(User user) {
         this.user = user;
         controller.setUser(user);
+        dbProduct.createProductTable(user.getUserID());
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public boolean checkUser(String username, String password) {
@@ -82,5 +89,9 @@ public class DBController {
 
     public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
         return dbProduct.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
+    }
+
+    public ArrayList<Product> getProductList() {
+        return dbProduct.getProductList();
     }
 }
