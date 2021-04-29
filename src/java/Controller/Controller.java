@@ -1,10 +1,12 @@
 package Controller;
 
+import Model.Product;
 import Model.Supplier;
 import Model.User;
 import View.GUIFacilitator;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class Controller {
     private DBController dbController;
@@ -41,5 +43,9 @@ public class Controller {
 
     public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
         return dbController.addProduct(name, Integer.parseInt(stock), new BigDecimal(price), Integer.parseInt(categoryID), shelfPosition, Integer.parseInt(supplierID), new BigDecimal(cost),Integer.parseInt(userID));
+    }
+
+    public ArrayList<Product> getProductList() {
+        return dbController.getProductList();
     }
 }

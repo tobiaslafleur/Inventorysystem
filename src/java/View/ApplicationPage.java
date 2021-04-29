@@ -10,30 +10,33 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
-    private ObservableList<String> data;
-    @FXML private TableView<String> infoTable;
+    //Product table and columns
+    @FXML private TableView<Product> infoTable;
     @FXML private TableColumn<Product, String> colName;
-    @FXML private TableColumn<Product, String> colQuantity;
-    @FXML private TableColumn<Product, String> colPrice;
+    @FXML private TableColumn<Product, String> colStock;
+    @FXML private TableColumn<Product, BigDecimal> colPrice;
     @FXML private TableColumn<Product, String> colCategory;
     @FXML private TableColumn<Product, String> colShelf;
     @FXML private TableColumn<Product, String> colSupplier;
-    @FXML private TableColumn<Product, String> colCost;
+    @FXML private TableColumn<Product, BigDecimal> colCost;
 
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+        initColumns();
+        updateTable();
     }
 
     public void setInstance() {
@@ -62,5 +65,22 @@ public class ApplicationPage {
     }
     public void addCategory(ActionEvent e) {
         facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
+    }
+
+    public void initColumns() {
+        colName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
+        colStock.setCellValueFactory(new PropertyValueFactory<Product, String>("stock"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("price"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<Product, String>("category"));
+        colShelf.setCellValueFactory(new PropertyValueFactory<Product, String>("shelfPosition"));
+        colSupplier.setCellValueFactory(new PropertyValueFactory<Product, String>("supplier"));
+        colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
+    }
+    public void updateTable() {
+        ArrayList<Product> productList = facilitator.getProductList();
+        ObservableList<Product> list = FXCollections.observableArrayList();
+
+        list.addAll(productList);
+        infoTable.setItems(list);
     }
 }

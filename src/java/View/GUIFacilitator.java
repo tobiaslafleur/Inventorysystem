@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Controller;
+import Model.Product;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GUIFacilitator {
     private Controller controller;
@@ -72,4 +74,11 @@ public class GUIFacilitator {
         return controller.createCategory(name);
     }
 
+    public ArrayList<Product> getProductList() {
+        return controller.getProductList();
+    }
+
+    public void updateProductTable() {
+        applicationPage.updateTable();
+    }
 }
