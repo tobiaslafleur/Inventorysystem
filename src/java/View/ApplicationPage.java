@@ -1,6 +1,8 @@
 package View;
 
 import Controller.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,8 +18,8 @@ import java.io.IOException;
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
-
-    @FXML private ListView<String> infoList = new ListView<>();
+    @FXML private TableView<String> infoTable;
+    private ObservableList<String> data;
 
     @FXML public void initialize() {
         instance = this;
