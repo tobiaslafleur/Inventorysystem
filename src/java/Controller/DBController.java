@@ -31,7 +31,7 @@ public class DBController {
         dbCategory = new DBCategory(this);
         dbUser = new DBUser(this);
         dbSupplier = new DBSupplier(this);
-        this.dbProduct = new DBProduct(this);
+        dbProduct = new DBProduct(this);
     }
 
     public void connect() {
