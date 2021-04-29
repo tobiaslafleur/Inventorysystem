@@ -20,8 +20,7 @@ import java.io.IOException;
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
-
-
+    private ObservableList<String> data;
     @FXML private TableView<String> infoTable;
     @FXML private TableColumn<Product, String> colName;
     @FXML private TableColumn<Product, String> colQuantity;
@@ -30,11 +29,6 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colShelf;
     @FXML private TableColumn<Product, String> colSupplier;
     @FXML private TableColumn<Product, String> colCost;
-    
-
-    @FXML private TableView<String> infoTable;
-    private ObservableList<String> data;
-
 
     @FXML public void initialize() {
         instance = this;
