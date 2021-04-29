@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Controller;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -70,4 +71,5 @@ public class GUIFacilitator {
     public boolean createCategory(String name) {
         return controller.createCategory(name);
     }
+
 }

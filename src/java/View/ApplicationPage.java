@@ -2,6 +2,8 @@ package View;
 
 import Controller.Main;
 import Model.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
 
+
     @FXML private TableView<String> infoTable;
     @FXML private TableColumn<Product, String> colName;
     @FXML private TableColumn<Product, String> colQuantity;
@@ -28,6 +31,11 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colSupplier;
     @FXML private TableColumn<Product, String> colCost;
     
+
+    @FXML private TableView<String> infoTable;
+    private ObservableList<String> data;
+
+
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
