@@ -27,9 +27,7 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colShelf;
     @FXML private TableColumn<Product, String> colSupplier;
     @FXML private TableColumn<Product, String> colCost;
-
-
-
+    
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
