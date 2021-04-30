@@ -87,8 +87,8 @@ public class DBController {
         return dbSupplier.addSupplier(supplier);
     }
 
-    public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
-        return dbProduct.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
+    public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost) {
+        return dbProduct.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, user.getUserID());
     }
 
     public ArrayList<Product> getProductList() {

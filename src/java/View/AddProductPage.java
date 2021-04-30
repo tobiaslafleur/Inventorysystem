@@ -21,7 +21,7 @@ public class AddProductPage {
     }
 
     public void addProduct(ActionEvent e) {
-        facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText(), userID.getText());
+        facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText());
         facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
         facilitator.updateProductTable();
     }

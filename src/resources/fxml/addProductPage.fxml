@@ -12,14 +12,13 @@
                 <Image url="@../images/logo.png" />
             </image>
         </ImageView>
-        <TextField fx:id="name" layoutX="29.0" layoutY="78.0" prefHeight="25.0" prefWidth="200.0" promptText="Product Name" />
-        <TextField fx:id="stock" layoutX="29.0" layoutY="116.0" prefHeight="25.0" prefWidth="200.0" promptText="Quantity" />
-        <TextField fx:id="price" layoutX="29.0" layoutY="150.0" prefHeight="25.0" prefWidth="200.0" promptText="Price" />
-        <TextField fx:id="shelfPosition" layoutX="299.0" layoutY="78.0" prefHeight="25.0" prefWidth="200.0" promptText="Shelf Position" />
-        <TextField fx:id="supplierID" layoutX="299.0" layoutY="116.0" prefHeight="25.0" prefWidth="200.0" promptText="Supplier ID" />
-        <TextField fx:id="userID" layoutX="299.0" layoutY="187.0" prefHeight="25.0" prefWidth="200.0" promptText="User ID" />
-        <TextField fx:id="cost" layoutX="299.0" layoutY="150.0" prefHeight="25.0" prefWidth="200.0" promptText="Cost" />
-        <TextField fx:id="categoryID" layoutX="29.0" layoutY="187.0" prefHeight="25.0" prefWidth="200.0" promptText="Category ID" />
+        <TextField fx:id="name" layoutX="182.0" layoutY="52.0" prefHeight="25.0" prefWidth="200.0" promptText="Product Name" />
+        <TextField fx:id="stock" layoutX="41.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" promptText="Quantity" />
+        <TextField fx:id="price" layoutX="41.0" layoutY="134.0" prefHeight="25.0" prefWidth="200.0" promptText="Price" />
+        <TextField fx:id="shelfPosition" layoutX="282.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" promptText="Shelf Position" />
+        <TextField fx:id="supplierID" layoutX="282.0" layoutY="134.0" prefHeight="25.0" prefWidth="200.0" promptText="Supplier ID" />
+        <TextField fx:id="cost" layoutX="282.0" layoutY="174.0" prefHeight="25.0" prefWidth="200.0" promptText="Cost" />
+        <TextField fx:id="categoryID" layoutX="41.0" layoutY="174.0" prefHeight="25.0" prefWidth="200.0" promptText="Category ID" />
         <Label layoutX="177.0" layoutY="19.0" prefHeight="33.0" prefWidth="209.0" text="Looking to add a product?" textFill="WHITE">
             <font>
                 <Font name="Franklin Gothic Medium Italic" size="17.0" />
@@ -28,4 +27,3 @@
         <Button fx:id="AddProductBtn" layoutX="241.0" layoutY="230.0" mnemonicParsing="false" onAction="#addProduct" text="Add Product" />
     </children>
 </AnchorPane>
-
