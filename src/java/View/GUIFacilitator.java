@@ -66,8 +66,8 @@ public class GUIFacilitator {
         return controller.addSupplier(supName, supPhone, supAddress, supEmail);
     }
 
-    public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost, String userID) {
-        return controller.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost, userID);
+    public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost) {
+        return controller.addProduct(name, stock, price, categoryID, shelfPosition, supplierID, cost);
     }
 
     public boolean createCategory(String name) {
