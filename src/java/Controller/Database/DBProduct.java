@@ -54,7 +54,7 @@ public class DBProduct {
             dbController.connect();
             Connection conn = dbController.getConnection();
 
-            String query = "Select P.id, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, P.cost " +
+            String query = "Select P.id AS p_code, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, S.id AS s_id, P.cost " +
                     "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
                     "WHERE P.user_id = " + userID;
 
@@ -63,16 +63,17 @@ public class DBProduct {
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
-                int productID = rs.getInt("id");
+                int productID = rs.getInt("p_code");
                 String name = rs.getString("name");
                 int stock = Integer.parseInt(rs.getString("stock"));
                 BigDecimal price = new BigDecimal(rs.getString("price"));
                 String category = rs.getString("c_name");
                 String shelfPosition = rs.getString("shelf_pos");
                 String supplier = rs.getString("s_name");
+                int supplierID = rs.getInt("s_id");
                 BigDecimal cost = new BigDecimal(rs.getString("cost"));
 
-                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, cost, userID);
+                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, supplierID, cost, userID);
                 productList.add(product);
             }
 
@@ -143,10 +144,6 @@ public class DBProduct {
                     "UPDATE Product SET [cost] = '" + cost + "' Where id = " + productUpdate.getProductID();
             executeUpdate(query);
         }
-    }
-
-    public void updateSupplierSetup() {
-        
     }
 
     private void executeUpdate(String query) {

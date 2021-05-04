@@ -57,4 +57,9 @@ public class Controller {
         Product productUpdate = new Product(id, name, quantity, price, null, shelf, null, cost, user.getUserID());
         dbController.updateProduct(productUpdate);
     }
+
+    public void updateSupplier(String name, String phone, String address, String email, int id) {
+        Supplier supplierUpdate = new Supplier(name, phone, address, email, id);
+        dbController.updateSupplier(supplierUpdate);
+    }
 }

@@ -31,6 +31,7 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colCategory;
     @FXML private TableColumn<Product, String> colShelf;
     @FXML private TableColumn<Product, String> colSupplier;
+    @FXML private TableColumn<Product, String> colSupplierID;
     @FXML private TableColumn<Product, BigDecimal> colCost;
 
     @FXML public void initialize() {
@@ -72,6 +73,9 @@ public class ApplicationPage {
     public void updateProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/updateProduct.fxml");
     }
+    public void updateSupplier(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
+    }
 
     public void addCategory(ActionEvent e) {
         facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
@@ -85,6 +89,7 @@ public class ApplicationPage {
         colCategory.setCellValueFactory(new PropertyValueFactory<Product, String>("category"));
         colShelf.setCellValueFactory(new PropertyValueFactory<Product, String>("shelfPosition"));
         colSupplier.setCellValueFactory(new PropertyValueFactory<Product, String>("supplier"));
+        colSupplierID.setCellValueFactory(new PropertyValueFactory<Product, String>("supplierID"));
         colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
     }
     public void updateTable() {

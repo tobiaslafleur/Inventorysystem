@@ -102,4 +102,8 @@ public class DBController {
     public void updateProduct(Product productUpdate) {
         dbProduct.updateProductSetup(productUpdate);
     }
+
+    public void updateSupplier(Supplier supplierUpdate) {
+        dbSupplier.updateSupplierSetup(supplierUpdate);
+    }
 }

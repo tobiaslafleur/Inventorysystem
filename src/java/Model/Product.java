@@ -10,9 +10,24 @@ public class Product {
     private String category;
     private String shelfPosition;
     private String supplier;
+    private int supplierID;
     private BigDecimal cost;
     private int userID;
 
+
+
+    public Product(int productID, String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, int supplierID, BigDecimal cost, int userID) {
+        this.productID = productID;
+        this.name = name;
+        this.stock = stock;
+        this.price = price;
+        this.category = category;
+        this.shelfPosition = shelfPosition;
+        this.supplier = supplier;
+        this.supplierID = supplierID;
+        this.cost = cost;
+        this.userID = userID;
+    }
     public Product(int productID, String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, BigDecimal cost, int userID) {
         this.productID = productID;
         this.name = name;
@@ -99,6 +114,14 @@ public class Product {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public int getSupplierID() {
+        return supplierID;
+    }
+
+    public void setSupplierID(int supplierID) {
+        this.supplierID = supplierID;
     }
     //</editor-fold>
 }
