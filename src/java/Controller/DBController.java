@@ -94,4 +94,8 @@ public class DBController {
     public ArrayList<Product> getProductList() {
         return dbProduct.getProductList();
     }
+
+    public void removeProduct(int productID) {
+        dbProduct.removeProduct(productID);
+    }
 }

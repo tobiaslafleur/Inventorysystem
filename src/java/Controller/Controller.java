@@ -48,4 +48,8 @@ public class Controller {
     public ArrayList<Product> getProductList() {
         return dbController.getProductList();
     }
+
+    public void removeProduct(int productID) {
+        dbController.removeProduct(productID);
+    }
 }

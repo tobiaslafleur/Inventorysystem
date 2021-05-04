@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +24,7 @@ public class ApplicationPage {
     private GUIFacilitator facilitator;
     //Product table and columns
     @FXML private TableView<Product> infoTable;
+    @FXML private TableColumn<Product, Integer> colID;
     @FXML private TableColumn<Product, String> colName;
     @FXML private TableColumn<Product, String> colStock;
     @FXML private TableColumn<Product, BigDecimal> colPrice;
@@ -63,11 +65,16 @@ public class ApplicationPage {
     public void addProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
     }
+    public void removeProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/removeProductPage.fxml");
+    }
+
     public void addCategory(ActionEvent e) {
         facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
     }
 
     public void initColumns() {
+        colID.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productID"));
         colName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         colStock.setCellValueFactory(new PropertyValueFactory<Product, String>("stock"));
         colPrice.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("price"));

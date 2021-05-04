@@ -55,7 +55,7 @@ public class DBProduct {
             dbController.connect();
             Connection conn = dbController.getConnection();
 
-            String query = "Select  P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, P.cost " +
+            String query = "Select P.id, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, P.cost " +
                     "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
                     "WHERE P.user_id = " + userID;
 
@@ -64,6 +64,7 @@ public class DBProduct {
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
+                int productID = rs.getInt("id");
                 String name = rs.getString("name");
                 int stock = Integer.parseInt(rs.getString("stock"));
                 BigDecimal price = new BigDecimal(rs.getString("price"));
@@ -72,7 +73,7 @@ public class DBProduct {
                 String supplier = rs.getString("s_name");
                 BigDecimal cost = new BigDecimal(rs.getString("cost"));
 
-                Product product = new Product(name, stock, price, category, shelfPosition, supplier, cost, userID);
+                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, cost, userID);
                 productList.add(product);
             }
 
@@ -87,5 +88,25 @@ public class DBProduct {
             createProductTable(dbController.getUser().getUserID());
         }
         return productList;
+    }
+
+    public void removeProduct(int productID) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            String execProc =
+                    "Delete From Product Where id = ?";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(execProc);
+            preparedStatement.setInt(1, productID);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

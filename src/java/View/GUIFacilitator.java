@@ -81,4 +81,8 @@ public class GUIFacilitator {
     public void updateProductTable() {
         applicationPage.updateTable();
     }
+
+    public void removeProduct(int productID) {
+        controller.removeProduct(productID);
+    }
 }

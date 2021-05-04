@@ -3,6 +3,7 @@ package Model;
 import java.math.BigDecimal;
 
 public class Product {
+    private int productID;
     private String name;
     private int stock;
     private BigDecimal price;
@@ -12,7 +13,8 @@ public class Product {
     private BigDecimal cost;
     private int userID;
 
-    public Product(String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, BigDecimal cost, int userID) {
+    public Product(int productID, String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, BigDecimal cost, int userID) {
+        this.productID = productID;
         this.name = name;
         this.stock = stock;
         this.price = price;
@@ -90,6 +92,13 @@ public class Product {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
     //</editor-fold>
 }
