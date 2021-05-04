@@ -98,4 +98,8 @@ public class DBController {
     public void removeProduct(int productID) {
         dbProduct.removeProduct(productID);
     }
+
+    public void updateProduct(Product productUpdate) {
+        dbProduct.updateProductSetup(productUpdate);
+    }
 }

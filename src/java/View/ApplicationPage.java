@@ -69,6 +69,10 @@ public class ApplicationPage {
         facilitator.changeWindow(e, "/fxml/removeProductPage.fxml");
     }
 
+    public void updateProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/updateProduct.fxml");
+    }
+
     public void addCategory(ActionEvent e) {
         facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
     }

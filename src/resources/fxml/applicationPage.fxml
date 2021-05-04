@@ -24,7 +24,7 @@
             <Font size="11.0" />
          </font>
       </Button>
-      <TableView fx:id="infoTable" layoutX="99.0" prefHeight="353.0" prefWidth="498.0">
+      <TableView fx:id="infoTable" layoutX="99.0" layoutY="4.0" prefHeight="349.0" prefWidth="495.0">
         <columns>
             <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
@@ -37,5 +37,6 @@
         </columns>
       </TableView>
       <Button fx:id="removeBtn" layoutX="6.0" layoutY="177.0" mnemonicParsing="false" onAction="#removeProduct" prefHeight="25.0" prefWidth="85.0" text="Remove Product" />
+      <Button fx:id="updateBtn" layoutX="6.0" layoutY="210.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="25.0" prefWidth="85.0" text="Update Product Info" />
    </children>
 </AnchorPane>

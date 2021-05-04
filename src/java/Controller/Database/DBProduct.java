@@ -2,7 +2,6 @@ package Controller.Database;
 
 import Controller.DBController;
 import Model.Product;
-import javafx.collections.ObservableList;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -95,11 +94,67 @@ public class DBProduct {
             dbController.connect();
             Connection conn = dbController.getConnection();
 
-            String execProc =
+            String query =
                     "Delete From Product Where id = ?";
 
-            PreparedStatement preparedStatement = conn.prepareStatement(execProc);
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setInt(1, productID);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProductSetup(Product productUpdate) {
+        String name = productUpdate.getName();
+        int quantity = productUpdate.getStock();
+        BigDecimal price = productUpdate.getPrice();
+        String shelf = productUpdate.getShelfPosition();
+        BigDecimal cost = productUpdate.getCost();
+        String query = " ";
+
+        if(name != null) {
+            query =
+                    "UPDATE Product SET [name] = '" + name + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(quantity > 0) {
+            query =
+                    "UPDATE Product SET [stock] = " + quantity + " Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(!price.equals("0.0")) {
+            query =
+                    "UPDATE Product SET [price] = '" + price + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+
+        if(shelf != null) {
+            query =
+                    "UPDATE Product SET [shelf_pos] = '" + shelf + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(!cost.equals("0.0")) {
+            query =
+                    "UPDATE Product SET [cost] = '" + cost + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+    }
+
+    public void updateSupplierSetup() {
+        
+    }
+
+    private void executeUpdate(String query) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
 
             preparedStatement.execute();
             preparedStatement.close();

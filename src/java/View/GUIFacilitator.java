@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class GUIFacilitator {
@@ -84,5 +85,9 @@ public class GUIFacilitator {
 
     public void removeProduct(int productID) {
         controller.removeProduct(productID);
+    }
+
+    public void updateProduct(int id, String name, int quantity, BigDecimal price, String shelf, BigDecimal cost) {
+        controller.updateProduct(id, name, quantity, price, shelf, cost);
     }
 }
