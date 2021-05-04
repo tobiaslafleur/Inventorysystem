@@ -2,7 +2,6 @@ package Controller.Database;
 
 import Controller.DBController;
 import Model.Product;
-import javafx.collections.ObservableList;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -55,7 +54,7 @@ public class DBProduct {
             dbController.connect();
             Connection conn = dbController.getConnection();
 
-            String query = "Select  P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, P.cost " +
+            String query = "Select P.id AS p_code, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, S.id AS s_id, P.cost " +
                     "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
                     "WHERE P.user_id = " + userID;
 
@@ -64,15 +63,17 @@ public class DBProduct {
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
+                int productID = rs.getInt("p_code");
                 String name = rs.getString("name");
                 int stock = Integer.parseInt(rs.getString("stock"));
                 BigDecimal price = new BigDecimal(rs.getString("price"));
                 String category = rs.getString("c_name");
                 String shelfPosition = rs.getString("shelf_pos");
                 String supplier = rs.getString("s_name");
+                int supplierID = rs.getInt("s_id");
                 BigDecimal cost = new BigDecimal(rs.getString("cost"));
 
-                Product product = new Product(name, stock, price, category, shelfPosition, supplier, cost, userID);
+                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, supplierID, cost, userID);
                 productList.add(product);
             }
 
@@ -87,5 +88,77 @@ public class DBProduct {
             createProductTable(dbController.getUser().getUserID());
         }
         return productList;
+    }
+
+    public void removeProduct(int productID) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            String query =
+                    "Delete From Product Where id = ?";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, productID);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateProductSetup(Product productUpdate) {
+        String name = productUpdate.getName();
+        int quantity = productUpdate.getStock();
+        BigDecimal price = productUpdate.getPrice();
+        String shelf = productUpdate.getShelfPosition();
+        BigDecimal cost = productUpdate.getCost();
+        String query = " ";
+
+        if(name != null) {
+            query =
+                    "UPDATE Product SET [name] = '" + name + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(quantity > 0) {
+            query =
+                    "UPDATE Product SET [stock] = " + quantity + " Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(!price.equals("0.0")) {
+            query =
+                    "UPDATE Product SET [price] = '" + price + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+
+        if(shelf != null) {
+            query =
+                    "UPDATE Product SET [shelf_pos] = '" + shelf + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+        if(!cost.equals("0.0")) {
+            query =
+                    "UPDATE Product SET [cost] = '" + cost + "' Where id = " + productUpdate.getProductID();
+            executeUpdate(query);
+        }
+    }
+
+    private void executeUpdate(String query) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

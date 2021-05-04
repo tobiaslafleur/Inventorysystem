@@ -48,4 +48,18 @@ public class Controller {
     public ArrayList<Product> getProductList() {
         return dbController.getProductList();
     }
+
+    public void removeProduct(int productID) {
+        dbController.removeProduct(productID);
+    }
+
+    public void updateProduct(int id, String name, int quantity, BigDecimal price, String shelf, BigDecimal cost) {
+        Product productUpdate = new Product(id, name, quantity, price, null, shelf, null, cost, user.getUserID());
+        dbController.updateProduct(productUpdate);
+    }
+
+    public void updateSupplier(String name, String phone, String address, String email, int id) {
+        Supplier supplierUpdate = new Supplier(name, phone, address, email, id);
+        dbController.updateSupplier(supplierUpdate);
+    }
 }

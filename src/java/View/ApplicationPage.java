@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,12 +24,14 @@ public class ApplicationPage {
     private GUIFacilitator facilitator;
     //Product table and columns
     @FXML private TableView<Product> infoTable;
+    @FXML private TableColumn<Product, Integer> colID;
     @FXML private TableColumn<Product, String> colName;
     @FXML private TableColumn<Product, String> colStock;
     @FXML private TableColumn<Product, BigDecimal> colPrice;
     @FXML private TableColumn<Product, String> colCategory;
     @FXML private TableColumn<Product, String> colShelf;
     @FXML private TableColumn<Product, String> colSupplier;
+    @FXML private TableColumn<Product, String> colSupplierID;
     @FXML private TableColumn<Product, BigDecimal> colCost;
 
     @FXML public void initialize() {
@@ -63,17 +66,30 @@ public class ApplicationPage {
     public void addProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
     }
+    public void removeProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/removeProductPage.fxml");
+    }
+
+    public void updateProduct(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/updateProduct.fxml");
+    }
+    public void updateSupplier(ActionEvent e) {
+        facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
+    }
+
     public void addCategory(ActionEvent e) {
         facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
     }
 
     public void initColumns() {
+        colID.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productID"));
         colName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         colStock.setCellValueFactory(new PropertyValueFactory<Product, String>("stock"));
         colPrice.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("price"));
         colCategory.setCellValueFactory(new PropertyValueFactory<Product, String>("category"));
         colShelf.setCellValueFactory(new PropertyValueFactory<Product, String>("shelfPosition"));
         colSupplier.setCellValueFactory(new PropertyValueFactory<Product, String>("supplier"));
+        colSupplierID.setCellValueFactory(new PropertyValueFactory<Product, String>("supplierID"));
         colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
     }
     public void updateTable() {
