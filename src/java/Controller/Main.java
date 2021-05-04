@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -17,6 +18,8 @@ public class Main extends Application {
         controller = new Controller();
         facilitator = new GUIFacilitator();
         initializeConnection();
+
+        primaryStage.getIcons().add(new Image("images/WindowLogoV2.png"));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginPage.fxml"));
         Parent root = loader.load();
