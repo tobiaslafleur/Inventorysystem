@@ -62,4 +62,9 @@ public class Controller {
         Supplier supplierUpdate = new Supplier(name, phone, address, email, id);
         dbController.updateSupplier(supplierUpdate);
     }
+
+    public ArrayList<Product> getSearchList(String searchText) {
+        return dbController.getSearchList(searchText);
+
+    }
 }
