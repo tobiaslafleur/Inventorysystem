@@ -36,6 +36,10 @@ public class DBController {
         dbProduct = new DBProduct(this);
     }
 
+
+    /**
+     * Connects to the database
+     */
     public void connect() {
         try {
             String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net:1433;database=ecinv;user=ecinv@ecinv;password=mau123456!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -46,6 +50,9 @@ public class DBController {
         }
     }
 
+    /**
+     * Closes the connection to the database
+     */
     public void disconnect(){
         try {
             if(conn != null && !conn.isClosed()) {
@@ -56,6 +63,15 @@ public class DBController {
         }
     }
 
+    /**
+     * Creates an account and stores it in the database
+     * @param username first String value for the creation of the account
+     * @param password second String value for the creation of the account
+     * @param email third String value for the creation of the account
+     * @param phone fourth String value for the creation of the account
+     * @param address fifth String value for the creation of the account
+     * @return The created user stored in the database
+     */
     public boolean createUser(String username, String password, String email, String phone, String address) {
         User user = new User(username, password, email, phone, address);
         return dbUser.createUser(user);

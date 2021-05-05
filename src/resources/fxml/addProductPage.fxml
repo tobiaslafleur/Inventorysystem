@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="293.0" prefWidth="531.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProductPage">
+<AnchorPane prefHeight="293.0" prefWidth="531.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProductPage">
     <children>
         <ImageView fitHeight="58.0" fitWidth="92.0" layoutX="506.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -25,5 +25,6 @@
             </font>
         </Label>
         <Button fx:id="AddProductBtn" layoutX="241.0" layoutY="230.0" mnemonicParsing="false" onAction="#addProduct" text="Add Product" />
+        <Button layoutX="21.0" layoutY="252.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="58.0" onAction="#cancelAddProduct" text="Cancel" />
     </children>
 </AnchorPane>

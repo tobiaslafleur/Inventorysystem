@@ -18,4 +18,8 @@ public class AddCategoryPage {
         facilitator.createCategory(categoryName.getText());
         facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
     }
+
+    public void cancelCategory (ActionEvent cancelCategory) {
+        facilitator.changeWindow(cancelCategory, "/fxml/applicationPage.fxml");
+    }
 }

@@ -18,6 +18,7 @@ public class LoginPage {
     @FXML private PasswordField password = new PasswordField();
     @FXML private Button loginBtn = new Button();
 
+
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
@@ -28,6 +29,11 @@ public class LoginPage {
         facilitator.setLoginInstance(instance);
     }
 
+    /**
+     * Checks the username and password and directs the user to the application window after the Login button has been pressed
+     * Displays an error message if username and/or password don't match the information stored in the database
+     * @param event
+     */
     public void login(ActionEvent event) {
         if(facilitator.checkUser(username.getText(), password.getText())){
             facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
@@ -38,6 +44,11 @@ public class LoginPage {
         }
 
     }
+
+    /**
+     * Opens the registrationPage window
+     * @param event
+     */
     public void register(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/registrationPage.fxml");
     }

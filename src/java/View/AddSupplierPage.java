@@ -42,4 +42,7 @@ public class AddSupplierPage {
             JOptionPane.showMessageDialog(null, "Failed to add supplier");
         }
     }
+    public void cancelSupplier(ActionEvent supplierCancelled) {
+        facilitator.changeWindow(supplierCancelled, "/fxml/applicationPage.fxml");
+    }
 }

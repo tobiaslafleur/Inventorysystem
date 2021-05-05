@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -58,4 +59,9 @@ public class RegistrationPage {
             JOptionPane.showMessageDialog(null, "Enter all required fields.");
         }
     }
+    public void cancelRegisterAccount (ActionEvent accountRegisterCancelled) {
+        facilitator.changeWindow(accountRegisterCancelled, "/fxml/loginPage.fxml");
+    }
+
+
 }
