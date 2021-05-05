@@ -67,7 +67,7 @@ public class DBController {
     public void setUser(User user) {
         this.user = user;
         controller.setUser(user);
-        dbProduct.createProductTable(user.getUserID());
+        dbProduct.createProductTable();
     }
 
     public User getUser() {
@@ -105,5 +105,9 @@ public class DBController {
 
     public void updateSupplier(Supplier supplierUpdate) {
         dbSupplier.updateSupplierSetup(supplierUpdate);
+    }
+
+    public ArrayList<Product> getSearchList(String searchText) {
+        return dbProduct.getSearchList(searchText);
     }
 }

@@ -2,7 +2,6 @@ package View;
 
 import Controller.Controller;
 import Model.Product;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -93,5 +92,10 @@ public class GUIFacilitator {
 
     public void updateSupplier(String name, String phone, String address, String email, int id) {
         controller.updateSupplier(name, phone, address, email, id);
+    }
+
+    public ArrayList<Product> getSearchList(String searchText) {
+        return controller.getSearchList(searchText);
+
     }
 }

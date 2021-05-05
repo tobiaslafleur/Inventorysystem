@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
+<AnchorPane prefHeight="473.0" prefWidth="730.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
    <children>
-      <Button fx:id="addProductBtn" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="25.0" prefWidth="85.0" text="Add Product" />
-      <Button layoutX="6.0" layoutY="74.0" mnemonicParsing="false" onAction="#addSupplier" text="Add Supplier" />
-      <Button layoutX="6.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Update Qty." />
-      <Button fx:id="logOutBtn" layoutX="523.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="62.0" text="Log Out" />
-      <ImageView fitHeight="72.0" fitWidth="85.0" layoutX="6.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="addProductBtn" layoutX="12.0" layoutY="69.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="25.0" prefWidth="85.0" text="Add Product" />
+      <Button layoutX="12.0" layoutY="104.0" mnemonicParsing="false" onAction="#addSupplier" text="Add Supplier" />
+      <Button layoutX="12.0" layoutY="136.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Update Qty." />
+      <Button fx:id="logOutBtn" layoutX="563.0" layoutY="433.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="62.0" text="Log Out" />
+      <ImageView fitHeight="72.0" fitWidth="85.0" layoutX="19.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Button id="addCategoryBtn" fx:id="addCategory" layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="85.0" text="Add Category">
+      <Button id="addCategoryBtn" fx:id="addCategory" layoutX="12.0" layoutY="170.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="25.0" prefWidth="85.0" text="Add Category">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <TableView fx:id="infoTable" layoutX="99.0" layoutY="4.0" prefHeight="349.0" prefWidth="495.0">
+      <TableView fx:id="infoTable" layoutX="105.0" layoutY="47.0" prefHeight="382.0" prefWidth="620.0">
         <columns>
             <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
@@ -37,8 +34,18 @@
             <TableColumn fx:id="colCost" prefWidth="75.0" text="Cost" />
         </columns>
       </TableView>
-      <Button fx:id="removeBtn" layoutX="6.0" layoutY="177.0" mnemonicParsing="false" onAction="#removeProduct" prefHeight="25.0" prefWidth="85.0" text="Remove Product" />
-      <Button fx:id="updateBtn" layoutX="6.0" layoutY="210.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="25.0" prefWidth="85.0" text="Update Product Info" />
-      <Button fx:id="updateSupplierBtn" layoutX="6.0" layoutY="245.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="25.0" prefWidth="85.0" text="Update Supplier" />
+      <Button fx:id="removeBtn" layoutX="12.0" layoutY="202.0" mnemonicParsing="false" onAction="#removeProduct" prefHeight="25.0" prefWidth="85.0" text="Remove Product" />
+      <Button fx:id="updateBtn" layoutX="12.0" layoutY="237.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="25.0" prefWidth="85.0" text="Update Product Info" />
+      <Button fx:id="updateSupplierBtn" layoutX="12.0" layoutY="266.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="25.0" prefWidth="85.0" text="Update Supplier" />
+      <TextField fx:id="searchText" layoutX="12.0" layoutY="14.0" promptText="Search" />
+      <Button fx:id="searchBtn" layoutX="168.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="12.0">
+         <graphic>
+            <ImageView blendMode="DARKEN" fitHeight="14.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/search.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

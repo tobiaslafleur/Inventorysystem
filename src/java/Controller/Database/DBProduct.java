@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class DBProduct {
     private DBController dbController;
     private ArrayList<Product> productList;
+    private ArrayList<Product> searchList;
 
     public DBProduct(DBController dbController) {
         this.dbController = dbController;
         productList = new ArrayList<>();
+        searchList = new ArrayList<>();
     }
 
     public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
@@ -49,17 +51,18 @@ public class DBProduct {
         return false;
     }
 
-    public void createProductTable(int userID) {
+    public void createProductTable() {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-
-            String query = "Select P.id AS p_code, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, S.id AS s_id, P.cost " +
-                    "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
-                    "WHERE P.user_id = " + userID;
+            String query = "Select * from ViewUserProductList WHERE user_id = ?";
+//            String query = "Select P.id AS p_code, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, S.id AS s_id, P.cost " +
+//                    "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
+//                    "WHERE P.user_id = " + dbController.getUser().getUserID();
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
+            prep.setInt(1, dbController.getUser().getUserID());
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
@@ -73,7 +76,7 @@ public class DBProduct {
                 int supplierID = rs.getInt("s_id");
                 BigDecimal cost = new BigDecimal(rs.getString("cost"));
 
-                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, supplierID, cost, userID);
+                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, supplierID, cost, dbController.getUser().getUserID());
                 productList.add(product);
             }
 
@@ -85,9 +88,67 @@ public class DBProduct {
     public ArrayList<Product> getProductList() {
         if(!productList.isEmpty()) {
             productList.clear();
-            createProductTable(dbController.getUser().getUserID());
+            createProductTable();
         }
         return productList;
+    }
+
+    public ArrayList<Product> getSearchList(String searchString) {
+        searchList.clear();
+        createSearchList(searchString);
+        return searchList;
+    }
+
+    private void createSearchList(String searchString) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+            int searchNumber = 0;
+            String query;
+            PreparedStatement prep = null;
+
+            try {
+                searchNumber = Integer.parseInt(searchString);
+            } catch (Exception e) {}
+
+            if(searchNumber > 0) {
+                query = "Select * from ViewUserProductList WHERE p_code = ? OR s_id = ? AND user_id = ?";
+                prep = conn.prepareStatement(query);
+                prep.setInt(1, searchNumber);
+                prep.setInt(2, searchNumber);
+                prep.setInt(3, dbController.getUser().getUserID());
+
+            } else {
+                query = "Select * from ViewUserProductList WHERE " +
+                        "[name] Like ? OR s_name LIKE ? OR shelf_pos LIKE ? " +
+                        "OR c_name LIKE ? AND [user_id] = ?";
+                prep = conn.prepareStatement(query);
+                prep.setString(1, "%" + searchString + "%");
+                prep.setString(2, "%" + searchString + "%");
+                prep.setString(3, "%" + searchString + "%");
+                prep.setString(4, "%" + searchString + "%");
+                prep.setInt(5, dbController.getUser().getUserID());
+            }
+
+            ResultSet rs = prep.executeQuery();
+            while(rs.next()) {
+                int productID = rs.getInt("p_code");
+                String name = rs.getString("name");
+                int stock = Integer.parseInt(rs.getString("stock"));
+                BigDecimal price = new BigDecimal(rs.getString("price"));
+                String category = rs.getString("c_name");
+                String shelfPosition = rs.getString("shelf_pos");
+                String supplier = rs.getString("s_name");
+                int supplierID = rs.getInt("s_id");
+                BigDecimal cost = new BigDecimal(rs.getString("cost"));
+
+                Product product = new Product(productID, name, stock, price, category, shelfPosition, supplier, supplierID, cost, dbController.getUser().getUserID());
+                searchList.add(product);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeProduct(int productID) {

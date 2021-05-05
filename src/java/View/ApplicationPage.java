@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
+
     //Product table and columns
     @FXML private TableView<Product> infoTable;
     @FXML private TableColumn<Product, Integer> colID;
@@ -33,6 +35,7 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colSupplier;
     @FXML private TableColumn<Product, String> colSupplierID;
     @FXML private TableColumn<Product, BigDecimal> colCost;
+    @FXML private TextField searchText; 
 
     @FXML public void initialize() {
         instance = this;
@@ -75,6 +78,16 @@ public class ApplicationPage {
     }
     public void updateSupplier(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
+    }
+
+    public void search() {
+        if(searchText.getText() != "") {
+           ArrayList<Product> searchList = facilitator.getSearchList(searchText.getText());
+            ObservableList<Product> list = FXCollections.observableArrayList();
+
+            list.addAll(searchList);
+            infoTable.setItems(list);
+        }
     }
 
     public void addCategory(ActionEvent e) {
