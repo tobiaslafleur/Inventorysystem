@@ -3,6 +3,7 @@ package Controller.Database;
 import Controller.DBController;
 import Model.Supplier;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,5 +40,54 @@ public class DBSupplier {
         }
         return false;
 
+    }
+
+    public void updateSupplierSetup(Supplier supplierUpdate) {
+            String name = supplierUpdate.getName();
+            String phone = supplierUpdate.getPhone();
+            String address = supplierUpdate.getAddress();
+            String email = supplierUpdate.getEmail();
+            int id = supplierUpdate.getId();
+
+            String query = " ";
+
+        if(name != null) {
+            query =
+                    "UPDATE Supplier SET [name] = '" + name + "' Where id = " + id;
+            executeUpdate(query);
+        }
+
+        if(phone != null) {
+            query =
+                    "UPDATE Supplier SET [phone] = '" + phone + "' Where id = " + id;
+            executeUpdate(query);
+        }
+        if(address != null) {
+            query =
+                    "UPDATE Supplier SET [address] = '" + address + "' Where id = " + id;
+            executeUpdate(query);
+        }
+        if(email != null) {
+            query =
+                    "UPDATE Supplier SET [email] = '" + email + "' Where id = " + id;
+            executeUpdate(query);
+        }
+
+    }
+
+    public void executeUpdate(String query) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            preparedStatement.execute();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
