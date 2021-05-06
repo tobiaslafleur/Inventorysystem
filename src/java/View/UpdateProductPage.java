@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
 
-public class UpdateProduct {
+public class UpdateProductPage {
     private GUIFacilitator facilitator;
     @FXML TextField id;
     @FXML TextField name;

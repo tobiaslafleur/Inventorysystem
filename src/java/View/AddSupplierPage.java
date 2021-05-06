@@ -18,17 +18,27 @@ public class AddSupplierPage {
     @FXML private TextField address = new TextField();
     @FXML private TextField email = new TextField();
 
+    /**
+     * Intializes the connection between GUIFacilitator and this class.
+     */
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
     }
 
+    /**
+     * Intializes the connection between GUIFacilitator and this class.
+     */
     private void setInstance() {
         facilitator.setAddSupplierInstance(instance);
     }
 
-    public void addSupplier(ActionEvent event){
+    /**
+     * Adds the supplier to the database.
+     * @param event     The event that triggers the method.
+     */
+    public void addSupplier(ActionEvent event) {
         String supName = name.getText();
         String supPhone = phone.getText();
         String supAddress = address.getText();
@@ -42,6 +52,11 @@ public class AddSupplierPage {
             JOptionPane.showMessageDialog(null, "Failed to add supplier");
         }
     }
+
+    /**
+     * Cancels the operation and returns to ApplicationPage.
+     * @param supplierCancelled The event that triggers the method.
+     */
     public void cancelSupplier(ActionEvent supplierCancelled) {
         facilitator.changeWindow(supplierCancelled, "/fxml/applicationPage.fxml");
     }
