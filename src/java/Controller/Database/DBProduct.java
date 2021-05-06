@@ -1,5 +1,4 @@
 package Controller.Database;
-
 import Controller.DBController;
 import Model.Product;
 
@@ -10,17 +9,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Class facilitating communication with the database.
+ */
+
 public class DBProduct {
     private DBController dbController;
     private ArrayList<Product> productList;
     private ArrayList<Product> searchList;
 
+    /**
+     * Constructor instantiating dbController, productList and searchList
+     * @param dbController is the DBController object to be instantiated into dbController.
+     */
     public DBProduct(DBController dbController) {
         this.dbController = dbController;
         productList = new ArrayList<>();
         searchList = new ArrayList<>();
     }
 
+    /**
+     * Receives values and conveys them to the database to add a row into the product Table.
+     * @param name is the name of the product.
+     * @param stock is the amount on the product in stock.
+     * @param price is the retail price of the product.
+     * @param categoryID is the ID of the product category.
+     * @param shelfPosition is the position in the warehouse the product occupies.
+     * @param supplierID is the ID of the supplier of the product.
+     * @param cost is the cost of the product.
+     * @param userID is the ID of the user currently logged in.
+     * @return returns a boolean value indicating the succcess of the opereation.
+     */
     public boolean addProduct(String name, int stock, BigDecimal price, int categoryID, String shelfPosition, int supplierID, BigDecimal cost, int userID) {
         try {
             dbController.connect();
@@ -51,14 +70,14 @@ public class DBProduct {
         return false;
     }
 
+    /**
+     * creates an Arraylist of the products associated with the logged in user.
+     */
     public void createProductTable() {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
             String query = "Select * from ViewUserProductList WHERE user_id = ?";
-//            String query = "Select P.id AS p_code, P.name, P.stock, P.price, C.name AS c_name, P.shelf_pos, S.name AS s_name, S.id AS s_id, P.cost " +
-//                    "FROM Product P JOIN Supplier S ON P.supplier_id = S.id JOIN Category C ON C.id = P.category_id " +
-//                    "WHERE P.user_id = " + dbController.getUser().getUserID();
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
@@ -85,6 +104,10 @@ public class DBProduct {
         }
     }
 
+    /**
+     * Returns a list of products connected to the logged in user.
+     * @return returns an arraylist of products.
+     */
     public ArrayList<Product> getProductList() {
         if(!productList.isEmpty()) {
             productList.clear();
@@ -93,12 +116,21 @@ public class DBProduct {
         return productList;
     }
 
+    /**
+     * Returns a list of search results created by value of the incoming parameter.
+     * @param searchString is the search term.
+     * @return returns an Arraylist of products resulting from the search.
+     */
     public ArrayList<Product> getSearchList(String searchString) {
         searchList.clear();
         createSearchList(searchString);
         return searchList;
     }
 
+    /**
+     * Queries the database with a search term and populates an Arraylist with the resulting products.
+     * @param searchString
+     */
     private void createSearchList(String searchString) {
         try {
             dbController.connect();
@@ -151,6 +183,10 @@ public class DBProduct {
         }
     }
 
+    /**
+     * Removes a product from the database.
+     * @param productID is the ID of the product to remove.
+     */
     public void removeProduct(int productID) {
         try {
             dbController.connect();
@@ -171,6 +207,10 @@ public class DBProduct {
         }
     }
 
+    /**
+     * Creates an SQL query to update product information.
+     * @param productUpdate is the product object containing the updated product information.
+     */
     public void updateProductSetup(Product productUpdate) {
         String name = productUpdate.getName();
         int quantity = productUpdate.getStock();
@@ -207,6 +247,10 @@ public class DBProduct {
         }
     }
 
+    /**
+     * Executes the query created in updateProductSetup()
+     * @param query is the query to execute.
+     */
     private void executeUpdate(String query) {
         try {
             dbController.connect();
