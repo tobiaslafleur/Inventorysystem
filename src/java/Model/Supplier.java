@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * The supplier-object.
+ */
 public class Supplier {
     private String name;
     private String phone;
