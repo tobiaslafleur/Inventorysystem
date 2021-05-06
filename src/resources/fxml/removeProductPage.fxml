@@ -4,14 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="87.0" prefWidth="220.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RemoveProductPage">
+<AnchorPane prefHeight="121.0" prefWidth="253.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RemoveProductPage">
    <children>
       <TextField fx:id="productID" layoutX="20.0" layoutY="44.0" promptText="Enter productID" />
-      <Label layoutX="58.0" layoutY="14.0" prefHeight="21.0" prefWidth="111.0" text="Delete Product" textFill="#f7f7f7">
+      <Label layoutX="71.0" layoutY="3.0" prefHeight="21.0" prefWidth="111.0" text="Delete Product" textFill="#f7f7f7">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="removeBtn" layoutX="169.0" layoutY="44.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="25.0" prefWidth="40.0" text="OK" />
+      <Button fx:id="removeBtn" layoutX="182.0" layoutY="44.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="25.0" prefWidth="35.0" text="OK" />
+      <Button fx:id="cancelBtn" layoutX="20.0" layoutY="81.0" mnemonicParsing="false" onAction="#cancel" prefHeight="12.0" prefWidth="52.0" text="Cancel" />
    </children>
 </AnchorPane>
