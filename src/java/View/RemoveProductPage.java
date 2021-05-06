@@ -25,4 +25,9 @@ public class RemoveProductPage {
             facilitator.updateProductTable();
         }
     }
+
+    public void cancel(ActionEvent event) {
+        facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+        facilitator.updateProductTable();
+    }
 }
