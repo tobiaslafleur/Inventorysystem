@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * The user-object.
+ */
 public class User {
     private String username;
     private String password;

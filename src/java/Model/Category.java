@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * The category-object.
+ */
 public class Category {
 
     private String name;
