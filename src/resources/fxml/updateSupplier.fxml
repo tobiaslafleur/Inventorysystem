@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="383.0" prefWidth="254.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateSupplierPage">
+<AnchorPane prefHeight="383.0" prefWidth="254.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UpdateSupplierPage">
    <children>
       <Label layoutX="73.0" layoutY="21.0" text="Update Supplier" textFill="#fffcfc">
          <font>
@@ -17,5 +17,6 @@
       <TextField fx:id="address" layoutX="52.0" layoutY="192.0" promptText="Supplier Address" />
       <TextField fx:id="email" layoutX="53.0" layoutY="233.0" promptText="Supplier Email" />
       <Button fx:id="updateSupplierBtn" layoutX="76.0" layoutY="290.0" mnemonicParsing="false" onAction="#updateSupplier" text="Update Supplier" />
+      <Button layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelUpdateSupplier" text="Cancel" />
    </children>
 </AnchorPane>

@@ -45,4 +45,7 @@ public class UpdateSupplierPage {
         facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
         facilitator.updateProductTable();
     }
+    public void cancelUpdateSupplier (ActionEvent cancelUpdateSupplier) {
+        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/applicationPage.fxml");
+    }
 }
