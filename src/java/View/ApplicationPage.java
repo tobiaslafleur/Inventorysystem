@@ -1,16 +1,17 @@
 package View;
 
 import Controller.Main;
+import Model.Category;
 import Model.Product;
+import Model.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -29,8 +30,21 @@ public class ApplicationPage {
     @FXML private TableColumn<Product, String> colSupplier;
     @FXML private TableColumn<Product, String> colSupplierID;
     @FXML private TableColumn<Product, BigDecimal> colCost;
+    //
     @FXML private TextField searchText;
     @FXML private ComboBox<String> tableBox;
+    @FXML private Hyperlink removeBtn;
+    @FXML private Button editBtn;
+    //Supplier table and columns
+    @FXML private TableView<Supplier> supplierTable;
+    @FXML private TableColumn<Supplier, String> supNameCol;
+    @FXML private TableColumn<Supplier, String> supPhoneCol;
+    @FXML private TableColumn<Supplier, String> supAddressCol;
+    @FXML private TableColumn<Supplier, String> supEmailCol;
+    //Category table and column
+    @FXML private TableView<Category> categoryTable;
+    @FXML private TableColumn<Category, String> catNameCol;
+
 
     @FXML public void initialize() {
         instance = this;
@@ -48,12 +62,12 @@ public class ApplicationPage {
 
     public void add(ActionEvent e) {
         if(tableBox.getValue().equals("Supplier")) {
-            facilitator.changeWindow(e, "/fxml/addSupplierPage.fxml");
+            facilitator.changeWindow(e, "/fxml/AddSupplierPage.fxml");
         }
         else if(tableBox.getValue().equals("Category")) {
-            facilitator.changeWindow(e, "/fxml/categoryPage.fxml");
+            facilitator.changeWindow(e, "/fxml/AddCategoryPage.fxml");
         } else {
-            facilitator.changeWindow(e, "/fxml/AddProduct.fxml");
+            facilitator.changeWindow(e, "/fxml/AddProductPage.fxml");
         }
 
     }
@@ -67,25 +81,27 @@ public class ApplicationPage {
 
     public void update(ActionEvent e) {
         if(tableBox.getValue().equals("Product")) {
-            facilitator.changeWindow(e, "/fxml/updateProductPage.fxml");
+            facilitator.changeWindow(e, "/fxml/EditProductPage.fxml");
         }
         else if(tableBox.getValue().equals("Supplier")) {
-            facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
+            facilitator.changeWindow(e, "/fxml/EditSupplierPage.fxml");
         }
-
     }
 
+    //TODO old methods to remove after new GUI implemented
     public void addSupplier(ActionEvent event){
-        facilitator.changeWindow(event, "/fxml/addSupplierPage.fxml");
+        facilitator.changeWindow(event, "/fxml/.OLDaddSupplierPage.fxml");
     }
 
     public void updateSupplier(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
+        facilitator.changeWindow(e, "/fxml/.OLDupdateSupplier.fxml");
     }
 
     public void addCategory(ActionEvent e) {
-        facilitator.changeWindow(e,"/fxml/categoryPage.fxml");
+        facilitator.changeWindow(e, "/fxml/.OLDcategoryPage.fxml");
     }
+    //
+
 
     public void search() {
         if(searchText.getText() != "") {
@@ -108,9 +124,55 @@ public class ApplicationPage {
         colSupplierID.setCellValueFactory(new PropertyValueFactory<Product, String>("supplierID"));
         colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
 
+        supplierTable.setVisible(false);
+        categoryTable.setVisible(false);
+
         ObservableList<String> tables = FXCollections.observableArrayList();
         tables.addAll("Product", "Category", "Supplier");
+        tableBox.setValue("Product");
         tableBox.setItems(tables);
+    }
+    public void initSupplierTable() {
+        supNameCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("name"));
+        supPhoneCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("phone"));
+        supAddressCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("address"));
+        supEmailCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("email"));
+
+        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+        supplierList.addAll(facilitator.getSupplierList());
+        supplierTable.setItems(supplierList);
+    }
+    public void initCategoryTable() {
+        catNameCol.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
+
+        ObservableList<Category> categoryList = FXCollections.observableArrayList();
+        categoryList.addAll(facilitator.getCategoryList());
+        categoryTable.setItems(categoryList);
+    }
+
+    public void tableSelection(ActionEvent event) {
+        if(tableBox.getValue().equals("Category")) {
+            removeBtn.setVisible(false);
+            editBtn.setVisible(false);
+            infoTable.setVisible(false);
+            supplierTable.setVisible(false);
+            categoryTable.setVisible(true);
+            initCategoryTable();
+        }
+        else if(tableBox.getValue().equals("Supplier")) {
+            removeBtn.setVisible(false);
+            editBtn.setVisible(true);
+            infoTable.setVisible(false);
+            categoryTable.setVisible(false);
+            supplierTable.setVisible(true);
+            initSupplierTable();
+        } else {
+            removeBtn.setVisible(true);
+            editBtn.setVisible(true);
+            infoTable.setVisible(true);
+            supplierTable.setVisible(false);
+            categoryTable.setVisible(false);
+        }
     }
 
     public void updateTable() {
@@ -120,9 +182,8 @@ public class ApplicationPage {
         list.addAll(productList);
         infoTable.setItems(list);
     }
-
     public void logOut(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/Login.fxml");
+        facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
     }
     public void close(ActionEvent event) {
         facilitator.close(event);

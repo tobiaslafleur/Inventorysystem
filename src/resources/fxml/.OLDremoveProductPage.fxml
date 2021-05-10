@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="121.0" prefWidth="253.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RemoveProductPage">
+<AnchorPane prefHeight="121.0" prefWidth="253.0" style="-fx-background-color: #2F3537;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.DeleteProductPage">
    <children>
       <TextField fx:id="productID" layoutX="20.0" layoutY="44.0" promptText="Enter productID" />
       <Label layoutX="71.0" layoutY="3.0" prefHeight="21.0" prefWidth="111.0" text="Delete Product" textFill="#f7f7f7">

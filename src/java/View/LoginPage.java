@@ -4,10 +4,8 @@ import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import javax.swing.*;
 
@@ -38,7 +36,7 @@ public class LoginPage {
      */
     public void login(ActionEvent event) {
         if(facilitator.checkUser(username.getText(), password.getText())){
-            facilitator.changeWindow(event, "/fxml/MainAppPage.fxml");
+            facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
         } else {
             //TODO: Label saying "login failed"
             //Temp:
@@ -52,7 +50,7 @@ public class LoginPage {
      * @param event
      */
     public void register(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/registrationPage.fxml");
+        facilitator.changeWindow(event, "/fxml/RegistrationPage.fxml");
     }
 
     public void close(ActionEvent event) {

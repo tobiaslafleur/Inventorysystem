@@ -25,7 +25,7 @@ public class Supplier {
     }
 
     public String toString() {
-        return String.format("name: %s | phone: %s | address: %s | email: %s  | ID: %s", name, phone, address, email, supplierID);
+        return String.format("%s | %s | %s | %s ", name, phone, address, email);
     }
     //<editor-fold desc="getters and setters"
     public String getName() {

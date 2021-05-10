@@ -3,8 +3,6 @@ package View;
 import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -15,7 +13,9 @@ public class AddSupplierPage {
 
     @FXML private TextField name = new TextField();
     @FXML private TextField phone = new TextField();
-    @FXML private TextField address = new TextField();
+    @FXML private TextField street = new TextField();
+    @FXML private TextField city = new TextField();
+    @FXML private TextField country = new TextField();
     @FXML private TextField email = new TextField();
 
     /**
@@ -41,11 +41,11 @@ public class AddSupplierPage {
     public void addSupplier(ActionEvent event) {
         String supName = name.getText();
         String supPhone = phone.getText();
-        String supAddress = address.getText();
+        String supAddress = street.getText() + ", " + city.getText() + ", " + country.getText();
         String supEmail = email.getText();
 
         if(facilitator.addSupplier(supName, supPhone, supAddress, supEmail)) {
-            facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+            facilitator.changeWindow(event, "/fxml/.OLDapplicationPage.fxml");
         } else {
             //TODO: Label saying: "Failed to add supplier."
             //temp:
@@ -57,7 +57,13 @@ public class AddSupplierPage {
      * Cancels the operation and returns to ApplicationPage.
      * @param supplierCancelled The event that triggers the method.
      */
-    public void cancelSupplier(ActionEvent supplierCancelled) {
-        facilitator.changeWindow(supplierCancelled, "/fxml/MainAppPage.fxml");
+    public void cancel(ActionEvent supplierCancelled) {
+        facilitator.changeWindow(supplierCancelled, "/fxml/ApplicationPage.fxml");
+    }
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

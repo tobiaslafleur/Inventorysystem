@@ -1,7 +1,9 @@
 package View;
 
 import Controller.Controller;
+import Model.Category;
 import Model.Product;
+import Model.Supplier;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -116,4 +118,13 @@ public class GUIFacilitator {
         Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
+
+    public ArrayList<Supplier> getSupplierList() {
+        return controller.getSupplierList();
+    }
+
+    public ArrayList<Category> getCategoryList() {
+        return controller.getCategoryList();
+    }
 }
+

@@ -11,10 +11,10 @@
       <TextField fx:id="name" layoutX="65.0" layoutY="67.0" promptText="Product Name" />
       <TextField fx:id="stock" layoutX="65.0" layoutY="110.0" promptText="Stock" />
       <TextField fx:id="price" layoutX="65.0" layoutY="146.0" promptText="Price" />
-      <ComboBox layoutX="64.0" layoutY="188.0" prefWidth="150.0" promptText="Category" />
+      <ComboBox fx:id="categories" layoutX="64.0" layoutY="188.0" prefWidth="150.0" promptText="Category" />
       <TextField fx:id="cost" layoutX="65.0" layoutY="296.0" promptText="Cost" />
       <TextField fx:id="shelfPosition" layoutX="65.0" layoutY="223.0" promptText="Shelf" />
-      <ComboBox layoutX="64.0" layoutY="260.0" prefWidth="150.0" promptText="Supplier" />
+      <ComboBox fx:id="suppliers" layoutX="64.0" layoutY="260.0" prefWidth="150.0" promptText="Supplier" />
       <Label layoutX="90.0" layoutY="12.0" text="Add Product" textFill="WHITE">
          <font>
             <Font size="17.0" />

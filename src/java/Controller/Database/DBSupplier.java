@@ -1,18 +1,49 @@
 package Controller.Database;
 
 import Controller.DBController;
+import Model.Product;
 import Model.Supplier;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DBSupplier {
     private DBController dbController;
 
     public DBSupplier(DBController dbController) {
         this.dbController = dbController;
+    }
+
+    public ArrayList<Supplier> getSupplierList() {
+        ArrayList<Supplier> supplierList = new ArrayList<>();
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+            String query = "Select * from Supplier";
+
+            PreparedStatement prep = null;
+            prep = conn.prepareStatement(query);
+            ResultSet rs = prep.executeQuery();
+
+            while(rs.next()) {
+                String name = rs.getString("name");
+                String phone = rs.getString("phone");
+                String address = rs.getString("address");
+                String email = rs.getString("email");
+                int supplierID = rs.getInt("id");
+
+                Supplier supplier = new Supplier(name, phone, address, email, supplierID);
+                supplierList.add(supplier);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return supplierList;
     }
 
     public boolean addSupplier(Supplier supplier) {

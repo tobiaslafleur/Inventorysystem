@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
+    <children>
+        <Label layoutX="80.0" layoutY="33.0" text="Edit Supplier" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Hyperlink fx:id="close" layoutX="229.0" layoutY="2.0" onAction="#close" text="x" />
+        <Hyperlink fx:id="minimize" layoutX="215.0" layoutY="2.0" onAction="#minimize" text="-" />
+        <Hyperlink fx:id="cancel" layoutX="8.0" layoutY="2.0" onAction="#cancel" text="Cancel" />
+        <ComboBox fx:id="suppliers" layoutX="50.0" layoutY="72.0" prefWidth="150.0" promptText="Supplier" />
+        <TextField fx:id="name" layoutX="51.0" layoutY="107.0" promptText="Name" />
+        <TextField fx:id="phone" layoutX="51.0" layoutY="144.0" promptText="Phone" />
+        <TextField fx:id="street" layoutX="51.0" layoutY="181.0" promptText="Street" />
+        <TextField fx:id="city" layoutX="51.0" layoutY="216.0" promptText="City" />
+        <TextField fx:id="country" layoutX="51.0" layoutY="253.0" promptText="Country" />
+        <Button fx:id="updateSupplierBtn" layoutX="-1.0" layoutY="361.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="257.0" text="Update supplier" />
+      <TextField fx:id="email" layoutX="51.0" layoutY="291.0" promptText="Email" />
+    </children>
+</AnchorPane>

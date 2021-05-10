@@ -65,6 +65,13 @@
 #searchBtn {
     -fx-background-color: transparent;
 }
+#searchText {
+        -fx-alignment: center;
+        -fx-text-fill: #5F807F;
+        -fx-border-color: #5F807F;
+        -fx-border-width: 0.5; /*top, right, left, bottom  */
+        -fx-background-color: transparent;
+}
 #profilePic {
     -fx-background-radius: 10 10 10 10;
     -fx-border-width: 0.5 0.5 0.5 0.5; /*top, right, left, bottom  */
