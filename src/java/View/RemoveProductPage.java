@@ -28,6 +28,11 @@ public class RemoveProductPage {
 
     public void cancel(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/MainAppPage.fxml");
-        facilitator.updateProductTable();
+    }
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

@@ -54,15 +54,15 @@ public class ApplicationPage {
     }
 
     public void addProduct(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
+        facilitator.changeWindow(e, "/fxml/AddProduct.fxml");
     }
 
     public void removeProduct(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/removeProductPage.fxml");
+        facilitator.changeWindow(e, "/fxml/DeleteProductPage.fxml");
     }
 
     public void updateProduct(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/updateProduct.fxml");
+        facilitator.changeWindow(e, "/fxml/updateProductPage.fxml");
     }
 
     public void updateSupplier(ActionEvent e) {
@@ -104,23 +104,12 @@ public class ApplicationPage {
     }
 
     public void logOut(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
-            Scene scene = new Scene(root);
-            Node button =(Node) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        facilitator.changeWindow(event, "/fxml/Login.fxml");
     }
     public void close(ActionEvent event) {
-        System.exit(0);
+        facilitator.close(event);
     }
     public void minimize(ActionEvent event) {
-        Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
+        facilitator.minimize(event);
     }
 }

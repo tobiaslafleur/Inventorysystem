@@ -3,7 +3,9 @@ package View;
 import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Page where the user adds a product.
@@ -17,7 +19,6 @@ public class AddProductPage {
     @FXML private TextField shelfPosition;
     @FXML private TextField supplierID;
     @FXML private TextField cost;
-    @FXML private TextField userID;
 
     /**
      * Initializes the connection between this class and GUIFacilitator.
@@ -40,7 +41,13 @@ public class AddProductPage {
      * Cancels the page and goes back to ApplicationPage.
      * @param cancelAddProduct  Event that triggers the method.
      */
-    public void cancelAddProduct (ActionEvent cancelAddProduct) {
+    public void cancel(ActionEvent cancelAddProduct) {
         facilitator.changeWindow(cancelAddProduct, "/fxml/MainAppPage.fxml");
+    }
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

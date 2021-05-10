@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProductPage">
+   <children>
+      <Hyperlink fx:id="close" layoutX="258.0" layoutY="2.0" onAction="#close" text="x" />
+      <Hyperlink fx:id="minimize" layoutX="244.0" layoutY="2.0" onAction="#minimize" text="-" />
+      <TextField fx:id="name" layoutX="65.0" layoutY="67.0" promptText="Product Name" />
+      <TextField fx:id="stock" layoutX="65.0" layoutY="110.0" promptText="Stock" />
+      <TextField fx:id="price" layoutX="65.0" layoutY="146.0" promptText="Price" />
+      <ComboBox layoutX="64.0" layoutY="188.0" prefWidth="150.0" promptText="Category" />
+      <TextField fx:id="cost" layoutX="65.0" layoutY="296.0" promptText="Cost" />
+      <TextField fx:id="shelfPosition" layoutX="65.0" layoutY="223.0" promptText="Shelf" />
+      <ComboBox layoutX="64.0" layoutY="260.0" prefWidth="150.0" promptText="Supplier" />
+      <Label layoutX="90.0" layoutY="12.0" text="Add Product" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="7.0" layoutY="4.0" onAction="#cancel" text="Cancel" />
+      <Button fx:id="addProduct" layoutX="-2.0" layoutY="360.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" text="Add Product" />
+   </children>
+</AnchorPane>

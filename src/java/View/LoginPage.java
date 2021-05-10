@@ -56,10 +56,9 @@ public class LoginPage {
     }
 
     public void close(ActionEvent event) {
-        System.exit(0);
+        facilitator.close(event);
     }
     public void minimize(ActionEvent event) {
-        Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
+        facilitator.minimize(event);
     }
 }
