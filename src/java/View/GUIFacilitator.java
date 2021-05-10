@@ -43,40 +43,6 @@ public class GUIFacilitator {
     }
 
     public void changeWindow(ActionEvent event, String path){
-//        if(path.equals("/fxml/MainAppPage.fxml")) {
-//            try {
-//                Parent root = FXMLLoader.load(getClass().getResource(path));
-//                Scene scene = new Scene(root);
-//                scene.setFill(Color.TRANSPARENT);
-//                scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
-//
-//                Node button =(Node) event.getSource();
-//                Stage stage = (Stage) button.getScene().getWindow();
-//
-//                stage.setScene(scene);
-//                stage.show();
-//
-//                stage.setScene(scene);
-//                stage.setX(190);
-//                stage.setY(110);
-//                stage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        } else {
-//            try {
-//                Parent root = FXMLLoader.load(getClass().getResource(path));
-//                Scene scene = new Scene(root);
-//                Node button =(Node) event.getSource();
-//                Stage stage = (Stage) button.getScene().getWindow();
-//
-//                stage.setScene(scene);
-//                stage.show();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
         try {
             Parent root = FXMLLoader.load(getClass().getResource(path));
             Scene scene = new Scene(root);

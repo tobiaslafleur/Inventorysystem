@@ -20,6 +20,6 @@ public class AddCategoryPage {
     }
 
     public void cancelCategory (ActionEvent cancelCategory) {
-        facilitator.changeWindow(cancelCategory, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(cancelCategory, "/fxml/MainAppPage.fxml");
     }
 }

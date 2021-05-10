@@ -42,10 +42,10 @@ public class UpdateSupplierPage {
         }
 
         facilitator.updateSupplier(name, phone, address, email, id);
-        facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(e, "/fxml/MainAppPage.fxml");
         facilitator.updateProductTable();
     }
     public void cancelUpdateSupplier (ActionEvent cancelUpdateSupplier) {
-        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/MainAppPage.fxml");
     }
 }

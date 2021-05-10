@@ -58,6 +58,6 @@ public class AddSupplierPage {
      * @param supplierCancelled The event that triggers the method.
      */
     public void cancelSupplier(ActionEvent supplierCancelled) {
-        facilitator.changeWindow(supplierCancelled, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(supplierCancelled, "/fxml/MainAppPage.fxml");
     }
 }

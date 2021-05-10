@@ -19,6 +19,6 @@
          </font>
       </Label>
       <ComboBox layoutX="44.0" layoutY="110.0" prefWidth="150.0" promptText="Product" />
-      <Button layoutY="186.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" text="Button" />
+      <Button layoutY="186.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" text="Remove product" />
    </children>
 </AnchorPane>
