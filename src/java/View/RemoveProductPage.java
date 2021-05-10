@@ -21,13 +21,13 @@ public class RemoveProductPage {
         } catch (Exception e) {}
         if(ID > 0) {
             facilitator.removeProduct(ID);
-            facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+            facilitator.changeWindow(event, "/fxml/MainAppPage.fxml");
             facilitator.updateProductTable();
         }
     }
 
     public void cancel(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(event, "/fxml/MainAppPage.fxml");
         facilitator.updateProductTable();
     }
 }

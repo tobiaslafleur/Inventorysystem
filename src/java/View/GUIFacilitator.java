@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,17 +42,41 @@ public class GUIFacilitator {
     }
 
     public void changeWindow(ActionEvent event, String path){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(path));
-            Scene scene = new Scene(root);
-            Node button =(Node) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
+        if(path.equals("/fxml/MainAppPage.fxml")) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(path));
+                Scene scene = new Scene(root);
+                scene.setFill(Color.TRANSPARENT);
+                scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                Node button =(Node) event.getSource();
+                Stage stage = (Stage) button.getScene().getWindow();
+
+                stage.setScene(scene);
+                stage.show();
+
+                stage.setScene(scene);
+                stage.setX(190);
+                stage.setY(110);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource(path));
+                Scene scene = new Scene(root);
+                Node button =(Node) event.getSource();
+                Stage stage = (Stage) button.getScene().getWindow();
+
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     public boolean checkUser(String username, String password) {

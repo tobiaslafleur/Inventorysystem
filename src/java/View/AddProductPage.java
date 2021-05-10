@@ -32,7 +32,7 @@ public class AddProductPage {
      */
     public void addProduct(ActionEvent e) {
         facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText());
-        facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(e, "/fxml/MainAppPage.fxml");
         facilitator.updateProductTable();
     }
 
@@ -41,6 +41,6 @@ public class AddProductPage {
      * @param cancelAddProduct  Event that triggers the method.
      */
     public void cancelAddProduct (ActionEvent cancelAddProduct) {
-        facilitator.changeWindow(cancelAddProduct, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(cancelAddProduct, "/fxml/MainAppPage.fxml");
     }
 }

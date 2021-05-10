@@ -49,11 +49,11 @@ public class UpdateProductPage {
 
 
         facilitator.updateProduct(id, name, quantity, price, shelf,  cost);
-        facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(e, "/fxml/MainAppPage.fxml");
         facilitator.updateProductTable();
     }
 
     public void cancelUpdateProduct (ActionEvent cancelUpdateProduct) {
-        facilitator.changeWindow(cancelUpdateProduct, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(cancelUpdateProduct, "/fxml/MainAppPage.fxml");
     }
 }

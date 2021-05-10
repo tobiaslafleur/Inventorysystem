@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -48,26 +49,14 @@ public class ApplicationPage {
         facilitator.setApplicationInstance(instance);
     }
 
-    public void logOut(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/loginPage.fxml"));
-            Scene scene = new Scene(root);
-            Node button =(Node) event.getSource();
-            Stage stage = (Stage) button.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void addSupplier(ActionEvent event){
         facilitator.changeWindow(event, "/fxml/addSupplierPage.fxml");
     }
+
     public void addProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/addProductPage.fxml");
     }
+
     public void removeProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/removeProductPage.fxml");
     }
@@ -75,6 +64,7 @@ public class ApplicationPage {
     public void updateProduct(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/updateProduct.fxml");
     }
+
     public void updateSupplier(ActionEvent e) {
         facilitator.changeWindow(e, "/fxml/updateSupplier.fxml");
     }
@@ -104,11 +94,33 @@ public class ApplicationPage {
         colSupplierID.setCellValueFactory(new PropertyValueFactory<Product, String>("supplierID"));
         colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
     }
+
     public void updateTable() {
         ArrayList<Product> productList = facilitator.getProductList();
         ObservableList<Product> list = FXCollections.observableArrayList();
 
         list.addAll(productList);
         infoTable.setItems(list);
+    }
+
+    public void logOut(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+            Scene scene = new Scene(root);
+            Node button =(Node) event.getSource();
+            Stage stage = (Stage) button.getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void close(ActionEvent event) {
+        System.exit(0);
+    }
+    public void minimize(ActionEvent event) {
+        Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 }
