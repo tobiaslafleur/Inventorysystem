@@ -2,8 +2,6 @@
     -fx-background-radius: 20;
     -fx-background-color: #5F807F;
 }
-
-
 .hyperlink {
     -fx-text-fill: "white";
     -fx-focus-color: transparent; /*border glow*/
@@ -67,8 +65,24 @@
 #searchBtn {
     -fx-background-color: transparent;
 }
+#searchText {
+        -fx-alignment: center;
+        -fx-text-fill: #5F807F;
+        -fx-border-color: #5F807F;
+        -fx-border-width: 0.5; /*top, right, left, bottom  */
+        -fx-background-color: transparent;
+}
 #profilePic {
     -fx-background-radius: 10 10 10 10;
     -fx-border-width: 0.5 0.5 0.5 0.5; /*top, right, left, bottom  */
     -fx-border-color: "black"; /*top, right, left, bottom  */
+}
+
+#importCSVBtn {
+    -fx-background-radius: 10;
+    -fx-text-fill: #5F807F;
+}
+#accountSettingsBtn {
+    -fx-background-radius: 10;
+    -fx-text-fill: #5F807F;
 }

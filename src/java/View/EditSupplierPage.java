@@ -1,20 +1,33 @@
 package View;
 
 import Controller.Main;
+import Model.Product;
+import Model.Supplier;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class UpdateSupplierPage {
+public class EditSupplierPage {
     private GUIFacilitator facilitator;
     @FXML private TextField name;
     @FXML private TextField phone;
-    @FXML private TextField address;
+    @FXML private TextField address; //TODO remove this one when the new GUI is implemented
+    @FXML private TextField street;
+    @FXML private TextField city;
+    @FXML private TextField country;
     @FXML private TextField email;
-    @FXML private TextField id;
+    @FXML private TextField id; //TODO Remove also
+    @FXML private ComboBox<Supplier> suppliers;
 
     @FXML public void initialize() {
         this.facilitator = Main.getInstance().getFacilitator();
+
+        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+        supplierList.addAll(facilitator.getSupplierList());
+        suppliers.setItems(supplierList);
     }
 
     public void updateSupplier(ActionEvent e) {
@@ -42,10 +55,16 @@ public class UpdateSupplierPage {
         }
 
         facilitator.updateSupplier(name, phone, address, email, id);
-        facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }
-    public void cancelUpdateSupplier (ActionEvent cancelUpdateSupplier) {
-        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/applicationPage.fxml");
+    public void cancel(ActionEvent cancelUpdateSupplier) {
+        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/ApplicationPage.fxml");
+    }
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

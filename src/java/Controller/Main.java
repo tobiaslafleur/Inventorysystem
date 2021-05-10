@@ -23,7 +23,7 @@ public class Main extends Application {
 
         primaryStage.getIcons().add(new Image("images/WindowLogoV2.png"));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginPage.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("ECINV 1.0");
         Scene scene = new Scene(root, 268.0,374.0);

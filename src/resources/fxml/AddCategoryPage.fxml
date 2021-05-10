@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="226.0" prefWidth="214.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddCategoryPage">
+   <children>
+      <Label layoutX="55.0" layoutY="42.0" text="Create a new category" textFill="WHITE" />
+      <TextField fx:id="categoryName" layoutX="40.0" layoutY="100.0" />
+      <Button fx:id="addCategoryBtn" layoutY="186.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="40.0" prefWidth="228.0" text="Add category" />
+      <Hyperlink fx:id="close" layoutX="207.0" layoutY="2.0" onAction="#close" text="x" />
+      <Hyperlink fx:id="minimize" layoutX="189.0" layoutY="2.0" onAction="#minimize" text="-" />
+      <Hyperlink fx:id="cancel" layoutX="14.0" layoutY="2.0" onAction="#cancel" text="Cancel" />
+   </children>
+</AnchorPane>

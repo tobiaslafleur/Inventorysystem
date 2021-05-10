@@ -1,11 +1,14 @@
 package View;
 
 import Controller.Main;
+import Model.Category;
+import Model.Supplier;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  * Page where the user adds a product.
@@ -16,7 +19,9 @@ public class AddProductPage {
     @FXML private TextField stock;
     @FXML private TextField price;
     @FXML private TextField categoryID;
+    @FXML private ComboBox<Category> categories;
     @FXML private TextField shelfPosition;
+    @FXML private ComboBox<Supplier> suppliers;
     @FXML private TextField supplierID;
     @FXML private TextField cost;
 
@@ -25,6 +30,18 @@ public class AddProductPage {
      */
     @FXML public void initialize(){
         facilitator = Main.getInstance().getFacilitator();
+        fillComboBoxes();
+
+    }
+
+    public void fillComboBoxes() {
+        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+        supplierList.addAll(facilitator.getSupplierList());
+        suppliers.setItems(supplierList);
+
+        ObservableList<Category> categoryList = FXCollections.observableArrayList();
+        categoryList.addAll(facilitator.getCategoryList());
+        categories.setItems(categoryList);
     }
 
     /**
@@ -33,7 +50,7 @@ public class AddProductPage {
      */
     public void addProduct(ActionEvent e) {
         facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText());
-        facilitator.changeWindow(e, "/fxml/MainAppPage.fxml");
+        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }
 
@@ -42,7 +59,7 @@ public class AddProductPage {
      * @param cancelAddProduct  Event that triggers the method.
      */
     public void cancel(ActionEvent cancelAddProduct) {
-        facilitator.changeWindow(cancelAddProduct, "/fxml/MainAppPage.fxml");
+        facilitator.changeWindow(cancelAddProduct, "/fxml/ApplicationPage.fxml");
     }
     public void close(ActionEvent event) {
         facilitator.close(event);

@@ -126,4 +126,12 @@ public class DBController {
     public ArrayList<Product> getSearchList(String searchText) {
         return dbProduct.getSearchList(searchText);
     }
+
+    public ArrayList<Supplier> getSupplierList() {
+       return dbSupplier.getSupplierList();
+    }
+
+    public ArrayList<Category> getCategoryList() {
+        return dbCategory.getCategoryList();
+    }
 }
