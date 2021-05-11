@@ -12,7 +12,7 @@ public class Category {
     }
 
     public String toString() {
-        return String.format("name: %s ");
+        return String.format(" %s ", name);
     }
 
     public String getName() {

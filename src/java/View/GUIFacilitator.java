@@ -1,12 +1,16 @@
 package View;
 
 import Controller.Controller;
+import Model.Category;
 import Model.Product;
+import Model.Supplier;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,10 +48,18 @@ public class GUIFacilitator {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(path));
             Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
+
             Node button =(Node) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
 
             stage.setScene(scene);
+            stage.show();
+
+            stage.setScene(scene);
+            stage.setX(190);
+            stage.setY(110);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,4 +110,21 @@ public class GUIFacilitator {
         return controller.getSearchList(searchText);
 
     }
+
+    public void close(ActionEvent event) {
+        System.exit(0);
+    }
+    public void minimize(ActionEvent event) {
+        Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public ArrayList<Supplier> getSupplierList() {
+        return controller.getSupplierList();
+    }
+
+    public ArrayList<Category> getCategoryList() {
+        return controller.getCategoryList();
+    }
 }
+

@@ -1,13 +1,19 @@
 package View;
 
 import Controller.Main;
+import Model.Category;
+import Model.Product;
+import Model.Supplier;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
 
-public class UpdateProductPage {
+public class EditProductPage {
     private GUIFacilitator facilitator;
     @FXML TextField id;
     @FXML TextField name;
@@ -15,11 +21,24 @@ public class UpdateProductPage {
     @FXML TextField price;
     @FXML TextField shelfPosition;
     @FXML TextField cost;
+    @FXML ComboBox<Product> products;
+    @FXML ComboBox<Category> categories;
+
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
+//        fillComboBoxes();
     }
 
+    public void fillComboBoxes() {
+        ObservableList<Product> productList = FXCollections.observableArrayList();
+        productList.addAll(facilitator.getProductList());
+        products.setItems(productList);
+
+        ObservableList<Category> categoryList = FXCollections.observableArrayList();
+        categoryList.addAll(facilitator.getCategoryList());
+        categories.setItems(categoryList);
+    }
     public void updateProduct(ActionEvent e) {
         int id = 0;
         String name = null;
@@ -49,11 +68,17 @@ public class UpdateProductPage {
 
 
         facilitator.updateProduct(id, name, quantity, price, shelf,  cost);
-        facilitator.changeWindow(e, "/fxml/applicationPage.fxml");
+        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }
 
-    public void cancelUpdateProduct (ActionEvent cancelUpdateProduct) {
-        facilitator.changeWindow(cancelUpdateProduct, "/fxml/applicationPage.fxml");
+    public void cancel(ActionEvent cancelUpdateProduct) {
+        facilitator.changeWindow(cancelUpdateProduct, "/fxml/ApplicationPage.fxml");
+    }
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

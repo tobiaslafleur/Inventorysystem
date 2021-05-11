@@ -8,10 +8,10 @@
    <children>
       <TextField fx:id="name" layoutX="225.0" layoutY="135.0" promptText="Supplier name" />
       <TextField fx:id="phone" layoutX="225.0" layoutY="176.0" promptText="Supplier phone" />
-      <TextField fx:id="address" layoutX="225.0" layoutY="217.0" promptText="Supplier address" />
+      <TextField fx:id="street" layoutX="225.0" layoutY="217.0" promptText="Supplier address" />
       <TextField fx:id="email" layoutX="225.0" layoutY="258.0" promptText="Supplier email" />
       <Button layoutX="257.0" layoutY="312.0" mnemonicParsing="false" onAction="#addSupplier" text="Add Supplier" />
-      <Button layoutX="46.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancelSupplier" text="Cancel" />
+      <Button layoutX="46.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <Text fill="WHITE" layoutX="221.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add supplier">
          <font>
             <Font size="28.0" />

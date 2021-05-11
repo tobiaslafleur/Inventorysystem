@@ -35,14 +35,14 @@ public class LoginPage {
      * @param event
      */
     public void login(ActionEvent event) {
-        if(facilitator.checkUser(username.getText(), password.getText())){
-            facilitator.changeWindow(event, "/fxml/applicationPage.fxml");
-        } else {
-            //TODO: Label saying "login failed"
-            //Temp:
-            JOptionPane.showMessageDialog(null, "Login failed");
-        }
-
+//        if(facilitator.checkUser(username.getText(), password.getText())){
+//            facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
+//        } else {
+//            //TODO: Label saying "login failed"
+//            //Temp:
+//            JOptionPane.showMessageDialog(null, "Login failed");
+//        }
+        facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
     }
 
     /**
@@ -50,6 +50,13 @@ public class LoginPage {
      * @param event
      */
     public void register(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/registrationPage.fxml");
+        facilitator.changeWindow(event, "/fxml/RegistrationPage.fxml");
+    }
+
+    public void close(ActionEvent event) {
+        facilitator.close(event);
+    }
+    public void minimize(ActionEvent event) {
+        facilitator.minimize(event);
     }
 }

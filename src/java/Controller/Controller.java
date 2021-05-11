@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Category;
 import Model.Product;
 import Model.Supplier;
 import Model.User;
@@ -66,5 +67,13 @@ public class Controller {
     public ArrayList<Product> getSearchList(String searchText) {
         return dbController.getSearchList(searchText);
 
+    }
+
+    public ArrayList<Supplier> getSupplierList() {
+        return dbController.getSupplierList();
+    }
+
+    public ArrayList<Category> getCategoryList() {
+        return dbController.getCategoryList();
     }
 }
