@@ -17,8 +17,6 @@ public class Product {
     private BigDecimal cost;
     private int userID;
 
-
-
     public Product(int productID, String name, int stock, BigDecimal price, String category, String shelfPosition, String supplier, int supplierID, BigDecimal cost, int userID) {
         this.productID = productID;
         this.name = name;

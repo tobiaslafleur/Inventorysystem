@@ -4,10 +4,7 @@ import Controller.Database.DBCategory;
 import Controller.Database.DBProduct;
 import Controller.Database.DBSupplier;
 import Controller.Database.DBUser;
-import Model.Category;
-import Model.Product;
-import Model.Supplier;
-import Model.User;
+import Model.*;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -73,9 +70,10 @@ public class DBController {
      * @return The created user stored in the database
      */
     public boolean createUser(String username, String password, String email, String phone, String address) {
-        User user = new User(username, password, email, phone, address);
+        User user = new User(username, HashPassword.hash(username, password), email, phone, address);
         return dbUser.createUser(user);
     }
+
     public Connection getConnection() {
         return conn;
     }
@@ -91,7 +89,7 @@ public class DBController {
     }
 
     public boolean checkUser(String username, String password) {
-        return dbUser.checkUser(username, password);
+        return dbUser.checkUser(username, HashPassword.hash(username, password));
     }
 
     public boolean createCategory(String name) {
