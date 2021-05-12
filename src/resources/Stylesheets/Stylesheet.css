@@ -11,6 +11,8 @@
 .button {
     -fx-background-radius: 0 0 20 20; /*top left, top right, bottom right, bottom left  */
     -fx-text-fill: #5F807F;
+    -fx-background-color: #F2F2F2;
+    -fx-font-size: 16px;
 }
 
 .text-field {
