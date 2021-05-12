@@ -4,10 +4,12 @@ import Controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class LoginPage {
@@ -17,12 +19,13 @@ public class LoginPage {
     @FXML private TextField username = new TextField();
     @FXML private PasswordField password = new PasswordField();
     @FXML private Button loginBtn = new Button();
-
+    @FXML private Label lblFailed;
 
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+        lblFailed.setVisible(false);
     }
 
     public void setInstance() {
@@ -40,7 +43,8 @@ public class LoginPage {
         } else {
             //TODO: Label saying "login failed"
             //Temp:
-            JOptionPane.showMessageDialog(null, "Login failed");
+            //JOptionPane.showMessageDialog(null, "Login failed");
+            lblFailed.setVisible(true);
         }
     }
 
