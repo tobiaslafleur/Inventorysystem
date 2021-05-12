@@ -39,8 +39,7 @@ public class DBController {
      */
     public void connect() {
         try {
-            String dbUrl = "jdbc:sqlserver://ecinv.database.windows.net:1433;database=ecinv;user=ecinv@ecinv;password=mau123456!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-
+            String dbUrl = "jdbc:sqlserver://ecinvserver.database.windows.net:1433;database=ecinvDB;user=ecinv@ecinvserver;password=Kingarna123!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30";
             conn = DriverManager.getConnection(dbUrl);
         } catch (SQLException e) {
             System.out.println("Connection to database failed");
