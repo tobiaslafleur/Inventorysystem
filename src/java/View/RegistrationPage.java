@@ -86,6 +86,38 @@ public class RegistrationPage {
                 //TODO: Set underline to green
             }
 
+            //Check individual errors
+            /*for(String s : warnings) {
+                if(s.equals("Password must be at least 8 characters long")) {
+                    lblPwWarning1.setText(s);
+                }
+                for(String str : warnings) {
+                    if (str.equals("Password must contain at least one uppercase letter and one number")) {
+                        lblWarning2.setText(s);
+                    }
+                }
+
+                if (s.equals("Password must contain at least one uppercase letter and one number")) {
+                    lblPwWarning1.setText(s);
+                }
+
+                if(s.equals("Username already used")) {
+                    lblUsernameWarning.setText(s);
+                }
+
+                if(s.equals("Enter a valid email")) {
+                    lblEmailWarning.setText(s);
+                }
+
+                if(s.equals("Passwords must match")) {
+                    lblRepeatPwWarning.setText(s);
+                }
+
+                if(s.equals("Enter a valid number")) {
+                    lblPhoneWarning.setText(s);
+                }
+            }*/
+
             String strWarnings = "";
             StringBuilder strBuilder = new StringBuilder();
             for(String s : warnings) {
