@@ -47,43 +47,45 @@ public class RegistrationPage {
             //username
             if(!RegistrationPageHandling.isUsernameOk()) {
                 //TODO: Set underline to red
+                username.setStyle("-fx-border-color: #EB5D5D;");
             } else {
                 //TODO: Set underline to green
+                username.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //email
             if(!RegistrationPageHandling.isEmailOk()) {
-                //TODO: Set underline to red
+                email.setStyle("-fx-border-color: #EB5D5D;");
             } else {
-                //TODO: Set underline to green
+                email.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //phone
             if(!RegistrationPageHandling.isPhoneOk()) {
-                //TODO: Set underline to red
+                phone.setStyle("-fx-border-color: #EB5D5D;");
             } else {
-                //TODO: Set underline to green
+                phone.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //address
             if(!RegistrationPageHandling.isAddressOk()) {
-                //TODO: Set underline to red
+                address.setStyle("-fx-border-color: #EB5D5D;");
             } else {
-                //TODO: Set underline to green
+                address.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //password
             if(!RegistrationPageHandling.isPasswordOk()) {
-                //TODO: Set underline to red
+                password.setStyle("-fx-border-color: #EB5D5D;");
             } else {
-                //TODO: Set underline to green
+                password.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //repeatPassword
             if(!RegistrationPageHandling.isRepeatPwOk()) {
-                //TODO: Set underline to red
+                repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
             } else {
-                //TODO: Set underline to green
+                repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
             }
 
             //Check individual errors

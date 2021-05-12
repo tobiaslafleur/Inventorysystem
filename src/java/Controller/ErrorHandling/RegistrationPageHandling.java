@@ -25,17 +25,23 @@ public class RegistrationPageHandling {
         if(!usernameExists(username)){
             warnings.add("Username already used");
             usernameOk = false;
+        } else {
+            passwordOk = true;
         }
 
         //check password
         if(password.length() < PASSWORD_MIN_LENGTH) {
             warnings.add("Password must be at least 8 characters long");
             passwordOk = false;
+        } else {
+            passwordOk = true;
         }
 
         if(!isPasswordValid(password)) {
             warnings.add("Password contain at least one uppercase letter and one number");
             passwordOk = false;
+        } else {
+            passwordOk = true;
         }
 
         //check email
@@ -47,10 +53,13 @@ public class RegistrationPageHandling {
         if(!repeated.equals(password)) {
             warnings.add("Passwords must match");
             repeatPwOk = false;
+        } else {
+            repeatPwOk = true;
         }
 
         try{
             Integer.parseInt(phone);
+            phoneOk = true;
         } catch (NumberFormatException e) {
             warnings.add("Enter a valid number");
             phoneOk = false;
@@ -67,7 +76,7 @@ public class RegistrationPageHandling {
 
     private static boolean usernameExists(String username) {
         //TODO: Implement check username function
-        return true;
+        return !username.isEmpty();
     }
 
     private static boolean isPasswordValid(String password) {
