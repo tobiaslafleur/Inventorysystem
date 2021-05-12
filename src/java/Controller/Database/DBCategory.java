@@ -23,10 +23,11 @@ public class DBCategory {
             Connection conn = dbController.getConnection();
 
             String query =
-                    "INSERT INTO Category(name) " + "VALUES(?)";
+                    "EXEC ecinvDB.dbo.ProcAddCategory ?, ?";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, category.getName());
+            preparedStatement.setInt(2, dbController.getUser().getUserID());
 
             preparedStatement.execute();
             preparedStatement.close();
