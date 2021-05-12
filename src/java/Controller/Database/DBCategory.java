@@ -17,7 +17,7 @@ public class DBCategory {
         this.dbController = dbController;
     }
 
-    public boolean createCategory(Category category) {
+    public boolean createCategory(String categoryName) {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
@@ -26,7 +26,7 @@ public class DBCategory {
                     "EXEC ecinvDB.dbo.ProcAddCategory ?, ?";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, category.getName());
+            preparedStatement.setString(1, categoryName);
             preparedStatement.setInt(2, dbController.getUser().getUserID());
 
             preparedStatement.execute();
@@ -45,7 +45,7 @@ public class DBCategory {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select [name] from ViewCategory where user_id = ?";
+            String query = "Select * from ViewCategory where user_id = ?";
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
@@ -54,7 +54,8 @@ public class DBCategory {
 
             while(rs.next()) {
                 String name = rs.getString("name");
-                Category category = new Category(name);
+                int id = rs.getInt("category_id");
+                Category category = new Category(name, id);
                 categoryList.add(category);
             }
 

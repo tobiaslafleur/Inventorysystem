@@ -98,8 +98,8 @@ public class GUIFacilitator {
         controller.removeProduct(productID);
     }
 
-    public void updateProduct(int id, String name, int quantity, BigDecimal price, String shelf, BigDecimal cost) {
-        controller.updateProduct(id, name, quantity, price, shelf, cost);
+    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
+        controller.updateProduct(id, name, quantity, categoryID, price, shelf, cost);
     }
 
     public void updateSupplier(String name, String phone, String address, String email, int id) {

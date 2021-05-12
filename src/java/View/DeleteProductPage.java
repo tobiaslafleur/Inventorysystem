@@ -30,9 +30,10 @@ public class DeleteProductPage {
         } catch (Exception e) {}
         if(ID > 0) {
             facilitator.removeProduct(ID);
-            facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
             facilitator.updateProductTable();
         }
+        facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
+
     }
 
     public void cancel(ActionEvent event) {
