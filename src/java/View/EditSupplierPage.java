@@ -25,9 +25,9 @@ public class EditSupplierPage {
     @FXML public void initialize() {
         this.facilitator = Main.getInstance().getFacilitator();
 
-//        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
-//        supplierList.addAll(facilitator.getSupplierList());
-//        suppliers.setItems(supplierList);
+        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+        supplierList.addAll(facilitator.getSupplierList());
+        suppliers.setItems(supplierList);
     }
 
     public void updateSupplier(ActionEvent e) {
