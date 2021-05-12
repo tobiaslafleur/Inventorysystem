@@ -45,7 +45,7 @@ public class AddSupplierPage {
         String supEmail = email.getText();
 
         if(facilitator.addSupplier(supName, supPhone, supAddress, supEmail)) {
-            facilitator.changeWindow(event, "/fxml/.OLDapplicationPage.fxml");
+            facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
         } else {
             //TODO: Label saying: "Failed to add supplier."
             //temp:

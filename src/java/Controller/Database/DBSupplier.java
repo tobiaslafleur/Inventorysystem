@@ -1,10 +1,7 @@
 package Controller.Database;
 
 import Controller.DBController;
-import Model.Product;
 import Model.Supplier;
-
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,11 +20,10 @@ public class DBSupplier {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select * from UsersAndSuppliers where user_id = ?";
+            String query = "Select * from Supplier";
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
-            prep.setInt(1, dbController.getUser().getUserID());
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
@@ -53,14 +49,14 @@ public class DBSupplier {
             Connection conn = dbController.getConnection();
 
             String query =
-                    "INSERT INTO Supplier(name, phone, address, email) " +
-                            "VALUES(?, ?, ?, ?)";
+                    "EXEC ecinvDB.dbo.ProcAddSupplier ?, ?, ?, ?, ?";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, supplier.getName());
             preparedStatement.setString(2, supplier.getPhone());
             preparedStatement.setString(3, supplier.getAddress());
             preparedStatement.setString(4, supplier.getEmail());
+            preparedStatement.setInt(5, dbController.getUser().getUserID());
 
             preparedStatement.execute();
             preparedStatement.close();
