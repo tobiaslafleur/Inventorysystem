@@ -27,7 +27,7 @@ public class EditProductPage {
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
-//        fillComboBoxes();
+        fillComboBoxes();
     }
 
     public void fillComboBoxes() {

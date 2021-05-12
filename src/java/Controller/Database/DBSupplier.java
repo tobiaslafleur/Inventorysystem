@@ -23,10 +23,11 @@ public class DBSupplier {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select * from Supplier";
+            String query = "Select * from UsersAndSuppliers where user_id = ?";
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
+            prep.setInt(1, dbController.getUser().getUserID());
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
