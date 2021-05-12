@@ -45,10 +45,11 @@ public class DBCategory {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select * from Category";
+            String query = "Select [name] from ViewCategory where user_id = ?";
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
+            prep.setInt(1, dbController.getUser().getUserID());
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
