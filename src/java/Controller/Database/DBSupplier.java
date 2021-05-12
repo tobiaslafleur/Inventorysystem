@@ -20,10 +20,12 @@ public class DBSupplier {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select * from Supplier";
+            String query = "Select [name], phone, [address], email, supplier_id  from ViewSupplier " +
+                    "where [user_id] = ?";
 
             PreparedStatement prep = null;
             prep = conn.prepareStatement(query);
+            prep.setInt(1, dbController.getUser().getUserID());
             ResultSet rs = prep.executeQuery();
 
             while(rs.next()) {
@@ -31,7 +33,7 @@ public class DBSupplier {
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
                 String email = rs.getString("email");
-                int supplierID = rs.getInt("id");
+                int supplierID = rs.getInt("supplier_id");
 
                 Supplier supplier = new Supplier(name, phone, address, email, supplierID);
                 supplierList.add(supplier);
