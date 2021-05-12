@@ -54,9 +54,8 @@ public class Controller {
         dbController.removeProduct(productID);
     }
 
-    public void updateProduct(int id, String name, int quantity, BigDecimal price, String shelf, BigDecimal cost) {
-        Product productUpdate = new Product(id, name, quantity, price, null, shelf, null, cost, user.getUserID());
-        dbController.updateProduct(productUpdate);
+    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
+        dbController.updateProduct(id, name, quantity, categoryID, price, shelf, cost);
     }
 
     public void updateSupplier(String name, String phone, String address, String email, int id) {

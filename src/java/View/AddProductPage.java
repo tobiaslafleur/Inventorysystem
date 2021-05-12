@@ -18,11 +18,9 @@ public class AddProductPage {
     @FXML private TextField name;
     @FXML private TextField stock;
     @FXML private TextField price;
-    @FXML private TextField categoryID;
     @FXML private ComboBox<Category> categories;
     @FXML private TextField shelfPosition;
     @FXML private ComboBox<Supplier> suppliers;
-    @FXML private TextField supplierID;
     @FXML private TextField cost;
 
     /**
@@ -49,10 +47,14 @@ public class AddProductPage {
      * @param e     Event that triggers the method.
      */
     public void addProduct(ActionEvent e) {
-        facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText());
+        String categoryID = String.valueOf(categories.getValue().getID());
+        String supplierID = String.valueOf(suppliers.getValue().getId());
+
+        facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelfPosition.getText(), supplierID, cost.getText());
         facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }
+
 
     /**
      * Cancels the page and goes back to ApplicationPage.

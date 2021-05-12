@@ -7,8 +7,19 @@ public class Category {
 
     private String name;
 
-    public Category(String name){
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    private int ID;
+
+    public Category(String name, int ID){
         this.name = name;
+        this.ID = ID;
     }
 
     public String toString() {
