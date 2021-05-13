@@ -37,7 +37,7 @@ public class RegistrationPage {
     }
 
     public void register(javafx.event.ActionEvent event) {
-        ArrayList<String> warnings = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), address.getText(), password.getText(), repeatedPW.getText());
+        ArrayList<String> warnings = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), address.getText(), password.getText(), repeatedPW.getText(), facilitator);
 
         //If no warnings, create account
         if(warnings == null){

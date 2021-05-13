@@ -126,5 +126,9 @@ public class GUIFacilitator {
     public ArrayList<Category> getCategoryList() {
         return controller.getCategoryList();
     }
+
+    public boolean usernameExists(String username) {
+        return controller.usernameExists(username);
+    }
 }
 

@@ -75,4 +75,36 @@ public class DBUser {
         }
         return false;
     }
+
+    public boolean usernameExists(String username) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            String query =
+                    "SELECT COUNT (id) AS result\n" +
+                    "FROM [User]\n" +
+                    "WHERE username = '" + username.toLowerCase() + "';\n";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            int result = -1;
+            while(rs.next()) {
+                result = rs.getInt("result");
+                System.out.println(result);
+            }
+
+            if(result > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
