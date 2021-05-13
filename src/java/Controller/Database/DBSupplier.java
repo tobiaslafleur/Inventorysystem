@@ -20,7 +20,7 @@ public class DBSupplier {
         try {
             dbController.connect();
             Connection conn = dbController.getConnection();
-            String query = "Select [name], phone, [address], email, supplier_id  from ViewSupplier " +
+            String query = "Select [name], phone, street, [city], country, email, supplier_id  from ViewSupplier " +
                     "where [user_id] = ?";
 
             PreparedStatement prep = null;
@@ -31,11 +31,13 @@ public class DBSupplier {
             while(rs.next()) {
                 String name = rs.getString("name");
                 String phone = rs.getString("phone");
-                String address = rs.getString("address");
+                String street = rs.getString("street");
+                String city = rs.getString("city");
+                String country = rs.getString("country");
                 String email = rs.getString("email");
                 int supplierID = rs.getInt("supplier_id");
 
-                Supplier supplier = new Supplier(name, phone, address, email, supplierID);
+                Supplier supplier = new Supplier(name, phone, street, city, country, email, supplierID);
                 supplierList.add(supplier);
             }
 
@@ -51,14 +53,16 @@ public class DBSupplier {
             Connection conn = dbController.getConnection();
 
             String query =
-                    "EXEC ecinvDB.dbo.ProcAddSupplier ?, ?, ?, ?, ?";
+                    "EXEC ecinvDB.dbo.ProcAddSupplier ?, ?, ?, ?, ?, ?, ?";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, supplier.getName());
             preparedStatement.setString(2, supplier.getPhone());
-            preparedStatement.setString(3, supplier.getAddress());
-            preparedStatement.setString(4, supplier.getEmail());
-            preparedStatement.setInt(5, dbController.getUser().getUserID());
+            preparedStatement.setString(3, supplier.getStreet());
+            preparedStatement.setString(4, supplier.getCity());
+            preparedStatement.setString(5, supplier.getCountry());
+            preparedStatement.setString(6, supplier.getEmail());
+            preparedStatement.setInt(7, dbController.getUser().getUserID());
 
             preparedStatement.execute();
             preparedStatement.close();
@@ -75,7 +79,9 @@ public class DBSupplier {
     public void updateSupplierSetup(Supplier supplierUpdate) {
             String name = supplierUpdate.getName();
             String phone = supplierUpdate.getPhone();
-            String address = supplierUpdate.getAddress();
+            String street = supplierUpdate.getStreet();
+            String city = supplierUpdate.getCity();
+            String country = supplierUpdate.getCountry();
             String email = supplierUpdate.getEmail();
             int id = supplierUpdate.getId();
 
@@ -92,9 +98,19 @@ public class DBSupplier {
                     "UPDATE Supplier SET [phone] = '" + phone + "' Where id = " + id;
             executeUpdate(query);
         }
-        if(address != null) {
+        if(street != null) {
             query =
-                    "UPDATE Supplier SET [address] = '" + address + "' Where id = " + id;
+                    "UPDATE Supplier SET [street] = '" + street + "' Where id = " + id;
+            executeUpdate(query);
+        }
+        if(city != null) {
+            query =
+                    "UPDATE Supplier SET [city] = '" + city + "' Where id = " + id;
+            executeUpdate(query);
+        }
+        if(country != null) {
+            query =
+                    "UPDATE Supplier SET [country] = '" + country + "' Where id = " + id;
             executeUpdate(query);
         }
         if(email != null) {

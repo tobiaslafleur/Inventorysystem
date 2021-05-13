@@ -74,8 +74,8 @@ public class GUIFacilitator {
         this.addSupplierPage = addSupplierPage;
     }
 
-    public boolean addSupplier(String supName, String supPhone, String supAddress, String supEmail) {
-        return controller.addSupplier(supName, supPhone, supAddress, supEmail);
+    public boolean addSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail) {
+        return controller.addSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail);
     }
 
     public boolean addProduct(String name, String stock, String price, String categoryID, String shelfPosition, String supplierID, String cost) {
@@ -102,8 +102,8 @@ public class GUIFacilitator {
         controller.updateProduct(id, name, quantity, categoryID, price, shelf, cost);
     }
 
-    public void updateSupplier(String name, String phone, String address, String email, int id) {
-        controller.updateSupplier(name, phone, address, email, id);
+    public void updateSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail, int id) {
+        controller.updateSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, id);
     }
 
     public ArrayList<Product> getSearchList(String searchText) {

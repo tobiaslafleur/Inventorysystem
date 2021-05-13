@@ -11,12 +11,12 @@ public class AddSupplierPage {
     private static AddSupplierPage instance;
     private GUIFacilitator facilitator;
 
-    @FXML private TextField name = new TextField();
-    @FXML private TextField phone = new TextField();
-    @FXML private TextField street = new TextField();
-    @FXML private TextField city = new TextField();
-    @FXML private TextField country = new TextField();
-    @FXML private TextField email = new TextField();
+    @FXML private TextField name;
+    @FXML private TextField phone;
+    @FXML private TextField street;
+    @FXML private TextField city;
+    @FXML private TextField country;
+    @FXML private TextField email;
 
     /**
      * Intializes the connection between GUIFacilitator and this class.
@@ -41,10 +41,12 @@ public class AddSupplierPage {
     public void addSupplier(ActionEvent event) {
         String supName = name.getText();
         String supPhone = phone.getText();
-        String supAddress = street.getText() + ", " + city.getText() + ", " + country.getText();
+        String supStreet = street.getText();
+        String supCity = city.getText();
+        String supCountry = country.getText();
         String supEmail = email.getText();
 
-        if(facilitator.addSupplier(supName, supPhone, supAddress, supEmail)) {
+        if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail)) {
             facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
         } else {
             //TODO: Label saying: "Failed to add supplier."
