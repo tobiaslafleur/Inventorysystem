@@ -37,7 +37,7 @@
 
 #TableControls {
     -fx-background-color: "lightgray";
-    -fx-background-radius: 20 0 0 20; /*top left, top right, bottom right, bottom left  */
+    -fx-background-radius: 20 20 0 20; /*top left, top right, bottom right, bottom left  */
 }
 
 #AppClose {

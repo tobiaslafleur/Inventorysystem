@@ -89,21 +89,6 @@ public class ApplicationPage {
         }
     }
 
-    //TODO old methods to remove after new GUI implemented
-    public void addSupplier(ActionEvent event){
-        facilitator.changeWindow(event, "/fxml/.OLDaddSupplierPage.fxml");
-    }
-
-    public void updateSupplier(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/.OLDupdateSupplier.fxml");
-    }
-
-    public void addCategory(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/.OLDcategoryPage.fxml");
-    }
-    //
-
-
     public void search() {
         if(searchText.getText() != "") {
            ArrayList<Product> searchList = facilitator.getSearchList(searchText.getText());
