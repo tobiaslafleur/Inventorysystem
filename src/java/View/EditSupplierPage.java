@@ -14,12 +14,10 @@ public class EditSupplierPage {
     private GUIFacilitator facilitator;
     @FXML private TextField name;
     @FXML private TextField phone;
-    @FXML private TextField address; //TODO remove this one when the new GUI is implemented
     @FXML private TextField street;
     @FXML private TextField city;
     @FXML private TextField country;
     @FXML private TextField email;
-    @FXML private TextField id; //TODO Remove also
     @FXML private ComboBox<Supplier> suppliers;
 
     @FXML public void initialize() {
@@ -33,7 +31,9 @@ public class EditSupplierPage {
     public void updateSupplier(ActionEvent e) {
         String name = null;
         String phone = null;
-        String address = null;
+        String street = null;
+        String city = null;
+        String country = null;
         String email = null;
         int id = 0;
 
@@ -44,17 +44,23 @@ public class EditSupplierPage {
         if(!this.phone.getText().equals("")) {
             phone = this.phone.getText();
         }
-        if(!this.address.getText().equals("")) {
-            address = this.address.getText();
+        if(!this.street.getText().equals("")) {
+            street = this.street.getText();
+        }
+        if(!this.city.getText().equals("")) {
+            city = this.city.getText();
+        }
+        if(!this.country.getText().equals("")) {
+            country = this.country.getText();
         }
         if(!this.email.getText().equals("")) {
             email = this.email.getText();
         }
-        if(!this.id.getText().equals("")) {
-            id = Integer.parseInt(this.id.getText());
+        if(suppliers.getValue() != null) {
+            id = suppliers.getValue().getId();
         }
 
-        facilitator.updateSupplier(name, phone, address, email, id);
+        facilitator.updateSupplier(name, phone, street, city, country, email, id);
         facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }

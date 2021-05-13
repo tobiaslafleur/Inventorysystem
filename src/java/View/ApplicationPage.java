@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -39,7 +38,9 @@ public class ApplicationPage {
     @FXML private TableView<Supplier> supplierTable;
     @FXML private TableColumn<Supplier, String> supNameCol;
     @FXML private TableColumn<Supplier, String> supPhoneCol;
-    @FXML private TableColumn<Supplier, String> supAddressCol;
+    @FXML private TableColumn<Supplier, String> supStreetCol;
+    @FXML private TableColumn<Supplier, String> supCityCol;
+    @FXML private TableColumn<Supplier, String> supCountryCol;
     @FXML private TableColumn<Supplier, String> supEmailCol;
     //Category table and column
     @FXML private TableView<Category> categoryTable;
@@ -135,7 +136,9 @@ public class ApplicationPage {
     public void initSupplierTable() {
         supNameCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("name"));
         supPhoneCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("phone"));
-        supAddressCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("address"));
+        supStreetCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("street"));
+        supCityCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("city"));
+        supCountryCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("country"));
         supEmailCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("email"));
 
         ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
