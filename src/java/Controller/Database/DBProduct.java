@@ -144,7 +144,7 @@ public class DBProduct {
             } catch (Exception e) {}
 
             if(searchNumber > 0) {
-                query = "Select * from ViewUserProductList WHERE p_code = ? OR s_id = ? AND user_id = ?";
+                query = "Select * from ViewUserProductList WHERE p_code = ? OR s_id = ? AND [user_id] = ?";
                 prep = conn.prepareStatement(query);
                 prep.setInt(1, searchNumber);
                 prep.setInt(2, searchNumber);
@@ -152,8 +152,8 @@ public class DBProduct {
 
             } else {
                 query = "Select * from ViewUserProductList WHERE " +
-                        "[name] Like ? OR s_name LIKE ? OR shelf_pos LIKE ? " +
-                        "OR c_name LIKE ? AND [user_id] = ?";
+                        "([name] Like ? OR s_name LIKE ? OR shelf_pos LIKE ? " +
+                        "OR c_name LIKE ?) AND [user_id] = ?";
                 prep = conn.prepareStatement(query);
                 prep.setString(1, "%" + searchString + "%");
                 prep.setString(2, "%" + searchString + "%");
