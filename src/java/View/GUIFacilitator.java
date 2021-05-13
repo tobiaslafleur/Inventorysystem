@@ -136,7 +136,6 @@ public class GUIFacilitator {
     public boolean usernameExists(String username) {
         return controller.usernameExists(username);
     }
-}
 
     public boolean CSVImport(String filepath) {
             return controller.getCSVFile(filepath);

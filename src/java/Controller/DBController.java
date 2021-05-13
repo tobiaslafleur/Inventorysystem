@@ -137,13 +137,12 @@ public class DBController {
 
     public boolean getCSVProductList(String filepath) {
         boolean isValid = false;
-         csvImport.readProductFromCSVFile(filepath);
-         return isValid;
+        csvImport.readProductFromCSVFile(filepath);
+        return isValid;
 
 
-
+    }
     public boolean usernameExists(String username) {
-
         return dbUser.usernameExists(username);
     }
 }
