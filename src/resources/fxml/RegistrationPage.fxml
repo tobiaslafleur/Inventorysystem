@@ -5,25 +5,67 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="368.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RegistrationPage">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.RegistrationPage">
     <children>
-        <Hyperlink fx:id="close" layoutX="258.0" layoutY="2.0" onAction="#close" text="x" />
-        <Hyperlink fx:id="minimize" layoutX="244.0" layoutY="2.0" onAction="#minimize" text="-" />
-        <TextField fx:id="username" layoutX="63.0" layoutY="116.0" promptText="Username" />
-        <TextField fx:id="email" layoutX="63.0" layoutY="158.0" promptText="Email" />
-        <TextField fx:id="phone" layoutX="63.0" layoutY="197.0" promptText="Phone" />
-        <TextField fx:id="address" layoutX="63.0" layoutY="237.0" promptText="Address" />
-        <Label layoutX="69.0" layoutY="52.0" text="Create an account" textFill="WHITE">
+        <Hyperlink fx:id="close" layoutX="379.0" layoutY="4.0" onAction="#close" text="x" />
+        <Hyperlink fx:id="minimize" layoutX="358.0" layoutY="4.0" onAction="#minimize" text="-" />
+        <TextField fx:id="username" layoutX="126.0" layoutY="146.0" promptText="Username" />
+      <Label fx:id="lblUsernameWarning" alignment="CENTER" layoutY="171.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+        <TextField fx:id="email" layoutX="125.0" layoutY="202.0" promptText="Email" />
+        <TextField fx:id="phone" layoutX="125.0" layoutY="256.0" promptText="Phone" />
+        <TextField fx:id="address" layoutX="125.0" layoutY="314.0" promptText="Address" />
+        <Label alignment="CENTER" layoutY="54.0" prefHeight="26.0" prefWidth="400.0" text="Create an account" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
         <Hyperlink layoutX="7.0" layoutY="4.0" onAction="#cancel" text="Cancel" />
-        <Button fx:id="registerBtn" layoutX="-1.0" layoutY="368.0" mnemonicParsing="false" onAction="#register" prefHeight="47.0" prefWidth="279.0" text="Register Account" />
-      <PasswordField fx:id="password" layoutX="65.0" layoutY="279.0" promptText="Password" />
-      <PasswordField fx:id="repeatedPW" layoutX="65.0" layoutY="320.0" promptText="Repeat Password" />
+        <Button fx:id="registerBtn" layoutY="525.0" mnemonicParsing="false" onAction="#register" prefHeight="75.0" prefWidth="400.0" text="Register Account" />
+      <ImageView fx:id="imgPwInfo" fitHeight="10.0" fitWidth="10.0" layoutX="289.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/questionmark.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="password" layoutX="126.0" layoutY="371.0" promptText="Password" />
+      <PasswordField fx:id="repeatedPW" layoutX="126.0" layoutY="429.0" promptText="Repeat Password" />
+      <Label fx:id="lblEmailWarning" alignment="CENTER" layoutY="227.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPhoneWarning" alignment="CENTER" layoutX="-1.0" layoutY="281.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAddressWarning" alignment="CENTER" layoutX="-1.0" layoutY="339.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPwWarning" alignment="TOP_CENTER" layoutY="396.0" prefHeight="30.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRepeatWarning" alignment="CENTER" layoutY="454.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgRepeatInfo" fitHeight="10.0" fitWidth="10.0" layoutX="289.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/questionmark.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
