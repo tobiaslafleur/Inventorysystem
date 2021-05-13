@@ -24,7 +24,7 @@ public class RegistrationPageHandling {
         }
 
         //username
-        if(!usernameExists(username, facilitator)){
+        if(!isUsernameValid(username, facilitator)){
             warnings.add("Username already in use");
             usernameOk = false;
         } else if(username.isEmpty()) {
@@ -35,7 +35,7 @@ public class RegistrationPageHandling {
         }
 
         //check password
-        if(password.length() < PASSWORD_MIN_LENGTH || !isPasswordValid(password)) {
+        if(!isPasswordValid(password)) {
             warnings.add("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
             passwordOk = false;
         } else {
@@ -43,28 +43,26 @@ public class RegistrationPageHandling {
         }
 
         //check email
-        if(!email.contains("@")){
+        if(!isEmailValid(email)){
             warnings.add("Enter a valid email");
             emailOk = false;
         } else {
             emailOk = true;
         }
 
-        if(!repeated.equals(password)) {
+        if(!isRepeatValid(password, repeated)) {
             warnings.add("Passwords must match");
             repeatPwOk = false;
         } else {
             repeatPwOk = true;
         }
 
-        try{
-            Integer.parseInt(phone);
-            phoneOk = true;
-        } catch (NumberFormatException e) {
+        if(!isPhoneValid(phone)) {
             warnings.add("Enter a valid number");
             phoneOk = false;
+        } else {
+            phoneOk = true;
         }
-
 
         if(warnings.isEmpty()){
             return null;
@@ -73,12 +71,42 @@ public class RegistrationPageHandling {
         }
     }
 
-    private static boolean usernameExists(String username, GUIFacilitator facilitator) {
-        //TODO: Implement check username function
-        return !facilitator.usernameExists(username);
+    public static boolean isPhoneValid(String phone) {
+        try{
+            if(Integer.parseInt(phone) > 10000000) {
+                return true;
+            } else {
+                warnings.add("Enter a valid number");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-    private static boolean isPasswordValid(String password) {
+    public static boolean isRepeatValid(String password, String repeated) {
+        return repeated.equals(password);
+    }
+
+    public static boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+
+    public static boolean isUsernameValid(String username, GUIFacilitator facilitator){
+        if(!usernameExists(username, facilitator)){
+            warnings.add("Username already in use");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean isPasswordValid(String password) {
+        if(password.length() < PASSWORD_MIN_LENGTH) {
+            return false;
+        }
+
         int charCount = 0;
         int numCount = 0;
         for (int i = 0; i < password.length(); i++) {
@@ -93,6 +121,14 @@ public class RegistrationPageHandling {
         }
 
         return charCount >= 1 && numCount >= 1;
+    }
+
+    public static boolean usernameExists(String username, GUIFacilitator facilitator) {
+        //TODO: Implement check username function
+        if(username.isEmpty()) {
+            return false;
+        }
+        return !facilitator.usernameExists(username);
     }
 
     public static boolean isPasswordOk() {

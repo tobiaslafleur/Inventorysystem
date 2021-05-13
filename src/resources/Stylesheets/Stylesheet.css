@@ -89,3 +89,9 @@
     -fx-background-radius: 10;
     -fx-text-fill: #5F807F;
 }
+
+#check-btn {
+    -fx-background-radius: 25;
+    -fx-text-fill: #5F807F;
+    -fx-font-size: 9px;
+}
