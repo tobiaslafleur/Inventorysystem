@@ -79,8 +79,8 @@ public class Controller {
   
     public boolean getCSVFile(String filepath) {
         return dbController.getCSVProductList(filepath);
-  
 
+    }
     public boolean usernameExists(String username) {
         return dbController.usernameExists(username);
     }
