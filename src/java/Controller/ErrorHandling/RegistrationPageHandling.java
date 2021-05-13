@@ -25,25 +25,18 @@ public class RegistrationPageHandling {
 
         //username
         if(!usernameExists(username, facilitator)){
-            warnings.add("Username already in use.");
+            warnings.add("Username already in use");
             usernameOk = false;
         } else if(username.isEmpty()) {
-            warnings.add("Enter a username.");
+            warnings.add("Enter a username");
             usernameOk = false;
         } else {
-            passwordOk = true;
+            usernameOk = true;
         }
 
         //check password
-        if(password.length() < PASSWORD_MIN_LENGTH) {
-            warnings.add("Password must be at least 8 characters long");
-            passwordOk = false;
-        } else {
-            passwordOk = true;
-        }
-
-        if(!isPasswordValid(password)) {
-            warnings.add("Password contain at least one uppercase letter and one number");
+        if(password.length() < PASSWORD_MIN_LENGTH || !isPasswordValid(password)) {
+            warnings.add("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
             passwordOk = false;
         } else {
             passwordOk = true;

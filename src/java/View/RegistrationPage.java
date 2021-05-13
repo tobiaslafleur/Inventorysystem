@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -23,13 +24,24 @@ public class RegistrationPage {
     @FXML private PasswordField password;
     @FXML private PasswordField repeatedPW;
 
-    @FXML private Label lblFail;
+    @FXML private Label lblUsernameWarning;
+    @FXML private Label lblPhoneWarning;
+    @FXML private Label lblEmailWarning;
+    @FXML private Label lblAddressWarning;
+    @FXML private Label lblPwWarning;
+    @FXML private Label lblRepeatWarning;
 
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
 
+        lblUsernameWarning.setText("");
+        lblPhoneWarning.setText("");
+        lblEmailWarning.setText("");
+        lblAddressWarning.setText("");
+        lblPwWarning.setText("");
+        lblRepeatWarning.setText("");
     }
 
     private void setInstance() {
@@ -88,19 +100,17 @@ public class RegistrationPage {
                 repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
             }
 
-            //Check individual errors
-            /*for(String s : warnings) {
-                if(s.equals("Password must be at least 8 characters long")) {
-                    lblPwWarning1.setText(s);
-                }
-                for(String str : warnings) {
-                    if (str.equals("Password must contain at least one uppercase letter and one number")) {
-                        lblWarning2.setText(s);
-                    }
-                }
+            lblUsernameWarning.setText("");
+            lblEmailWarning.setText("");
+            lblPhoneWarning.setText("");
+            lblAddressWarning.setText("");
+            lblPwWarning.setText("");
+            lblRepeatWarning.setText("");
 
-                if (s.equals("Password must contain at least one uppercase letter and one number")) {
-                    lblPwWarning1.setText(s);
+            //Check individual errors
+            for(String s : warnings) {
+                if(s.equals("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number")) {
+                    lblPwWarning.setText(s);
                 }
 
                 if(s.equals("Username already used")) {
@@ -112,46 +122,20 @@ public class RegistrationPage {
                 }
 
                 if(s.equals("Passwords must match")) {
-                    lblRepeatPwWarning.setText(s);
+                    lblRepeatWarning.setText(s);
                 }
 
                 if(s.equals("Enter a valid number")) {
                     lblPhoneWarning.setText(s);
                 }
-            }*/
 
-            String strWarnings = "";
-            StringBuilder strBuilder = new StringBuilder();
-            for(String s : warnings) {
-                strBuilder.append(s).append("\n");
-            }
-            strWarnings = strBuilder.toString();
-
-            //Temp
-            JOptionPane.showMessageDialog(null, strWarnings);
-            //lblFail.setText(strWarnings);
-        }
-
-
-/*        if(!username.getText().isEmpty() && !password.getText().isEmpty() && !email.getText().isEmpty() && !phone.getText().isEmpty() && !address.getText().isEmpty() && !repeatedPW.getText().isEmpty()){
-            //Check if password is same as repeated password
-            if(password.getText().equals(repeatedPW.getText())){
-                if(facilitator.createUser(username.getText(),password.getText(), email.getText(), phone.getText(), address.getText())) {
-                    facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
-                } else {
-                    //Todo: Update label on GUI: "Account creation failed"
+                if(s.equals("Enter a username")) {
+                    lblUsernameWarning.setText(s);
+                } else if (s.equals("Username already in use")) {
+                    lblUsernameWarning.setText(s);
                 }
-
-            } else {
-                //Display text: Passwords must match
-                //Temp:
-                JOptionPane.showMessageDialog(null, "Passwords must match");
             }
-        } else {
-            //Display text: "Enter all required fields"
-            //Temp:
-            JOptionPane.showMessageDialog(null, "Enter all required fields.");
-        }*/
+        }
     }
     public void cancel(ActionEvent accountRegisterCancelled) {
         facilitator.changeWindow(accountRegisterCancelled, "/fxml/LoginPage.fxml");
