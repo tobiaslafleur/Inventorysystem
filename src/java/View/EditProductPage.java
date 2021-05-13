@@ -66,7 +66,7 @@ public class EditProductPage {
             shelf = this.shelfPosition.getText();
         }
         if(!this.cost.getText().equals("")) {
-            cost = new BigDecimal(this.price.getText());
+            cost = new BigDecimal(this.cost.getText());
         }
 
         facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
