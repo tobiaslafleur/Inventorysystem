@@ -131,4 +131,9 @@ public class DBController {
     public ArrayList<Category> getCategoryList() {
         return dbCategory.getCategoryList();
     }
+
+    public boolean usernameExists(String username) {
+
+        return dbUser.usernameExists(username);
+    }
 }

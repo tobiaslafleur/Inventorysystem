@@ -75,4 +75,8 @@ public class Controller {
     public ArrayList<Category> getCategoryList() {
         return dbController.getCategoryList();
     }
+
+    public boolean usernameExists(String username) {
+        return dbController.usernameExists(username);
+    }
 }

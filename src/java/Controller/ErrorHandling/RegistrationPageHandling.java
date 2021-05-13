@@ -1,5 +1,7 @@
 package Controller.ErrorHandling;
 
+import View.GUIFacilitator;
+
 import java.util.ArrayList;
 
 public class RegistrationPageHandling {
@@ -15,15 +17,18 @@ public class RegistrationPageHandling {
     private static ArrayList<String> warnings = new ArrayList<>();
 
 
-    public static ArrayList<String> errorHandling(String username, String email, String phone, String address, String password, String repeated) {
+    public static ArrayList<String> errorHandling(String username, String email, String phone, String address, String password, String repeated, GUIFacilitator facilitator) {
 
         if(!warnings.isEmpty()) {
             warnings.clear();
         }
 
         //username
-        if(!usernameExists(username)){
-            warnings.add("Username already used");
+        if(!usernameExists(username, facilitator)){
+            warnings.add("Username already in use.");
+            usernameOk = false;
+        } else if(username.isEmpty()) {
+            warnings.add("Enter a username.");
             usernameOk = false;
         } else {
             passwordOk = true;
@@ -48,6 +53,8 @@ public class RegistrationPageHandling {
         if(!email.contains("@")){
             warnings.add("Enter a valid email");
             emailOk = false;
+        } else {
+            emailOk = true;
         }
 
         if(!repeated.equals(password)) {
@@ -71,12 +78,11 @@ public class RegistrationPageHandling {
         } else {
             return warnings;
         }
-
     }
 
-    private static boolean usernameExists(String username) {
+    private static boolean usernameExists(String username, GUIFacilitator facilitator) {
         //TODO: Implement check username function
-        return !username.isEmpty();
+        return !facilitator.usernameExists(username);
     }
 
     private static boolean isPasswordValid(String password) {
@@ -109,6 +115,7 @@ public class RegistrationPageHandling {
     }
 
     public static boolean isEmailOk() {
+        System.out.println(emailOk);
         return emailOk;
     }
 
