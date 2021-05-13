@@ -188,10 +188,13 @@ public class ApplicationPage {
     public void CSVImport(ActionEvent event) {
         Stage stage = new Stage();
         stage.setIconified(true);
+        try {
         FileChooser JF = new FileChooser();
         String filepath = JF.showOpenDialog(stage).getPath();
         facilitator.CSVImport(filepath);
         facilitator.updateProductTable();
+        } catch (Exception ignore) {
+            //Ignorerar .getPath null value när man stänger FileChooser
+        }
     }
-
-}
+    }
