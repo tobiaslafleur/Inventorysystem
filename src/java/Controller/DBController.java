@@ -20,6 +20,7 @@ public class DBController {
     private DBSupplier dbSupplier;
     private Connection conn;
     private User user;
+    private CSVImport csvImport;
 
     /**
      * Constructor to instantiate controller object as well as the database controller classes
@@ -27,10 +28,12 @@ public class DBController {
      */
     public DBController(Controller controller) {
         this.controller = controller;
+        this.csvImport = new CSVImport(this);
         dbCategory = new DBCategory(this);
         dbUser = new DBUser(this);
         dbSupplier = new DBSupplier(this);
         dbProduct = new DBProduct(this);
+
     }
 
 
@@ -130,5 +133,11 @@ public class DBController {
 
     public ArrayList<Category> getCategoryList() {
         return dbCategory.getCategoryList();
+    }
+    public boolean getCSVProductList(String filepath) {
+        boolean isValid = false;
+         csvImport.readProductFromCSVFile(filepath);
+         return isValid;
+
     }
 }

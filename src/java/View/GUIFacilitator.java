@@ -4,15 +4,19 @@ import Controller.Controller;
 import Model.Category;
 import Model.Product;
 import Model.Supplier;
+import Model.CSVImport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ public class GUIFacilitator {
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
     private AddSupplierPage addSupplierPage;
+
 
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
@@ -126,5 +131,8 @@ public class GUIFacilitator {
     public ArrayList<Category> getCategoryList() {
         return controller.getCategoryList();
     }
-}
 
+    public boolean CSVImport(String filepath) {
+            return controller.getCSVFile(filepath);
+    }
+}

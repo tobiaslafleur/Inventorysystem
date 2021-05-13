@@ -5,6 +5,7 @@ import Model.Product;
 import Model.Supplier;
 import Model.User;
 import View.GUIFacilitator;
+import javafx.stage.FileChooser;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -75,5 +76,8 @@ public class Controller {
 
     public ArrayList<Category> getCategoryList() {
         return dbController.getCategoryList();
+    }
+    public boolean getCSVFile(String filepath) {
+        return dbController.getCSVProductList(filepath);
     }
 }
