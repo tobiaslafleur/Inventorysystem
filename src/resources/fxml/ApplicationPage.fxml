@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TableControls" prefHeight="459.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
+<AnchorPane fx:id="TableControls" prefHeight="459.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
     <children>
         <TextField fx:id="searchText" layoutX="107.0" layoutY="30.0" promptText="Search">
             <tooltip>
@@ -33,7 +33,7 @@
                     </image>
                 </ImageView>
                 <Hyperlink fx:id="logOut" layoutX="23.0" layoutY="433.0" onAction="#logOut" text="Log Out" />
-            <Button fx:id="importCSVBtn" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Import CSV" />
+            <Button id="CSVbtn" fx:id="importCSVBtn" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" onAction="#CSVImport" prefHeight="25.0" prefWidth="98.0" text="Import CSV" />
             <ImageView blendMode="DARKEN" fitHeight="16.0" fitWidth="17.0" layoutX="3.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/import.png" />

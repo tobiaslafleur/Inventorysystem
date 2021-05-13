@@ -10,7 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javax.swing.*;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -34,6 +39,7 @@ public class ApplicationPage {
     @FXML private ComboBox<String> tableBox;
     @FXML private Hyperlink removeBtn;
     @FXML private Button editBtn;
+    @FXML private Button importCSVBtn;
     //Supplier table and columns
     @FXML private TableView<Supplier> supplierTable;
     @FXML private TableColumn<Supplier, String> supNameCol;
@@ -179,4 +185,13 @@ public class ApplicationPage {
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
     }
+    public void CSVImport(ActionEvent event) {
+        Stage stage = new Stage();
+        stage.setIconified(true);
+        FileChooser JF = new FileChooser();
+        String filepath = JF.showOpenDialog(stage).getPath();
+        facilitator.CSVImport(filepath);
+        facilitator.updateProductTable();
+    }
+
 }
