@@ -139,8 +139,6 @@ public class DBController {
         boolean isValid = false;
         csvImport.readProductFromCSVFile(filepath);
         return isValid;
-
-
     }
     public boolean usernameExists(String username) {
         return dbUser.usernameExists(username);
