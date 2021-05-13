@@ -111,8 +111,8 @@ public class DBProduct {
     public ArrayList<Product> getProductList() {
         if(!productList.isEmpty()) {
             productList.clear();
-            createProductTable();
         }
+        createProductTable();
         return productList;
     }
 
@@ -209,40 +209,40 @@ public class DBProduct {
 
     /**
      * Creates an SQL query to update product information.
-     * @param productUpdate is the product object containing the updated product information.
      */
-    public void updateProductSetup(Product productUpdate) {
-        String name = productUpdate.getName();
-        int quantity = productUpdate.getStock();
-        BigDecimal price = productUpdate.getPrice();
-        String shelf = productUpdate.getShelfPosition();
-        BigDecimal cost = productUpdate.getCost();
+    public void updateProductSetup(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
+
         String query = " ";
 
         if(name != null) {
             query =
-                    "UPDATE Product SET [name] = '" + name + "' Where id = " + productUpdate.getProductID();
+                    "UPDATE Product SET [name] = '" + name + "' Where id = " + id;
             executeUpdate(query);
         }
         if(quantity > 0) {
             query =
-                    "UPDATE Product SET [stock] = " + quantity + " Where id = " + productUpdate.getProductID();
+                    "UPDATE Product SET [stock] = " + quantity + " Where id = " + id;
             executeUpdate(query);
         }
-        if(!price.equals("0.0")) {
+        if(categoryID > 0) {
             query =
-                    "UPDATE Product SET [price] = '" + price + "' Where id = " + productUpdate.getProductID();
+                    "UPDATE Product SET [category_id] = " + categoryID + " Where id = " + id;
+            executeUpdate(query);
+        }
+        if(price != null) {
+            query =
+                    "UPDATE Product SET [price] = '" + price + "' Where id = " + id;
             executeUpdate(query);
         }
 
         if(shelf != null) {
             query =
-                    "UPDATE Product SET [shelf_pos] = '" + shelf + "' Where id = " + productUpdate.getProductID();
+                    "UPDATE Product SET [shelf_pos] = '" + shelf + "' Where id = " + id;
             executeUpdate(query);
         }
-        if(!cost.equals("0.0")) {
+        if(cost != null) {
             query =
-                    "UPDATE Product SET [cost] = '" + cost + "' Where id = " + productUpdate.getProductID();
+                    "UPDATE Product SET [cost] = '" + cost + "' Where id = " + id;
             executeUpdate(query);
         }
     }

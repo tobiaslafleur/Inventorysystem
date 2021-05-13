@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 
 public class EditProductPage {
     private GUIFacilitator facilitator;
-    @FXML TextField id;
     @FXML TextField name;
     @FXML TextField quantity;
     @FXML TextField price;
@@ -43,18 +42,22 @@ public class EditProductPage {
         int id = 0;
         String name = null;
         int quantity = 0;
-        BigDecimal price = new BigDecimal("0.0");
+        int categoryID = 0;
+        BigDecimal price = null;
         String shelf = null;
-        BigDecimal cost = new BigDecimal("0.0");
+        BigDecimal cost = null;
 
-        if(!this.id.getText().equals("")) {
-            id = Integer.parseInt(this.id.getText());
+        if(products.getValue() != null) {
+            id = products.getValue().getProductID();
         }
         if(!this.name.getText().equals("")) {
             name = this.name.getText();
         }
         if(!this.quantity.getText().equals("")) {
             quantity = Integer.parseInt(this.quantity.getText());
+        }
+        if(categories.getValue() != null) {
+            categoryID = categories.getValue().getID();
         }
         if(!this.price.getText().equals("")) {
             price = new BigDecimal(this.price.getText());
@@ -63,11 +66,10 @@ public class EditProductPage {
             shelf = this.shelfPosition.getText();
         }
         if(!this.cost.getText().equals("")) {
-            cost = new BigDecimal(this.price.getText());
+            cost = new BigDecimal(this.cost.getText());
         }
 
-
-        facilitator.updateProduct(id, name, quantity, price, shelf,  cost);
+        facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
         facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
         facilitator.updateProductTable();
     }

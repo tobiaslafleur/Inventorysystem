@@ -85,14 +85,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="supplierTable" layoutX="108.0" layoutY="59.0" prefHeight="401.0" prefWidth="677.0">
-        <columns>
-          <TableColumn fx:id="supNameCol" prefWidth="174.66665649414062" text="Name" />
-          <TableColumn fx:id="supPhoneCol" prefWidth="136.0" text="Phone" />
-            <TableColumn fx:id="supAddressCol" prefWidth="164.6666259765625" text="Address" />
-            <TableColumn fx:id="supEmailCol" prefWidth="201.33331298828125" text="Email" />
-        </columns>
-      </TableView>
         <TableView fx:id="infoTable" layoutX="107.0" layoutY="58.0" prefHeight="401.0" prefWidth="677.0">
             <columns>
                 <TableColumn fx:id="colID" prefWidth="75.0" text="ProductID" />
@@ -109,6 +101,16 @@
       <TableView fx:id="categoryTable" layoutX="107.0" layoutY="58.0" prefHeight="401.0" prefWidth="677.0">
         <columns>
           <TableColumn fx:id="catNameCol" prefWidth="193.99996948242188" text="Category Name" />
+        </columns>
+      </TableView>
+      <TableView fx:id="supplierTable" layoutX="108.0" layoutY="59.0" prefHeight="401.0" prefWidth="677.0">
+        <columns>
+          <TableColumn fx:id="supNameCol" prefWidth="114.66665649414062" text="Name" />
+          <TableColumn fx:id="supPhoneCol" prefWidth="110.6666259765625" text="Phone" />
+            <TableColumn fx:id="supStreetCol" minWidth="0.0" prefWidth="84.6666259765625" text="Street" />
+            <TableColumn fx:id="supCityCol" minWidth="0.0" prefWidth="82.66668701171875" text="City" />
+            <TableColumn fx:id="supCountryCol" minWidth="0.0" prefWidth="138.66668701171875" text="Country" />
+            <TableColumn fx:id="supEmailCol" prefWidth="143.33333333333337" text="Email" />
         </columns>
       </TableView>
     </children>

@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import javax.swing.*;
 import java.io.File;
 import java.math.BigDecimal;
@@ -45,7 +44,9 @@ public class ApplicationPage {
     @FXML private TableView<Supplier> supplierTable;
     @FXML private TableColumn<Supplier, String> supNameCol;
     @FXML private TableColumn<Supplier, String> supPhoneCol;
-    @FXML private TableColumn<Supplier, String> supAddressCol;
+    @FXML private TableColumn<Supplier, String> supStreetCol;
+    @FXML private TableColumn<Supplier, String> supCityCol;
+    @FXML private TableColumn<Supplier, String> supCountryCol;
     @FXML private TableColumn<Supplier, String> supEmailCol;
     //Category table and column
     @FXML private TableView<Category> categoryTable;
@@ -94,21 +95,6 @@ public class ApplicationPage {
         }
     }
 
-    //TODO old methods to remove after new GUI implemented
-    public void addSupplier(ActionEvent event){
-        facilitator.changeWindow(event, "/fxml/.OLDaddSupplierPage.fxml");
-    }
-
-    public void updateSupplier(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/.OLDupdateSupplier.fxml");
-    }
-
-    public void addCategory(ActionEvent e) {
-        facilitator.changeWindow(e, "/fxml/.OLDcategoryPage.fxml");
-    }
-    //
-
-
     public void search() {
         if(searchText.getText() != "") {
            ArrayList<Product> searchList = facilitator.getSearchList(searchText.getText());
@@ -141,7 +127,9 @@ public class ApplicationPage {
     public void initSupplierTable() {
         supNameCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("name"));
         supPhoneCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("phone"));
-        supAddressCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("address"));
+        supStreetCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("street"));
+        supCityCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("city"));
+        supCountryCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("country"));
         supEmailCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("email"));
 
         ObservableList<Supplier> supplierList = FXCollections.observableArrayList();

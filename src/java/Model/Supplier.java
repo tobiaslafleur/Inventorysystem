@@ -6,26 +6,32 @@ package Model;
 public class Supplier {
     private String name;
     private String phone;
-    private String address;
+    private String street;
+    private String city;
+    private String country;
     private String email;
     private int supplierID;
 
-    public Supplier(String name, String phone, String address, String email) {
+    public Supplier(String name, String phone, String street, String city, String country, String email) {
         this.name = name;
         this.phone = phone;
-        this.address = address;
+        this.street = street;
+        this.city = city;
+        this.country = country;
         this.email = email;
     }
-    public Supplier( String name, String phone, String address, String email, int id) {
+    public Supplier(String name, String phone, String street, String city, String country, String email, int id) {
         this.name = name;
         this.phone = phone;
-        this.address = address;
+        this.street = street;
+        this.city = city;
+        this.country = country;
         this.email = email;
         this.supplierID = id;
     }
 
     public String toString() {
-        return String.format("%s | %s | %s | %s ", name, phone, address, email);
+        return String.format("%s | %s | %s | %s ", name, phone, street, email);
     }
     //<editor-fold desc="getters and setters"
     public String getName() {
@@ -44,12 +50,28 @@ public class Supplier {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getEmail() {
@@ -67,5 +89,6 @@ public class Supplier {
     public void setId(int id) {
         this.supplierID= id;
     }
+
     //</editor-fold>
 }

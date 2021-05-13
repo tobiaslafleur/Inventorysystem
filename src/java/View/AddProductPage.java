@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.ProductErrorHandling;
 import Controller.Main;
 import Model.Category;
 import Model.Supplier;
@@ -10,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
+import java.util.ArrayList;
+
 /**
  * Page where the user adds a product.
  */
@@ -18,11 +22,9 @@ public class AddProductPage {
     @FXML private TextField name;
     @FXML private TextField stock;
     @FXML private TextField price;
-    @FXML private TextField categoryID;
     @FXML private ComboBox<Category> categories;
     @FXML private TextField shelfPosition;
     @FXML private ComboBox<Supplier> suppliers;
-    @FXML private TextField supplierID;
     @FXML private TextField cost;
 
     /**
@@ -49,10 +51,48 @@ public class AddProductPage {
      * @param e     Event that triggers the method.
      */
     public void addProduct(ActionEvent e) {
-        facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID.getText(), shelfPosition.getText(), supplierID.getText(), cost.getText());
-        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
-        facilitator.updateProductTable();
+        String categoryID = String.valueOf(categories.getValue().getID());
+        String supplierID = String.valueOf(suppliers.getValue().getId());
+
+        ArrayList<String> warnings = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText());
+
+        if(warnings == null) {
+            facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelfPosition.getText(), supplierID, cost.getText());
+            facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+            facilitator.updateProductTable();
+        } else {
+            if(!ProductErrorHandling.isStockOk()) {
+                stock.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                stock.setStyle("-fx-border-color: #1F701D;");
+            }
+
+            if(!ProductErrorHandling.isPriceOk()) {
+                price.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                price.setStyle("-fx-border-color: #1F701D;");
+            }
+
+            if(!ProductErrorHandling.isCostOk()) {
+                cost.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                cost.setStyle("-fx-border-color: #1F701D;");
+            }
+
+            name.setStyle("-fx-border-color: #1F701D;");
+            categories.setStyle("-fx-border-color: #1F701D;");
+            suppliers.setStyle("-fx-border-color: #1F701D;");
+            shelfPosition.setStyle("-fx-border-color: #1F701D;");
+
+            StringBuilder strBuilder = new StringBuilder();
+            for(String s : warnings) {
+                strBuilder.append(s).append("\n");
+            }
+            String str = strBuilder.toString();
+            JOptionPane.showMessageDialog(null, str);
+        }
     }
+
 
     /**
      * Cancels the page and goes back to ApplicationPage.

@@ -95,8 +95,7 @@ public class DBController {
     }
 
     public boolean createCategory(String name) {
-        Category category = new Category(name);
-        return dbCategory.createCategory(category);
+        return dbCategory.createCategory(name);
     }
 
     public boolean addSupplier(Supplier supplier) {
@@ -115,8 +114,9 @@ public class DBController {
         dbProduct.removeProduct(productID);
     }
 
-    public void updateProduct(Product productUpdate) {
-        dbProduct.updateProductSetup(productUpdate);
+    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
+        dbProduct.updateProductSetup(id, name, quantity, categoryID, price, shelf, cost);
+
     }
 
     public void updateSupplier(Supplier supplierUpdate) {
@@ -134,10 +134,16 @@ public class DBController {
     public ArrayList<Category> getCategoryList() {
         return dbCategory.getCategoryList();
     }
+
     public boolean getCSVProductList(String filepath) {
         boolean isValid = false;
          csvImport.readProductFromCSVFile(filepath);
          return isValid;
 
+
+
+    public boolean usernameExists(String username) {
+
+        return dbUser.usernameExists(username);
     }
 }
