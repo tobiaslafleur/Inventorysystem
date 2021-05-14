@@ -45,7 +45,6 @@ public class CSVImport {
     }
 
     private void createProductCSV(String[] CSVData){
-
         String name = CSVData[0];
         int stock = Integer.parseInt(CSVData[1]);
         BigDecimal price = new BigDecimal(CSVData[2]);
