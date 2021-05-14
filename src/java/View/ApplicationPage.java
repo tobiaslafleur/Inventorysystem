@@ -46,7 +46,7 @@ public class ApplicationPage {
     @FXML private ComboBox<String> tableBox;
     @FXML private Hyperlink removeBtn;
     @FXML private Button editBtn;
-    @FXML private Button importCSVBtn;
+
     //Supplier table and columns
     @FXML private TableView<Supplier> supplierTable;
     @FXML private TableColumn<Supplier, String> supNameCol;
@@ -245,7 +245,7 @@ public class ApplicationPage {
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
     }
-    public void CSVImport(ActionEvent event) {
+    public void CSVImport() {
         Stage stage = new Stage();
         stage.setIconified(true);
         try {
@@ -256,5 +256,8 @@ public class ApplicationPage {
         } catch (Exception ignore) {
             //Ignorerar .getPath null value när man stänger FileChooser
         }
+    }
+    public void accountSettingsBtn(ActionEvent event) {
+        facilitator.changeWindow(event, "/fxml/AccountSettingsPage.fxml");
     }
     }

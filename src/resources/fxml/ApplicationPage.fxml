@@ -40,12 +40,15 @@
                   <Image url="@../images/import.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountSettingsBtn" layoutX="3.0" layoutY="217.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Account Settings" />
-            <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" layoutX="3.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/settings.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="accountSettingsBtn" layoutY="217.0" onAction="#accountSettingsBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Account Settings">
+               <graphic>
+                  <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <Hyperlink fx:id="addBtn" layoutX="759.0" layoutY="28.0" onAction="#add" prefHeight="23.0" prefWidth="24.0" text="+">
