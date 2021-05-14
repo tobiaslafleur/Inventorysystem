@@ -7,15 +7,14 @@ import Model.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javax.swing.*;
-import java.io.File;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -59,6 +58,13 @@ public class ApplicationPage {
         setInstance();
         initColumns();
         updateTable();
+
+        searchText.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent actionEvent) {
+                search();
+            }
+        });
     }
 
     public void setInstance() {
@@ -96,12 +102,26 @@ public class ApplicationPage {
     }
 
     public void search() {
-        if(searchText.getText() != "") {
-           ArrayList<Product> searchList = facilitator.getSearchList(searchText.getText());
-            ObservableList<Product> list = FXCollections.observableArrayList();
+        if(searchText.getText() != "" && tableBox.getValue().equals("Product")) {
+           ArrayList<Product> searchList = facilitator.getProductSearch(searchText.getText());
+           ObservableList<Product> list = FXCollections.observableArrayList();
+
+           list.addAll(searchList);
+           infoTable.setItems(list);
+        }
+        else if(searchText.getText() != "" && tableBox.getValue().equals("Category")) {
+            ArrayList<Category> searchList = facilitator.getCategorySearch(searchText.getText());
+            ObservableList<Category> list = FXCollections.observableArrayList();
 
             list.addAll(searchList);
-            infoTable.setItems(list);
+            categoryTable.setItems(list);
+        }
+        else if(searchText.getText() != "" && tableBox.getValue().equals("Supplier")) {
+            ArrayList<Supplier> searchList = facilitator.getSupplierSearch(searchText.getText());
+            ObservableList<Supplier> list = FXCollections.observableArrayList();
+
+            list.addAll(searchList);
+            supplierTable.setItems(list);
         }
     }
 
@@ -138,7 +158,6 @@ public class ApplicationPage {
     }
     public void initCategoryTable() {
         catNameCol.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
-
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
         categoryList.addAll(facilitator.getCategoryList());
         categoryTable.setItems(categoryList);
