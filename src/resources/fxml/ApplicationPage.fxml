@@ -40,7 +40,7 @@
                   <Image url="@../images/import.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountSettingsBtn" layoutY="217.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Account Settings">
+            <Button fx:id="accountSettingsBtn" layoutY="217.0" onAction="#accountSettingsBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Account Settings">
                <graphic>
                   <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
