@@ -151,4 +151,8 @@ public class DBController {
     public ArrayList<Supplier> getSupplierSearch(String searchText) {
         return dbSupplier.getSupplierSearch(searchText);
     }
+
+    public void editUser(String userPhone, String userLanguage, String userAddress, String userOldpassword, String userNewpassword) {
+        dbUser.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
+    }
 }

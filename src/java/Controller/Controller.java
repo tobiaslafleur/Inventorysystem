@@ -62,6 +62,9 @@ public class Controller {
         Supplier supplierUpdate = new Supplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, supID);
         dbController.updateSupplier(supplierUpdate);
     }
+    public void editUser( String userPhone, String userLanguage, String userAddress, String userOldpassword, String userNewpassword){
+        dbController.editUser(userPhone, userLanguage,userAddress, userOldpassword, userNewpassword);
+    }
 
     public ArrayList<Product> getProductSearch(String searchText) {
         return dbController.getProductSearch(searchText);

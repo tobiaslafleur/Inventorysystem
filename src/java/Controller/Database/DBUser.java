@@ -107,4 +107,30 @@ public class DBUser {
         }
         return false;
     }
+    public boolean editUser(String userPhone, String userLanguage, String userAddress, String userOldpassword, String userNewpassword) {
+        // NOT FINISHED, TOO TIRED
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            String query =
+                    "UPDATE [User] WHERE ( password, address, phone) " +
+                            "VALUES(?, ?, ?)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+
+
+            preparedStatement.execute();
+            preparedStatement.close();
+            conn.close();
+            dbController.disconnect();
+            return true;
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }
