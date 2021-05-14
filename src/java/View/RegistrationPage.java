@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RegistrationPage {
     private static RegistrationPage instance;
@@ -50,6 +51,7 @@ public class RegistrationPage {
         lblEnterAllFields.setVisible(false);
 
         cmbAreaCodes.getItems().addAll("+46");
+        cmbAreaCodes.setId("cmb-area");
 
         btnCheck.setId("check-btn");
         btnCheck.setOnAction(new EventHandler<ActionEvent>() {
@@ -88,12 +90,12 @@ public class RegistrationPage {
         phone.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent actionEvent) {
-                if(RegistrationPageHandling.isPhoneValid(phone.getText())){
+                if(RegistrationPageHandling.isPhoneValid(phone.getText()) && !(cmbAreaCodes.getValue() == null)){
                     phone.setStyle("-fx-border-color: #8EFF8B;");
                     lblPhoneWarning.setText("");
                 } else {
                     phone.setStyle("-fx-border-color: #EB5D5D;");
-                    lblPhoneWarning.setText("Enter a valid number");
+                    lblPhoneWarning.setText("Enter a valid number and select area code");
                 }
             }
         });
@@ -165,18 +167,33 @@ public class RegistrationPage {
     }
 
     public void register(javafx.event.ActionEvent event) {
-        ArrayList<String> warnings = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), address.getText(), password.getText(), repeatedPW.getText(), facilitator);
-
+        ArrayList<String> warnings = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), cmbAreaCodes.getValue(), password.getText(), repeatedPW.getText(), facilitator);
         checkUsername();
 
         //If no warnings, create account
         if(warnings == null){
             String areacode = cmbAreaCodes.getValue();
-            String number = areacode + phone.getText();
+            String number;
+            if(phone.getText().toCharArray()[0] == '0'){
+                char[] temp = Arrays.copyOfRange(phone.getText().toCharArray(), 1, phone.getText().length());
+
+                StringBuilder strBuilder = new StringBuilder();
+                for(char c : temp) {
+                    strBuilder.append(c);
+                }
+                String str = strBuilder.toString();
+                number = areacode + str;
+
+            } else {
+                number = areacode + phone.getText();
+            }
             System.out.println(number);
             facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
             facilitator.createUser(username.getText(), password.getText(), email.getText(), number, address.getText());
         } else {
+            if(!RegistrationPageHandling.isAreaCodeValid(cmbAreaCodes.getValue())) {
+                cmbAreaCodes.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
+            }
             lblEnterAllFields.setVisible(true);
         }
     }
