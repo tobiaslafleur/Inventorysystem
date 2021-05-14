@@ -1,31 +1,61 @@
 package View;
 
 import Controller.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import javax.swing.*;
-import java.awt.*;
-
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class LoginPage {
     private static LoginPage instance;
     private GUIFacilitator facilitator;
 
+    private Stage stage;
+
+    @FXML private AnchorPane window;
+    @FXML private AnchorPane dragAnchor;
     @FXML private TextField username = new TextField();
     @FXML private PasswordField password = new PasswordField();
     @FXML private Button loginBtn = new Button();
     @FXML private Label lblFailed;
 
+    private double x = 0, y = 0;
+
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+        fixFocus();
+        dragAnchor();
         lblFailed.setVisible(false);
+    }
+
+    private void fixFocus() {
+        Platform.runLater(() -> window.requestFocus());
+    }
+
+    private void dragAnchor() {
+        dragAnchor.setOnMousePressed(((event) -> {
+            fixFocus();
+            x = event.getX();
+            y = event.getY();
+        }));
+
+        dragAnchor.setOnMouseDragged(((event) -> {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+
+        dragAnchor.setOnMouseReleased(((event) -> {
+            stage.setOpacity(1f);
+        }));
     }
 
     public void setInstance() {
