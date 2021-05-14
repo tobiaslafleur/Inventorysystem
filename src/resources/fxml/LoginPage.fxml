@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="window" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
+<AnchorPane fx:id="window" onMouseClicked="#windowClicked" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
    <children>
       <AnchorPane fx:id="dragAnchor" prefHeight="25.0" prefWidth="227.0">
          <children>

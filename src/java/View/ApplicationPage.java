@@ -4,14 +4,17 @@ import Controller.Main;
 import Model.Category;
 import Model.Product;
 import Model.Supplier;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,6 +24,11 @@ import java.util.ArrayList;
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
+
+    private Stage stage;
+
+    @FXML private AnchorPane TableControls;
+    @FXML private AnchorPane dragAnchor;
 
     //Product table and columns
     @FXML private TableView<Product> infoTable;
@@ -51,11 +59,14 @@ public class ApplicationPage {
     @FXML private TableView<Category> categoryTable;
     @FXML private TableColumn<Category, String> catNameCol;
 
+    private double x = 0, y = 0;
 
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+        fixFocus();
+        dragAnchor();
         initColumns();
         updateTable();
 
@@ -67,11 +78,35 @@ public class ApplicationPage {
         });
     }
 
+    @FXML private void anchorPaneClicked() {
+        fixFocus();
+    }
+
+    private void fixFocus() {
+        Platform.runLater(() -> TableControls.requestFocus());
+    }
+
+    private void dragAnchor() {
+        dragAnchor.setOnMousePressed(((event) -> {
+            fixFocus();
+            x = event.getX();
+            y = event.getY();
+        }));
+
+        dragAnchor.setOnMouseDragged(((event) -> {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+
+        dragAnchor.setOnMouseReleased(((event) -> {
+            stage.setOpacity(1f);
+        }));
+    }
+
     public void setInstance() {
         facilitator.setApplicationInstance(instance);
     }
-
-
 
     public void add(ActionEvent e) {
         if(tableBox.getValue().equals("Supplier")) {

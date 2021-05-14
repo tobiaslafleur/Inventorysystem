@@ -13,21 +13,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TableControls" prefHeight="459.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
+<AnchorPane fx:id="TableControls" onMouseClicked="#anchorPaneClicked" prefHeight="459.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
     <children>
-        <TextField fx:id="searchText" layoutX="108" layoutY="30.0" promptText="Search">
+      <AnchorPane fx:id="dragAnchor" prefHeight="25.0" prefWidth="736.0" />
+        <TextField fx:id="searchText" layoutX="102.0" layoutY="30.0" promptText="Search">
             <tooltip>
                 <Tooltip text="Search" />
             </tooltip>
         </TextField>
         <Hyperlink fx:id="AppClose" layoutX="755.0" layoutY="2.0" onAction="#close" text="x" />
         <Hyperlink fx:id="AppMinimize" layoutX="741.0" layoutY="2.0" onAction="#minimize" prefHeight="23.0" prefWidth="14.0" text="-" />
-        <AnchorPane fx:id="SideMenu" prefHeight="459.0" prefWidth="91.0">
+        <AnchorPane fx:id="SideMenu" prefHeight="494.0" prefWidth="103.0">
             <children>
                 <Hyperlink layoutX="25.0" layoutY="409.0" prefHeight="23.0" prefWidth="24.0" text="SV" />
                 <Label layoutX="47.0" layoutY="412.0" prefHeight="17.0" prefWidth="5.0" text="|" />
                 <Hyperlink layoutX="50.0" layoutY="409.0" prefHeight="23.0" prefWidth="24.0" text="EN" />
-                <ImageView fx:id="profilePic" blendMode="DARKEN" fitHeight="111.0" fitWidth="98.0" layoutX="5.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profilePic" blendMode="DARKEN" fitHeight="111.0" fitWidth="98.0" layoutX="5.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/user.jpg" />
                     </image>
@@ -103,7 +104,7 @@
           <TableColumn fx:id="catNameCol" prefWidth="193.99996948242188" text="Category Name" />
         </columns>
       </TableView>
-      <TableView fx:id="supplierTable" layoutX="107.0" layoutY="58.0" prefHeight="401.0" prefWidth="677.0">
+      <TableView fx:id="supplierTable" layoutX="101.0" layoutY="58.0" prefHeight="436.0" prefWidth="685.0">
         <columns>
           <TableColumn fx:id="supNameCol" prefWidth="114.66665649414062" text="Name" />
           <TableColumn fx:id="supPhoneCol" prefWidth="110.6666259765625" text="Phone" />
