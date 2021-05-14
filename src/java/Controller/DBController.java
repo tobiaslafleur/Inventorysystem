@@ -123,8 +123,8 @@ public class DBController {
         dbSupplier.updateSupplierSetup(supplierUpdate);
     }
 
-    public ArrayList<Product> getSearchList(String searchText) {
-        return dbProduct.getSearchList(searchText);
+    public ArrayList<Product> getProductSearch(String searchText) {
+        return dbProduct.getProductSearch(searchText);
     }
 
     public ArrayList<Supplier> getSupplierList() {
@@ -142,5 +142,13 @@ public class DBController {
     }
     public boolean usernameExists(String username) {
         return dbUser.usernameExists(username);
+    }
+
+    public ArrayList<Category> getCategorySearch(String searchText) {
+        return dbCategory.getCategorySearch(searchText);
+    }
+
+    public ArrayList<Supplier> getSupplierSearch(String searchText) {
+        return dbSupplier.getSupplierSearch(searchText);
     }
 }

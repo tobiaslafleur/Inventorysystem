@@ -4,19 +4,15 @@ import Controller.Controller;
 import Model.Category;
 import Model.Product;
 import Model.Supplier;
-import Model.CSVImport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -111,9 +107,16 @@ public class GUIFacilitator {
         controller.updateSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, id);
     }
 
-    public ArrayList<Product> getSearchList(String searchText) {
-        return controller.getSearchList(searchText);
+    public ArrayList<Product> getProductSearch(String searchText) {
+        return controller.getProductSearch(searchText);
 
+    }
+    public ArrayList<Category> getCategorySearch(String searchText) {
+        return controller.getCategorySearch(searchText);
+    }
+
+    public ArrayList<Supplier> getSupplierSearch(String searchText) {
+        return controller.getSupplierSearch(searchText);
     }
 
     public void close(ActionEvent event) {

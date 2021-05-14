@@ -4,7 +4,7 @@ package Model;
  * The category-object.
  */
 public class Category {
-
+    private int ID;
     private String name;
 
     public int getID() {
@@ -14,8 +14,6 @@ public class Category {
     public void setID(int ID) {
         this.ID = ID;
     }
-
-    private int ID;
 
     public Category(String name, int ID){
         this.name = name;

@@ -1,6 +1,7 @@
 package Controller.Database;
 
 import Controller.DBController;
+import Model.Category;
 import Model.Supplier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +11,11 @@ import java.util.ArrayList;
 
 public class DBSupplier {
     private DBController dbController;
+    private ArrayList<Supplier> searchList;
 
     public DBSupplier(DBController dbController) {
         this.dbController = dbController;
+        this.searchList = new ArrayList<>();
     }
 
     public ArrayList<Supplier> getSupplierList() {
@@ -131,6 +134,63 @@ public class DBSupplier {
             preparedStatement.execute();
             preparedStatement.close();
 
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Supplier> getSupplierSearch(String searchText) {
+        searchList.clear();
+        createSearchList(searchText);
+        return searchList;
+    }
+
+    private void createSearchList(String searchText) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+            int searchNumber = 0;
+            String query;
+            PreparedStatement prep = null;
+
+            try {
+                searchNumber = Integer.parseInt(searchText);
+            } catch (Exception e) {}
+
+            if(searchNumber > 0 && searchNumber < 100000) {
+                query = "Select * from ViewSupplier WHERE supplier_id = ? AND [user_id] = ?";
+                prep = conn.prepareStatement(query);
+                prep.setInt(1, searchNumber);
+                prep.setInt(2, dbController.getUser().getUserID());
+
+            } else {
+                query = "Select * from ViewSupplier WHERE " +
+                        "([name] Like ? OR phone LIKE ? OR street LIKE ? " +
+                        "OR city LIKE ? OR country LIKE ? OR email LIKE ?) AND [user_id] = ?";
+                prep = conn.prepareStatement(query);
+                prep.setString(1, "%" + searchText + "%");
+                prep.setString(2, "%" + searchText + "%");
+                prep.setString(3, "%" + searchText + "%");
+                prep.setString(4, "%" + searchText + "%");
+                prep.setString(5, "%" + searchText + "%");
+                prep.setString(6, "%" + searchText + "%");
+                prep.setInt(7, dbController.getUser().getUserID());
+            }
+
+            ResultSet rs = prep.executeQuery();
+            while(rs.next()) {
+                int supplierID = rs.getInt("supplier_id");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone");
+                String street = rs.getString("street");
+                String city = rs.getString("city");
+                String country = rs.getString("country");
+                String email = rs.getString("email");
+
+                Supplier supplier = new Supplier(name, phone, street, city, country, email, supplierID);
+                searchList.add(supplier);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

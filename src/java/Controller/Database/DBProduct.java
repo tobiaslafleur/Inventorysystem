@@ -121,7 +121,7 @@ public class DBProduct {
      * @param searchString is the search term.
      * @return returns an Arraylist of products resulting from the search.
      */
-    public ArrayList<Product> getSearchList(String searchString) {
+    public ArrayList<Product> getProductSearch(String searchString) {
         searchList.clear();
         createSearchList(searchString);
         return searchList;

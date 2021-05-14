@@ -5,7 +5,6 @@ import Model.Product;
 import Model.Supplier;
 import Model.User;
 import View.GUIFacilitator;
-import javafx.stage.FileChooser;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class Controller {
         dbController.updateSupplier(supplierUpdate);
     }
 
-    public ArrayList<Product> getSearchList(String searchText) {
-        return dbController.getSearchList(searchText);
+    public ArrayList<Product> getProductSearch(String searchText) {
+        return dbController.getProductSearch(searchText);
 
     }
 
@@ -83,5 +82,13 @@ public class Controller {
     }
     public boolean usernameExists(String username) {
         return dbController.usernameExists(username);
+    }
+
+    public ArrayList<Category> getCategorySearch(String searchText) {
+        return dbController.getCategorySearch(searchText);
+    }
+
+    public ArrayList<Supplier> getSupplierSearch(String searchText) {
+        return dbController.getSupplierSearch(searchText);
     }
 }
