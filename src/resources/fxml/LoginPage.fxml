@@ -12,6 +12,10 @@
 
 <AnchorPane fx:id="window" prefHeight="374.0" prefWidth="268.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
    <children>
+      <AnchorPane fx:id="dragAnchor" prefHeight="25.0" prefWidth="227.0">
+         <children>
+            <Hyperlink fx:id="register" layoutX="4.0" layoutY="1.0" onAction="#register" text="Create Account" />
+         </children></AnchorPane>
       <ImageView fitHeight="107.0" fitWidth="103.0" layoutX="83.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo.png" />
@@ -24,13 +28,12 @@
             <Font size="9.0" />
          </font></Hyperlink>
       <Button fx:id="loginBtn" layoutY="334.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="268.0" text="Log in" />
-      <Hyperlink fx:id="register" layoutX="7.0" layoutY="2.0" onAction="#register" text="Create Account" />
-      <Hyperlink fx:id="minimize" layoutX="216.0" layoutY="2.0" onAction="#minimize" prefHeight="23.0" prefWidth="20.0" text="-">
+      <Hyperlink fx:id="minimize" layoutX="227.0" layoutY="-2.0" onAction="#minimize" prefHeight="0.0" prefWidth="20.0" text="-">
          <font>
             <Font size="15.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="close" layoutX="236.0" layoutY="5.0" onAction="#close" prefHeight="23.0" prefWidth="20.0" text="x" />
+      <Hyperlink fx:id="close" layoutX="248.0" onAction="#close" prefHeight="23.0" prefWidth="20.0" text="x" />
       <Label fx:id="lblFailed" alignment="CENTER" layoutY="289.5" prefHeight="17.0" prefWidth="268.0" text="Incorrect username or password." textFill="WHITE">
          <font>
             <Font size="9.0" />
