@@ -36,6 +36,10 @@ public class LoginPage {
         lblFailed.setVisible(false);
     }
 
+    @FXML private void windowClicked() {
+        fixFocus();
+    }
+
     private void fixFocus() {
         Platform.runLater(() -> window.requestFocus());
     }

@@ -2,12 +2,16 @@ package View;
 
 import Controller.ErrorHandling.RegistrationPageHandling;
 import Controller.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -17,6 +21,10 @@ public class RegistrationPage {
     private static RegistrationPage instance;
     private GUIFacilitator facilitator;
 
+    private Stage stage;
+
+    @FXML private AnchorPane anchorPane;
+    @FXML private AnchorPane dragAnchor;
     @FXML private TextField username;
     @FXML private TextField email;
     @FXML private TextField phone;
@@ -37,10 +45,14 @@ public class RegistrationPage {
 
     @FXML private Label lblEnterAllFields;
 
+    private double x = 0, y = 0;
+
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+        fixFocus();
+        dragAnchor();
 
         lblUsernameWarning.setText("");
         lblPhoneWarning.setText("");
@@ -146,6 +158,32 @@ public class RegistrationPage {
                 }
             }
         });
+    }
+
+    @FXML private void anchorPaneClicked() {
+        fixFocus();
+    }
+
+    private void fixFocus() {
+        Platform.runLater(() -> anchorPane.requestFocus());
+    }
+
+    private void dragAnchor() {
+        dragAnchor.setOnMousePressed(((event) -> {
+            fixFocus();
+            x = event.getX();
+            y = event.getY();
+        }));
+
+        dragAnchor.setOnMouseDragged(((event) -> {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        }));
+
+        dragAnchor.setOnMouseReleased(((event) -> {
+            stage.setOpacity(1f);
+        }));
     }
 
     private void setInstance() {
