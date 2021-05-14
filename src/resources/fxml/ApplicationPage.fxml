@@ -13,45 +13,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TableControls" onMouseClicked="#anchorPaneClicked" prefHeight="459.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
+<AnchorPane fx:id="TableControls" blendMode="COLOR_BURN" onMouseClicked="#anchorPaneClicked" prefHeight="504.0" prefWidth="844.0" stylesheets="@../Stylesheets/Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
     <children>
-      <AnchorPane fx:id="dragAnchor" prefHeight="25.0" prefWidth="736.0" />
-        <TextField fx:id="searchText" layoutX="102.0" layoutY="30.0" promptText="Search">
+      <AnchorPane fx:id="dragAnchor" layoutX="-1.0" prefHeight="25.0" prefWidth="737.0" />
+        <TextField fx:id="searchText" layoutX="149.0" layoutY="30.0" promptText="Search">
             <tooltip>
                 <Tooltip text="Search" />
             </tooltip>
         </TextField>
-        <Hyperlink fx:id="AppClose" layoutX="755.0" layoutY="2.0" onAction="#close" text="x" />
-        <Hyperlink fx:id="AppMinimize" layoutX="741.0" layoutY="2.0" onAction="#minimize" prefHeight="23.0" prefWidth="14.0" text="-" />
-        <AnchorPane fx:id="SideMenu" prefHeight="494.0" prefWidth="103.0">
+        <Hyperlink fx:id="AppClose" layoutX="867.0" layoutY="2.0" onAction="#close" text="x" />
+        <Hyperlink fx:id="AppMinimize" layoutX="847.0" layoutY="2.0" onAction="#minimize" prefHeight="23.0" prefWidth="14.0" text="-" />
+        <AnchorPane fx:id="SideMenu" prefHeight="504.0" prefWidth="149.0">
             <children>
-                <Hyperlink layoutX="25.0" layoutY="409.0" prefHeight="23.0" prefWidth="24.0" text="SV" />
-                <Label layoutX="47.0" layoutY="412.0" prefHeight="17.0" prefWidth="5.0" text="|" />
-                <Hyperlink layoutX="50.0" layoutY="409.0" prefHeight="23.0" prefWidth="24.0" text="EN" />
-                <ImageView fx:id="profilePic" blendMode="DARKEN" fitHeight="111.0" fitWidth="98.0" layoutX="5.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                <Hyperlink layoutX="51.0" layoutY="436.0" prefHeight="23.0" prefWidth="24.0" text="SV" />
+                <Label layoutX="71.0" layoutY="439.0" prefHeight="17.0" prefWidth="5.0" text="|" />
+                <Hyperlink layoutX="75.0" layoutY="436.0" prefHeight="23.0" prefWidth="24.0" text="EN" />
+                <ImageView fx:id="profilePic" blendMode="DARKEN" fitHeight="103.0" fitWidth="108.0" layoutX="5.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/user.jpg" />
                     </image>
                 </ImageView>
-                <Hyperlink fx:id="logOut" layoutX="23.0" layoutY="433.0" onAction="#logOut" text="Log Out" />
-            <Button id="CSVbtn" fx:id="importCSVBtn" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" onAction="#CSVImport" prefHeight="25.0" prefWidth="98.0" text="Import CSV" />
-            <ImageView blendMode="DARKEN" fitHeight="16.0" fitWidth="17.0" layoutX="3.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+                <Hyperlink fx:id="logOut" layoutX="48.0" layoutY="460.0" onAction="#logOut" text="Log Out" />
+            <Button id="CSVbtn" fx:id="importCSVBtn" layoutX="3.0" layoutY="181.0" mnemonicParsing="false" onAction="#CSVImport" prefHeight="30.0" prefWidth="135.0" text="Import CSV" />
+            <ImageView blendMode="DARKEN" fitHeight="16.0" fitWidth="17.0" layoutX="6.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/import.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountSettingsBtn" layoutY="217.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Account Settings">
-               <graphic>
-                  <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/settings.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Button fx:id="accountSettingsBtn" layoutX="3.0" layoutY="217.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Account Settings" />
+            <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" layoutX="3.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/settings.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
-        <Hyperlink fx:id="addBtn" layoutX="648.0" layoutY="28.0" onAction="#add" prefHeight="23.0" prefWidth="24.0" text="+">
+        <Hyperlink fx:id="addBtn" layoutX="759.0" layoutY="28.0" onAction="#add" prefHeight="23.0" prefWidth="24.0" text="+">
             <tooltip>
                 <Tooltip text="Add Product" />
             </tooltip>
@@ -59,7 +56,7 @@
                 <Font size="15.0" />
             </font>
         </Hyperlink>
-        <Hyperlink fx:id="removeBtn" layoutX="632.0" layoutY="28.0" onAction="#remove" text="-">
+        <Hyperlink fx:id="removeBtn" layoutX="736.0" layoutY="28.0" onAction="#remove" text="-">
             <font>
                 <Font size="15.0" />
             </font>
@@ -67,17 +64,8 @@
                 <Tooltip text="Remove Product" />
             </tooltip>
         </Hyperlink>
-        <Button fx:id="searchBtn" layoutX="256.0" layoutY="31.0" mnemonicParsing="false" onAction="#search" prefHeight="8.0" prefWidth="14.0">
-            <graphic>
-                <ImageView blendMode="COLOR_BURN" fitHeight="14.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/search.jpg" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <ComboBox fx:id="tableBox" layoutX="672.0" layoutY="30.0" onAction="#tableSelection" prefHeight="25.0" prefWidth="98.0" />
-      <Button fx:id="editBtn" layoutX="596.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="23.0" prefWidth="34.0">
+        <ComboBox fx:id="tableBox" layoutX="783.0" layoutY="30.0" onAction="#tableSelection" prefHeight="25.0" prefWidth="98.0" />
+      <Button fx:id="editBtn" layoutX="700.0" layoutY="29.0" mnemonicParsing="false" onAction="#update" prefHeight="23.0" prefWidth="34.0">
          <graphic>
             <ImageView blendMode="DARKEN" fitHeight="23.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -86,7 +74,7 @@
             </ImageView>
          </graphic>
       </Button>
-        <TableView fx:id="infoTable" layoutX="107.0" layoutY="57.5" prefHeight="401.0" prefWidth="677.0">
+        <TableView fx:id="infoTable" layoutX="149.0" layoutY="58.0" prefHeight="446.0" prefWidth="737.0">
             <columns>
                 <TableColumn fx:id="colID" prefWidth="75.0" text="ProductID" />
                 <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
@@ -99,12 +87,7 @@
             <TableColumn fx:id="colCost" prefWidth="75.0" text="Cost" />
             </columns>
         </TableView>
-      <TableView fx:id="categoryTable" layoutX="107.0" layoutY="58.0" prefHeight="401.0" prefWidth="677.0">
-        <columns>
-          <TableColumn fx:id="catNameCol" prefWidth="193.99996948242188" text="Category Name" />
-        </columns>
-      </TableView>
-      <TableView fx:id="supplierTable" layoutX="101.0" layoutY="58.0" prefHeight="436.0" prefWidth="685.0">
+      <TableView fx:id="supplierTable" layoutX="149.0" layoutY="58.0" prefHeight="446.0" prefWidth="737.0">
         <columns>
           <TableColumn fx:id="supNameCol" prefWidth="114.66665649414062" text="Name" />
           <TableColumn fx:id="supPhoneCol" prefWidth="110.6666259765625" text="Phone" />
@@ -114,5 +97,16 @@
             <TableColumn fx:id="supEmailCol" prefWidth="143.33333333333337" text="Email" />
         </columns>
       </TableView>
+      <TableView fx:id="categoryTable" layoutX="149.0" layoutY="58.0" prefHeight="446.0" prefWidth="737.0">
+        <columns>
+            <TableColumn fx:id="catIDCol" prefWidth="156.00000762939453" text="Category ID" />
+          <TableColumn fx:id="catNameCol" prefWidth="224.00003051757812" text="Category Name" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="149.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/search.jpg" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

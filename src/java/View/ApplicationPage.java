@@ -58,6 +58,7 @@ public class ApplicationPage {
     //Category table and column
     @FXML private TableView<Category> categoryTable;
     @FXML private TableColumn<Category, String> catNameCol;
+    @FXML private TableColumn<Category, String> catIDCol;
 
     private double x = 0, y = 0;
 
@@ -189,12 +190,16 @@ public class ApplicationPage {
 
         ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
         supplierList.addAll(facilitator.getSupplierList());
+        supplierTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         supplierTable.setItems(supplierList);
     }
     public void initCategoryTable() {
         catNameCol.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
+        catIDCol.setCellValueFactory(new PropertyValueFactory<Category, String>("ID"));
+
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
         categoryList.addAll(facilitator.getCategoryList());
+        categoryTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         categoryTable.setItems(categoryList);
     }
 
@@ -228,6 +233,7 @@ public class ApplicationPage {
         ObservableList<Product> list = FXCollections.observableArrayList();
 
         list.addAll(productList);
+        infoTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         infoTable.setItems(list);
     }
     public void logOut(ActionEvent event) {
