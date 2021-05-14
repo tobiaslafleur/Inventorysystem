@@ -73,7 +73,7 @@
             <Image url="@../images/questionmark.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="cmbAreaCodes" layoutX="55.0" layoutY="256.0" prefHeight="25.0" prefWidth="70.0" promptText="+46" />
+      <ComboBox fx:id="cmbAreaCodes" layoutX="61.0" layoutY="256.0" prefHeight="25.0" prefWidth="64.0" promptText="+xx" />
       <Label fx:id="lblEnterAllFields" alignment="CENTER" layoutX="1.0" layoutY="482.0" prefHeight="17.0" prefWidth="400.0" text="Account not created. Make sure all fields are green." textAlignment="CENTER" textFill="#f2f2f2">
          <font>
             <Font size="10.0" />

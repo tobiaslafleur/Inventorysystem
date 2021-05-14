@@ -95,3 +95,10 @@
     -fx-text-fill: #5F807F;
     -fx-font-size: 9px;
 }
+
+#cmb-area {
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}

@@ -6,18 +6,11 @@ import java.util.ArrayList;
 
 public class RegistrationPageHandling {
 
-    private static boolean passwordOk = true;
-    private static boolean usernameOk = true;
-    private static boolean addressOk = true;
-    private static boolean emailOk = true;
-    private static boolean repeatPwOk = true;
-    private static boolean phoneOk = true;
-
     private static final int PASSWORD_MIN_LENGTH = 8;
     private static ArrayList<String> warnings = new ArrayList<>();
 
 
-    public static ArrayList<String> errorHandling(String username, String email, String phone, String address, String password, String repeated, GUIFacilitator facilitator) {
+    public static ArrayList<String> errorHandling(String username, String email, String phone, String areacode, String password, String repeated, GUIFacilitator facilitator) {
 
         if(!warnings.isEmpty()) {
             warnings.clear();
@@ -26,42 +19,30 @@ public class RegistrationPageHandling {
         //username
         if(!isUsernameValid(username, facilitator)){
             warnings.add("Username already in use");
-            usernameOk = false;
         } else if(username.isEmpty()) {
             warnings.add("Enter a username");
-            usernameOk = false;
-        } else {
-            usernameOk = true;
         }
 
         //check password
         if(!isPasswordValid(password)) {
             warnings.add("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
-            passwordOk = false;
-        } else {
-            passwordOk = true;
         }
 
         //check email
         if(!isEmailValid(email)){
             warnings.add("Enter a valid email");
-            emailOk = false;
-        } else {
-            emailOk = true;
         }
 
         if(!isRepeatValid(password, repeated)) {
             warnings.add("Passwords must match");
-            repeatPwOk = false;
-        } else {
-            repeatPwOk = true;
         }
 
         if(!isPhoneValid(phone)) {
             warnings.add("Enter a valid number");
-            phoneOk = false;
-        } else {
-            phoneOk = true;
+        }
+
+        if(!isAreaCodeValid(areacode)) {
+            warnings.add("Select an area code");
         }
 
         if(warnings.isEmpty()){
@@ -71,12 +52,19 @@ public class RegistrationPageHandling {
         }
     }
 
+    public static boolean isAreaCodeValid(String areacode) {
+        if(areacode == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static boolean isPhoneValid(String phone) {
         try{
             if(Integer.parseInt(phone) > 10000000) {
                 return true;
             } else {
-                warnings.add("Enter a valid number");
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -90,12 +78,14 @@ public class RegistrationPageHandling {
     }
 
     public static boolean isEmailValid(String email) {
-        return email.contains("@");
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 
     public static boolean isUsernameValid(String username, GUIFacilitator facilitator){
         if(!usernameExists(username, facilitator)){
-            warnings.add("Username already in use");
             return false;
         } else {
             return true;
@@ -129,30 +119,5 @@ public class RegistrationPageHandling {
             return false;
         }
         return !facilitator.usernameExists(username);
-    }
-
-    public static boolean isPasswordOk() {
-        return passwordOk;
-    }
-
-    public static boolean isUsernameOk() {
-        return usernameOk;
-    }
-
-    public static boolean isAddressOk() {
-        return addressOk;
-    }
-
-    public static boolean isEmailOk() {
-        System.out.println(emailOk);
-        return emailOk;
-    }
-
-    public static boolean isRepeatPwOk() {
-        return repeatPwOk;
-    }
-
-    public static boolean isPhoneOk() {
-        return phoneOk;
     }
 }
