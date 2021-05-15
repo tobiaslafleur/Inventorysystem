@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TableControls" onMouseClicked="#anchorPaneClicked" prefHeight="600.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AccountSettingsPage">
+<AnchorPane fx:id="TableControls2" onMouseClicked="#anchorPaneClicked" prefHeight="600.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AccountSettingsPage">
     <children>
       <AnchorPane fx:id="dragAnchor" layoutX="49.0" prefHeight="26.0" prefWidth="307.0" />
       <TextField layoutX="125.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Country" />
