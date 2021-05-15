@@ -25,6 +25,7 @@ public class GUIFacilitator {
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
     private AddSupplierPage addSupplierPage;
+    private AccountSettingsPage accountSettingsPage;
 
 
     public boolean createUser(String username, String password, String email, String phone, String address) {
@@ -45,6 +46,9 @@ public class GUIFacilitator {
 
     public void setApplicationInstance(ApplicationPage applicationPage) {
         this.applicationPage = applicationPage;
+    }
+    public void setAccountInstance(AccountSettingsPage accountSettingsPage){
+        this.accountSettingsPage = accountSettingsPage;
     }
 
     public void changeWindow(ActionEvent event, String path){
