@@ -15,7 +15,7 @@ public class AccountSettingsPage {
 
     private GUIFacilitator facilitator;
 
-    @FXML private AnchorPane TableControls;
+    @FXML private AnchorPane TableControls2;
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
     @FXML private static AccountSettingsPage instance;
@@ -42,7 +42,7 @@ public class AccountSettingsPage {
     }
 
     private void fixFocus() {
-        Platform.runLater(() -> TableControls.requestFocus());
+        Platform.runLater(() -> TableControls2.requestFocus());
     }
 
     private void dragAnchor() {
