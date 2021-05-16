@@ -90,6 +90,10 @@ public class LoginPage {
         facilitator.changeWindow(event, "/fxml/RegistrationPage.fxml");
     }
 
+    public void askForUserEmail (ActionEvent event) {
+        facilitator.changeWindow(event, "/fxml/ForgotPassword.fxml");
+    }
+
     public void close(ActionEvent event) {
         facilitator.close(event);
     }

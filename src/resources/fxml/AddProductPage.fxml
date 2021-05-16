@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProductPage">
+<AnchorPane prefHeight="400.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddProductPage">
    <children>
       <Hyperlink fx:id="close" layoutX="258.0" layoutY="2.0" onAction="#close" text="x" />
       <Hyperlink fx:id="minimize" layoutX="244.0" layoutY="2.0" onAction="#minimize" text="-" />
@@ -22,5 +22,7 @@
       </Label>
       <Hyperlink layoutX="7.0" layoutY="4.0" onAction="#cancel" text="Cancel" />
       <Button fx:id="addProduct" layoutX="-2.0" layoutY="360.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="40.0" prefWidth="279.0" text="Add product" />
+      <Button fx:id="newCategory" layoutX="4.0" layoutY="187.0" mnemonicParsing="false" onAction="#addNewCategory" text="New" />
+      <Button fx:id="newSupplier" layoutX="4.0" layoutY="260.0" mnemonicParsing="false" onAction="#addNewSupplier" text="New" />
    </children>
 </AnchorPane>

@@ -32,7 +32,7 @@
          <font>
             <Font size="14.0" />
          </font></PasswordField>
-      <Hyperlink layoutX="82.0" layoutY="335.0" text="Forgot password?" textFill="#fff9f9">
+      <Hyperlink layoutX="82.0" layoutY="335.0" text="Forgot password?" onAction="#askForUserEmail" textFill="#fff9f9">
          <font>
             <Font size="15.0" />
          </font></Hyperlink>

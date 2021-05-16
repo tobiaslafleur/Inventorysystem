@@ -19,6 +19,11 @@ public class AddCategoryPage {
         facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
     }
 
+    public void addCategoryFromAddProduct (ActionEvent e) {
+        facilitator.createCategory(categoryName.getText());
+        facilitator.changeWindow(e, "/fxml/AddProductPage.fxml");
+    }
+
     public void cancel(ActionEvent cancelCategory) {
         facilitator.changeWindow(cancelCategory, "/fxml/ApplicationPage.fxml");
     }

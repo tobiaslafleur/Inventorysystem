@@ -46,6 +46,13 @@ public class AddProductPage {
         categories.setItems(categoryList);
     }
 
+    public void addNewCategory (ActionEvent e ) {
+        facilitator.changeWindow(e, "/fxml/AddCategoryPage.fxml");
+    }
+    public void addNewSupplier (ActionEvent e ) {
+        facilitator.changeWindow(e, "/fxml/AddSupplierPage.fxml");
+    }
+
     /**
      * Adds a product to the database.
      * @param e     Event that triggers the method.
