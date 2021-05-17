@@ -25,9 +25,7 @@ import java.util.ArrayList;
 public class ApplicationPage {
     private static ApplicationPage instance;
     private GUIFacilitator facilitator;
-
     private Stage stage;
-
     @FXML private AnchorPane TableControls;
     @FXML private AnchorPane dragAnchor;
 
