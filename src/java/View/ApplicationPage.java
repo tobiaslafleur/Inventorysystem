@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -116,9 +117,17 @@ public class ApplicationPage {
         else if(tableBox.getValue().equals("Category")) {
             facilitator.changeWindow(e, "/fxml/AddCategoryPage.fxml");
         } else {
-            facilitator.changeWindow(e, "/fxml/AddProductPage.fxml");
-        }
+            if(facilitator.getCategoryList().isEmpty() || facilitator.getSupplierList().isEmpty()) {
+                //Temp
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Create a category and supplier before adding a product.");
+                alert.setHeaderText("Adding product not available");
+                alert.setTitle("Error");
+                alert.show();
+            } else {
 
+                facilitator.changeWindow(e, "/fxml/AddProductPage.fxml");
+            }
+        }
     }
 
     public void remove(ActionEvent e) {
@@ -130,7 +139,15 @@ public class ApplicationPage {
 
     public void update(ActionEvent e) {
         if(tableBox.getValue().equals("Product")) {
-            facilitator.changeWindow(e, "/fxml/EditProductPage.fxml");
+            if(!facilitator.getProductList().isEmpty()) {
+                facilitator.changeWindow(e, "/fxml/EditProductPage.fxml");
+            } else {
+                //Temp
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Add a product before editing a product.");
+                alert.setHeaderText("Edit product not available");
+                alert.setTitle("Error");
+                alert.show();
+            }
         }
         else if(tableBox.getValue().equals("Supplier")) {
             facilitator.changeWindow(e, "/fxml/EditSupplierPage.fxml");
