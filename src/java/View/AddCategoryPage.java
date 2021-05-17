@@ -16,16 +16,10 @@ public class AddCategoryPage {
 
     public void addCategory(ActionEvent e) {
         facilitator.createCategory(categoryName.getText());
-        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+        facilitator.closeSecondStage(e);
     }
 
-    public void cancel(ActionEvent cancelCategory) {
-        facilitator.changeWindow(cancelCategory, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }

@@ -109,10 +109,10 @@ public class DBProduct {
      * @return returns an arraylist of products.
      */
     public ArrayList<Product> getProductList() {
-        if(!productList.isEmpty()) {
+        /** if(!productList.isEmpty()) {
             productList.clear();
         }
-        createProductTable();
+        createProductTable(); */
         return productList;
     }
 
@@ -149,7 +149,6 @@ public class DBProduct {
                 prep.setInt(1, searchNumber);
                 prep.setInt(2, searchNumber);
                 prep.setInt(3, dbController.getUser().getUserID());
-
             } else {
                 query = "Select * from ViewUserProductList WHERE " +
                         "([name] Like ? OR s_name LIKE ? OR shelf_pos LIKE ? " +

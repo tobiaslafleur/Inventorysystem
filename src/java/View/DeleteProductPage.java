@@ -23,23 +23,16 @@ public class DeleteProductPage {
     }
 
     public void deleteProduct(ActionEvent event) {
-
         int ID = products.getValue().getProductID();
         if(ID > 0) {
             facilitator.removeProduct(ID);
             facilitator.updateProductTable();
         }
-        facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
+        facilitator.closeSecondStage(event);
         facilitator.updateProductTable();
     }
 
     public void cancel(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+        facilitator.closeSecondStage(event);
     }
 }

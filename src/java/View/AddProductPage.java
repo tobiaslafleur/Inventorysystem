@@ -58,7 +58,7 @@ public class AddProductPage {
 
         if(warnings == null) {
             facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelfPosition.getText(), supplierID, cost.getText());
-            facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+            facilitator.closeSecondStage(e);
             facilitator.updateProductTable();
         } else {
             if(!ProductErrorHandling.isStockOk()) {
@@ -93,18 +93,11 @@ public class AddProductPage {
         }
     }
 
-
     /**
      * Cancels the page and goes back to ApplicationPage.
-     * @param cancelAddProduct  Event that triggers the method.
+     * @param event  Event that triggers the method.
      */
-    public void cancel(ActionEvent cancelAddProduct) {
-        facilitator.changeWindow(cancelAddProduct, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }

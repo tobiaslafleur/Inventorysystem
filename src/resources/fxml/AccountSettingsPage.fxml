@@ -22,17 +22,12 @@
         <PasswordField fx:id="oldPassword" layoutX="125.0" layoutY="366.0" promptText="Current Password" />
         <PasswordField fx:id="newPassword" layoutX="125.0" layoutY="405.0" promptText="New Password" />
         <Button fx:id="saveBtn" layoutY="525.0" mnemonicParsing="false" onAction="#saveSettingsBtn" prefHeight="75.0" prefWidth="402.0" text="Save settings" />
-        <Hyperlink fx:id="close" layoutX="380.0" layoutY="4.0" onAction="#close" prefHeight="23.0" prefWidth="13.0" text="X" />
-        <Hyperlink fx:id="minimize" layoutX="356.0" layoutY="-5.0" onAction="#minimize" text="-">
-         <font>
-            <Font size="20.0" />
-         </font></Hyperlink>
         <Label alignment="CENTER" layoutX="1.0" layoutY="20.0" prefHeight="26.0" prefWidth="400.0" text="Account Settings" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <Hyperlink layoutX="7.0" layoutY="4.0" onAction="#cancel" text="Cancel" />
+        <Hyperlink layoutX="348.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
         <ImageView fx:id="imgPwInfo" fitHeight="10.0" fitWidth="10.0" layoutX="284.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/questionmark.png" />

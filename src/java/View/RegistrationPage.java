@@ -4,17 +4,12 @@ import Controller.ErrorHandling.RegistrationPageHandling;
 import Controller.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RegistrationPage {
@@ -156,10 +151,6 @@ public class RegistrationPage {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
-        }));
-
-        dragAnchor.setOnMouseReleased(((event) -> {
-            stage.setOpacity(1f);
         }));
     }
 
