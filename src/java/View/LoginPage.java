@@ -56,10 +56,6 @@ public class LoginPage {
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
-
-        dragAnchor.setOnMouseReleased(((event) -> {
-            stage.setOpacity(1f);
-        }));
     }
 
     public void setInstance() {

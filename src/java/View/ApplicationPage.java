@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -98,10 +97,6 @@ public class ApplicationPage {
             stage.setX(event.getScreenX() - x);
             stage.setY(event.getScreenY() - y);
         }));
-
-        dragAnchor.setOnMouseReleased(((event) -> {
-            stage.setOpacity(1f);
-        }));
     }
 
     public void setInstance() {
@@ -110,10 +105,10 @@ public class ApplicationPage {
 
     public void add(ActionEvent e) {
         if(tableBox.getValue().equals("Supplier")) {
-            facilitator.changeWindow(e, "/fxml/AddSupplierPage.fxml");
+            facilitator.openSecondStage(e, "/fxml/AddSupplierPage.fxml");
         }
         else if(tableBox.getValue().equals("Category")) {
-            facilitator.changeWindow(e, "/fxml/AddCategoryPage.fxml");
+            facilitator.openSecondStage(e, "/fxml/AddCategoryPage.fxml");
         } else {
             if(facilitator.getCategoryList().isEmpty() || facilitator.getSupplierList().isEmpty()) {
                 //Temp
@@ -123,14 +118,14 @@ public class ApplicationPage {
                 alert.show();
             } else {
 
-                facilitator.changeWindow(e, "/fxml/AddProductPage.fxml");
+                facilitator.openSecondStage(e, "/fxml/AddProductPage.fxml");
             }
         }
     }
 
     public void remove(ActionEvent e) {
         if(tableBox.getValue().equals("Product")) {
-            facilitator.changeWindow(e, "/fxml/DeleteProductPage.fxml");
+            facilitator.openSecondStage(e, "/fxml/DeleteProductPage.fxml");
         }
 
     }
@@ -138,7 +133,7 @@ public class ApplicationPage {
     public void update(ActionEvent e) {
         if(tableBox.getValue().equals("Product")) {
             if(!facilitator.getProductList().isEmpty()) {
-                facilitator.changeWindow(e, "/fxml/EditProductPage.fxml");
+                facilitator.openSecondStage(e, "/fxml/EditProductPage.fxml");
             } else {
                 //Temp
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Add a product before editing a product.");
@@ -148,7 +143,7 @@ public class ApplicationPage {
             }
         }
         else if(tableBox.getValue().equals("Supplier")) {
-            facilitator.changeWindow(e, "/fxml/EditSupplierPage.fxml");
+            facilitator.openSecondStage(e, "/fxml/EditSupplierPage.fxml");
         }
     }
 
@@ -273,6 +268,6 @@ public class ApplicationPage {
         }
     }
     public void accountSettingsBtn(ActionEvent event) {
-        facilitator.changeWindow(event, "/fxml/AccountSettingsPage.fxml");
+        facilitator.openSecondStage(event, "/fxml/AccountSettingsPage.fxml");
     }
     }

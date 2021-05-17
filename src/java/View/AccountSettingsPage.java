@@ -94,7 +94,7 @@ public class AccountSettingsPage {
         }
 
         facilitator.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
-        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+        facilitator.closeSecondStage(e);
     }
     public void checkImageBtn(ActionEvent e) {
         try {
@@ -106,13 +106,7 @@ public class AccountSettingsPage {
             //dfg
         }
     }
-    public void cancel(ActionEvent cancelCategory) {
-        facilitator.changeWindow(cancelCategory, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }

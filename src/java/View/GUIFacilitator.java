@@ -11,9 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -27,6 +30,8 @@ public class GUIFacilitator {
     private AddSupplierPage addSupplierPage;
     private AccountSettingsPage accountSettingsPage;
 
+    private Stage applicationStage;
+    private Parent applicationRoot;
 
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
@@ -58,11 +63,8 @@ public class GUIFacilitator {
             scene.setFill(Color.TRANSPARENT);
             scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
-            Node button =(Node) event.getSource();
+            Node button = (Node) event.getSource();
             Stage stage = (Stage) button.getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
 
             stage.setScene(scene);
             stage.show();
@@ -70,6 +72,35 @@ public class GUIFacilitator {
             Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
             stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
             stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openSecondStage(ActionEvent event, String path) {
+        try {
+            Node button = (Node) event.getSource();
+            applicationStage = (Stage) button.getScene().getWindow();
+
+            applicationRoot = applicationStage.getScene().getRoot();
+            ColorAdjust adj = new ColorAdjust(0, -0.2, -0.3, 0);
+            GaussianBlur blur = new GaussianBlur(5);
+            adj.setInput(blur);
+            applicationRoot.setEffect(adj);
+
+            Parent root = FXMLLoader.load(getClass().getResource(path));
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
+
+            Stage secondStage = new Stage();
+            secondStage.setScene(scene);
+            secondStage.initStyle(StageStyle.TRANSPARENT);
+            secondStage.show();
+
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            secondStage.setX((primScreenBounds.getWidth() - secondStage.getWidth()) / 2);
+            secondStage.setY((primScreenBounds.getHeight() - secondStage.getHeight()) / 2);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,6 +145,7 @@ public class GUIFacilitator {
     public void updateSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail, int id) {
         controller.updateSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, id);
     }
+
     public void editUser(String userPhone, String userLanguage, String userAddress, String userOldpassword, String userNewpassword){
         controller.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
     }
@@ -122,6 +154,7 @@ public class GUIFacilitator {
         return controller.getProductSearch(searchText);
 
     }
+
     public ArrayList<Category> getCategorySearch(String searchText) {
         return controller.getCategorySearch(searchText);
     }
@@ -133,6 +166,7 @@ public class GUIFacilitator {
     public void close(ActionEvent event) {
         System.exit(0);
     }
+
     public void minimize(ActionEvent event) {
         Stage stage = (Stage)((Hyperlink)event.getSource()).getScene().getWindow();
         stage.setIconified(true);
@@ -146,7 +180,6 @@ public class GUIFacilitator {
         return controller.getCategoryList();
     }
 
-
     public boolean usernameExists(String username) {
         return controller.usernameExists(username);
     }
@@ -154,7 +187,20 @@ public class GUIFacilitator {
     public boolean CSVImport(String filepath) {
             return controller.getCSVFile(filepath);
     }
-    public void checkPassword() {
 
+    public void closeSecondStage(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        stage.close();
+
+        removeBlur();
+    }
+
+    private void removeBlur() {
+        ColorAdjust adj = new ColorAdjust();
+        GaussianBlur blur = new GaussianBlur(0);
+        adj.setInput(blur);
+        applicationRoot.setEffect(adj);
     }
 }

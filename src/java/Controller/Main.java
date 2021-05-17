@@ -27,7 +27,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginPage.fxml"));
         Parent root = loader.load();
-        primaryStage.setTitle("ECINV 1.0");
+        primaryStage.setTitle("ECINV");
         Scene scene = new Scene(root, 300,500);
 
         scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());

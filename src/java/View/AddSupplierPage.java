@@ -47,7 +47,7 @@ public class AddSupplierPage {
         String supEmail = email.getText();
 
         if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail)) {
-            facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
+            facilitator.closeSecondStage(event);
         } else {
             //TODO: Label saying: "Failed to add supplier."
             //temp:
@@ -57,15 +57,9 @@ public class AddSupplierPage {
 
     /**
      * Cancels the operation and returns to ApplicationPage.
-     * @param supplierCancelled The event that triggers the method.
+     * @param event The event that triggers the method.
      */
-    public void cancel(ActionEvent supplierCancelled) {
-        facilitator.changeWindow(supplierCancelled, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }

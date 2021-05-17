@@ -8,8 +8,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.math.BigDecimal;
 
@@ -70,17 +72,11 @@ public class EditProductPage {
         }
 
         facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
-        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+        facilitator.closeSecondStage(e);
         facilitator.updateProductTable();
     }
 
-    public void cancel(ActionEvent cancelUpdateProduct) {
-        facilitator.changeWindow(cancelUpdateProduct, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }
