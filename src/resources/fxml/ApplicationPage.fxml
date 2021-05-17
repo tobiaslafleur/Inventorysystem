@@ -28,9 +28,9 @@
                 <Hyperlink layoutX="50.0" layoutY="438.0" prefHeight="23.0" prefWidth="24.0" text="SV" />
                 <Label layoutX="74.0" layoutY="439.0" prefHeight="17.0" prefWidth="5.0" text="|" textFill="WHITE" />
                 <Hyperlink layoutX="78.0" layoutY="438.0" prefHeight="23.0" prefWidth="24.0" text="EN" />
-                <ImageView fx:id="profilePic" blendMode="DARKEN" fitHeight="103.0" fitWidth="108.0" layoutX="22.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="profilePic" fitHeight="139.0" fitWidth="135.0" layoutX="6.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/user.jpg" />
+                        <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
                 <Hyperlink fx:id="logOut" layoutX="48.0" layoutY="460.0" onAction="#logOut" text="Log Out" />
