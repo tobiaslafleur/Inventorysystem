@@ -66,96 +66,73 @@ public class RegistrationPage {
         cmbAreaCodes.setId("cmb-area");
 
         btnCheck.setId("check-btn");
-        btnCheck.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                checkUsername();
+        btnCheck.setOnAction(actionEvent -> checkUsername());
+
+        username.setOnKeyTyped(actionEvent -> {
+            if(username.getText().isEmpty()) {
+                lblUsernameWarning.setText("Enter a username");
+                username.setStyle("-fx-border-color: #EB5D5D;");
+            } else {
+                username.setStyle("-fx-border-color: #FFFF3A;");
+                lblUsernameWarning.setText("Check if username is available");
             }
         });
 
-        username.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(username.getText().isEmpty()) {
-                    lblUsernameWarning.setText("Enter a username");
-                    username.setStyle("-fx-border-color: #EB5D5D;");
-                } else {
-                    username.setStyle("-fx-border-color: #FFFF3A;");
-                    lblUsernameWarning.setText("Check if username is available");
-                }
+        email.setOnKeyTyped(actionEvent -> {
+            if(RegistrationPageHandling.isEmailValid(email.getText())){
+                email.setStyle("-fx-border-color: #8EFF8B;");
+                lblEmailWarning.setText("");
+            } else {
+                email.setStyle("-fx-border-color: #EB5D5D;");
+                lblEmailWarning.setText("Enter a valid email");
             }
         });
 
-        email.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(RegistrationPageHandling.isEmailValid(email.getText())){
-                    email.setStyle("-fx-border-color: #8EFF8B;");
-                    lblEmailWarning.setText("");
-                } else {
-                    email.setStyle("-fx-border-color: #EB5D5D;");
-                    lblEmailWarning.setText("Enter a valid email");
-                }
+        phone.setOnKeyTyped(actionEvent -> {
+            if(RegistrationPageHandling.isPhoneValid(phone.getText()) && !(cmbAreaCodes.getValue() == null)){
+                phone.setStyle("-fx-border-color: #8EFF8B;");
+                lblPhoneWarning.setText("");
+            } else {
+                phone.setStyle("-fx-border-color: #EB5D5D;");
+                lblPhoneWarning.setText("Enter a valid number and select area code");
             }
         });
 
-        phone.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(RegistrationPageHandling.isPhoneValid(phone.getText()) && !(cmbAreaCodes.getValue() == null)){
-                    phone.setStyle("-fx-border-color: #8EFF8B;");
-                    lblPhoneWarning.setText("");
-                } else {
-                    phone.setStyle("-fx-border-color: #EB5D5D;");
-                    lblPhoneWarning.setText("Enter a valid number and select area code");
-                }
+        address.setOnKeyTyped(actionEvent -> {
+            if(!address.getText().isEmpty()){
+                address.setStyle("-fx-border-color: #8EFF8B;");
+                lblAddressWarning.setText("");
+            } else {
+                address.setStyle("-fx-border-color: #EB5D5D;");
+                lblAddressWarning.setText("Enter a valid address");
             }
         });
 
-        address.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(!address.getText().isEmpty()){
-                    address.setStyle("-fx-border-color: #8EFF8B;");
-                    lblAddressWarning.setText("");
-                } else {
-                    address.setStyle("-fx-border-color: #EB5D5D;");
-                    lblAddressWarning.setText("Enter a valid address");
-                }
+        password.setOnKeyTyped(actionEvent -> {
+            if(RegistrationPageHandling.isPasswordValid(password.getText())){
+                password.setStyle("-fx-border-color: #8EFF8B;");
+                lblPwWarning.setText("");
+            } else {
+                password.setStyle("-fx-border-color: #EB5D5D;");
+                lblPwWarning.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
+            }
+
+            if(RegistrationPageHandling.isRepeatValid(password.getText(), repeatedPW.getText())){
+                repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
+                lblRepeatWarning.setText("");
+            } else {
+                repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
+                lblRepeatWarning.setText("Password must match");
             }
         });
 
-        password.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(RegistrationPageHandling.isPasswordValid(password.getText())){
-                    password.setStyle("-fx-border-color: #8EFF8B;");
-                    lblPwWarning.setText("");
-                } else {
-                    password.setStyle("-fx-border-color: #EB5D5D;");
-                    lblPwWarning.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
-                }
-
-                if(RegistrationPageHandling.isRepeatValid(password.getText(), repeatedPW.getText())){
-                    repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
-                    lblRepeatWarning.setText("");
-                } else {
-                    repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
-                    lblRepeatWarning.setText("Password must match");
-                }
-            }
-        });
-
-        repeatedPW.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                if(RegistrationPageHandling.isRepeatValid(password.getText(), repeatedPW.getText())){
-                    repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
-                    lblRepeatWarning.setText("");
-                } else {
-                    repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
-                    lblRepeatWarning.setText("Password must match");
-                }
+        repeatedPW.setOnKeyTyped(actionEvent -> {
+            if(RegistrationPageHandling.isRepeatValid(password.getText(), repeatedPW.getText())){
+                repeatedPW.setStyle("-fx-border-color: #8EFF8B;");
+                lblRepeatWarning.setText("");
+            } else {
+                repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
+                lblRepeatWarning.setText("Password must match");
             }
         });
     }
@@ -205,11 +182,11 @@ public class RegistrationPage {
     }
 
     public void register(javafx.event.ActionEvent event) {
-        ArrayList<String> warnings = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), cmbAreaCodes.getValue(), password.getText(), repeatedPW.getText(), facilitator);
+        boolean allOk = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), cmbAreaCodes.getValue(), password.getText(), repeatedPW.getText(), facilitator);
         checkUsername();
 
         //If no warnings, create account
-        if(warnings == null){
+        if(allOk){
             String areacode = cmbAreaCodes.getValue();
             String number;
             if(phone.getText().toCharArray()[0] == '0'){
