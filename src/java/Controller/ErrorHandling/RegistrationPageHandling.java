@@ -10,46 +10,36 @@ public class RegistrationPageHandling {
     private static ArrayList<String> warnings = new ArrayList<>();
 
 
-    public static ArrayList<String> errorHandling(String username, String email, String phone, String areacode, String password, String repeated, GUIFacilitator facilitator) {
-
-        if(!warnings.isEmpty()) {
-            warnings.clear();
-        }
-
+    public static boolean errorHandling(String username, String email, String phone, String areacode, String password, String repeated, GUIFacilitator facilitator) {
         //username
         if(!isUsernameValid(username, facilitator)){
-            warnings.add("Username already in use");
+            return false;
         } else if(username.isEmpty()) {
-            warnings.add("Enter a username");
+            return false;
         }
 
         //check password
         if(!isPasswordValid(password)) {
-            warnings.add("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
+            return false;
         }
 
         //check email
         if(!isEmailValid(email)){
-            warnings.add("Enter a valid email");
+            return false;
         }
 
         if(!isRepeatValid(password, repeated)) {
-            warnings.add("Passwords must match");
+            return false;
         }
 
         if(!isPhoneValid(phone)) {
-            warnings.add("Enter a valid number");
+            return false;
         }
 
         if(!isAreaCodeValid(areacode)) {
-            warnings.add("Select an area code");
+            return false;
         }
-
-        if(warnings.isEmpty()){
-            return null;
-        } else {
-            return warnings;
-        }
+        return true;
     }
 
     public static boolean isAreaCodeValid(String areacode) {
