@@ -21,7 +21,7 @@ public class AccountSettingsPage {
     @FXML private static AccountSettingsPage instance;
 
 
-    @FXML private TextField language;
+
     @FXML private TextField phoneNmbr;
     @FXML private TextField address;
     @FXML private TextField oldPassword = new TextField();
@@ -68,17 +68,15 @@ public class AccountSettingsPage {
 
 
     public void saveSettingsBtn(ActionEvent e) {
+        String username = null; //Always null
         String userPhone = null;
-        String userLanguage = null;
+        String userLanguage = null; //Always null
         String userAddress = null;
         String userOldpassword = null;
         String userNewpassword = null;
 
         if(!this.phoneNmbr.getText().equals("")) {
             userPhone = this.phoneNmbr.getText();
-        }
-        if(!this.language.getText().equals("")) {
-            userLanguage = this.language.getText();
         }
         if(!this.address.getText().equals("")) {
             userAddress = this.address.getText();
@@ -89,11 +87,14 @@ public class AccountSettingsPage {
         if(!this.newPassword.getText().equals("")) {
             userNewpassword = this.newPassword.getText();
         }
-        if(newPassword.getText().equals(oldPassword.getText())){
-            //not finished, too tired
+        if(userOldpassword.equals(this.newPassword.getText())) {
+            this.newPassword.getText();
+        }
+        if(this.newPassword.getText().equals(this.oldPassword.getText())){
+            userNewpassword = this.newPassword.getText();
         }
 
-        facilitator.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
+        facilitator.editUser( username, userNewpassword, userLanguage, userAddress, userPhone);
         facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
     }
     public void checkImageBtn(ActionEvent e) {

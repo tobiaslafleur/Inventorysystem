@@ -14,9 +14,6 @@
 <AnchorPane fx:id="TableControls2" onMouseClicked="#anchorPaneClicked" prefHeight="600.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AccountSettingsPage">
     <children>
       <AnchorPane fx:id="dragAnchor" layoutX="49.0" prefHeight="26.0" prefWidth="307.0" />
-      <TextField layoutX="125.0" layoutY="483.0" prefHeight="25.0" prefWidth="149.0" promptText="Country" />
-        <TextField fx:id="username" layoutX="125.0" layoutY="443.0" promptText="Remove or change?" />
-        <TextField fx:id="language" layoutX="121.0" layoutY="248.0" promptText="Language" />
         <TextField fx:id="phoneNmbr" layoutX="125.0" layoutY="288.0" prefHeight="25.0" prefWidth="149.0" promptText="Phone" />
         <TextField fx:id="address" layoutX="125.0" layoutY="324.0" promptText="Address" />
         <PasswordField fx:id="oldPassword" layoutX="125.0" layoutY="366.0" promptText="Current Password" />
@@ -38,11 +35,6 @@
                 <Image url="@../images/questionmark.png" />
             </image>
         </ImageView>
-        <Label fx:id="lblUsernameWarning" alignment="CENTER" layoutY="468.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Label>
         <Label fx:id="lblEmailWarning" alignment="CENTER" layoutX="-1.0" layoutY="273.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
@@ -79,12 +71,11 @@
                 <Font size="10.0" />
             </font>
         </Label>
-      <Button fx:id="imageBtn" layoutX="153.0" layoutY="198.0" mnemonicParsing="false" onAction="#checkImageBtn" prefHeight="25.0" prefWidth="97.0" text="Change image" />
-      <ImageView fitHeight="130.0" fitWidth="179.0" layoutX="136.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="imageBtn" layoutX="153.0" layoutY="207.0" mnemonicParsing="false" onAction="#checkImageBtn" prefHeight="0.0" prefWidth="97.0" text="Change image" />
+      <ImageView fitHeight="153.0" fitWidth="160.0" layoutX="126.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/WeirdO.png" />
          </image>
       </ImageView>
-      <ComboBox layoutX="274.0" layoutY="483.0" prefHeight="25.0" prefWidth="85.0" promptText="Algeria" />
     </children>
 </AnchorPane>
