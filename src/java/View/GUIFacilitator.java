@@ -145,11 +145,12 @@ public class GUIFacilitator {
     public void updateSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail, int id) {
         controller.updateSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, id);
     }
-
-    public void editUser(String userPhone, String userLanguage, String userAddress, String userOldpassword, String userNewpassword){
-        controller.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
+ 
+    public void editUser(String userName, String userPhone, String userLanguage, String userAddress, String userNewpassword){
+        controller.editUser(userName, userPhone, userLanguage, userAddress, userNewpassword);
     }
 
+    
     public ArrayList<Product> getProductSearch(String searchText) {
         return controller.getProductSearch(searchText);
 
