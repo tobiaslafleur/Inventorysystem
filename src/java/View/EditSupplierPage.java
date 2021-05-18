@@ -61,16 +61,10 @@ public class EditSupplierPage {
         }
 
         facilitator.updateSupplier(name, phone, street, city, country, email, id);
-        facilitator.changeWindow(e, "/fxml/ApplicationPage.fxml");
+        facilitator.closeSecondStage(e);
         facilitator.updateProductTable();
     }
-    public void cancel(ActionEvent cancelUpdateSupplier) {
-        facilitator.changeWindow(cancelUpdateSupplier, "/fxml/ApplicationPage.fxml");
-    }
-    public void close(ActionEvent event) {
-        facilitator.close(event);
-    }
-    public void minimize(ActionEvent event) {
-        facilitator.minimize(event);
+    public void cancel(ActionEvent event) {
+        facilitator.closeSecondStage(event);
     }
 }
