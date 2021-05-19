@@ -72,8 +72,8 @@ public class EditProductPage {
         }
 
         facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
-        facilitator.closeSecondStage(e);
         facilitator.updateProductTable();
+        facilitator.closeSecondStage(e);
     }
 
     public void cancel(ActionEvent event) {

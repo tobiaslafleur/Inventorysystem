@@ -16,6 +16,7 @@ public class AddCategoryPage {
 
     public void addCategory(ActionEvent e) {
         facilitator.createCategory(categoryName.getText());
+        facilitator.updateCategoryTable();
         facilitator.closeSecondStage(e);
     }
 

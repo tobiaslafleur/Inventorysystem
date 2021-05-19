@@ -47,6 +47,7 @@ public class AddSupplierPage {
         String supEmail = email.getText();
 
         if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail)) {
+            facilitator.updateSupplierTable();
             facilitator.closeSecondStage(event);
         } else {
             //TODO: Label saying: "Failed to add supplier."

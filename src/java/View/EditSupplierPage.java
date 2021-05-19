@@ -61,8 +61,8 @@ public class EditSupplierPage {
         }
 
         facilitator.updateSupplier(name, phone, street, city, country, email, id);
+        facilitator.updateSupplierTable();
         facilitator.closeSecondStage(e);
-        facilitator.updateProductTable();
     }
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);

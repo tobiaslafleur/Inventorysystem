@@ -58,8 +58,8 @@ public class AddProductPage {
 
         if(warnings == null) {
             facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelfPosition.getText(), supplierID, cost.getText());
-            facilitator.closeSecondStage(e);
             facilitator.updateProductTable();
+            facilitator.closeSecondStage(e);
         } else {
             if(!ProductErrorHandling.isStockOk()) {
                 stock.setStyle("-fx-border-color: #974F4F;");
