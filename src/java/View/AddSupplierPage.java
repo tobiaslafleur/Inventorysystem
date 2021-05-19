@@ -1,8 +1,12 @@
 package View;
 
 import Controller.Main;
+import Model.Countries;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -17,6 +21,7 @@ public class AddSupplierPage {
     @FXML private TextField city;
     @FXML private TextField country;
     @FXML private TextField email;
+    @FXML private ComboBox<Countries> countries;
 
     /**
      * Intializes the connection between GUIFacilitator and this class.
@@ -25,6 +30,10 @@ public class AddSupplierPage {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
         setInstance();
+
+        ObservableList<Countries> countryList = FXCollections.observableArrayList();
+        countryList.addAll(Countries.values());
+        countries.setItems(countryList);
     }
 
     /**
@@ -43,10 +52,10 @@ public class AddSupplierPage {
         String supPhone = phone.getText();
         String supStreet = street.getText();
         String supCity = city.getText();
-        String supCountry = country.getText();
+        String country = countries.getValue().name();
         String supEmail = email.getText();
 
-        if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail)) {
+        if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, country, supEmail)) {
             facilitator.updateSupplierTable();
             facilitator.closeSecondStage(event);
         } else {

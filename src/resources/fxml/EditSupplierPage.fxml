@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
+<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
     <children>
         <Label layoutX="80.0" layoutY="33.0" text="Edit Supplier" textFill="WHITE">
             <font>
@@ -21,8 +21,8 @@
         <TextField fx:id="phone" layoutX="51.0" layoutY="144.0" promptText="Phone" />
         <TextField fx:id="street" layoutX="51.0" layoutY="181.0" promptText="Street" />
         <TextField fx:id="city" layoutX="51.0" layoutY="216.0" promptText="City" />
-        <TextField fx:id="country" layoutX="51.0" layoutY="253.0" promptText="Country" />
         <Button fx:id="updateSupplierBtn" layoutX="-1.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="40.0" prefWidth="257.0" text="Update supplier" />
       <TextField fx:id="email" layoutX="51.0" layoutY="291.0" promptText="Email" />
+      <ComboBox fx:id="countries" layoutX="50.0" layoutY="255.0" prefWidth="150.0" promptText="Country" />
     </children>
 </AnchorPane>
