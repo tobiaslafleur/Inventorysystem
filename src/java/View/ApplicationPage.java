@@ -243,7 +243,24 @@ public class ApplicationPage {
             initProductTable();
         }
     }
-
+    public void addShelf(ActionEvent event) {
+        facilitator.openSecondStage(event, "/fxml/AddShelfPage.fxml");
+    }
+    public void CSVImport() {
+        Stage stage = new Stage();
+        stage.setIconified(true);
+        try {
+            FileChooser JF = new FileChooser();
+            String filepath = JF.showOpenDialog(stage).getPath();
+            facilitator.CSVImport(filepath);
+            facilitator.updateProductTable();
+        } catch (Exception ignore) {
+            //Ignorerar .getPath null value när man stänger FileChooser
+        }
+    }
+    public void accountSettings(ActionEvent event) {
+        facilitator.openSecondStage(event, "/fxml/AccountSettingsPage.fxml");
+    }
     public void logOut(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
     }
@@ -252,20 +269,5 @@ public class ApplicationPage {
     }
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
-    }
-    public void CSVImport() {
-        Stage stage = new Stage();
-        stage.setIconified(true);
-        try {
-        FileChooser JF = new FileChooser();
-        String filepath = JF.showOpenDialog(stage).getPath();
-        facilitator.CSVImport(filepath);
-        facilitator.updateProductTable();
-        } catch (Exception ignore) {
-            //Ignorerar .getPath null value när man stänger FileChooser
-        }
-    }
-    public void accountSettingsBtn(ActionEvent event) {
-        facilitator.openSecondStage(event, "/fxml/AccountSettingsPage.fxml");
     }
     }

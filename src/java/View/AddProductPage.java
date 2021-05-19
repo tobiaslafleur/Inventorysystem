@@ -23,7 +23,7 @@ public class AddProductPage {
     @FXML private TextField stock;
     @FXML private TextField price;
     @FXML private ComboBox<Category> categories;
-    @FXML private TextField shelfPosition;
+    @FXML private ComboBox<String> shelves;
     @FXML private ComboBox<Supplier> suppliers;
     @FXML private TextField cost;
 
@@ -44,6 +44,10 @@ public class AddProductPage {
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
         categoryList.addAll(facilitator.getCategoryList());
         categories.setItems(categoryList);
+
+        ObservableList<String> shelfList = FXCollections.observableArrayList();
+        shelfList.addAll(facilitator.getShelfList());
+        shelves.setItems(shelfList);
     }
 
     /**
@@ -53,11 +57,12 @@ public class AddProductPage {
     public void addProduct(ActionEvent e) {
         String categoryID = String.valueOf(categories.getValue().getID());
         String supplierID = String.valueOf(suppliers.getValue().getId());
+        String shelf = shelves.getValue();
 
         ArrayList<String> warnings = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText());
 
         if(warnings == null) {
-            facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelfPosition.getText(), supplierID, cost.getText());
+            facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelf, supplierID, cost.getText());
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         } else {
@@ -82,7 +87,8 @@ public class AddProductPage {
             name.setStyle("-fx-border-color: #1F701D;");
             categories.setStyle("-fx-border-color: #1F701D;");
             suppliers.setStyle("-fx-border-color: #1F701D;");
-            shelfPosition.setStyle("-fx-border-color: #1F701D;");
+            shelves.setStyle("-fx-border-color: #1F701D;");
+//            shelfPosition.setStyle("-fx-border-color: #1F701D;");
 
             StringBuilder strBuilder = new StringBuilder();
             for(String s : warnings) {

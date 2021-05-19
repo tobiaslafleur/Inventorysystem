@@ -95,4 +95,12 @@ public class Controller {
     public ArrayList<Supplier> getSupplierSearch(String searchText) {
         return dbController.getSupplierSearch(searchText);
     }
+
+    public ArrayList<String> getShelfList() {
+        return dbController.getShelfList();
+    }
+
+    public void addShelf(String name) {
+        dbController.addShelf(name);
+    }
 }

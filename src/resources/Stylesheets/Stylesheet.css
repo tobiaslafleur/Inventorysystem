@@ -81,13 +81,20 @@
     -fx-border-color: "black"; /*top, right, bottom, left  */
 }
 
-#importCSVBtn {
+#CSVBtn {
     -fx-background-radius: 10;
     -fx-text-fill: #5F807F;
+    -fx-font-size: 12px;
 }
 #accountSettingsBtn {
     -fx-background-radius: 10;
     -fx-text-fill: #5F807F;
+    -fx-font-size: 12px;
+}
+#AddShelfBtn {
+    -fx-background-radius: 10;
+    -fx-text-fill: #5F807F;
+    -fx-font-size: 12px;
 }
 
 #check-btn {

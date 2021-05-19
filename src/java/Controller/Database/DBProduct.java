@@ -1,6 +1,7 @@
 package Controller.Database;
 import Controller.DBController;
 import Model.Product;
+import Model.Supplier;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -264,5 +265,52 @@ public class DBProduct {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean insertShelf(String name) {
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+
+            String query =
+                    "INSERT INTO Shelves([name], [user_id]) " +
+                            "VALUES(?, ?)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, dbController.getUser().getUserID());
+
+            preparedStatement.execute();
+            preparedStatement.close();
+            conn.close();
+            dbController.disconnect();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public ArrayList<String> getShelfList() {
+        ArrayList<String> shelfList = new ArrayList<>();
+        try {
+            dbController.connect();
+            Connection conn = dbController.getConnection();
+            String query = "Select [name] FROM Shelves " +
+                    "where [user_id] = ?";
+
+            PreparedStatement prep = null;
+            prep = conn.prepareStatement(query);
+            prep.setInt(1, dbController.getUser().getUserID());
+            ResultSet rs = prep.executeQuery();
+
+            while(rs.next()) {
+                String name = rs.getString("name");
+                shelfList.add(name);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return shelfList;
     }
 }

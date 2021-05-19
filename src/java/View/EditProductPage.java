@@ -24,6 +24,7 @@ public class EditProductPage {
     @FXML TextField cost;
     @FXML ComboBox<Product> products;
     @FXML ComboBox<Category> categories;
+    @FXML ComboBox<String> shelves;
 
 
     @FXML public void initialize() {
@@ -39,6 +40,10 @@ public class EditProductPage {
         ObservableList<Category> categoryList = FXCollections.observableArrayList();
         categoryList.addAll(facilitator.getCategoryList());
         categories.setItems(categoryList);
+
+        ObservableList<String> shelfList = FXCollections.observableArrayList();
+        shelfList.addAll(facilitator.getShelfList());
+        shelves.setItems(shelfList);
     }
     public void updateProduct(ActionEvent e) {
         int id = 0;
@@ -64,8 +69,8 @@ public class EditProductPage {
         if(!this.price.getText().equals("")) {
             price = new BigDecimal(this.price.getText());
         }
-        if(!shelfPosition.getText().equals("")) {
-            shelf = this.shelfPosition.getText();
+        if(shelves.getValue() != null) {
+            shelf = shelves.getValue();
         }
         if(!this.cost.getText().equals("")) {
             cost = new BigDecimal(this.cost.getText());
