@@ -69,10 +69,10 @@ public class ApplicationPage {
         initProductTable();
         initTableSelection();
 
-        searchText.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent actionEvent) {
-                search();
+        searchText.setOnKeyTyped(actionEvent -> {
+            search();
+            if(searchText.getText().equals("")) {
+                initProductTable();
             }
         });
     }
