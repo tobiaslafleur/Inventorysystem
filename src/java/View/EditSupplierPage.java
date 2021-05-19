@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Main;
+import Model.Countries;
 import Model.Product;
 import Model.Supplier;
 import javafx.collections.FXCollections;
@@ -16,7 +17,7 @@ public class EditSupplierPage {
     @FXML private TextField phone;
     @FXML private TextField street;
     @FXML private TextField city;
-    @FXML private TextField country;
+    @FXML private ComboBox<Countries> countries;
     @FXML private TextField email;
     @FXML private ComboBox<Supplier> suppliers;
 
@@ -26,6 +27,10 @@ public class EditSupplierPage {
         ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
         supplierList.addAll(facilitator.getSupplierList());
         suppliers.setItems(supplierList);
+
+        ObservableList<Countries> countryList = FXCollections.observableArrayList();
+        countryList.addAll(Countries.values());
+        countries.setItems(countryList);
     }
 
     public void updateSupplier(ActionEvent e) {
@@ -50,8 +55,8 @@ public class EditSupplierPage {
         if(!this.city.getText().equals("")) {
             city = this.city.getText();
         }
-        if(!this.country.getText().equals("")) {
-            country = this.country.getText();
+        if(countries.getValue() != null) {
+            country = countries.getValue().name();
         }
         if(!this.email.getText().equals("")) {
             email = this.email.getText();
