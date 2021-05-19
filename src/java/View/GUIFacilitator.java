@@ -218,4 +218,8 @@ public class GUIFacilitator {
     public void addShelf(String name) {
         controller.addShelf(name);
     }
+
+    public void setLanguage(int language) {
+        Language.setLanguage(language);
+    }
 }
