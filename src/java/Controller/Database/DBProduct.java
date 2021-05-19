@@ -144,7 +144,7 @@ public class DBProduct {
             } catch (Exception e) {}
 
             if(searchNumber > 0) {
-                query = "Select * from ViewUserProductList WHERE p_code = ? OR s_id = ? AND [user_id] = ?";
+                query = "Select * from ViewUserProductList WHERE (p_code = ? OR s_id = ?) AND [user_id] = ?";
                 prep = conn.prepareStatement(query);
                 prep.setInt(1, searchNumber);
                 prep.setInt(2, searchNumber);
