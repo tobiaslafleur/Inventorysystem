@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TableControls" blendMode="COLOR_BURN" onMouseClicked="#anchorPaneClicked" prefHeight="504.0" prefWidth="844.0" stylesheets="@../Stylesheets/Stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
+<AnchorPane fx:id="TableControls" blendMode="COLOR_BURN" onMouseClicked="#anchorPaneClicked" prefHeight="504.0" prefWidth="844.0" stylesheets="@../Stylesheets/Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ApplicationPage">
     <children>
       <AnchorPane fx:id="dragAnchor" layoutX="-1.0" prefHeight="25.0" prefWidth="737.0" />
         <TextField fx:id="searchText" layoutX="149.0" layoutY="30.0" promptText="Search">
@@ -34,13 +34,13 @@
                     </image>
                 </ImageView>
                 <Hyperlink fx:id="logOut" layoutX="48.0" layoutY="460.0" onAction="#logOut" text="Log Out" />
-            <Button id="CSVbtn" fx:id="importCSVBtn" layoutX="7.0" layoutY="179.0" mnemonicParsing="false" onAction="#CSVImport" prefHeight="30.0" prefWidth="135.0" text="Import CSV" />
+            <Button id="CSVBtn" fx:id="importCSVBtn" layoutX="7.0" layoutY="179.0" mnemonicParsing="false" onAction="#CSVImport" prefHeight="30.0" prefWidth="135.0" text="Import CSV" />
             <ImageView blendMode="DARKEN" fitHeight="16.0" fitWidth="17.0" layoutX="11.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/import.png" />
                </image>
             </ImageView>
-            <Button fx:id="accountSettingsBtn" layoutX="26.0" layoutY="235.0" mnemonicParsing="false" onAction="#accountSettingsBtn" prefHeight="25.0" prefWidth="98.0" text="Account Settings">
+            <Button fx:id="accountSettingsBtn" layoutX="6.0" layoutY="222.0" mnemonicParsing="false" onAction="#accountSettings" prefHeight="30.0" prefWidth="135.0" text="Account Settings">
                <graphic>
                   <ImageView blendMode="DARKEN" fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,6 +49,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button id="AddShelfBtn" fx:id="AddShelfBtn" layoutX="6.0" layoutY="263.0" mnemonicParsing="false" onAction="#addShelf" prefHeight="25.0" prefWidth="135.0" text="Add a shelf" />
             </children>
         </AnchorPane>
         <Hyperlink fx:id="addBtn" layoutX="759.0" layoutY="28.0" onAction="#add" prefHeight="23.0" prefWidth="24.0" text="+">

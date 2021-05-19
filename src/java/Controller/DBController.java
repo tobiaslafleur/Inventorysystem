@@ -155,4 +155,12 @@ public class DBController {
     public void editUser(User userUpdate) {
         dbUser.editUser(userUpdate);
     }
+
+    public ArrayList<String> getShelfList() {
+        return dbProduct.getShelfList();
+    }
+
+    public void addShelf(String name) {
+        dbProduct.insertShelf(name);
+    }
 }

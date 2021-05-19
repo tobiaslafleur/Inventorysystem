@@ -187,6 +187,10 @@ public class GUIFacilitator {
         return controller.getCategoryList();
     }
 
+    public ArrayList<String> getShelfList() {
+        return controller.getShelfList();
+    }
+
     public boolean usernameExists(String username) {
         return controller.usernameExists(username);
     }
@@ -209,5 +213,9 @@ public class GUIFacilitator {
         GaussianBlur blur = new GaussianBlur(0);
         adj.setInput(blur);
         applicationRoot.setEffect(adj);
+    }
+
+    public void addShelf(String name) {
+        controller.addShelf(name);
     }
 }
