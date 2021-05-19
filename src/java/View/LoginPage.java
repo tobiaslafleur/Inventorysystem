@@ -5,10 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -23,6 +20,8 @@ public class LoginPage {
     @FXML private TextField username = new TextField();
     @FXML private PasswordField password = new PasswordField();
     @FXML private Button loginBtn = new Button();
+    @FXML private Hyperlink forgotPassword;
+    @FXML private Hyperlink register;
     @FXML private Label lblFailed;
 
     private double x = 0, y = 0;
@@ -34,6 +33,7 @@ public class LoginPage {
         fixFocus();
         dragAnchor();
         lblFailed.setVisible(false);
+        setLanguage();
     }
 
     @FXML private void windowClicked() {
@@ -91,5 +91,14 @@ public class LoginPage {
     }
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
+    }
+
+    public void setLanguage() {
+        register.setText(Language.getLogCreateAccount());
+        username.setPromptText(Language.getLogUsername());
+        password.setPromptText(Language.getLogPassword());
+        forgotPassword.setText(Language.getLogForgotPassword());
+        lblFailed.setText(Language.getLogIncorrectInfo());
+        loginBtn.setText(Language.getLogLoginBtn());
     }
 }

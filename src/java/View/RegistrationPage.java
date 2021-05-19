@@ -20,12 +20,16 @@ public class RegistrationPage {
 
     @FXML private AnchorPane anchorPane;
     @FXML private AnchorPane dragAnchor;
+    @FXML private Hyperlink cancel;
+
+    @FXML private Label createAccount;
     @FXML private TextField username;
     @FXML private TextField email;
     @FXML private TextField phone;
     @FXML private TextField address;
     @FXML private PasswordField password;
     @FXML private PasswordField repeatedPW;
+    @FXML private Button registerBtn;
 
     @FXML private Label lblUsernameWarning;
     @FXML private Label lblPhoneWarning;
@@ -65,11 +69,11 @@ public class RegistrationPage {
 
         username.setOnKeyTyped(actionEvent -> {
             if(username.getText().isEmpty()) {
-                lblUsernameWarning.setText("Enter a username");
+                lblUsernameWarning.setText(Language.getRegErrUsernameOne());
                 username.setStyle("-fx-border-color: #EB5D5D;");
             } else {
                 username.setStyle("-fx-border-color: #FFFF3A;");
-                lblUsernameWarning.setText("Check if username is available");
+                lblUsernameWarning.setText(Language.getRegErrUsernameTwo());
             }
         });
 
@@ -79,7 +83,7 @@ public class RegistrationPage {
                 lblEmailWarning.setText("");
             } else {
                 email.setStyle("-fx-border-color: #EB5D5D;");
-                lblEmailWarning.setText("Enter a valid email");
+                lblEmailWarning.setText(Language.getRegErrEmail());
             }
         });
 
@@ -89,7 +93,7 @@ public class RegistrationPage {
                 lblPhoneWarning.setText("");
             } else {
                 phone.setStyle("-fx-border-color: #EB5D5D;");
-                lblPhoneWarning.setText("Enter a valid number and select area code");
+                lblPhoneWarning.setText(Language.getRegErrPhone());
             }
         });
 
@@ -99,7 +103,7 @@ public class RegistrationPage {
                 lblAddressWarning.setText("");
             } else {
                 address.setStyle("-fx-border-color: #EB5D5D;");
-                lblAddressWarning.setText("Enter a valid address");
+                lblAddressWarning.setText(Language.getRegErrAddress());
             }
         });
 
@@ -109,7 +113,7 @@ public class RegistrationPage {
                 lblPwWarning.setText("");
             } else {
                 password.setStyle("-fx-border-color: #EB5D5D;");
-                lblPwWarning.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
+                lblPwWarning.setText(Language.getRegErrPassword());
             }
 
             if(RegistrationPageHandling.isRepeatValid(password.getText(), repeatedPW.getText())){
@@ -117,7 +121,7 @@ public class RegistrationPage {
                 lblRepeatWarning.setText("");
             } else {
                 repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
-                lblRepeatWarning.setText("Password must match");
+                lblRepeatWarning.setText(Language.getRegErrRepeatPassword());
             }
         });
 
@@ -127,9 +131,11 @@ public class RegistrationPage {
                 lblRepeatWarning.setText("");
             } else {
                 repeatedPW.setStyle("-fx-border-color: #EB5D5D;");
-                lblRepeatWarning.setText("Password must match");
+                lblRepeatWarning.setText(Language.getRegErrRepeatPassword());
             }
         });
+
+        setLanguage();
     }
 
     @FXML private void anchorPaneClicked() {
@@ -165,9 +171,9 @@ public class RegistrationPage {
         } else {
             username.setStyle("-fx-border-color: #EB5D5D;");
             if(username.getText().isEmpty()) {
-                lblUsernameWarning.setText("Enter a username");
+                lblUsernameWarning.setText(Language.getRegErrUsernameOne());
             } else {
-                lblUsernameWarning.setText("Username already in use");
+                lblUsernameWarning.setText(Language.getRegErrUsernameThree());
             }
         }
     }
@@ -211,5 +217,18 @@ public class RegistrationPage {
     }
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
+    }
+
+    public void setLanguage() {
+        cancel.setText(Language.getRegCancel());
+        createAccount.setText(Language.getRegCreateAccount());
+        username.setPromptText(Language.getRegUsername());
+        btnCheck.setText(Language.getRegCheckAvailability());
+        email.setPromptText(Language.getRegEmail());
+        phone.setPromptText(Language.getRegPhone());
+        address.setPromptText(Language.getRegAddress());
+        password.setPromptText(Language.getRegPassword());
+        repeatedPW.setPromptText(Language.getRegRepeatPassword());
+        registerBtn.setText(Language.getRegRegisterAccountBtn());
     }
 }

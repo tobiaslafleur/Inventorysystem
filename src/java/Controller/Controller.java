@@ -27,6 +27,7 @@ public class Controller {
 
     public void setFacilitator(GUIFacilitator facilitator) {
         this.facilitator = facilitator;
+        facilitator.setLanguage(1);
     }
 
     public void setUser(User user) {
