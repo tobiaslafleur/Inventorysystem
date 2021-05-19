@@ -66,8 +66,8 @@ public class ApplicationPage {
         setInstance();
         fixFocus();
         dragAnchor();
-        initColumns();
-        updateTable();
+        initProductTable();
+        initTableSelection();
 
         searchText.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -170,8 +170,13 @@ public class ApplicationPage {
             supplierTable.setItems(list);
         }
     }
-
-    public void initColumns() {
+    public void initTableSelection() {
+        ObservableList<String> tables = FXCollections.observableArrayList();
+        tables.addAll("Product", "Category", "Supplier");
+        tableBox.setValue("Product");
+        tableBox.setItems(tables);
+    }
+    public void initProductTable() {
         colID.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productID"));
         colName.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
         colStock.setCellValueFactory(new PropertyValueFactory<Product, String>("stock"));
@@ -182,13 +187,13 @@ public class ApplicationPage {
         colSupplierID.setCellValueFactory(new PropertyValueFactory<Product, String>("supplierID"));
         colCost.setCellValueFactory(new PropertyValueFactory<Product, BigDecimal>("cost"));
 
+        ObservableList<Product> list = FXCollections.observableArrayList();
+        list.addAll(facilitator.getProductList());
+        infoTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        infoTable.setItems(list);
+
         supplierTable.setVisible(false);
         categoryTable.setVisible(false);
-
-        ObservableList<String> tables = FXCollections.observableArrayList();
-        tables.addAll("Product", "Category", "Supplier");
-        tableBox.setValue("Product");
-        tableBox.setItems(tables);
     }
     public void initSupplierTable() {
         supNameCol.setCellValueFactory(new PropertyValueFactory<Supplier, String>("name"));
@@ -235,17 +240,10 @@ public class ApplicationPage {
             infoTable.setVisible(true);
             supplierTable.setVisible(false);
             categoryTable.setVisible(false);
+            initProductTable();
         }
     }
 
-    public void updateTable() {
-        ArrayList<Product> productList = facilitator.getProductList();
-        ObservableList<Product> list = FXCollections.observableArrayList();
-
-        list.addAll(productList);
-        infoTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        infoTable.setItems(list);
-    }
     public void logOut(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
     }

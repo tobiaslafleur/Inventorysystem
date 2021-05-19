@@ -109,10 +109,10 @@ public class DBProduct {
      * @return returns an arraylist of products.
      */
     public ArrayList<Product> getProductList() {
-        /** if(!productList.isEmpty()) {
+        if(!productList.isEmpty()) {
             productList.clear();
         }
-        createProductTable(); */
+        createProductTable();
         return productList;
     }
 

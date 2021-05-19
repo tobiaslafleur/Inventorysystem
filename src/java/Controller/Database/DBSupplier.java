@@ -1,7 +1,6 @@
 package Controller.Database;
 
 import Controller.DBController;
-import Model.Category;
 import Model.Supplier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -28,8 +28,8 @@ public class DeleteProductPage {
             facilitator.removeProduct(ID);
             facilitator.updateProductTable();
         }
-        facilitator.closeSecondStage(event);
         facilitator.updateProductTable();
+        facilitator.closeSecondStage(event);
     }
 
     public void cancel(ActionEvent event) {

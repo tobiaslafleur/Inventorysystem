@@ -131,7 +131,13 @@ public class GUIFacilitator {
     }
 
     public void updateProductTable() {
-        applicationPage.updateTable();
+        applicationPage.initProductTable();
+    }
+    public void updateCategoryTable() {
+        applicationPage.initCategoryTable();
+    }
+    public void updateSupplierTable() {
+        applicationPage.initSupplierTable();
     }
 
     public void removeProduct(int productID) {
