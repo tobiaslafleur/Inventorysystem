@@ -1,7 +1,6 @@
 package Model;
 
-public enum Countries
-{
+public enum Countries {
     Afghanistan,
     Algeria,
     Andorra,
