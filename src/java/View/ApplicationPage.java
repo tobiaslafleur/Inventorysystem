@@ -78,6 +78,8 @@ public class ApplicationPage {
                 initProductTable();
             }
         });
+
+        tableBox.setId("cmb-opt");
     }
 
     @FXML private void anchorPaneClicked() {

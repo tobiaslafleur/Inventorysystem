@@ -102,7 +102,7 @@
 }
 
 #CSVBtn:hover {
-    -fx-background-color: lightgray;
+    -fx-background-color: #89A1A0;
 }
 
 #accountSettingsBtn {
@@ -114,7 +114,7 @@
 }
 
 #accountSettingsBtn:hover {
-    -fx-background-color: lightgray;
+    -fx-background-color: #89A1A0;
 }
 
 #AddShelfBtn {
@@ -126,7 +126,7 @@
 }
 
 #AddShelfBtn:hover {
-    -fx-background-color: lightgray;
+    -fx-background-color: #89A1A0;
 }
 
 #check-btn {
@@ -136,6 +136,34 @@
 }
 
 #cmb-area {
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+#cmb-cat {
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+#cmb-she {
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+#cmb-sup {
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+#cmb-opt {
     -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;

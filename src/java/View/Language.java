@@ -85,4 +85,76 @@ public class Language {
     public static String getRegErrPassword() { return regErrPassword[language]; }
 
     public static String getRegErrRepeatPassword() { return regErrRepeatPassword[language]; }
+
+    //Add Product
+    private static String[] prodTitle = {"Add Product", "Lägg till produkt"};
+    private static String[] prodCancel = {"Cancel", "Avbryt"};
+    private static String[] prodName = {"Product name", "Produktnamn"};
+    private static String[] prodStock = {"Stock", "Antal"};
+    private static String[] prodPrice = {"Price", "Pris"};
+    private static String[] prodCost = {"Cost", "Kostnad"};
+    private static String[] prodCategory = {"Category", "Kategori"};
+    private static String[] prodShelf = {"Shelf", "Hylla"};
+    private static String[] prodSupplier = {"Supplier", "Leverantör"};
+    private static String[] prodAdd = {"Add product", "Lägg till produkt"};
+    private static String[] prodErrName = {"Product must have a name", "Produkten måste ha ett namn"};
+    private static String[] prodErrStock = {"Only use numbers", "Använd endast heltal"};
+    private static String[] prodErrCost = {"Only use numbers. If decimals are needed, use a . to separate ", "Använd endast heltal. Om decimaler behövs, använd . för att separera"};
+    private static String[] prodErrPrice = {"Only use numbers. If decimals are needed, use a . to separate ", "Använd endast heltal. Om decimaler behövs, använd . för att separera"};
+
+    public static String getProdTitle() {
+        return prodTitle[language];
+    }
+
+    public static String getProdCancel() {
+        return prodCancel[language];
+    }
+
+    public static String getProdName() {
+        return prodName[language];
+    }
+
+    public static String getProdStock() {
+        return prodStock[language];
+    }
+
+    public static String getProdPrice() {
+        return prodPrice[language];
+    }
+
+    public static String getProdCost() {
+        return prodCost[language];
+    }
+
+    public static String getProdCategory() {
+        return prodCategory[language];
+    }
+
+    public static String getProdShelf() {
+        return prodShelf[language];
+    }
+
+    public static String getProdSupplier() {
+        return prodSupplier[language];
+    }
+
+    public static String getProdAdd() {
+        return prodAdd[language];
+    }
+
+    public static String getProdErrName() {
+        return prodErrName[language];
+    }
+
+    public static String getProdErrStock() {
+        return prodErrStock[language];
+    }
+
+    public static String getProdErrCost() {
+        return prodErrCost[language];
+    }
+
+    public static String getProdErrPrice() {
+        return prodErrPrice[language];
+    }
 }
