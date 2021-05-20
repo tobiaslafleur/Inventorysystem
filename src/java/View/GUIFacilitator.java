@@ -196,8 +196,8 @@ public class GUIFacilitator {
         controller.updateSupplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, id);
     }
  
-    public void editUser(String userName, String userPhone, String userLanguage, String userAddress, String userNewpassword){
-        controller.editUser(userName, userPhone, userLanguage, userAddress, userNewpassword);
+    public void editUser(String userPhone, String userAddress,  String userNewPassword){
+        controller.editUser(userPhone, userAddress, userNewPassword);
     }
     
     public ArrayList<Product> getProductSearch(String searchText) {

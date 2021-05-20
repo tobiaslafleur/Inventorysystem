@@ -1,14 +1,22 @@
 package View;
 
+import Controller.DBController;
+import Controller.ErrorHandling.RegistrationPageHandling;
 import Controller.Main;
+import Model.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.util.Arrays;
 
 
 public class AccountSettingsPage {
@@ -18,14 +26,22 @@ public class AccountSettingsPage {
     @FXML private AnchorPane TableControls2;
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
-//    @FXML private static AccountSettingsPage instance;
 
+    @FXML private static AccountSettingsPage instance;
+    @FXML private DBController dbController;
+
+    @FXML private ComboBox<String> cmbAreaCodes;
+    @FXML private Label lblPhone;
+    @FXML private Label lblAddress;
+    @FXML private Label lblPw;
+    @FXML private Label lblOldPw;
+    @FXML private Label lblEnterAllFields;
 
 
     @FXML private TextField phoneNmbr;
     @FXML private TextField address;
-    @FXML private TextField oldPassword = new TextField();
-    @FXML private TextField newPassword = new TextField();
+    @FXML private PasswordField oldPassword = new PasswordField();
+    @FXML private PasswordField newPassword = new PasswordField();
     private double y = 0, x = 0;
 
 
@@ -36,6 +52,59 @@ public class AccountSettingsPage {
 //        setInstance();
         dragAnchor();
         fixFocus();
+
+        cmbAreaCodes.getItems().addAll("+46");
+        cmbAreaCodes.setId("cmb-area");
+
+
+        lblPhone.setText("");
+        lblAddress.setText("");
+        lblPw.setText("");
+        lblOldPw.setText("");
+        lblEnterAllFields.setVisible(false);
+
+        phoneNmbr.setOnKeyTyped(actionEvent -> {
+            System.out.println(phoneNmbr.getText());
+            if(RegistrationPageHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+                phoneNmbr.setStyle("-fx-border-color: #8EFF8B;");
+                lblPhone.setText("");
+            } else {
+                phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
+                lblPhone.setText("Enter a valid number and select area code");
+            }
+        });
+
+        address.setOnKeyTyped(actionEvent -> {
+            System.out.println(address.getText());
+            if(!address.getText().equals("")){
+                address.setStyle("-fx-border-color: #8EFF8B;");
+                lblAddress.setText("");
+            } else {
+                address.setStyle("-fx-border-color: #EB5D5D;");
+                lblAddress.setText("Enter a valid address.");
+            }
+        });
+
+        newPassword.setOnKeyTyped(actionEvent -> {
+            System.out.println(newPassword.getText());
+            if(RegistrationPageHandling.isPasswordValid(newPassword.getText())){
+                newPassword.setStyle("-fx-border-color: #8EFF8B;");
+                lblPw.setText("");
+            } else {
+                newPassword.setStyle("-fx-border-color: #EB5D5D;");
+                lblPw.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
+            }
+
+            if(RegistrationPageHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
+                oldPassword.setStyle("-fx-border-color: #8EFF8B;");
+                lblOldPw.setText("");
+            } else {
+                oldPassword.setStyle("-fx-border-color: #EB5D5D;");
+                lblOldPw.setText("Password must match");
+            }
+        });
+
+
     }
     @FXML private void anchorPaneClicked() {
         fixFocus();
@@ -66,49 +135,56 @@ public class AccountSettingsPage {
 //        facilitator.setAccountInstance(instance);
 //    }
 
-
     public void saveSettingsBtn(ActionEvent e) {
-        String username = null; //Always null
         String userPhone = null;
-        String userLanguage = null; //Always null
         String userAddress = null;
-        String userOldpassword = null;
         String userNewpassword = null;
+        String areacode = cmbAreaCodes.getValue();
+        System.out.println(phoneNmbr);
 
-        if(!this.phoneNmbr.getText().equals("")) {
-            userPhone = this.phoneNmbr.getText();
+
+        if(RegistrationPageHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+            if(phoneNmbr.getText().toCharArray()[0] == '0'){
+                char[] temp = Arrays.copyOfRange(phoneNmbr.getText().toCharArray(), 1, phoneNmbr.getText().length());
+
+                StringBuilder strBuilder = new StringBuilder();
+                for(char c : temp) {
+                    strBuilder.append(c);
+                }
+                String str = strBuilder.toString();
+                userPhone = areacode + str;
+
+            } else {
+                userPhone = areacode + phoneNmbr.getText();
+                System.out.println(userPhone);
+            }
+
+
+        } else {
+            phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
+            lblPhone.setText("Enter a valid number and select area code");
         }
-        if(!this.address.getText().equals("")) {
+        if(!address.getText().isEmpty()){
             userAddress = this.address.getText();
-        }
-        if(!this.oldPassword.getText().equals("")) {
-            userOldpassword = this.oldPassword.getText();
+            address.setStyle("-fx-border-color: #8EFF8B;");
+            lblAddress.setText("");
+        } else {
+            address.setStyle("-fx-border-color: #EB5D5D;");
+            lblAddress.setText("Enter a valid address");
         }
         if(!this.newPassword.getText().equals("")) {
             userNewpassword = this.newPassword.getText();
         }
-        if(userOldpassword.equals(this.newPassword.getText())) {
-            this.newPassword.getText();
+        if(!this.oldPassword.getText().equals(this.newPassword.getText())) {
+            System.out.println("Cant use same password");
         }
-        if(this.newPassword.getText().equals(this.oldPassword.getText())){
+        if(!this.newPassword.getText().equals(this.oldPassword.getText())){
             userNewpassword = this.newPassword.getText();
         }
 
- 
-
-        facilitator.editUser(userPhone, userLanguage, userAddress, userOldpassword, userNewpassword);
+        facilitator.editUser(userPhone, userAddress, userNewpassword);
         facilitator.closeSecondStage(e);
  
-    }
-    public void checkImageBtn(ActionEvent e) {
-        try {
-            //Preliminary "solve" until we create a new images folder specified for our users filled with profilepictures.
-            Stage stage = new Stage();
-            FileChooser JF = new FileChooser();
-            String filepath = JF.showOpenDialog(stage).getPath();
-        } catch (Exception ignore) {
-            //dfg
-        }
     }
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);
