@@ -63,7 +63,7 @@ public class Product {
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return new BigDecimal(price.stripTrailingZeros().toPlainString());
     }
 
     public void setPrice(BigDecimal price) {
@@ -95,7 +95,7 @@ public class Product {
     }
 
     public BigDecimal getCost() {
-        return cost;
+        return new BigDecimal(cost.stripTrailingZeros().toPlainString());
     }
 
     public void setCost(BigDecimal cost) {
