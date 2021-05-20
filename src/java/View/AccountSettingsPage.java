@@ -1,6 +1,7 @@
 package View;
 
 import Controller.DBController;
+import Controller.ErrorHandling.EditAccountSettingHandling;
 import Controller.ErrorHandling.RegistrationPageHandling;
 import Controller.Main;
 import Model.User;
@@ -26,8 +27,10 @@ public class AccountSettingsPage {
     @FXML private AnchorPane TableControls2;
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
+    @FXML private AccountSettingsPage instance;
 
-    @FXML private static AccountSettingsPage instance;
+
+    
     @FXML private DBController dbController;
 
     @FXML private ComboBox<String> cmbAreaCodes;
@@ -65,7 +68,7 @@ public class AccountSettingsPage {
 
         phoneNmbr.setOnKeyTyped(actionEvent -> {
             System.out.println(phoneNmbr.getText());
-            if(RegistrationPageHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+            if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
                 phoneNmbr.setStyle("-fx-border-color: #8EFF8B;");
                 lblPhone.setText("");
             } else {
@@ -87,7 +90,7 @@ public class AccountSettingsPage {
 
         newPassword.setOnKeyTyped(actionEvent -> {
             System.out.println(newPassword.getText());
-            if(RegistrationPageHandling.isPasswordValid(newPassword.getText())){
+            if(EditAccountSettingHandling.isPasswordValid(newPassword.getText())){
                 newPassword.setStyle("-fx-border-color: #8EFF8B;");
                 lblPw.setText("");
             } else {
@@ -95,7 +98,8 @@ public class AccountSettingsPage {
                 lblPw.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
             }
 
-            if(RegistrationPageHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
+            if(EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
+
                 oldPassword.setStyle("-fx-border-color: #8EFF8B;");
                 lblOldPw.setText("");
             } else {
@@ -138,10 +142,8 @@ public class AccountSettingsPage {
     public void saveSettingsBtn(ActionEvent e) {
         String userPhone = null;
         String userAddress = null;
-        String userNewpassword = null;
-        String areacode = cmbAreaCodes.getValue();
-        System.out.println(phoneNmbr);
-
+        String userNewPassword = null;
+        String areaCode = cmbAreaCodes.getValue();
 
         if(RegistrationPageHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
             if(phoneNmbr.getText().toCharArray()[0] == '0'){
@@ -152,13 +154,12 @@ public class AccountSettingsPage {
                     strBuilder.append(c);
                 }
                 String str = strBuilder.toString();
-                userPhone = areacode + str;
+                userPhone = areaCode + str;
 
             } else {
-                userPhone = areacode + phoneNmbr.getText();
+                userPhone = areaCode + phoneNmbr.getText();
                 System.out.println(userPhone);
             }
-
 
         } else {
             phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
@@ -173,16 +174,16 @@ public class AccountSettingsPage {
             lblAddress.setText("Enter a valid address");
         }
         if(!this.newPassword.getText().equals("")) {
-            userNewpassword = this.newPassword.getText();
+            userNewPassword = this.newPassword.getText();
         }
         if(!this.oldPassword.getText().equals(this.newPassword.getText())) {
             System.out.println("Cant use same password");
         }
         if(!this.newPassword.getText().equals(this.oldPassword.getText())){
-            userNewpassword = this.newPassword.getText();
+            userNewPassword = this.newPassword.getText();
         }
 
-        facilitator.editUser(userPhone, userAddress, userNewpassword);
+        facilitator.editUser(userPhone, userAddress, userNewPassword);
         facilitator.closeSecondStage(e);
  
     }
