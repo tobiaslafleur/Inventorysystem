@@ -22,6 +22,7 @@ public class LoginPage {
     @FXML private Button loginBtn = new Button();
     @FXML private Hyperlink forgotPassword;
     @FXML private Hyperlink register;
+    @FXML private Hyperlink English;
     @FXML private Label lblFailed;
 
     private double x = 0, y = 0;
@@ -100,5 +101,13 @@ public class LoginPage {
         forgotPassword.setText(Language.getLogForgotPassword());
         lblFailed.setText(Language.getLogIncorrectInfo());
         loginBtn.setText(Language.getLogLoginBtn());
+    }
+    public void changeLanguage(ActionEvent event) {
+        if(event.getSource().equals(English)) {
+            facilitator.setLanguage(0);
+        } else {
+            facilitator.setLanguage(1);
+        }
+        setLanguage();
     }
 }

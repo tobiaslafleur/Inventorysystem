@@ -26,9 +26,9 @@ public class AccountSettingsPage {
     @FXML private AnchorPane TableControls2;
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
+
     @FXML private static AccountSettingsPage instance;
     @FXML private DBController dbController;
-
 
     @FXML private ComboBox<String> cmbAreaCodes;
     @FXML private Label lblPhone;
@@ -47,9 +47,9 @@ public class AccountSettingsPage {
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
-        instance = this;
+//        instance = this;
 
-        setInstance();
+//        setInstance();
         dragAnchor();
         fixFocus();
 
@@ -131,9 +131,9 @@ public class AccountSettingsPage {
             stage.setOpacity(1f);
         }));
     }
-    public void setInstance() {
-        facilitator.setAccountInstance(instance);
-    }
+//    public void setInstance() {
+//        facilitator.setAccountInstance(instance);
+//    }
 
     public void saveSettingsBtn(ActionEvent e) {
         String userPhone = null;

@@ -44,6 +44,7 @@ public class ApplicationPage {
     @FXML private ComboBox<String> tableBox;
     @FXML private Hyperlink removeBtn;
     @FXML private Button editBtn;
+    @FXML private Hyperlink English;
 
     //Supplier table and columns
     @FXML private TableView<Supplier> supplierTable;
@@ -260,6 +261,14 @@ public class ApplicationPage {
     }
     public void accountSettings(ActionEvent event) {
         facilitator.openSecondStage(event, "/fxml/AccountSettingsPage.fxml");
+    }
+
+    public void changeLanguage(ActionEvent event) {
+        if(event.getSource().equals(English)) {
+            facilitator.setLanguage(0);
+        } else {
+            facilitator.setLanguage(1);
+        }
     }
     public void logOut(ActionEvent event) {
         facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
