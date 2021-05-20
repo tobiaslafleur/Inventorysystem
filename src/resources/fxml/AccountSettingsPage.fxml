@@ -14,10 +14,10 @@
 <AnchorPane fx:id="TableControls2" onMouseClicked="#anchorPaneClicked" prefHeight="600.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AccountSettingsPage">
     <children>
       <AnchorPane fx:id="dragAnchor" layoutX="49.0" prefHeight="26.0" prefWidth="307.0" />
-        <TextField fx:id="phoneNmbr" layoutX="125.0" layoutY="288.0" prefHeight="25.0" prefWidth="149.0" promptText="Phone" />
-        <TextField fx:id="address" layoutX="125.0" layoutY="324.0" promptText="Address" />
-        <PasswordField fx:id="oldPassword" layoutX="125.0" layoutY="366.0" promptText="Current Password" />
-        <PasswordField fx:id="newPassword" layoutX="125.0" layoutY="405.0" promptText="New Password" />
+        <TextField fx:id="phoneNmbr" layoutX="127.0" layoutY="256.0" prefHeight="25.0" prefWidth="149.0" promptText="Phone" />
+        <TextField fx:id="address" layoutX="127.0" layoutY="309.0" promptText="Address" />
+        <PasswordField fx:id="oldPassword" layoutX="128.0" layoutY="367.0" promptText="Current Password" />
+        <PasswordField fx:id="newPassword" layoutX="128.0" layoutY="424.0" promptText="New Password" />
         <Button fx:id="saveBtn" layoutY="525.0" mnemonicParsing="false" onAction="#saveSettingsBtn" prefHeight="75.0" prefWidth="402.0" text="Save settings" />
         <Label alignment="CENTER" layoutX="1.0" layoutY="20.0" prefHeight="26.0" prefWidth="400.0" text="Account Settings" textFill="WHITE">
             <font>
@@ -25,51 +25,45 @@
             </font>
         </Label>
         <Hyperlink layoutX="348.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
-        <ImageView fx:id="imgPwInfo" fitHeight="10.0" fitWidth="10.0" layoutX="284.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imgPwInfo" fitHeight="10.0" fitWidth="10.0" layoutX="284.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/questionmark.png" />
             </image>
         </ImageView>
-        <Label fx:id="lblEmailWarning" alignment="CENTER" layoutX="-1.0" layoutY="273.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblPhone" alignment="CENTER" layoutX="-1.0" layoutY="281.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblPhoneWarning" alignment="CENTER" layoutX="-1.0" layoutY="309.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblAddress" alignment="CENTER" layoutX="-1.0" layoutY="334.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblAddressWarning" alignment="CENTER" layoutX="-4.0" layoutY="349.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblPw" alignment="TOP_CENTER" layoutX="1.0" layoutY="390.0" prefHeight="15.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblPwWarning" alignment="TOP_CENTER" layoutX="-1.0" layoutY="388.0" prefHeight="15.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="#bfbfbf">
+        <Label fx:id="lblOldPw" alignment="CENTER" layoutX="-1.0" layoutY="449.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblRepeatWarning" alignment="CENTER" layoutX="-1.0" layoutY="428.0" prefHeight="15.0" prefWidth="400.0" text="Label" textFill="#bfbfbf">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Label>
-        <ImageView fx:id="imgRepeatInfo" fitHeight="10.0" fitWidth="20.0" layoutX="284.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imgRepeatInfo" fitHeight="10.0" fitWidth="20.0" layoutX="284.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/questionmark.png" />
             </image>
         </ImageView>
-        <ComboBox fx:id="cmbAreaCodes" layoutX="51.0" layoutY="288.0" prefHeight="25.0" prefWidth="70.0" promptText="+46" />
+        <ComboBox fx:id="cmbAreaCodes" layoutX="49.0" layoutY="256.0" prefHeight="25.0" prefWidth="70.0" promptText="+46" />
         <Label fx:id="lblEnterAllFields" alignment="CENTER" layoutX="-1.0" layoutY="508.0" prefHeight="17.0" prefWidth="400.0" text="Changes not applied. Make sure all fields are green" textAlignment="CENTER" textFill="#f2f2f2">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-      <Button fx:id="imageBtn" layoutX="153.0" layoutY="207.0" mnemonicParsing="false" onAction="#checkImageBtn" prefHeight="0.0" prefWidth="97.0" text="Change image" />
       <ImageView fitHeight="153.0" fitWidth="160.0" layoutX="126.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/WeirdO.png" />
+            <Image url="@../images/logo.png" />
          </image>
       </ImageView>
     </children>

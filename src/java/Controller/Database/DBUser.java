@@ -108,47 +108,38 @@ public class DBUser {
         }
         return false;
     }
-    public void editUser(User updated) {
-            String username = updated.getUsername();
-            String userPhone = updated.getPhone();
-            String Address = updated.getAddress();
-            String userNewpassword = updated.getPassword();
-            String userLanguage = updated.getLanguage();
-            int id = updated.getUserID();
+    public void editUser(User userUpdated) {
+
+            String userPhone = userUpdated.getPhone();
+            String Address = userUpdated.getAddress();
+            String userNewpassword = userUpdated.getPassword();
+            int id = userUpdated.getUserID();
+
+            System.out.println(userPhone + "phone");
+            System.out.println(Address + "address");
+            System.out.println(userNewpassword + "user pw");
+            System.out.println(id + "id");
 
             String query = " ";
-            if(username != null) {
-                System.out.println(id);
-                query =
-                        "UPDATE [User] SET [username] = '" + username + "' Where id = " + id;
-                executeUpdate(query);
-            }
-            if(userNewpassword != null) {
-                System.out.println(userNewpassword);
-                query =
-                        "UPDATE [User] SET [password] = '" + userNewpassword + "' Where id = " + id;
-                executeUpdate(query);
-            }
-            if(Address != null) {
-                System.out.println(Address);
-                query =
-                        "UPDATE [User] SET [address] = '" + Address + "' Where id = " + id;
-                executeUpdate(query);
-            }
+
             if(userPhone != null) {
-                System.out.println(userPhone);
-                query =
+
+                /*query =
                         "UPDATE [User] SET [phone] = '" + userPhone + "' Where id = " + id;
-                executeUpdate(query);
-            }
-            if(userLanguage != null) {
-                query =
-                        "UPDATE [User] SET [userLanguage] = '" + userLanguage + "' Where id = " + id;
-                executeUpdate(query);
+                executeUpdate(query);*/
             }
 
+            if(Address != null) {
+                /*query =
+                    "UPDATE [User] SET [address] = '" + Address + "' Where id = " + id;
+            executeUpdate(query);*/
+            }
 
-
+            if(userNewpassword != null) {
+                /*query =
+                        "UPDATE [User] SET [password] = '" + userNewpassword + "' Where id = " + id;
+                executeUpdate(query);*/
+            }
 
     }
     public void executeUpdate(String query) {
