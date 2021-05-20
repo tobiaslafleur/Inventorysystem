@@ -99,10 +99,8 @@ public class GUIFacilitator {
             scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
             Stage secondStage = new Stage();
-
             secondStage.initOwner(applicationStage);
             secondStage.initModality(Modality.APPLICATION_MODAL);
-
             secondStage.setScene(scene);
             secondStage.initStyle(StageStyle.TRANSPARENT);
             secondStage.show();
@@ -132,6 +130,8 @@ public class GUIFacilitator {
             scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
             Stage secondStage = new Stage();
+            secondStage.initOwner(applicationStage);
+            secondStage.initModality(Modality.APPLICATION_MODAL);
             secondStage.setScene(scene);
             secondStage.initStyle(StageStyle.TRANSPARENT);
             secondStage.show();
