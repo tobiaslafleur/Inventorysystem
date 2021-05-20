@@ -6,58 +6,82 @@ import java.util.ArrayList;
 
 public class ProductErrorHandling {
 
-    private static boolean stockOk = true;
-    private static boolean priceOk = true;
-    private static boolean costOk = true;
+    public static boolean errorHandling(String stock, String price, String cost, String category, String shelf, String supplier){
 
-    private static ArrayList<String> warnings = new ArrayList<>();
-
-    public static ArrayList<String> errorHandling(String stock, String price, String cost){
-
-        if(!warnings.isEmpty()){
-            warnings.clear();
+        if(!isStockValid(stock)){
+            return false;
         }
 
-        try {
-            Integer.parseInt(stock);
-            stockOk = true;
-        } catch (NumberFormatException e) {
-            warnings.add("Only enter numbers");
-            stockOk = false;
+        if(!isPriceValid(price)) {
+            return false;
         }
 
-        try {
-            Double.parseDouble(price);
-            priceOk = true;
-        } catch(NumberFormatException e) {
-            warnings.add("Enter numbers for the price only. If decimals are needed, use a . to separate.");
-            priceOk = false;
+        if(!isCostValid(cost)) {
+            return false;
         }
 
-        try {
-            Double.parseDouble(cost);
-            costOk = true;
-        } catch(NumberFormatException e) {
-            warnings.add("Enter numbers the for cost only. If decimals are needed, use a . to separate.");
-            costOk = false;
+        if(!isCategoryValid(category)) {
+            return false;
         }
 
-        if(warnings.isEmpty()){
-            return null;
+        if(!isShelfValid(shelf)) {
+            return false;
+        }
+
+        if(!isSupplierValid(supplier)) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isSupplierValid(String supplier) {
+        if(supplier == null) {
+            return false;
         } else {
-            return warnings;
+            return true;
         }
     }
 
-    public static boolean isStockOk() {
-        return stockOk;
+    private static boolean isShelfValid(String shelf) {
+        if(shelf == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public static boolean isPriceOk() {
-        return priceOk;
+    private static boolean isCategoryValid(String category) {
+        if(category == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public static boolean isCostOk() {
-        return costOk;
+    public static boolean isStockValid(String stock) {
+        try{
+            Integer.parseInt(stock);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isPriceValid(String price) {
+        try{
+            Double.parseDouble(price);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isCostValid(String cost) {
+        try{
+            Double.parseDouble(cost);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

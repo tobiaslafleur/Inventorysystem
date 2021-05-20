@@ -8,8 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -26,6 +25,9 @@ public class AddProductPage {
     @FXML private ComboBox<String> shelves;
     @FXML private ComboBox<Supplier> suppliers;
     @FXML private TextField cost;
+    @FXML private Label lblTitle;
+    @FXML private Hyperlink hyperCancel;
+    @FXML private Button addProduct;
 
     /**
      * Initializes the connection between this class and GUIFacilitator.
@@ -33,6 +35,53 @@ public class AddProductPage {
     @FXML public void initialize(){
         facilitator = Main.getInstance().getFacilitator();
         fillComboBoxes();
+
+        lblTitle.setText(Language.getProdTitle());
+        addProduct.setText(Language.getProdAdd());
+        hyperCancel.setText(Language.getProdCancel());
+        name.setPromptText(Language.getProdName());
+        stock.setPromptText(Language.getProdStock());
+        price.setPromptText(Language.getProdPrice());
+        categories.setPromptText(Language.getProdCategory());
+        shelves.setPromptText(Language.getProdShelf());
+        suppliers.setPromptText(Language.getProdSupplier());
+        cost.setPromptText(Language.getProdCost());
+
+        name.setOnKeyTyped(actionEvent -> {
+            if(name.getText().isEmpty()) {
+                name.setStyle("-fx-border-color: #EB5D5D;");
+                //lblName.setText();
+            } else {
+                name.setStyle("-fx-border-color: #EB5D5D;");
+            }
+        });
+
+        stock.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isStockValid(stock.getText())) {
+                stock.setStyle("-fx-border-color: #EB5D5D;");
+                //lblStock.setText();
+            } else {
+                stock.setStyle("-fx-border-color: #EB5D5D;");
+            }
+        });
+
+        price.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isPriceValid(price.getText())) {
+                price.setStyle("-fx-border-color: #EB5D5D;");
+                //lblPrice.setText();
+            } else {
+                price.setStyle("-fx-border-color: #EB5D5D;");
+            }
+        });
+
+        cost.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isCostValid(cost.getText())) {
+                cost.setStyle("-fx-border-color: #EB5D5D;");
+                //lblCost.setText();
+            } else {
+                cost.setStyle("-fx-border-color: #EB5D5D;");
+            }
+        });
 
     }
 
@@ -59,26 +108,24 @@ public class AddProductPage {
         String supplierID = String.valueOf(suppliers.getValue().getId());
         String shelf = shelves.getValue();
 
-        ArrayList<String> warnings = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText());
-
-        if(warnings == null) {
+        if(ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelves.getValue(), suppliers.getValue().getName())) {
             facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelf, supplierID, cost.getText());
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         } else {
-            if(!ProductErrorHandling.isStockOk()) {
+            if(!ProductErrorHandling.isStockValid(stock.getText())) {
                 stock.setStyle("-fx-border-color: #974F4F;");
             } else {
                 stock.setStyle("-fx-border-color: #1F701D;");
             }
 
-            if(!ProductErrorHandling.isPriceOk()) {
+            if(!ProductErrorHandling.isPriceValid(price.getText())) {
                 price.setStyle("-fx-border-color: #974F4F;");
             } else {
                 price.setStyle("-fx-border-color: #1F701D;");
             }
 
-            if(!ProductErrorHandling.isCostOk()) {
+            if(!ProductErrorHandling.isCostValid(cost.getText())) {
                 cost.setStyle("-fx-border-color: #974F4F;");
             } else {
                 cost.setStyle("-fx-border-color: #1F701D;");
@@ -89,13 +136,6 @@ public class AddProductPage {
             suppliers.setStyle("-fx-border-color: #1F701D;");
             shelves.setStyle("-fx-border-color: #1F701D;");
 //            shelfPosition.setStyle("-fx-border-color: #1F701D;");
-
-            StringBuilder strBuilder = new StringBuilder();
-            for(String s : warnings) {
-                strBuilder.append(s).append("\n");
-            }
-            String str = strBuilder.toString();
-            JOptionPane.showMessageDialog(null, str);
         }
     }
 
