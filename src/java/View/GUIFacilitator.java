@@ -14,6 +14,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -94,6 +95,10 @@ public class GUIFacilitator {
             scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
             Stage secondStage = new Stage();
+
+            secondStage.initOwner(applicationStage);
+            secondStage.initModality(Modality.APPLICATION_MODAL);
+
             secondStage.setScene(scene);
             secondStage.initStyle(StageStyle.TRANSPARENT);
             secondStage.show();
