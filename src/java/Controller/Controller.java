@@ -63,8 +63,8 @@ public class Controller {
         Supplier supplierUpdate = new Supplier(supName, supPhone, supStreet, supCity, supCountry, supEmail, supID);
         dbController.updateSupplier(supplierUpdate);
     }
-    public void editUser(String username, String userPhone, String userLanguage, String userAddress,  String userNewpassword){
-        User userUpdate = new User(dbController.getUser().getUserID(), username, userPhone, userLanguage,userAddress,userNewpassword);
+    public void editUser(String userPhone,String userAddress, String userNewPassword){
+        User userUpdate = new User(dbController.getUser().getUserID(),dbController.getUser().getUsername(), userNewPassword,dbController.getUser().getEmailAddress(), userAddress, userPhone);
         dbController.editUser(userUpdate);
     }
 
