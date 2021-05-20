@@ -69,7 +69,7 @@ public class LoginPage {
      * @param event
      */
     public void login(ActionEvent event) {
-        if(facilitator.checkUser(username.getText(), password.getText())){
+        if(facilitator.checkUser(username.getText().toLowerCase(), password.getText())){
             facilitator.changeWindow(event, "/fxml/ApplicationPage.fxml");
         } else {
             //TODO: Label saying "login failed"

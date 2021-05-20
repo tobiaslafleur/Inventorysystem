@@ -27,31 +27,20 @@ public class ProductErrorHandling {
         if(!isSupplierValid(supplier)) {
             return false;
         }
+
         return true;
     }
 
-    private static boolean isSupplierValid(String supplier) {
-        if(supplier == null) {
-            return false;
-        } else {
-            return true;
-        }
+    public static boolean isSupplierValid(String supplier) {
+        return supplier != null && !supplier.equals("");
     }
 
-    private static boolean isShelfValid(String shelf) {
-        if(shelf == null) {
-            return false;
-        } else {
-            return true;
-        }
+    public static boolean isShelfValid(String shelf) {
+        return shelf != null && !shelf.equals("");
     }
 
-    private static boolean isCategoryValid(String category) {
-        if(category == null) {
-            return false;
-        } else {
-            return true;
-        }
+    public static boolean isCategoryValid(String category) {
+        return category != null && !category.equals("");
     }
 
     public static boolean isStockValid(String stock) {
@@ -79,5 +68,9 @@ public class ProductErrorHandling {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static boolean isNameValid(String text) {
+        return text != null && !text.equals("");
     }
 }
