@@ -64,40 +64,40 @@ public class AddProductPage {
 
         name.setOnKeyTyped(actionEvent -> {
             if(name.getText().isEmpty()) {
-                name.setStyle("-fx-border-color: #EB5D5D;");
+                name.setStyle("-fx-border-color: #974F4F;");
                 lblName.setText(Language.getProdErrName());
             } else {
-                name.setStyle("-fx-border-color: #8EFF8B;");
+                name.setStyle("-fx-border-color: #1F701D;");
                 lblName.setText("");
             }
         });
 
         stock.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isStockValid(stock.getText())) {
-                stock.setStyle("-fx-border-color: #EB5D5D;");
+                stock.setStyle("-fx-border-color: #974F4F;");
                 lblStock.setText(Language.getProdErrStock());
             } else {
-                stock.setStyle("-fx-border-color: #8EFF8B;");
+                stock.setStyle("-fx-border-color: #1F701D;");
                 lblStock.setText("");
             }
         });
 
         price.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isPriceValid(price.getText())) {
-                price.setStyle("-fx-border-color: #EB5D5D;");
+                price.setStyle("-fx-border-color: #974F4F;");
                 lblPrice.setText(Language.getProdErrPrice());
             } else {
-                price.setStyle("-fx-border-color: #8EFF8B;");
+                price.setStyle("-fx-border-color: #1F701D;");
                 lblPrice.setText("");
             }
         });
 
         cost.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isCostValid(cost.getText())) {
-                cost.setStyle("-fx-border-color: #EB5D5D;");
+                cost.setStyle("-fx-border-color: #974F4F;");
                 lblCost.setText(Language.getProdErrCost());
             } else {
-                cost.setStyle("-fx-border-color: #8EFF8B;");
+                cost.setStyle("-fx-border-color: #1F701D;");
                 lblCost.setText("");
             }
         });
@@ -127,17 +127,28 @@ public class AddProductPage {
         String supplierID = "";
         String shelf = "";
 
+        //Märkligaste skiten ever
         try{
-            categoryID = String.valueOf(categories.getValue().getID());
-            supplierID = String.valueOf(suppliers.getValue().getId());
             shelf = shelves.getValue();
         } catch(NullPointerException ex) {
             ex.printStackTrace();
         }
 
+        try{
+            categoryID = String.valueOf(categories.getValue().getID());
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            supplierID = String.valueOf(suppliers.getValue().getId());
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+
         boolean allOk;
         try{
-            allOk = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelves.getValue(), suppliers.getValue().getName());
+            allOk = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf, suppliers.getValue().getName());
         } catch (NullPointerException exc) {
             allOk = false;
             exc.printStackTrace();
@@ -148,46 +159,47 @@ public class AddProductPage {
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         } else {
+
             if(!ProductErrorHandling.isNameValid(name.getText())) {
-                stock.setStyle("-fx-border-color: #EB5D5D;");
+                name.setStyle("-fx-border-color: #974F4F;");
             } else {
-                stock.setStyle("-fx-border-color: #8EFF8B;");
+                name.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isStockValid(stock.getText())) {
-                stock.setStyle("-fx-border-color: #EB5D5D;");
+                stock.setStyle("-fx-border-color: #974F4F;");
             } else {
-                stock.setStyle("-fx-border-color: #8EFF8B;");
+                stock.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isPriceValid(price.getText())) {
-                price.setStyle("-fx-border-color: #EB5D5D;");
+                price.setStyle("-fx-border-color: #974F4F;");
             } else {
-                price.setStyle("-fx-border-color: #8EFF8B;");
+                price.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isCostValid(cost.getText())) {
-                cost.setStyle("-fx-border-color: #EB5D5D;");
+                cost.setStyle("-fx-border-color: #974F4F;");
             } else {
-                cost.setStyle("-fx-border-color: #8EFF8B;");
+                cost.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isCategoryValid(categoryID)) {
-                categories.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
+                categories.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
             } else {
-                categories.setStyle("-fx-background-color: #8EFF8B, #8EFF8B, #8EFF8B, #8EFF8B;");
+                categories.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
             }
 
             if(!ProductErrorHandling.isShelfValid(shelf)) {
-                shelves.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
+                shelves.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
             } else {
-                shelves.setStyle("-fx-background-color: #8EFF8B, #8EFF8B, #8EFF8B, #8EFF8B;");
+                shelves.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
             }
 
             if(!ProductErrorHandling.isSupplierValid(supplierID)) {
-                suppliers.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
+                suppliers.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
             } else {
-                suppliers.setStyle("-fx-background-color: #8EFF8B, #8EFF8B, #8EFF8B, #8EFF8B;");
+                suppliers.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
             }
         }
     }
