@@ -46,6 +46,8 @@ public class ApplicationPage {
     @FXML private Button editBtn;
     @FXML private Hyperlink English;
 
+    @FXML private Button importCSVBtn;
+
     //Supplier table and columns
     @FXML private TableView<Supplier> supplierTable;
     @FXML private TableColumn<Supplier, String> supNameCol;

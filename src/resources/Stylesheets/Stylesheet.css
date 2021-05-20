@@ -2,6 +2,7 @@
     -fx-background-radius: 20;
     -fx-background-color: #5F807F;
 }
+
 .hyperlink {
     -fx-text-fill: "white";
     -fx-focus-color: transparent; /*border glow*/
@@ -9,7 +10,7 @@
 }
 
 .button {
-    -fx-background-radius: 0 0 20 20; /*top left, top right, bottom right, bottom left  */
+    -fx-background-radius: 0 0 20 20;
     -fx-text-fill: #5F807F;
     -fx-background-color: #F2F2F2;
     -fx-font-size: 16px;
@@ -22,6 +23,7 @@
     -fx-border-width: 0 0 0.5 0; /*top, right, left, bottom  */
     -fx-background-color: transparent;
 }
+
 .password-field {
         -fx-alignment: center;
         -fx-text-fill: "white";
@@ -43,9 +45,11 @@
 #AppClose {
     -fx-text-fill: #5F807F;
 }
+
 #AppMinimize {
     -fx-text-fill: #5F807F;
 }
+
 #table {
     -fx-background-radius: 0 0 20 0; /*top left, top right, bottom right, bottom left  */
 }
@@ -58,6 +62,7 @@
 #addBtn {
     -fx-text-fill: #5F807F;
 }
+
 #removeBtn {
     -fx-text-fill: #5F807F;
 }
@@ -65,16 +70,23 @@
 #editBtn {
      -fx-background-color: transparent;
 }
+
 #searchBtn {
     -fx-background-color: transparent;
 }
+
 #searchText {
-        -fx-alignment: center;
-        -fx-text-fill: #5F807F;
-        -fx-border-color: #5F807F;
-        -fx-border-width: 0.5; /*top, right, bottom, left  */
-        -fx-background-color: transparent;
+    -fx-alignment: center-left;
+    -fx-text-fill: #5F807F;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 0 0 0.5 0; /*top, right, bottom, left  */
+    -fx-background-color: transparent;
 }
+
+#searchText:focused {
+    -fx-border-color: #5F807F;
+}
+
 #profilePic {
     -fx-background-radius: 10 10 10 10;
     -fx-border-width: 0.5 0.5 0.5 0.5; /*top, right, bottom, left  */
@@ -82,19 +94,39 @@
 }
 
 #CSVBtn {
-    -fx-background-radius: 10;
-    -fx-text-fill: #5F807F;
+    -fx-background-color: #5F807F;
+    -fx-background-radius: 0 0 0 0;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 12px;
+    -fx-alignment: center-left;
 }
+
+#CSVBtn:hover {
+    -fx-background-color: lightgray;
+}
+
 #accountSettingsBtn {
-    -fx-background-radius: 10;
-    -fx-text-fill: #5F807F;
+    -fx-background-color: #5F807F;
+    -fx-background-radius: 0 0 0 0;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 12px;
+    -fx-alignment: center-left;
 }
+
+#accountSettingsBtn:hover {
+    -fx-background-color: lightgray;
+}
+
 #AddShelfBtn {
-    -fx-background-radius: 10;
-    -fx-text-fill: #5F807F;
+    -fx-background-color: #5F807F;
+    -fx-background-radius: 0 0 0 0;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 12px;
+    -fx-alignment: center-left;
+}
+
+#AddShelfBtn:hover {
+    -fx-background-color: lightgray;
 }
 
 #check-btn {
