@@ -124,21 +124,21 @@ public class DBUser {
 
             if(userPhone != null) {
 
-                /*query =
+                query =
                         "UPDATE [User] SET [phone] = '" + userPhone + "' Where id = " + id;
-                executeUpdate(query);*/
+                executeUpdate(query);
             }
 
             if(Address != null) {
-                /*query =
+                query =
                     "UPDATE [User] SET [address] = '" + Address + "' Where id = " + id;
-            executeUpdate(query);*/
+            executeUpdate(query);
             }
 
             if(userNewpassword != null) {
-                /*query =
+                query =
                         "UPDATE [User] SET [password] = '" + userNewpassword + "' Where id = " + id;
-                executeUpdate(query);*/
+                executeUpdate(query);
             }
 
     }
