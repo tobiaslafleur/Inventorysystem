@@ -29,7 +29,7 @@ public class AddSupplierPage {
     @FXML public void initialize() {
         instance = this;
         facilitator = Main.getInstance().getFacilitator();
-        setInstance();
+//        setInstance();
 
         ObservableList<Countries> countryList = FXCollections.observableArrayList();
         countryList.addAll(Countries.values());
@@ -39,9 +39,9 @@ public class AddSupplierPage {
     /**
      * Intializes the connection between GUIFacilitator and this class.
      */
-    private void setInstance() {
-        facilitator.setAddSupplierInstance(instance);
-    }
+//    private void setInstance() {
+//        facilitator.setAddSupplierInstance(instance);
+//    }
 
     /**
      * Adds the supplier to the database.

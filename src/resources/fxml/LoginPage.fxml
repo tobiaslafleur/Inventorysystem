@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="window" onMouseClicked="#windowClicked" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
+<AnchorPane fx:id="window" onMouseClicked="#windowClicked" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoginPage">
    <children>
       <AnchorPane fx:id="dragAnchor" prefHeight="25.0" prefWidth="227.0">
          <children>
@@ -32,7 +27,7 @@
          <font>
             <Font size="14.0" />
          </font></PasswordField>
-      <Hyperlink fx:id="forgotPassword" layoutX="82.0" layoutY="335.0" text="Forgot password?" textFill="#fff9f9">
+      <Hyperlink fx:id="forgotPassword" layoutX="80.0" layoutY="381.0" text="Forgot password?" textFill="#fff9f9">
          <font>
             <Font size="15.0" />
          </font></Hyperlink>
@@ -46,9 +41,12 @@
          <font>
             <Font size="20.0" />
          </font></Hyperlink>
-      <Label fx:id="lblFailed" alignment="CENTER" layoutX="12.0" layoutY="396.0" prefHeight="17.0" prefWidth="268.0" text="Incorrect username or password." textFill="#ed914c">
+      <Label fx:id="lblFailed" alignment="CENTER" layoutX="13.0" layoutY="313.0" prefHeight="17.0" prefWidth="268.0" text="Incorrect username or password." textFill="#ed914c">
          <font>
             <Font size="15.0" />
          </font></Label>
+      <Hyperlink fx:id="Swedish" layoutX="122.0" layoutY="411.0" onAction="#changeLanguage" text="SV" />
+      <Hyperlink fx:id="English" layoutX="146.0" layoutY="411.0" onAction="#changeLanguage" text="EN" />
+      <Label layoutX="144.0" layoutY="414.0" text="|" />
    </children>
 </AnchorPane>
