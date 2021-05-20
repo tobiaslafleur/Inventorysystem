@@ -4,7 +4,6 @@ public class EditAccountSettingHandling {
 
     private static final int PASSWORD_MIN_LENGTH = 8;
 
-
     public static boolean isPasswordValid(String password) {
         if(password.length() < PASSWORD_MIN_LENGTH) {
             return false;

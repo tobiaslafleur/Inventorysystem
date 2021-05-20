@@ -27,10 +27,7 @@ public class AccountSettingsPage {
     @FXML private AnchorPane TableControls2;
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
-    @FXML private AccountSettingsPage instance;
 
-
-    
     @FXML private DBController dbController;
 
     @FXML private ComboBox<String> cmbAreaCodes;
@@ -50,9 +47,7 @@ public class AccountSettingsPage {
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
-//        instance = this;
 
-//        setInstance();
         dragAnchor();
         fixFocus();
 
@@ -67,7 +62,7 @@ public class AccountSettingsPage {
         lblEnterAllFields.setVisible(false);
 
         phoneNmbr.setOnKeyTyped(actionEvent -> {
-            System.out.println(phoneNmbr.getText());
+
             if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
                 phoneNmbr.setStyle("-fx-border-color: #8EFF8B;");
                 lblPhone.setText("");
@@ -78,7 +73,6 @@ public class AccountSettingsPage {
         });
 
         address.setOnKeyTyped(actionEvent -> {
-            System.out.println(address.getText());
             if(!address.getText().equals("")){
                 address.setStyle("-fx-border-color: #8EFF8B;");
                 lblAddress.setText("");
@@ -89,7 +83,7 @@ public class AccountSettingsPage {
         });
 
         newPassword.setOnKeyTyped(actionEvent -> {
-            System.out.println(newPassword.getText());
+
             if(EditAccountSettingHandling.isPasswordValid(newPassword.getText())){
                 newPassword.setStyle("-fx-border-color: #8EFF8B;");
                 lblPw.setText("");
@@ -98,13 +92,12 @@ public class AccountSettingsPage {
                 lblPw.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
             }
 
-            if(EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
-
+            if(!EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
                 oldPassword.setStyle("-fx-border-color: #8EFF8B;");
                 lblOldPw.setText("");
             } else {
                 oldPassword.setStyle("-fx-border-color: #EB5D5D;");
-                lblOldPw.setText("Password must match");
+                lblOldPw.setText("You can't use the same password.");
             }
         });
 
@@ -135,9 +128,6 @@ public class AccountSettingsPage {
             stage.setOpacity(1f);
         }));
     }
-//    public void setInstance() {
-//        facilitator.setAccountInstance(instance);
-//    }
 
     public void saveSettingsBtn(ActionEvent e) {
         String userPhone = null;
@@ -173,6 +163,7 @@ public class AccountSettingsPage {
             address.setStyle("-fx-border-color: #EB5D5D;");
             lblAddress.setText("Enter a valid address");
         }
+        //Will fix
         if(!this.newPassword.getText().equals("")) {
             userNewPassword = this.newPassword.getText();
         }
