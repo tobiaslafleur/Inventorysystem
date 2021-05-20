@@ -33,6 +33,18 @@ public class EditSupplierPage {
         countries.setItems(countryList);
     }
 
+    public void supplierSelection(ActionEvent event) {
+        if(suppliers.getValue() != null) {
+            name.setText(suppliers.getValue().getName());
+            phone.setText(suppliers.getValue().getPhone());
+            street.setText(suppliers.getValue().getStreet());
+            city.setText(suppliers.getValue().getCity());
+            email.setText(suppliers.getValue().getEmail());
+            Countries country = Countries.valueOf(suppliers.getValue().getCountry());
+            countries.setValue(country);
+        }
+    }
+
     public void updateSupplier(ActionEvent e) {
         String name = null;
         String phone = null;

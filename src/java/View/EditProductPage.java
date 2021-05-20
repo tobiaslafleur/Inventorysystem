@@ -20,7 +20,7 @@ public class EditProductPage {
     @FXML TextField name;
     @FXML TextField quantity;
     @FXML TextField price;
-    @FXML TextField shelfPosition;
+//    @FXML TextField shelfPosition;
     @FXML TextField cost;
     @FXML ComboBox<Product> products;
     @FXML ComboBox<Category> categories;
@@ -44,6 +44,18 @@ public class EditProductPage {
         ObservableList<String> shelfList = FXCollections.observableArrayList();
         shelfList.addAll(facilitator.getShelfList());
         shelves.setItems(shelfList);
+    }
+
+    public void productSelection(ActionEvent event) {
+        if(products.getValue() != null) {
+            name.setText(products.getValue().getName());
+            quantity.setText(String.valueOf(products.getValue().getStock()));
+            price.setText(String.valueOf(products.getValue().getPrice()));
+            cost.setText(String.valueOf(products.getValue().getCost()));
+            Category category = new Category(products.getValue().getCategory(), 1);
+            categories.setValue(category);
+            shelves.setValue(products.getValue().getShelfPosition());
+        }
     }
     public void updateProduct(ActionEvent e) {
         int id = 0;
