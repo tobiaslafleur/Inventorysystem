@@ -36,7 +36,11 @@ public class ProductErrorHandling {
     }
 
     public static boolean isShelfValid(String shelf) {
-        return shelf != null && !shelf.equals("");
+        if(shelf == null || shelf.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public static boolean isCategoryValid(String category) {
@@ -71,6 +75,10 @@ public class ProductErrorHandling {
     }
 
     public static boolean isNameValid(String text) {
-        return text != null && !text.equals("");
+        if(text == null || text.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
