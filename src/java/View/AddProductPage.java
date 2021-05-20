@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
@@ -26,28 +27,32 @@ public class AddProductPage {
     @FXML private ComboBox<String> shelves;
     @FXML private ComboBox<Supplier> suppliers;
     @FXML private TextField cost;
+    @FXML private Hyperlink addCategoryBtn;
+    @FXML private Hyperlink addShelfBtn;
 
     /**
      * Initializes the connection between this class and GUIFacilitator.
      */
     @FXML public void initialize(){
         facilitator = Main.getInstance().getFacilitator();
+        facilitator.setAddProductInstance(this);
         fillComboBoxes();
 
     }
 
     public void fillComboBoxes() {
-        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
-        supplierList.addAll(facilitator.getSupplierList());
-        suppliers.setItems(supplierList);
-
-        ObservableList<Category> categoryList = FXCollections.observableArrayList();
-        categoryList.addAll(facilitator.getCategoryList());
-        categories.setItems(categoryList);
-
-        ObservableList<String> shelfList = FXCollections.observableArrayList();
-        shelfList.addAll(facilitator.getShelfList());
-        shelves.setItems(shelfList);
+        new FillCombos().start();
+//        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+//        supplierList.addAll(facilitator.getSupplierList());
+//        suppliers.setItems(supplierList);
+//
+//        ObservableList<Category> categoryList = FXCollections.observableArrayList();
+//        categoryList.addAll(facilitator.getCategoryList());
+//        categories.setItems(categoryList);
+//
+//        ObservableList<String> shelfList = FXCollections.observableArrayList();
+//        shelfList.addAll(facilitator.getShelfList());
+//        shelves.setItems(shelfList);
     }
 
     /**
@@ -59,26 +64,26 @@ public class AddProductPage {
         String supplierID = String.valueOf(suppliers.getValue().getId());
         String shelf = shelves.getValue();
 
-        ArrayList<String> warnings = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText());
+        boolean allOk = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelves.getValue(), suppliers.getValue().getName());
 
-        if(warnings == null) {
+        if(allOk) {
             facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelf, supplierID, cost.getText());
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         } else {
-            if(!ProductErrorHandling.isStockOk()) {
+            if(!ProductErrorHandling.isStockValid(stock.getText())) {
                 stock.setStyle("-fx-border-color: #974F4F;");
             } else {
                 stock.setStyle("-fx-border-color: #1F701D;");
             }
 
-            if(!ProductErrorHandling.isPriceOk()) {
+            if(!ProductErrorHandling.isPriceValid(price.getText())) {
                 price.setStyle("-fx-border-color: #974F4F;");
             } else {
                 price.setStyle("-fx-border-color: #1F701D;");
             }
 
-            if(!ProductErrorHandling.isCostOk()) {
+            if(!ProductErrorHandling.isCostValid(cost.getText())) {
                 cost.setStyle("-fx-border-color: #974F4F;");
             } else {
                 cost.setStyle("-fx-border-color: #1F701D;");
@@ -88,14 +93,6 @@ public class AddProductPage {
             categories.setStyle("-fx-border-color: #1F701D;");
             suppliers.setStyle("-fx-border-color: #1F701D;");
             shelves.setStyle("-fx-border-color: #1F701D;");
-//            shelfPosition.setStyle("-fx-border-color: #1F701D;");
-
-            StringBuilder strBuilder = new StringBuilder();
-            for(String s : warnings) {
-                strBuilder.append(s).append("\n");
-            }
-            String str = strBuilder.toString();
-            JOptionPane.showMessageDialog(null, str);
         }
     }
 
@@ -105,5 +102,32 @@ public class AddProductPage {
      */
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);
+    }
+
+    public void add(ActionEvent event) {
+        if(event.getSource().equals(addCategoryBtn)) {
+            facilitator.openThirdStage(event, "/fxml/AddCategoryPage.fxml");
+        }
+        else if(event.getSource().equals(addShelfBtn)) {
+            facilitator.openThirdStage(event, "/fxml/AddShelfPage.fxml");
+        } else {
+            facilitator.openThirdStage(event, "/fxml/AddSupplierPage.fxml");
+        }
+    }
+
+    private class FillCombos  extends Thread {
+        public void run() {
+            ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+            supplierList.addAll(facilitator.getSupplierList());
+            suppliers.setItems(supplierList);
+
+            ObservableList<Category> categoryList = FXCollections.observableArrayList();
+            categoryList.addAll(facilitator.getCategoryList());
+            categories.setItems(categoryList);
+
+            ObservableList<String> shelfList = FXCollections.observableArrayList();
+            shelfList.addAll(facilitator.getShelfList());
+            shelves.setItems(shelfList);
+        }
     }
 }

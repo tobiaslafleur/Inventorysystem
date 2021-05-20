@@ -14,6 +14,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,11 +28,15 @@ public class GUIFacilitator {
     private LoginPage loginPage;
     private RegistrationPage registrationPage;
     private ApplicationPage applicationPage;
-    private AddSupplierPage addSupplierPage;
-    private AccountSettingsPage accountSettingsPage;
+    private AddProductPage addProductPage;
+//    private AddSupplierPage addSupplierPage;
+//    private AccountSettingsPage accountSettingsPage;
 
     private Stage applicationStage;
     private Parent applicationRoot;
+    private Stage addProductStage;
+    private Parent addProductRoot;
+    private boolean thirdStageOpen = false;
 
     public boolean createUser(String username, String password, String email, String phone, String address) {
         return controller.createUser(username, password, email, phone, address);
@@ -52,9 +57,9 @@ public class GUIFacilitator {
     public void setApplicationInstance(ApplicationPage applicationPage) {
         this.applicationPage = applicationPage;
     }
-    public void setAccountInstance(AccountSettingsPage accountSettingsPage){
-        this.accountSettingsPage = accountSettingsPage;
-    }
+//    public void setAccountInstance(AccountSettingsPage accountSettingsPage){
+//        this.accountSettingsPage = accountSettingsPage;
+//    }
 
     public void changeWindow(ActionEvent event, String path){
         try {
@@ -94,6 +99,39 @@ public class GUIFacilitator {
             scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
 
             Stage secondStage = new Stage();
+            secondStage.initOwner(applicationStage);
+            secondStage.initModality(Modality.APPLICATION_MODAL);
+            secondStage.setScene(scene);
+            secondStage.initStyle(StageStyle.TRANSPARENT);
+            secondStage.show();
+
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            secondStage.setX((primScreenBounds.getWidth() - secondStage.getWidth()) / 2);
+            secondStage.setY((primScreenBounds.getHeight() - secondStage.getHeight()) / 2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void openThirdStage(ActionEvent event, String path) {
+        thirdStageOpen = true;
+        try {
+            Node button = (Node) event.getSource();
+            addProductStage = (Stage) button.getScene().getWindow();
+
+            addProductRoot = addProductStage.getScene().getRoot();
+            ColorAdjust adj = new ColorAdjust(0, -0.2, -0.3, 0);
+            GaussianBlur blur = new GaussianBlur(5);
+            adj.setInput(blur);
+            addProductRoot.setEffect(adj);
+
+            Parent root = FXMLLoader.load(getClass().getResource(path));
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            scene.getStylesheets().add(getClass().getResource("/Stylesheets/Stylesheet.css").toExternalForm());
+
+            Stage secondStage = new Stage();
+            secondStage.initOwner(applicationStage);
+            secondStage.initModality(Modality.APPLICATION_MODAL);
             secondStage.setScene(scene);
             secondStage.initStyle(StageStyle.TRANSPARENT);
             secondStage.show();
@@ -106,12 +144,25 @@ public class GUIFacilitator {
         }
     }
 
+    public void closeSecondStage(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        if(stage.equals(addProductStage)) {
+            thirdStageOpen = false;
+        }
+        stage.close();
+        removeBlur();
+    }
+
     public boolean checkUser(String username, String password) {
         return controller.checkUser(username, password);
     }
 
-    public void setAddSupplierInstance(AddSupplierPage addSupplierPage) {
-        this.addSupplierPage = addSupplierPage;
+//    public void setAddSupplierInstance(AddSupplierPage addSupplierPage) {
+//        this.addSupplierPage = addSupplierPage;
+//    }
+    public void setAddProductInstance(AddProductPage addProductPage) {
+        this.addProductPage = addProductPage;
     }
 
     public boolean addSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail) {
@@ -139,11 +190,9 @@ public class GUIFacilitator {
     public void updateSupplierTable() {
         applicationPage.initSupplierTable();
     }
-
     public void removeProduct(int productID) {
         controller.removeProduct(productID);
     }
-
     public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
         controller.updateProduct(id, name, quantity, categoryID, price, shelf, cost);
     }
@@ -155,7 +204,6 @@ public class GUIFacilitator {
     public void editUser(String userPhone, String userAddress,  String userNewPassword){
         controller.editUser(userPhone, userAddress, userNewPassword);
     }
-
     
     public ArrayList<Product> getProductSearch(String searchText) {
         return controller.getProductSearch(searchText);
@@ -199,20 +247,16 @@ public class GUIFacilitator {
             return controller.getCSVFile(filepath);
     }
 
-    public void closeSecondStage(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-
-        stage.close();
-
-        removeBlur();
-    }
-
     private void removeBlur() {
         ColorAdjust adj = new ColorAdjust();
         GaussianBlur blur = new GaussianBlur(0);
         adj.setInput(blur);
-        applicationRoot.setEffect(adj);
+        if(thirdStageOpen) {
+            addProductRoot.setEffect(adj);
+            addProductPage.fillComboBoxes();
+        } else {
+            applicationRoot.setEffect(adj);
+        }
     }
 
     public void addShelf(String name) {
