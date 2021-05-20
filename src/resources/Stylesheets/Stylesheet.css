@@ -169,3 +169,37 @@
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
 }
+
+#prod-bg{
+    -fx-background-color: #F2F2F2;
+}
+
+#btn-prodadd{
+    -fx-background-color: #5F807F;
+    -fx-text-fill: #F2F2F2;
+}
+
+#txt-prodname{
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+}
+
+#txt-prodcost{
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+}
+
+#txt-prodprice{
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+}
+
+#txt-prodstock{
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+}
+
+
+#shelf-bg{
+    -fx-background-color: #F2F2F2;
+}
