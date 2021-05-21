@@ -147,6 +147,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #cmb-she {
@@ -154,6 +155,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #cmb-sup {
@@ -161,6 +163,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #cmb-opt {
@@ -168,6 +171,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #prod-bg{
@@ -182,21 +186,25 @@
 #txt-prodname{
     -fx-border-color: #000000;
     -fx-text-fill: #000000;
+    -fx-border-width: 0 0 1 0;
 }
 
 #txt-prodcost{
     -fx-border-color: #000000;
     -fx-text-fill: #000000;
+    -fx-border-width: 0 0 1 0;
 }
 
 #txt-prodprice{
     -fx-border-color: #000000;
     -fx-text-fill: #000000;
+    -fx-border-width: 0 0 1 0;
 }
 
 #txt-prodstock{
     -fx-border-color: #000000;
     -fx-text-fill: #000000;
+    -fx-border-width: 0 0 1 0;
 }
 
 
