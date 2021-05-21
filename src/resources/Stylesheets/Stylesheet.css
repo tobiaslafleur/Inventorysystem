@@ -277,3 +277,40 @@
     -fx-text-fill: black;
     -fx-border-color: black;
 }
+
+#txt-set{
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+
+#btn-set{
+    -fx-background-color: #5F807F;
+    -fx-text-fill: #f2f2f2;
+}
+
+#set-bg{
+    -fx-background-color: #f2f2f2;
+}
+
+#bg-del{
+    -fx-background-color: #f2f2f2;
+}
+
+#btn-del{
+    -fx-background-color: #5F807F;
+    -fx-text-fill: #f2f2f2;
+}
+
+#txt-del{
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+
+#cmb-del{
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+}

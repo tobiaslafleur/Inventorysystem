@@ -7,12 +7,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class DeleteProductPage {
     private GUIFacilitator facilitator;
-    @FXML TextField productID;
     @FXML ComboBox<Product> products;
+    @FXML Label lblError;
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
@@ -23,13 +24,15 @@ public class DeleteProductPage {
     }
 
     public void deleteProduct(ActionEvent event) {
-        int ID = products.getValue().getProductID();
-        if(ID > 0) {
+        if(products.getValue() != null) {
+            int ID = products.getValue().getProductID();
             facilitator.removeProduct(ID);
             facilitator.updateProductTable();
+            facilitator.updateProductTable();
+            facilitator.closeSecondStage(event);
+        } else {
+            lblError.setText(Language.getDelProdErr());
         }
-        facilitator.updateProductTable();
-        facilitator.closeSecondStage(event);
     }
 
     public void cancel(ActionEvent event) {

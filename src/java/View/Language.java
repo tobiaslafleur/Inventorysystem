@@ -217,10 +217,16 @@ public class Language {
     }
 
     //Category
-    private static String[] categoryError = {"Category must enter a name","Kategorin måste ha ett namn"};
+    private static String[] categoryError = {"Category must have a name","Kategorin måste ha ett namn"};
 
     public static String getCategoryError() {
         return categoryError[language];
     }
 
+    //Delete product
+    private static String[] delProdErr = {"You must choose a product to delete", "Du måste välja en produkt att ta bort"};
+
+    public static String getDelProdErr() {
+        return delProdErr[language];
+    }
 }
