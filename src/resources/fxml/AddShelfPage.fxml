@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="shelf-bg" prefHeight="400.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddShelfPage">
+<AnchorPane id="shelf-bg" prefHeight="462.0" prefWidth="277.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddShelfPage">
    <children>
-      <Label layoutX="97.0" layoutY="38.0" text="Add a shelf">
+      <Label layoutX="98.0" layoutY="38.0" text="Add a shelf">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <ListView fx:id="shelfList" layoutX="40.0" layoutY="178.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField fx:id="shelfName" layoutX="40.0" layoutY="100.0" prefHeight="25.0" prefWidth="167.0" promptText="Shelf name" style="-fx-border-color: black; -fx-text-fill: black;" />
-      <Label layoutX="85.0" layoutY="152.0" text="Stored Shelves">
+      <ListView fx:id="shelfList" layoutX="41.0" layoutY="178.0" prefHeight="250.0" prefWidth="200.0" />
+      <TextField fx:id="shelfName" layoutX="40.0" layoutY="100.0" prefHeight="27.0" prefWidth="163.0" promptText="Shelf name" style="-fx-border-color: black; -fx-text-fill: black;" />
+      <Label layoutX="86.0" layoutY="152.0" text="Stored Shelves">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
       <Hyperlink id="hyper-sh-close" fx:id="cancel" layoutX="238.0" layoutY="3.0" onAction="#cancel" style="-fx-text-fill: #9a9a9a;" text="Close" />
-      <Button id="AddShelfBtn" fx:id="add" layoutX="207.0" layoutY="100.0" mnemonicParsing="false" onAction="#addShelf" text="Add" />
+      <Button id="AddShelfBtn" fx:id="add" layoutX="203.0" layoutY="101.0" mnemonicParsing="false" onAction="#addShelf" text="Add" />
    </children>
 </AnchorPane>
