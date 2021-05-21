@@ -157,8 +157,7 @@ public class Language {
     public static String getProdErrPrice() {
         return prodErrPrice[language];
     }
-
-    //AccountSettings
+    //AccountSettings 
     private static String[] editPhoneSettings =         {"Phone number", "Telefonnummer"};
     private static String[] editAddressSettings =       {"Address", "Adress"};
     private static String[] editPasswordSettings =      {"Password", "Lösenord"};
@@ -207,6 +206,13 @@ public class Language {
     }
     public static String getRepeatPasswordAS() {
         return editErrNewPasswordSettings[language];
+    }
+
+    //Category
+    private static String[] categoryError = {"Category must enter a name","Kategorin måste ha ett namn"};
+
+    public static String getCategoryError() {
+        return categoryError[language];
     }
 
 }

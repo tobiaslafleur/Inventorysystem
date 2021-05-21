@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.ProductErrorHandling;
 import Controller.Main;
 import Model.Category;
 import Model.Product;
@@ -10,9 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 
 public class EditProductPage {
@@ -20,17 +23,75 @@ public class EditProductPage {
     @FXML TextField name;
     @FXML TextField quantity;
     @FXML TextField price;
-//    @FXML TextField shelfPosition;
     @FXML TextField cost;
     @FXML ComboBox<Product> products;
     @FXML ComboBox<Category> categories;
     @FXML ComboBox<String> shelves;
+    @FXML ComboBox<Supplier> suppliers;
+
+    @FXML Label lblEditName;
+    @FXML Label lblEditPrice;
+    @FXML Label lblEditCost;
+    @FXML Label lblEditStock;
 
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
         fillComboBoxes();
+
+        errorHandling();
     }
+
+    private void errorHandling() {
+        name.setOnKeyTyped(actionEvent -> {
+            if(name.getText().isEmpty()) {
+                name.setStyle("-fx-border-color: #974F4F;");
+                lblEditName.setText(Language.getProdErrName());
+            } else {
+                name.setStyle("-fx-border-color: #1F701D;");
+                lblEditName.setText("");
+            }
+        });
+
+        quantity.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isStockValid(quantity.getText())) {
+                quantity.setStyle("-fx-border-color: #974F4F;");
+                lblEditStock.setText(Language.getProdErrStock());
+            } else {
+                quantity.setStyle("-fx-border-color: #1F701D;");
+                lblEditStock.setText("");
+            }
+        });
+
+        price.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isPriceValid(price.getText())) {
+                price.setStyle("-fx-border-color: #974F4F;");
+                lblEditPrice.setText(Language.getProdErrPrice());
+            } else {
+                price.setStyle("-fx-border-color: #1F701D;");
+                lblEditPrice.setText("");
+            }
+        });
+
+        cost.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isCostValid(cost.getText())) {
+                cost.setStyle("-fx-border-color: #974F4F;");
+                lblEditCost.setText(Language.getProdErrCost());
+            } else {
+                cost.setStyle("-fx-border-color: #1F701D;");
+                lblEditCost.setText("");
+            }
+        });
+    }
+
+//    private void fillText(Product prod) {
+//        name.setPromptText(prod.getName());
+//        quantity.setPromptText(String.valueOf(prod.getStock()));
+//        price.setPromptText(String.valueOf(prod.getPrice()));
+//        cost.setPromptText(String.valueOf(prod.getCost()));
+//        categories.setPromptText(prod.getCategory());
+//        shelves.setPromptText(prod.getShelfPosition());
+//    }
 
     public void fillComboBoxes() {
         ObservableList<Product> productList = FXCollections.observableArrayList();
@@ -56,41 +117,60 @@ public class EditProductPage {
             categories.setValue(category);
             shelves.setValue(products.getValue().getShelfPosition());
         }
+
+        name.setStyle("-fx-border-color: black;");
+        quantity.setStyle("-fx-border-color: black;");
+        price.setStyle("-fx-border-color: black;");
+        cost.setStyle("-fx-border-color: black;");
+        categories.setStyle("-fx-border-color: black;");
+        shelves.setStyle("-fx-border-color: black;");
+        suppliers.setStyle("-fx-border-color: black;");
+
+        lblEditCost.setText("");
+        lblEditPrice.setText("");
+        lblEditStock.setText("");
+        lblEditName.setText("");
     }
+
     public void updateProduct(ActionEvent e) {
         int id = 0;
         String name = null;
-        int quantity = 0;
         int categoryID = 0;
-        BigDecimal price = null;
         String shelf = null;
-        BigDecimal cost = null;
 
         if(products.getValue() != null) {
             id = products.getValue().getProductID();
         }
+
         if(!this.name.getText().equals("")) {
             name = this.name.getText();
         }
-        if(!this.quantity.getText().equals("")) {
-            quantity = Integer.parseInt(this.quantity.getText());
-        }
+
         if(categories.getValue() != null) {
             categoryID = categories.getValue().getID();
         }
-        if(!this.price.getText().equals("")) {
-            price = new BigDecimal(this.price.getText());
-        }
+
         if(shelves.getValue() != null) {
             shelf = shelves.getValue();
         }
-        if(!this.cost.getText().equals("")) {
-            cost = new BigDecimal(this.cost.getText());
+
+        boolean allOk;
+        try{
+            allOk = ProductErrorHandling.updateErrorHandling(id, name, quantity.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf);
+        } catch (NullPointerException exc) {
+            allOk = false;
+            exc.printStackTrace();
         }
 
-        facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
-        facilitator.updateProductTable();
-        facilitator.closeSecondStage(e);
+        if(allOk) {
+            int stock = Integer.parseInt(quantity.getText());
+            BigDecimal price = new BigDecimal(this.price.getText());
+            BigDecimal cost = new BigDecimal(this.cost.getText());
+
+            facilitator.updateProduct(id, name, stock, categoryID, price, shelf,  cost);
+            facilitator.updateProductTable();
+            facilitator.closeSecondStage(e);
+        }
     }
 
     public void cancel(ActionEvent event) {

@@ -101,6 +101,18 @@ public class AddProductPage {
                 lblCost.setText("");
             }
         });
+
+        categories.setOnAction(actionEvent -> {
+            categories.setStyle("-fx-border-color: #1F701D;");
+        });
+
+        suppliers.setOnAction(actionEvent -> {
+            suppliers.setStyle("-fx-border-color: #1F701D;");
+        });
+
+        shelves.setOnAction(actionEvent -> {
+            shelves.setStyle("-fx-border-color: #1F701D;");
+        });
     }
 
     public void fillComboBoxes() {
@@ -126,8 +138,15 @@ public class AddProductPage {
         String categoryID = "";
         String supplierID = "";
         String shelf = "";
+        String name = "";
 
         //Märkligaste skiten ever
+        try{
+            name = this.name.getText();
+        } catch(NullPointerException ex) {
+            ex.printStackTrace();
+        }
+
         try{
             shelf = shelves.getValue();
         } catch(NullPointerException ex) {
@@ -148,22 +167,22 @@ public class AddProductPage {
 
         boolean allOk;
         try{
-            allOk = ProductErrorHandling.errorHandling(stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf, suppliers.getValue().getName());
+            allOk = ProductErrorHandling.errorHandling(name, stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf, suppliers.getValue().getName());
         } catch (NullPointerException exc) {
             allOk = false;
             exc.printStackTrace();
         }
 
         if(allOk) {
-            facilitator.addProduct(name.getText(), stock.getText(), price.getText(), categoryID, shelf, supplierID, cost.getText());
+            facilitator.addProduct(name, stock.getText(), price.getText(), categoryID, shelf, supplierID, cost.getText());
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         } else {
 
-            if(!ProductErrorHandling.isNameValid(name.getText())) {
-                name.setStyle("-fx-border-color: #974F4F;");
+            if(!ProductErrorHandling.isNameValid(name)) {
+                this.name.setStyle("-fx-border-color: #974F4F;");
             } else {
-                name.setStyle("-fx-border-color: #1F701D;");
+                this.name.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isStockValid(stock.getText())) {
@@ -185,21 +204,21 @@ public class AddProductPage {
             }
 
             if(!ProductErrorHandling.isCategoryValid(categoryID)) {
-                categories.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                categories.setStyle("-fx-border-color: #974F4F;");
             } else {
-                categories.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                categories.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isShelfValid(shelf)) {
-                shelves.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                shelves.setStyle("-fx-border-color: #974F4F;");
             } else {
-                shelves.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                shelves.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isSupplierValid(supplierID)) {
-                suppliers.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                suppliers.setStyle("-fx-border-color: #974F4F;");
             } else {
-                suppliers.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                suppliers.setStyle("-fx-border-color: #1F701D;");
             }
         }
     }

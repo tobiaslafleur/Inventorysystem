@@ -42,7 +42,7 @@ public class Product {
     }
 
     public String toString() {
-        return String.format("%s | stock: %s | price: %s SEK | %s | shelf %s | supplier: %s | cost: %s SEK", name, stock, price, category, shelfPosition, supplier, cost);
+        return String.format("%s", name);
     }
     
     //<editor-fold desc="getters and setters"

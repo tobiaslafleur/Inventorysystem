@@ -1,24 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditProductPage">
+<AnchorPane id="prod-edit-bg" prefHeight="475.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditProductPage">
    <children>
-      <Label layoutX="82.0" layoutY="32.0" text="Edit Product" textFill="WHITE">
+      <Label layoutX="82.0" layoutY="6.0" text="Edit Product">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="cancel" layoutX="207.0" layoutY="5.0" onAction="#cancel" text="Cancel" />
-      <ComboBox fx:id="products" layoutX="50.0" layoutY="72.0" onAction="#productSelection" prefWidth="150.0" promptText="Product" />
-      <TextField fx:id="name" layoutX="51.0" layoutY="107.0" promptText="Name" />
-      <TextField fx:id="quantity" layoutX="51.0" layoutY="144.0" promptText="Quantity" />
-      <TextField fx:id="price" layoutX="51.0" layoutY="181.0" promptText="Price" />
-      <TextField fx:id="cost" layoutX="51.0" layoutY="217.0" promptText="Cost" />
-      <Button fx:id="updateBtn" layoutX="-1.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="40.0" prefWidth="257.0" text="Update product" />
-      <ComboBox fx:id="categories" layoutX="53.0" layoutY="257.0" prefWidth="150.0" promptText="Category" />
-      <ComboBox fx:id="shelves" layoutX="53.0" layoutY="295.0" prefWidth="150.0" promptText="Shelf" />
+      <Hyperlink fx:id="cancel" layoutX="207.0" layoutY="5.0" onAction="#cancel" style="-fx-text-fill: #9a9a9a;" text="Cancel" textFill="#9a9a9a" />
+      <ComboBox id="cmb-prodstoedit" fx:id="products" layoutX="52.0" layoutY="55.0" onAction="#productSelection" prefWidth="150.0" promptText="Product" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <TextField id="txt-prodname" fx:id="name" layoutX="51.0" layoutY="107.0" promptText="Name" style="-fx-border-color: black;" styleClass="EditProduct" />
+      <TextField id="txt-prodstock" fx:id="quantity" layoutX="51.0" layoutY="159.0" promptText="Quantity" style="-fx-border-color: black;" styleClass="EditProduct" />
+      <TextField id="txt-prodprice" fx:id="price" layoutX="51.0" layoutY="216.0" promptText="Price" style="-fx-border-color: black;" styleClass="EditProduct" />
+      <TextField id="txt-prodcost" fx:id="cost" layoutX="51.0" layoutY="271.0" promptText="Cost" style="-fx-border-color: black;" styleClass="EditProduct" />
+      <Button id="btn-editprod" fx:id="updateBtn" layoutY="435.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="40.0" prefWidth="257.0" text="Update product" />
+      <ComboBox id="cmb-editcat" fx:id="categories" layoutX="52.0" layoutY="325.0" prefWidth="150.0" promptText="Category" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <ComboBox id="cmb-editsh" fx:id="shelves" layoutX="53.0" layoutY="359.0" prefWidth="150.0" promptText="Shelf" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <Label id="lblEditName" fx:id="lblEditName" alignment="CENTER" layoutY="134.0" prefHeight="17.0" prefWidth="256.0" textAlignment="CENTER" textFill="#9a9a9a">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label id="lblEditStock" fx:id="lblEditStock" alignment="CENTER" layoutX="1.0" layoutY="186.0" prefHeight="17.0" prefWidth="256.0" textAlignment="CENTER" textFill="#9a9a9a">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label id="lblEditPrice" fx:id="lblEditPrice" alignment="CENTER" layoutY="243.0" prefHeight="17.0" prefWidth="256.0" textAlignment="CENTER" textFill="#9a9a9a">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label id="lblEditCost" fx:id="lblEditCost" alignment="CENTER" layoutX="1.0" layoutY="297.0" prefHeight="17.0" prefWidth="256.0" textAlignment="CENTER" textFill="#9a9a9a">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <ComboBox id="cmb-editsh" fx:id="suppliers" layoutX="53.0" layoutY="394.0" prefWidth="150.0" promptText="Supplier" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
    </children>
 </AnchorPane>

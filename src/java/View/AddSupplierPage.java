@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.SupplierErrorHandling;
 import Controller.Main;
 import Model.Countries;
 import javafx.collections.FXCollections;
@@ -19,7 +20,7 @@ public class AddSupplierPage {
     @FXML private TextField phone;
     @FXML private TextField street;
     @FXML private TextField city;
-    @FXML private TextField country;
+//    @FXML private TextField country;
     @FXML private TextField email;
     @FXML private ComboBox<Countries> countries;
 
@@ -55,14 +56,29 @@ public class AddSupplierPage {
         String country = countries.getValue().name();
         String supEmail = email.getText();
 
-        if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, country, supEmail)) {
+        boolean allOK;
+        try {
+            allOK = SupplierErrorHandling.errorHandling(supName, supEmail, supPhone, supStreet, supCity, country);
+        } catch (Exception e) {
+            allOK = false;
+        }
+
+        if(allOK) {
+            facilitator.addSupplier(supName, supPhone, supStreet, supCity, country, supEmail);
             facilitator.updateSupplierTable();
             facilitator.closeSecondStage(event);
         } else {
-            //TODO: Label saying: "Failed to add supplier."
-            //temp:
-            JOptionPane.showMessageDialog(null, "Failed to add supplier");
+            JOptionPane.showMessageDialog(null, "Some of them fields wrong");
         }
+
+//        if(facilitator.addSupplier(supName, supPhone, supStreet, supCity, country, supEmail)) {
+//            facilitator.updateSupplierTable();
+//            facilitator.closeSecondStage(event);
+//        } else {
+//            //TODO: Label saying: "Failed to add supplier."
+//            //temp:
+//
+//        }
     }
 
     /**
