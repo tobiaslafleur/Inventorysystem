@@ -101,6 +101,18 @@ public class AddProductPage {
                 lblCost.setText("");
             }
         });
+
+        categories.setOnAction(actionEvent -> {
+            categories.setStyle("-fx-border-color: #1F701D;");
+        });
+
+        suppliers.setOnAction(actionEvent -> {
+            suppliers.setStyle("-fx-border-color: #1F701D;");
+        });
+
+        shelves.setOnAction(actionEvent -> {
+            shelves.setStyle("-fx-border-color: #1F701D;");
+        });
     }
 
     public void fillComboBoxes() {
@@ -185,21 +197,21 @@ public class AddProductPage {
             }
 
             if(!ProductErrorHandling.isCategoryValid(categoryID)) {
-                categories.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                categories.setStyle("-fx-border-color: #974F4F;");
             } else {
-                categories.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                categories.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isShelfValid(shelf)) {
-                shelves.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                shelves.setStyle("-fx-border-color: #974F4F;");
             } else {
-                shelves.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                shelves.setStyle("-fx-border-color: #1F701D;");
             }
 
             if(!ProductErrorHandling.isSupplierValid(supplierID)) {
-                suppliers.setStyle("-fx-background-color: #974F4F, #974F4F, #974F4F, #974F4F;");
+                suppliers.setStyle("-fx-border-color: #974F4F;");
             } else {
-                suppliers.setStyle("-fx-background-color: #1F701D, #1F701D, #1F701D, #1F701D;");
+                suppliers.setStyle("-fx-border-color: #1F701D;");
             }
         }
     }

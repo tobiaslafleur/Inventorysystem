@@ -15,14 +15,14 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="cancel" layoutX="207.0" layoutY="5.0" onAction="#cancel" text="Cancel" />
-      <ComboBox id="cmb-prodstoedit" fx:id="products" layoutX="50.0" layoutY="72.0" onAction="#productSelection" prefWidth="150.0" promptText="Product" style="-fx-border-color: black;" />
+      <Hyperlink fx:id="cancel" layoutX="207.0" layoutY="5.0" onAction="#cancel" text="Cancel" textFill="#9a9a9a" />
+      <ComboBox id="cmb-prodstoedit" fx:id="products" layoutX="50.0" layoutY="72.0" onAction="#productSelection" prefWidth="150.0" promptText="Product" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
       <TextField fx:id="name" layoutX="51.0" layoutY="107.0" promptText="Name" style="-fx-border-color: black;" />
       <TextField fx:id="quantity" layoutX="51.0" layoutY="144.0" promptText="Quantity" style="-fx-border-color: black;" />
       <TextField fx:id="price" layoutX="51.0" layoutY="181.0" promptText="Price" style="-fx-border-color: black;" />
       <TextField fx:id="cost" layoutX="51.0" layoutY="217.0" promptText="Cost" style="-fx-border-color: black;" />
       <Button id="btn-editprod" fx:id="updateBtn" layoutX="-1.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateProduct" prefHeight="40.0" prefWidth="257.0" text="Update product" />
-      <ComboBox id="cmb-editcat" fx:id="categories" layoutX="53.0" layoutY="257.0" prefWidth="150.0" promptText="Category" style="-fx-border-color: black;" />
-      <ComboBox id="cmb-editsh" fx:id="shelves" layoutX="53.0" layoutY="295.0" prefWidth="150.0" promptText="Shelf" style="-fx-border-color: black;" />
+      <ComboBox id="cmb-editcat" fx:id="categories" layoutX="53.0" layoutY="257.0" prefWidth="150.0" promptText="Category" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <ComboBox id="cmb-editsh" fx:id="shelves" layoutX="53.0" layoutY="295.0" prefWidth="150.0" promptText="Shelf" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
    </children>
 </AnchorPane>
