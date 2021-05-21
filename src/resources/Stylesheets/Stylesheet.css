@@ -226,6 +226,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #cmb-editcat{
@@ -233,6 +234,7 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
 }
 
 #cmb-prodstoedit{
@@ -240,4 +242,19 @@
     -fx-background-radius: 5, 5, 4, 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
+}
+
+#cat-bg{
+    -fx-background-color: #f2f2f2;
+}
+
+#btn-cat{
+    -fx-background-color: #5F807F;
+    -fx-text-fill: #f2f2f2;
+}
+
+#txt-cat{
+    -fx-text-fill: black;
+    -fx-border-color: black;
 }

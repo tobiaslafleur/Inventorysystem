@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,6 +27,12 @@ public class EditProductPage {
     @FXML ComboBox<Product> products;
     @FXML ComboBox<Category> categories;
     @FXML ComboBox<String> shelves;
+    @FXML ComboBox<Supplier> suppliers;
+
+    @FXML Label lblEditName;
+    @FXML Label lblEditPrice;
+    @FXML Label lblEditCost;
+    @FXML Label lblEditStock;
 
 
     @FXML public void initialize() {
@@ -39,32 +46,40 @@ public class EditProductPage {
         name.setOnKeyTyped(actionEvent -> {
             if(name.getText().isEmpty()) {
                 name.setStyle("-fx-border-color: #974F4F;");
+                lblEditName.setText(Language.getProdErrName());
             } else {
                 name.setStyle("-fx-border-color: #1F701D;");
+                lblEditName.setText("");
             }
         });
 
         quantity.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isStockValid(quantity.getText())) {
                 quantity.setStyle("-fx-border-color: #974F4F;");
+                lblEditStock.setText(Language.getProdErrStock());
             } else {
                 quantity.setStyle("-fx-border-color: #1F701D;");
+                lblEditStock.setText("");
             }
         });
 
         price.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isPriceValid(price.getText())) {
                 price.setStyle("-fx-border-color: #974F4F;");
+                lblEditPrice.setText(Language.getProdErrPrice());
             } else {
                 price.setStyle("-fx-border-color: #1F701D;");
+                lblEditPrice.setText("");
             }
         });
 
         cost.setOnKeyTyped(actionEvent -> {
             if(!ProductErrorHandling.isCostValid(cost.getText())) {
                 cost.setStyle("-fx-border-color: #974F4F;");
+                lblEditCost.setText(Language.getProdErrCost());
             } else {
                 cost.setStyle("-fx-border-color: #1F701D;");
+                lblEditCost.setText("");
             }
         });
     }
@@ -102,7 +117,21 @@ public class EditProductPage {
             categories.setValue(category);
             shelves.setValue(products.getValue().getShelfPosition());
         }
+
+        name.setStyle("-fx-border-color: black;");
+        quantity.setStyle("-fx-border-color: black;");
+        price.setStyle("-fx-border-color: black;");
+        cost.setStyle("-fx-border-color: black;");
+        categories.setStyle("-fx-border-color: black;");
+        shelves.setStyle("-fx-border-color: black;");
+        suppliers.setStyle("-fx-border-color: black;");
+
+        lblEditCost.setText("");
+        lblEditPrice.setText("");
+        lblEditStock.setText("");
+        lblEditName.setText("");
     }
+
     public void updateProduct(ActionEvent e) {
         int id = 0;
         String name = null;
