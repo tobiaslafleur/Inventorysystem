@@ -3,16 +3,12 @@ package View;
 import Controller.ErrorHandling.ProductErrorHandling;
 import Controller.Main;
 import Model.Category;
-import Model.Product;
 import Model.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import javax.swing.*;
-import java.util.ArrayList;
 
 /**
  * Page where the user adds a product.
@@ -30,13 +26,12 @@ public class AddProductPage {
     @FXML private Hyperlink addShelfBtn;
     @FXML private Hyperlink hyperCancel;
     @FXML private Label lblTitle;
-    @FXML private Button addProduct;
+    @FXML private Button addProductBtn;
 
     @FXML private Label lblName;
     @FXML private Label lblStock;
     @FXML private Label lblPrice;
     @FXML private Label lblCost;
-
 
 
     /**
@@ -52,7 +47,7 @@ public class AddProductPage {
         suppliers.setId("cmb-sup");
 
         lblTitle.setText(Language.getProdTitle());
-        addProduct.setText(Language.getProdAdd());
+        addProductBtn.setText(Language.getProdAdd());
         hyperCancel.setText(Language.getProdCancel());
         name.setPromptText(Language.getProdName());
         stock.setPromptText(Language.getProdStock());
@@ -133,25 +128,25 @@ public class AddProductPage {
         try{
             name = this.name.getText();
         } catch(NullPointerException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
 
         try{
             shelf = shelves.getValue();
         } catch(NullPointerException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
 
         try{
             categoryID = String.valueOf(categories.getValue().getID());
         } catch (NullPointerException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
 
         try {
             supplierID = String.valueOf(suppliers.getValue().getId());
         } catch (NullPointerException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
 
         boolean allOk;
@@ -159,7 +154,7 @@ public class AddProductPage {
             allOk = ProductErrorHandling.errorHandling(name, stock.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf, suppliers.getValue().getName());
         } catch (NullPointerException exc) {
             allOk = false;
-            exc.printStackTrace();
+//            exc.printStackTrace();
         }
 
         if(allOk) {
