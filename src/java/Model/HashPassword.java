@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 public class HashPassword {
 
     public static String hash(String username, String password) {
-        return sha256(username + password);
+        return sha256(username.toLowerCase() + password);
     }
 
     public static String sha256(String str) {

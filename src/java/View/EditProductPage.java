@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.ProductErrorHandling;
 import Controller.Main;
 import Model.Category;
 import Model.Product;
@@ -30,6 +31,53 @@ public class EditProductPage {
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
         fillComboBoxes();
+
+        products.setOnAction(actionEvent -> fillText(products.getValue()));
+
+        errorHandling();
+    }
+
+    private void errorHandling() {
+        name.setOnKeyTyped(actionEvent -> {
+            if(name.getText().isEmpty()) {
+                name.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                name.setStyle("-fx-border-color: #1F701D;");
+            }
+        });
+
+        quantity.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isStockValid(quantity.getText())) {
+                quantity.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                quantity.setStyle("-fx-border-color: #1F701D;");
+            }
+        });
+
+        price.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isPriceValid(price.getText())) {
+                price.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                price.setStyle("-fx-border-color: #1F701D;");
+            }
+        });
+
+        cost.setOnKeyTyped(actionEvent -> {
+            if(!ProductErrorHandling.isCostValid(cost.getText())) {
+                cost.setStyle("-fx-border-color: #974F4F;");
+            } else {
+                cost.setStyle("-fx-border-color: #1F701D;");
+            }
+        });
+    }
+
+    private void fillText(Product prod) {
+        name.setPromptText(prod.getName());
+        quantity.setPromptText(String.valueOf(prod.getStock()));
+        price.setPromptText(String.valueOf(prod.getPrice()));
+        cost.setPromptText(String.valueOf(prod.getCost()));
+        categories.setPromptText(prod.getCategory());
+        shelves.setPromptText(prod.getShelfPosition());
     }
 
     public void fillComboBoxes() {
