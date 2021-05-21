@@ -1,17 +1,12 @@
 package View;
 
-import Controller.DBController;
 import Controller.ErrorHandling.EditAccountSettingHandling;
-import Controller.ErrorHandling.RegistrationPageHandling;
 import Controller.Main;
-import Model.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
@@ -47,15 +42,13 @@ public class AccountSettingsPage {
 
         fixFocus();
 
-        cmbAreaCodes.getItems().addAll("+46");
-        cmbAreaCodes.setId("cmb-area");
-
+        cmbAreaCodes.getItems().addAll();
 
         lblPhone.setText("");
         lblAddress.setText("");
         lblPw.setText("");
         lblOldPw.setText("");
-        lblEnterAllFields.setVisible(false);
+
 
         phoneNmbr.setOnKeyTyped(actionEvent -> {
 
@@ -88,12 +81,14 @@ public class AccountSettingsPage {
                 lblPw.setText(Language.getOldPasswordAS());
             }
 
-            if(EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
-                oldPassword.setStyle("-fx-border-color: #1F701D;");
-                lblOldPw.setText("");
-            } else {
-                oldPassword.setStyle("-fx-border-color: #974F4F;");
+            if(EditAccountSettingHandling.isNotRepeatValid(newPassword.getText(), oldPassword.getText())){
+                newPassword.setStyle("-fx-border-color: #974F4F;");
+                oldPassword.setStyle("-fx-border-color: #974F4F;");//974F4F RED
                 lblOldPw.setText(Language.getRepeatPasswordAS());
+            } else {
+                newPassword.setStyle("-fx-border-color: #1F701D;");
+                oldPassword.setStyle("-fx-border-color: #1F701D;");//974F4F RED
+                lblOldPw.setText("");
             }
         });
 
@@ -117,7 +112,7 @@ public class AccountSettingsPage {
         String userNewPassword = null;
         String areaCode = cmbAreaCodes.getValue();
 
-        if(RegistrationPageHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+        if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
             if(phoneNmbr.getText().toCharArray()[0] == '0'){
                 char[] temp = Arrays.copyOfRange(phoneNmbr.getText().toCharArray(), 1, phoneNmbr.getText().length());
 

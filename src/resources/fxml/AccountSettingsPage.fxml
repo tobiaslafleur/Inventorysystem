@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -24,37 +22,27 @@
             </font>
         </Label>
         <Hyperlink fx:id="cancelBtn" layoutX="250.0" layoutY="3.0" onAction="#cancel" style="-fx-text-fill: #9a9a9a;" text="Cancel" />
-        <ImageView fx:id="imgPwInfo" fitHeight="10.0" fitWidth="10.0" layoutX="239.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/questionmark.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="lblPhone" alignment="CENTER" layoutY="124.0" prefHeight="15.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblPhone" alignment="CENTER" layoutY="124.0" prefHeight="39.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblAddress" alignment="CENTER" layoutX="1.0" layoutY="188.0" prefHeight="17.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblAddress" alignment="CENTER" layoutX="1.0" layoutY="188.0" prefHeight="39.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblPw" alignment="CENTER" layoutY="257.0" prefHeight="17.0" prefWidth="300.0" text="Label" textAlignment="CENTER" textFill="#bfbfbf">
+        <Label fx:id="lblPw" alignment="CENTER" layoutY="257.0" prefHeight="39.0" prefWidth="300.0" text="Label" textAlignment="CENTER" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <Label fx:id="lblOldPw" alignment="CENTER" layoutY="323.0" prefHeight="17.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
+        <Label fx:id="lblOldPw" alignment="CENTER" layoutY="323.0" prefHeight="51.0" prefWidth="300.0" text="Label" textFill="#bfbfbf">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
-        <ImageView fx:id="imgRepeatInfo" fitHeight="10.0" fitWidth="20.0" layoutX="239.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/questionmark.png" />
-            </image>
-        </ImageView>
-        <ComboBox fx:id="cmbAreaCodes" layoutX="10.0" layoutY="99.0" prefHeight="25.0" prefWidth="64.0" promptText="+46" />
+        <ComboBox fx:id="cmbAreaCodes" layoutX="10.0" layoutY="99.0" prefHeight="25.0" prefWidth="64.0" promptText="+xx" />
         <Label fx:id="lblEnterAllFields" alignment="CENTER" layoutX="1.0" layoutY="349.0" prefHeight="17.0" prefWidth="300.0" text="Changes not applied. Make sure all fields are green" textAlignment="CENTER" textFill="#f2f2f2">
             <font>
                 <Font size="10.0" />
