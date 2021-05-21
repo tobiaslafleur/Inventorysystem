@@ -22,7 +22,6 @@ public class EditProductPage {
     @FXML TextField name;
     @FXML TextField quantity;
     @FXML TextField price;
-//    @FXML TextField shelfPosition;
     @FXML TextField cost;
     @FXML ComboBox<Product> products;
     @FXML ComboBox<Category> categories;
@@ -32,8 +31,6 @@ public class EditProductPage {
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
         fillComboBoxes();
-
-        products.setOnAction(actionEvent -> fillText(products.getValue()));
 
         errorHandling();
     }
@@ -72,14 +69,14 @@ public class EditProductPage {
         });
     }
 
-    private void fillText(Product prod) {
-        name.setPromptText(prod.getName());
-        quantity.setPromptText(String.valueOf(prod.getStock()));
-        price.setPromptText(String.valueOf(prod.getPrice()));
-        cost.setPromptText(String.valueOf(prod.getCost()));
-        categories.setPromptText(prod.getCategory());
-        shelves.setPromptText(prod.getShelfPosition());
-    }
+//    private void fillText(Product prod) {
+//        name.setPromptText(prod.getName());
+//        quantity.setPromptText(String.valueOf(prod.getStock()));
+//        price.setPromptText(String.valueOf(prod.getPrice()));
+//        cost.setPromptText(String.valueOf(prod.getCost()));
+//        categories.setPromptText(prod.getCategory());
+//        shelves.setPromptText(prod.getShelfPosition());
+//    }
 
     public void fillComboBoxes() {
         ObservableList<Product> productList = FXCollections.observableArrayList();
@@ -109,11 +106,8 @@ public class EditProductPage {
     public void updateProduct(ActionEvent e) {
         int id = 0;
         String name = null;
-//        int quantity = 0;
         int categoryID = 0;
-//        BigDecimal price = null;
         String shelf = null;
-//        BigDecimal cost = null;
 
         if(products.getValue() != null) {
             id = products.getValue().getProductID();
@@ -122,21 +116,14 @@ public class EditProductPage {
         if(!this.name.getText().equals("")) {
             name = this.name.getText();
         }
-//        if(!this.quantity.getText().equals("")) {
-//            quantity = Integer.parseInt(this.quantity.getText());
-//        }
+
         if(categories.getValue() != null) {
             categoryID = categories.getValue().getID();
         }
-//        if(!this.price.getText().equals("")) {
-//            price = new BigDecimal(this.price.getText());
-//        }
+
         if(shelves.getValue() != null) {
             shelf = shelves.getValue();
         }
-//        if(!this.cost.getText().equals("")) {
-//            cost = new BigDecimal(this.cost.getText());
-//        }
 
         boolean allOk;
         try{
@@ -154,8 +141,6 @@ public class EditProductPage {
             facilitator.updateProduct(id, name, stock, categoryID, price, shelf,  cost);
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
-        } else {
-            JOptionPane.showMessageDialog(null, "Some of them fields wrong");
         }
     }
 
