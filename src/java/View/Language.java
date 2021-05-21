@@ -8,6 +8,10 @@ public class Language {
         Language.language = language;
     }
 
+    public static int getLanguage(){
+        return language;
+    }
+
     //LoginPage
     private static String[] logCreateAccount = {"Create Account", "Skapa konto"};
     private static String[] logUsername = {"Username", "Användarnamn"};
@@ -238,5 +242,135 @@ public class Language {
 
     public static String getDelProds() {
         return delProds[language];
+    }
+
+
+    //APPLICATION PAGE
+    private static String[] appImport = {"Import CSV", "Importera CSV"};
+    private static String[] appSettings = {"Account Settings", "Kontoinställningar"};
+    private static String[] appAddShelf = {"Add a shelf", "Lägg till fack"};
+    private static String[] appLogout = {"Log out", "Logga ut"};
+    private static String[] appSearch = {"Search", "Sök"};
+    private static String[] appColId = {"Product ID", "Produkt ID"};
+    private static String[] appColName = {"Name", "Namn"};
+    private static String[] appColQuantity = {"Quantity", "Antal"};
+    private static String[] appColPrice = {"Price", "Pris"};
+    private static String[] appColCategory = {"Category", "Kategori"};
+    private static String[] appColShelf = {"Shelf", "Fack"};
+    private static String[] appColSupplier = {"Supplier", "Leverantör"};
+    private static String[] appColSupplierId = {"Supplier ID", "Leverantör ID"};
+    private static String[] appColCost = {"Cost", "Kostnad"};
+    private static String[] appCmbProd = {"Product", "Produkt"};
+    private static String[] appCmbSupplier = {"Supplier", "Leverantör"};
+    private static String[] appCmbCategory = {"Category", "Kategori"};
+
+    private static String[] appColCatId = {"Category ID", "Kategori ID"};
+    private static String[] appColCatName = {"Category Name", "Kategorinamn"};
+
+    private static String[] appColSupName = {"Name", "Namn"};
+    private static String[] appColSupPhone = {"Phone", "Telefon"};
+    private static String[] appColSupStreet = {"Street", "Gata"};
+    private static String[] appColSupCity = {"City", "Stad"};
+    private static String[] appColSupCountry = {"Country", "Land"};
+    private static String[] appColSupEmail = {"Email", "Email"};
+
+    public static String getAppImport() {
+        return appImport[language];
+    }
+
+    public static String getAppSettings() {
+        return appSettings[language];
+    }
+
+    public static String getAppAddShelf() {
+        return appAddShelf[language];
+    }
+
+    public static String getAppLogout() {
+        return appLogout[language];
+    }
+
+    public static String getAppSearch() {
+        return appSearch[language];
+    }
+
+    public static String getAppColId() {
+        return appColId[language];
+    }
+
+    public static String getAppColName() {
+        return appColName[language];
+    }
+
+    public static String getAppColQuantity() {
+        return appColQuantity[language];
+    }
+
+    public static String getAppColPrice() {
+        return appColPrice[language];
+    }
+
+    public static String getAppColCategory() {
+        return appColCategory[language];
+    }
+
+    public static String getAppColShelf() {
+        return appColShelf[language];
+    }
+
+    public static String getAppColSupplier() {
+        return appColSupplier[language];
+    }
+
+    public static String getAppColSupplierId() {
+        return appColSupplierId[language];
+    }
+
+    public static String getAppColCost() {
+        return appColCost[language];
+    }
+
+    public static String getAppCmbProd() {
+        return appCmbProd[language];
+    }
+
+    public static String getAppCmbSupplier() {
+        return appCmbSupplier[language];
+    }
+
+    public static String getAppCmbCategory() {
+        return appCmbCategory[language];
+    }
+
+    public static String getAppColCatId() {
+        return appColCatId[language];
+    }
+
+    public static String getAppColCatName() {
+        return appColCatName[language];
+    }
+
+    public static String getAppColSupName() {
+        return appColSupName[language];
+    }
+
+    public static String getAppColSupPhone() {
+        return appColSupPhone[language];
+    }
+
+    public static String getAppColSupStreet() {
+        return appColSupStreet[language];
+    }
+
+    public static String getAppColSupCity() {
+        return appColSupCity[language];
+    }
+
+    public static String getAppColSupCountry() {
+        return appColSupCountry[language];
+    }
+
+    public static String getAppColSupEmail() {
+        return appColSupEmail[language];
     }
 }
