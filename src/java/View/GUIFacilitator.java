@@ -104,10 +104,9 @@ public class GUIFacilitator {
             secondStage.setScene(scene);
             secondStage.initStyle(StageStyle.TRANSPARENT);
             secondStage.show();
-
-            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-            secondStage.setX((primScreenBounds.getWidth() - secondStage.getWidth()) / 2);
-            secondStage.setY((primScreenBounds.getHeight() - secondStage.getHeight()) / 2);
+            
+            secondStage.setX((applicationStage.getX() + (applicationStage.getWidth()/2 - secondStage.getWidth()/2)));
+            secondStage.setY((applicationStage.getY() + (applicationStage.getHeight()/2 - secondStage.getHeight()/2)));
         } catch (IOException e) {
             e.printStackTrace();
         }
