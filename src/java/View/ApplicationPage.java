@@ -8,12 +8,10 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -44,7 +42,8 @@ public class ApplicationPage {
     @FXML private ComboBox<String> tableBox;
     @FXML private Hyperlink removeBtn;
     @FXML private Button editBtn;
-    @FXML private Hyperlink English;
+    @FXML private Hyperlink english;
+    @FXML private Hyperlink swedish;
 
     @FXML private Button importCSVBtn;
 
@@ -60,6 +59,11 @@ public class ApplicationPage {
     @FXML private TableView<Category> categoryTable;
     @FXML private TableColumn<Category, String> catNameCol;
     @FXML private TableColumn<Category, String> catIDCol;
+
+    @FXML private Hyperlink logOut;
+    @FXML private Button accountSettingsBtn;
+    @FXML private Button btnShelf;
+
 
     private double x = 0, y = 0;
 
@@ -80,6 +84,26 @@ public class ApplicationPage {
         });
 
         tableBox.setId("cmb-opt");
+
+        if(Language.getLanguage() == 0) {
+            english.setStyle("-fx-font-weight: 800;");
+            swedish.setStyle("-fx-font-weight: 100;");
+        } else {
+            english.setStyle("-fx-font-weight: 100;");
+            swedish.setStyle("-fx-font-weight: 800;");
+        }
+
+        swedish.setOnAction(actionEvent -> {
+            english.setStyle("-fx-font-weight: 100;");
+            swedish.setStyle("-fx-font-weight: 800;");
+            changeLanguage(actionEvent);
+        });
+
+        english.setOnAction(actionEvent -> {
+            english.setStyle("-fx-font-weight: 800;");
+            swedish.setStyle("-fx-font-weight: 100;");
+            changeLanguage(actionEvent);
+        });
     }
 
     @FXML private void anchorPaneClicked() {
@@ -109,10 +133,10 @@ public class ApplicationPage {
     }
 
     public void add(ActionEvent e) {
-        if(tableBox.getValue().equals("Supplier")) {
+        if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             facilitator.openSecondStage(e, "/fxml/AddSupplierPage.fxml");
         }
-        else if(tableBox.getValue().equals("Category")) {
+        else if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             facilitator.openSecondStage(e, "/fxml/AddCategoryPage.fxml");
         } else {
             if(facilitator.getCategoryList().isEmpty() || facilitator.getSupplierList().isEmpty()) {
@@ -129,14 +153,14 @@ public class ApplicationPage {
     }
 
     public void remove(ActionEvent e) {
-        if(tableBox.getValue().equals("Product")) {
+        if(tableBox.getValue().equals(Language.getAppCmbProd())) {
             facilitator.openSecondStage(e, "/fxml/DeleteProductPage.fxml");
         }
 
     }
 
     public void update(ActionEvent e) {
-        if(tableBox.getValue().equals("Product")) {
+        if(tableBox.getValue().equals(Language.getAppCmbProd())) {
             if(!facilitator.getProductList().isEmpty()) {
                 facilitator.openSecondStage(e, "/fxml/EditProductPage.fxml");
             } else {
@@ -147,27 +171,27 @@ public class ApplicationPage {
                 alert.show();
             }
         }
-        else if(tableBox.getValue().equals("Supplier")) {
+        else if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             facilitator.openSecondStage(e, "/fxml/EditSupplierPage.fxml");
         }
     }
 
     public void search() {
-        if(searchText.getText() != "" && tableBox.getValue().equals("Product")) {
+        if(searchText.getText() != "" && tableBox.getValue().equals(Language.getAppCmbProd())) {
            ArrayList<Product> searchList = facilitator.getProductSearch(searchText.getText());
            ObservableList<Product> list = FXCollections.observableArrayList();
 
            list.addAll(searchList);
            infoTable.setItems(list);
         }
-        else if(searchText.getText() != "" && tableBox.getValue().equals("Category")) {
+        else if(searchText.getText() != "" && tableBox.getValue().equals(Language.getAppCmbCategory())) {
             ArrayList<Category> searchList = facilitator.getCategorySearch(searchText.getText());
             ObservableList<Category> list = FXCollections.observableArrayList();
 
             list.addAll(searchList);
             categoryTable.setItems(list);
         }
-        else if(searchText.getText() != "" && tableBox.getValue().equals("Supplier")) {
+        else if(searchText.getText() != "" && tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             ArrayList<Supplier> searchList = facilitator.getSupplierSearch(searchText.getText());
             ObservableList<Supplier> list = FXCollections.observableArrayList();
 
@@ -177,8 +201,8 @@ public class ApplicationPage {
     }
     public void initTableSelection() {
         ObservableList<String> tables = FXCollections.observableArrayList();
-        tables.addAll("Product", "Category", "Supplier");
-        tableBox.setValue("Product");
+        tables.addAll(Language.getAppCmbProd(), Language.getAppCmbCategory(), Language.getAppCmbSupplier());
+        tableBox.setValue(Language.getAppCmbProd());
         tableBox.setItems(tables);
     }
     public void initProductTable() {
@@ -224,7 +248,7 @@ public class ApplicationPage {
     }
 
     public void tableSelection(ActionEvent event) {
-        if(tableBox.getValue().equals("Category")) {
+        if(tableBox.getValue().equals(Language.getAppCmbCategory())) {
             removeBtn.setVisible(false);
             editBtn.setVisible(false);
             infoTable.setVisible(false);
@@ -232,7 +256,7 @@ public class ApplicationPage {
             categoryTable.setVisible(true);
             initCategoryTable();
         }
-        else if(tableBox.getValue().equals("Supplier")) {
+        else if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             removeBtn.setVisible(false);
             editBtn.setVisible(true);
             infoTable.setVisible(false);
@@ -268,10 +292,12 @@ public class ApplicationPage {
     }
 
     public void changeLanguage(ActionEvent event) {
-        if(event.getSource().equals(English)) {
+        if(event.getSource().equals(english)) {
             facilitator.setLanguage(0);
-        } else {
+            changeLangOnPage();
+        } else if (event.getSource().equals(swedish)){
             facilitator.setLanguage(1);
+            changeLangOnPage();
         }
     }
     public void logOut(ActionEvent event) {
@@ -283,4 +309,46 @@ public class ApplicationPage {
     public void minimize(ActionEvent event) {
         facilitator.minimize(event);
     }
+
+    private void changeLangOnPage(){
+        //Prod-Columns
+        colID.setText(Language.getAppColId());
+        colName.setText(Language.getAppColName());
+        colStock.setText(Language.getAppColQuantity());
+        colPrice.setText(Language.getAppColPrice());
+        colCategory.setText(Language.getAppColCategory());
+        colShelf.setText(Language.getAppColShelf());
+        colSupplier.setText(Language.getAppColSupplier());
+        colSupplierID.setText(Language.getAppColSupplierId());
+        colCost.setText(Language.getAppColCost());
+
+        //Category-Columns
+        catIDCol.setText(Language.getAppColCatId());
+        catNameCol.setText(Language.getAppColCatName());
+
+        //Supplier-Columns
+        supCityCol.setText(Language.getAppColSupCity());
+        supNameCol.setText(Language.getAppColSupName());
+        supPhoneCol.setText(Language.getAppColSupPhone());
+        supStreetCol.setText(Language.getAppColSupStreet());
+        supCountryCol.setText(Language.getAppColSupCountry());
+        supEmailCol.setText(Language.getAppColSupEmail());
+
+        //Buttons
+        btnShelf.setText(Language.getAppAddShelf());
+        accountSettingsBtn.setText(Language.getAppSettings());
+        importCSVBtn.setText(Language.getAppImport());
+
+        //Labels
+        logOut.setText(Language.getAppLogout());
+
+        //ComboBox
+        ObservableList<String> tables = FXCollections.observableArrayList();
+        tables.addAll(Language.getAppCmbProd(), Language.getAppCmbCategory(), Language.getAppCmbSupplier());
+        tableBox.setValue(Language.getAppCmbProd());
+        tableBox.setItems(tables);
+
+        //Search
+        searchText.setPromptText(Language.getAppSearch());
     }
+}
