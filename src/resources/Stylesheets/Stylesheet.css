@@ -314,3 +314,12 @@
     -fx-border-width: 0 0 1 0;
     -fx-border-color: black;
 }
+
+#cmb-set{
+    -fx-background-color: #F2F2F2, #F2F2F2, #F2F2F2, #F2F2F2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+}
