@@ -114,8 +114,8 @@ public class DBController {
         dbProduct.removeProduct(productID);
     }
 
-    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
-        dbProduct.updateProductSetup(id, name, quantity, categoryID, price, shelf, cost);
+    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost, int supplierID) {
+        dbProduct.updateProductSetup(id, name, quantity, categoryID, price, shelf, cost, supplierID);
 
     }
 

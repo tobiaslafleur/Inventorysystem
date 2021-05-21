@@ -9,6 +9,10 @@
     -fx-underline: false;
 }
 
+#hyper-cancel {
+    -fx-text-fill: #9a9a9a;
+}
+
 .button {
     -fx-background-radius: 0 0 20 20;
     -fx-text-fill: #5F807F;
@@ -178,9 +182,23 @@
     -fx-background-color: #F2F2F2;
 }
 
+#supplier-bg {
+    -fx-background-color: #F2F2F2;
+}
+
 #btn-prodadd{
     -fx-background-color: #5F807F;
     -fx-text-fill: #F2F2F2;
+}
+#btn-supplier {
+    -fx-background-color: #5F807F;
+    -fx-text-fill: #F2F2F2;
+}
+
+#txt-supplier {
+    -fx-border-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-border-width: 0 0 1 0;
 }
 
 #txt-prodname{
@@ -227,6 +245,7 @@
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
     -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000000;
 }
 
 #cmb-editcat{

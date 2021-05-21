@@ -193,8 +193,8 @@ public class GUIFacilitator {
     public void removeProduct(int productID) {
         controller.removeProduct(productID);
     }
-    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
-        controller.updateProduct(id, name, quantity, categoryID, price, shelf, cost);
+    public void updateProduct(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost, int supplierID) {
+        controller.updateProduct(id, name, quantity, categoryID, price, shelf, cost, supplierID);
     }
 
     public void updateSupplier(String supName, String supPhone, String supStreet, String supCity, String supCountry, String supEmail, int id) {

@@ -4,21 +4,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
+<AnchorPane id="supplier-bg" prefHeight="459.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
     <children>
-        <Label layoutX="80.0" layoutY="33.0" text="Edit Supplier" textFill="WHITE">
+        <Label fx:id="lblTitle" layoutX="80.0" layoutY="25.0" text="Edit Supplier">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <Hyperlink fx:id="cancel" layoutX="202.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
-        <ComboBox fx:id="suppliers" layoutX="50.0" layoutY="72.0" onAction="#supplierSelection" prefWidth="150.0" promptText="Supplier" />
-        <TextField fx:id="name" layoutX="51.0" layoutY="107.0" promptText="Name" />
-        <TextField fx:id="phone" layoutX="51.0" layoutY="144.0" promptText="Phone" />
-        <TextField fx:id="street" layoutX="51.0" layoutY="181.0" promptText="Street" />
-        <TextField fx:id="city" layoutX="51.0" layoutY="216.0" promptText="City" />
-        <Button fx:id="updateSupplierBtn" layoutX="-1.0" layoutY="361.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="40.0" prefWidth="257.0" text="Update supplier" />
-      <TextField fx:id="email" layoutX="51.0" layoutY="291.0" promptText="Email" />
-      <ComboBox fx:id="countries" layoutX="50.0" layoutY="255.0" prefWidth="150.0" promptText="Country" />
+        <Hyperlink id="hyper-cancel" fx:id="cancel" layoutX="200.0" layoutY="2.0" onAction="#cancel" text="Cancel" />
+        <ComboBox id="cmb-she" fx:id="suppliers" layoutX="50.0" layoutY="72.0" onAction="#supplierSelection" prefWidth="150.0" promptText="Supplier" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+        <TextField id="txt-supplier" fx:id="name" layoutX="51.0" layoutY="121.0" promptText="Name" />
+        <TextField id="txt-supplier" fx:id="phone" layoutX="51.0" layoutY="172.0" promptText="Phone" />
+        <TextField id="txt-supplier" fx:id="street" layoutX="51.0" layoutY="222.0" promptText="Street" />
+        <TextField id="txt-supplier" fx:id="city" layoutX="51.0" layoutY="275.0" promptText="City" />
+        <Button id="btn-supplier" fx:id="updateSupplierBtn" layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="40.0" prefWidth="257.0" text="Update supplier" />
+      <TextField id="txt-supplier" fx:id="email" layoutX="51.0" layoutY="364.0" promptText="Email" />
+      <ComboBox id="cmb-she" fx:id="countries" layoutX="50.0" layoutY="327.0" prefWidth="150.0" promptText="Country" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <Label fx:id="supplierLbl" layoutY="98.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="nameLbl" layoutX="-1.0" layoutY="146.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="phoneLbl" layoutY="197.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="streetLbl" layoutY="248.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="cityLbl" layoutY="301.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="emailLbl" layoutY="389.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
     </children>
 </AnchorPane>
