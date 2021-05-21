@@ -157,4 +157,12 @@ public class Language {
     public static String getProdErrPrice() {
         return prodErrPrice[language];
     }
+
+
+    //Category
+    private static String[] categoryError = {"Category must enter a name","Kategorin måste ha ett namn"};
+
+    public static String getCategoryError() {
+        return categoryError[language];
+    }
 }
