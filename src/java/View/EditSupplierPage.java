@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.SupplierErrorHandling;
 import Controller.Main;
 import Model.Countries;
 import Model.Product;
@@ -10,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+
+import javax.swing.*;
 
 public class EditSupplierPage {
     private GUIFacilitator facilitator;
@@ -77,9 +80,20 @@ public class EditSupplierPage {
             id = suppliers.getValue().getId();
         }
 
-        facilitator.updateSupplier(name, phone, street, city, country, email, id);
-        facilitator.updateSupplierTable();
-        facilitator.closeSecondStage(e);
+        boolean allOK;
+        try {
+            allOK = SupplierErrorHandling.updateErrorHandling(name, phone, street, city, country, email, id);
+        } catch (Exception exception) {
+            allOK = false;
+        }
+
+        if(allOK) {
+            facilitator.updateSupplier(name, phone, street, city, country, email, id);
+            facilitator.updateSupplierTable();
+            facilitator.closeSecondStage(e);
+        } else {
+            JOptionPane.showMessageDialog(null, "Some of them fields wrong");
+        }
     }
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);

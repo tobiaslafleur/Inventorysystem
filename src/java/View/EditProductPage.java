@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ErrorHandling.ProductErrorHandling;
 import Controller.Main;
 import Model.Category;
 import Model.Product;
@@ -13,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 
 public class EditProductPage {
@@ -60,37 +62,54 @@ public class EditProductPage {
     public void updateProduct(ActionEvent e) {
         int id = 0;
         String name = null;
-        int quantity = 0;
+//        int quantity = 0;
         int categoryID = 0;
-        BigDecimal price = null;
+//        BigDecimal price = null;
         String shelf = null;
-        BigDecimal cost = null;
+//        BigDecimal cost = null;
 
         if(products.getValue() != null) {
             id = products.getValue().getProductID();
         }
+
         if(!this.name.getText().equals("")) {
             name = this.name.getText();
         }
-        if(!this.quantity.getText().equals("")) {
-            quantity = Integer.parseInt(this.quantity.getText());
-        }
+//        if(!this.quantity.getText().equals("")) {
+//            quantity = Integer.parseInt(this.quantity.getText());
+//        }
         if(categories.getValue() != null) {
             categoryID = categories.getValue().getID();
         }
-        if(!this.price.getText().equals("")) {
-            price = new BigDecimal(this.price.getText());
-        }
+//        if(!this.price.getText().equals("")) {
+//            price = new BigDecimal(this.price.getText());
+//        }
         if(shelves.getValue() != null) {
             shelf = shelves.getValue();
         }
-        if(!this.cost.getText().equals("")) {
-            cost = new BigDecimal(this.cost.getText());
+//        if(!this.cost.getText().equals("")) {
+//            cost = new BigDecimal(this.cost.getText());
+//        }
+
+        boolean allOk;
+        try{
+            allOk = ProductErrorHandling.updateErrorHandling(id, name, quantity.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf);
+        } catch (NullPointerException exc) {
+            allOk = false;
+            exc.printStackTrace();
         }
 
-        facilitator.updateProduct(id, name, quantity, categoryID, price, shelf,  cost);
-        facilitator.updateProductTable();
-        facilitator.closeSecondStage(e);
+        if(allOk) {
+            int stock = Integer.parseInt(quantity.getText());
+            BigDecimal price = new BigDecimal(this.price.getText());
+            BigDecimal cost = new BigDecimal(this.cost.getText());
+
+            facilitator.updateProduct(id, name, stock, categoryID, price, shelf,  cost);
+            facilitator.updateProductTable();
+            facilitator.closeSecondStage(e);
+        } else {
+            JOptionPane.showMessageDialog(null, "Some of them fields wrong");
+        }
     }
 
     public void cancel(ActionEvent event) {

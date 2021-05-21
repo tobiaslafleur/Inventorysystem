@@ -2,7 +2,10 @@ package Controller.ErrorHandling;
 
 public class ProductErrorHandling {
 
-    public static boolean errorHandling(String stock, String price, String cost, String category, String shelf, String supplier){
+    public static boolean errorHandling(String name, String stock, String price, String cost, String category, String shelf, String supplier){
+        if(!isNameValid(name)) {
+            return false;
+        }
 
         if(!isStockValid(stock)){
             return false;
@@ -25,6 +28,38 @@ public class ProductErrorHandling {
         }
 
         if(!isSupplierValid(supplier)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean updateErrorHandling(int id, String name, String stock, String price, String cost, String category, String shelf) {
+        if(!isIDValid(id)) {
+            return false;
+        }
+
+        if(!isNameValid(name)) {
+            return false;
+        }
+
+        if(!isStockValid(stock)){
+            return false;
+        }
+
+        if(!isPriceValid(price)) {
+            return false;
+        }
+
+        if(!isCostValid(cost)) {
+            return false;
+        }
+
+        if(!isCategoryValid(category)) {
+            return false;
+        }
+
+        if(!isShelfValid(shelf)) {
             return false;
         }
 
@@ -80,5 +115,11 @@ public class ProductErrorHandling {
         } else {
             return true;
         }
+    }
+
+    public static boolean isIDValid(int id) {
+        if(id > 0) {
+            return true;
+        } else return false;
     }
 }
