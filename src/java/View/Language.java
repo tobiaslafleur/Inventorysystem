@@ -190,8 +190,7 @@ public class Language {
 
     //AccountSettings label errorhandling
     private static String[] editErrPhoneSettings =          {"Enter a valid number and area code.", "Ange ett riktigt telefonnummer och riktnummer."};
-    private static String[] editErrNewPasswordSettings =    {"You can't change to ur current password.\n Password must be: 8 characters long, one uppercase letter and one number.",
-                                                            "Du kan inte ändra till ditt nuvarande lösenord. \nLösenordet måste vara: 8 bokstäver långt, en stor bokstav och ett nummer"};
+    private static String[] editErrNewPasswordSettings =    {"You can't change to ur current password.\n ","Password must be: 8 characters long, one","uppercase letter and one number.", "Du kan inte ändra till ditt nuvarande lösenord. \n Lösenordet måste vara: 8 bokstäver långt, en stor bokstav och ett nummer"};
     private static String[] editErrAddressSettings =        {"Enter a valid address.", "Ange en riktigt adress."};
     private static String[] editErrOldPasswordSettings =    {"Incorrect password", "Felaktigt lösenord."};
 

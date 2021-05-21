@@ -35,7 +35,7 @@ public class EditAccountSettingHandling {
 
     public static boolean isPhoneValid(String phone) {
         try{
-            if(Integer.parseInt(phone) < 10000000) {
+            if(Integer.parseInt(phone) > 10000000) {
                 return true;
             } else {
                 return false;
@@ -46,8 +46,8 @@ public class EditAccountSettingHandling {
         return false;
     }
 
-    public static boolean isRepeatValid(String password, String repeated) {
-        return (!repeated.equals(password));
+    public static boolean isNotRepeatValid(String oldPassword, String newPassword) {
+        return newPassword.equals(oldPassword);
     }
 
 }
