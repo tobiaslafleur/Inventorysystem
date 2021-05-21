@@ -9,10 +9,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -28,8 +25,7 @@ public class AccountSettingsPage {
     @FXML private AnchorPane dragAnchor;
     @FXML private Stage stage;
 
-    @FXML private DBController dbController;
-
+    @FXML private Label lblAccountSettings;
     @FXML private ComboBox<String> cmbAreaCodes;
     @FXML private Label lblPhone;
     @FXML private Label lblAddress;
@@ -37,7 +33,8 @@ public class AccountSettingsPage {
     @FXML private Label lblOldPw;
     @FXML private Label lblEnterAllFields;
 
-
+    @FXML private Button saveBtn;
+    @FXML private Hyperlink cancelBtn;
     @FXML private TextField phoneNmbr;
     @FXML private TextField address;
     @FXML private PasswordField oldPassword = new PasswordField();
@@ -68,7 +65,7 @@ public class AccountSettingsPage {
                 lblPhone.setText("");
             } else {
                 phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
-                lblPhone.setText("Enter a valid number and select area code");
+                lblPhone.setText(Language.getErrPhonePasswordAS());
             }
         });
 
@@ -78,7 +75,7 @@ public class AccountSettingsPage {
                 lblAddress.setText("");
             } else {
                 address.setStyle("-fx-border-color: #EB5D5D;");
-                lblAddress.setText("Enter a valid address.");
+                lblAddress.setText(Language.getErrAddressAS());
             }
         });
 
@@ -89,22 +86,26 @@ public class AccountSettingsPage {
                 lblPw.setText("");
             } else {
                 newPassword.setStyle("-fx-border-color: #EB5D5D;");
-                lblPw.setText("Password must be at least 8 characters long \n and contain at least one uppercase letter and one number");
+                lblPw.setText(Language.getOldPasswordAS());
             }
 
-            if(!EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
+            if(EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
                 oldPassword.setStyle("-fx-border-color: #8EFF8B;");
                 lblOldPw.setText("");
             } else {
                 oldPassword.setStyle("-fx-border-color: #EB5D5D;");
-                lblOldPw.setText("You can't use the same password.");
+                lblOldPw.setText(Language.getRepeatPasswordAS());
             }
         });
 
-
+        setLanguage();
     }
     @FXML private void anchorPaneClicked() {
         fixFocus();
+    }
+    public static boolean checkPWForEdit() {
+
+        return true;
     }
 
     private void fixFocus() {
@@ -151,17 +152,9 @@ public class AccountSettingsPage {
                 System.out.println(userPhone);
             }
 
-        } else {
-            phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
-            lblPhone.setText("Enter a valid number and select area code");
         }
         if(!address.getText().isEmpty()){
             userAddress = this.address.getText();
-            address.setStyle("-fx-border-color: #8EFF8B;");
-            lblAddress.setText("");
-        } else {
-            address.setStyle("-fx-border-color: #EB5D5D;");
-            lblAddress.setText("Enter a valid address");
         }
         //Will fix
         if(!this.newPassword.getText().equals("")) {
@@ -180,5 +173,14 @@ public class AccountSettingsPage {
     }
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);
+    }
+    public void setLanguage() {
+        lblAccountSettings.setText(Language.getEditLblTitle());
+        cancelBtn.setText(Language.getEditCancelAS());
+        phoneNmbr.setPromptText(Language.getPhoneSettingsAS());
+        address.setPromptText(Language.getEditAddressAS());
+        oldPassword.setPromptText(Language.getPasswordAS());
+        newPassword.setPromptText(Language.getNewPasswordAS());
+        saveBtn.setText(Language.getSaveSettingsAS());
     }
 }
