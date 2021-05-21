@@ -45,7 +45,6 @@ public class AccountSettingsPage {
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
 
-        dragAnchor();
         fixFocus();
 
         cmbAreaCodes.getItems().addAll("+46");
@@ -61,20 +60,20 @@ public class AccountSettingsPage {
         phoneNmbr.setOnKeyTyped(actionEvent -> {
 
             if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
-                phoneNmbr.setStyle("-fx-border-color: #8EFF8B;");
+                phoneNmbr.setStyle("-fx-border-color: #1F701D;");
                 lblPhone.setText("");
             } else {
-                phoneNmbr.setStyle("-fx-border-color: #EB5D5D;");
+                phoneNmbr.setStyle("-fx-border-color: #974F4F;");
                 lblPhone.setText(Language.getErrPhonePasswordAS());
             }
         });
 
         address.setOnKeyTyped(actionEvent -> {
             if(!address.getText().equals("")){
-                address.setStyle("-fx-border-color: #8EFF8B;");
+                address.setStyle("-fx-border-color: #1F701D;");
                 lblAddress.setText("");
             } else {
-                address.setStyle("-fx-border-color: #EB5D5D;");
+                address.setStyle("-fx-border-color: #974F4F;");
                 lblAddress.setText(Language.getErrAddressAS());
             }
         });
@@ -82,18 +81,18 @@ public class AccountSettingsPage {
         newPassword.setOnKeyTyped(actionEvent -> {
 
             if(EditAccountSettingHandling.isPasswordValid(newPassword.getText())){
-                newPassword.setStyle("-fx-border-color: #8EFF8B;");
+                newPassword.setStyle("-fx-border-color: #1F701D;");
                 lblPw.setText("");
             } else {
-                newPassword.setStyle("-fx-border-color: #EB5D5D;");
+                newPassword.setStyle("-fx-border-color: #974F4F;");
                 lblPw.setText(Language.getOldPasswordAS());
             }
 
             if(EditAccountSettingHandling.isRepeatValid(newPassword.getText(), oldPassword.getText())){
-                oldPassword.setStyle("-fx-border-color: #8EFF8B;");
+                oldPassword.setStyle("-fx-border-color: #1F701D;");
                 lblOldPw.setText("");
             } else {
-                oldPassword.setStyle("-fx-border-color: #EB5D5D;");
+                oldPassword.setStyle("-fx-border-color: #974F4F;");
                 lblOldPw.setText(Language.getRepeatPasswordAS());
             }
         });
@@ -110,24 +109,6 @@ public class AccountSettingsPage {
 
     private void fixFocus() {
         Platform.runLater(() -> TableControls2.requestFocus());
-    }
-
-    private void dragAnchor() {
-        dragAnchor.setOnMousePressed(((event) -> {
-            fixFocus();
-            x = event.getX();
-            y = event.getY();
-        }));
-
-        dragAnchor.setOnMouseDragged(((event) -> {
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - x);
-            stage.setY(event.getScreenY() - y);
-        }));
-
-        dragAnchor.setOnMouseReleased(((event) -> {
-            stage.setOpacity(1f);
-        }));
     }
 
     public void saveSettingsBtn(ActionEvent e) {
