@@ -157,4 +157,56 @@ public class Language {
     public static String getProdErrPrice() {
         return prodErrPrice[language];
     }
+
+    //AccountSettings
+    private static String[] editPhoneSettings =         {"Phone number", "Telefonnummer"};
+    private static String[] editAddressSettings =       {"Address", "Adress"};
+    private static String[] editPasswordSettings =      {"Password", "Lösenord"};
+    private static String[] editNewPasswordSettings =   {"New Password", "Nytt lösenord"};
+    private static String[] editSaveSettings =          {"Save settings", "Spara ändringar"};
+    private static String[] editCancel =                {"Cancel", "Avbryt"};
+    private static String[] getEditLblTitle =           {"Account Settings", "Kontoinställningar"};
+
+    public static String getPhoneSettingsAS() {
+        return editPhoneSettings[language];
+    }
+    public static String getEditAddressAS() {
+        return editAddressSettings[language];
+    }
+    public static String getPasswordAS() {
+        return editPasswordSettings[language];
+    }
+    public static String getNewPasswordAS() {
+        return editNewPasswordSettings[language];
+    }
+    public static String getSaveSettingsAS() {
+        return editSaveSettings[language];
+    }
+    public static String getEditCancelAS() {
+        return editCancel[language];
+    }
+    public static String getEditLblTitle() {
+        return getEditLblTitle[language];
+    }
+
+    //AccountSettings label errorhandling
+    private static String[] editErrPhoneSettings =          {"Enter a valid number and area code.", "Ange ett riktigt telefonnummer och riktnummer."};
+    private static String[] editErrNewPasswordSettings =    {"You can't change to ur current password.\n Password must be: 8 characters long, one uppercase letter and one number.",
+                                                            "Du kan inte ändra till ditt nuvarande lösenord. \nLösenordet måste vara: 8 bokstäver långt, en stor bokstav och ett nummer"};
+    private static String[] editErrAddressSettings =        {"Enter a valid address.", "Ange en riktigt adress."};
+    private static String[] editErrOldPasswordSettings =    {"Incorrect password", "Felaktigt lösenord."};
+
+    public static String getErrPhonePasswordAS() {
+        return editErrPhoneSettings[language];
+    }
+    public static String getErrAddressAS() {
+        return editErrAddressSettings[language];
+    }
+    public static String getOldPasswordAS() {
+        return editErrOldPasswordSettings[language];
+    }
+    public static String getRepeatPasswordAS() {
+        return editErrNewPasswordSettings[language];
+    }
+
 }
