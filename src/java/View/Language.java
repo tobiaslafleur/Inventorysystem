@@ -224,8 +224,19 @@ public class Language {
 
     //Delete product
     private static String[] delProdErr = {"You must choose a product to delete", "Du måste välja en produkt att ta bort"};
+    private static String[] delTitle = {"Remove product", "Ta bort produkt"};
+    private static String[] delProds = {"Products", "Produkter"};
+
 
     public static String getDelProdErr() {
         return delProdErr[language];
+    }
+
+    public static String getDelTitle() {
+        return delTitle[language];
+    }
+
+    public static String getDelProds() {
+        return delProds[language];
     }
 }
