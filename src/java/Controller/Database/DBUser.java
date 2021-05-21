@@ -26,7 +26,7 @@ public class DBUser {
                     "VALUES(?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(1, user.getUsername().toLowerCase());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmailAddress());
             preparedStatement.setString(4, user.getAddress());
