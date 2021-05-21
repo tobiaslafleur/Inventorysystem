@@ -29,16 +29,19 @@ public class EditProductPage {
     @FXML ComboBox<String> shelves;
     @FXML ComboBox<Supplier> suppliers;
 
+    @FXML Label lblTitle;
     @FXML Label lblEditName;
     @FXML Label lblEditPrice;
     @FXML Label lblEditCost;
     @FXML Label lblEditStock;
+    @FXML Label lblProduct;
 
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
         fillComboBoxes();
 
+        lblTitle.setText(Language.getProdEditTitle());
         errorHandling();
     }
 
@@ -84,15 +87,6 @@ public class EditProductPage {
         });
     }
 
-//    private void fillText(Product prod) {
-//        name.setPromptText(prod.getName());
-//        quantity.setPromptText(String.valueOf(prod.getStock()));
-//        price.setPromptText(String.valueOf(prod.getPrice()));
-//        cost.setPromptText(String.valueOf(prod.getCost()));
-//        categories.setPromptText(prod.getCategory());
-//        shelves.setPromptText(prod.getShelfPosition());
-//    }
-
     public void fillComboBoxes() {
         ObservableList<Product> productList = FXCollections.observableArrayList();
         productList.addAll(facilitator.getProductList());
@@ -105,10 +99,17 @@ public class EditProductPage {
         ObservableList<String> shelfList = FXCollections.observableArrayList();
         shelfList.addAll(facilitator.getShelfList());
         shelves.setItems(shelfList);
+
+        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
+        supplierList.addAll(facilitator.getSupplierList());
+        suppliers.setItems(supplierList);
     }
 
     public void productSelection(ActionEvent event) {
         if(products.getValue() != null) {
+            lblProduct.setText("");
+            products.setStyle("-fx-border-color: #1F701D;");
+
             name.setText(products.getValue().getName());
             quantity.setText(String.valueOf(products.getValue().getStock()));
             price.setText(String.valueOf(products.getValue().getPrice()));
@@ -133,10 +134,16 @@ public class EditProductPage {
     }
 
     public void updateProduct(ActionEvent e) {
+        if(products.getValue() == null) {
+            lblProduct.setText(Language.getProdErrProd());
+            products.setStyle("-fx-border-color: #974F4F;");
+        }
         int id = 0;
         String name = null;
         int categoryID = 0;
         String shelf = null;
+        String categoryName = "";
+        int supplierID = 0;
 
         if(products.getValue() != null) {
             id = products.getValue().getProductID();
@@ -147,16 +154,20 @@ public class EditProductPage {
         }
 
         if(categories.getValue() != null) {
+            categoryName = categories.getValue().getName();
             categoryID = categories.getValue().getID();
         }
 
         if(shelves.getValue() != null) {
             shelf = shelves.getValue();
         }
+        if(suppliers.getValue() != null) {
+            supplierID = suppliers.getValue().getId();
+        }
 
         boolean allOk;
         try{
-            allOk = ProductErrorHandling.updateErrorHandling(id, name, quantity.getText(), price.getText(), cost.getText(), categories.getValue().getName(), shelf);
+            allOk = ProductErrorHandling.updateErrorHandling(id, name, quantity.getText(), price.getText(), cost.getText(), categoryName, shelf);
         } catch (NullPointerException exc) {
             allOk = false;
             exc.printStackTrace();
@@ -167,7 +178,7 @@ public class EditProductPage {
             BigDecimal price = new BigDecimal(this.price.getText());
             BigDecimal cost = new BigDecimal(this.cost.getText());
 
-            facilitator.updateProduct(id, name, stock, categoryID, price, shelf,  cost);
+            facilitator.updateProduct(id, name, stock, categoryID, price, shelf,  cost, supplierID);
             facilitator.updateProductTable();
             facilitator.closeSecondStage(e);
         }

@@ -53,7 +53,10 @@ public class AddSupplierPage {
         String supPhone = phone.getText();
         String supStreet = street.getText();
         String supCity = city.getText();
-        String country = countries.getValue().name();
+        String country = "";
+        if(countries.getValue() != null) {
+            country = countries.getValue().name();
+        }
         String supEmail = email.getText();
 
         boolean allOK;

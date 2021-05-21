@@ -210,7 +210,7 @@ public class DBProduct {
     /**
      * Creates an SQL query to update product information.
      */
-    public void updateProductSetup(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost) {
+    public void updateProductSetup(int id, String name, int quantity, int categoryID, BigDecimal price, String shelf, BigDecimal cost, int supplierID) {
 
         String query = " ";
 
@@ -243,6 +243,11 @@ public class DBProduct {
         if(cost != null) {
             query =
                     "UPDATE Product SET [cost] = '" + cost + "' Where id = " + id;
+            executeUpdate(query);
+        }
+        if(supplierID > 0) {
+            query =
+                    "UPDATE Product SET [supplier_id] = " + supplierID + " Where id = " + id;
             executeUpdate(query);
         }
     }

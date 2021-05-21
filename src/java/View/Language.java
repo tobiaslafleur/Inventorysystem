@@ -101,6 +101,8 @@ public class Language {
     private static String[] prodErrStock = {"Only use numbers", "Använd endast heltal"};
     private static String[] prodErrCost = {"Only use numbers. If decimals are needed, use a . to separate ", "Använd endast heltal. Om decimaler behövs, använd . för att separera"};
     private static String[] prodErrPrice = {"Only use numbers. If decimals are needed, use a . to separate ", "Använd endast heltal. Om decimaler behövs, använd . för att separera"};
+    private static String[] prodErrProd = {"Select a product to edit", "Välj en produkt att ändra"};
+    private static String[] prodEditTitle = {"Edit product", "Redigera produkt"};
 
     public static String getProdTitle() {
         return prodTitle[language];
@@ -141,6 +143,9 @@ public class Language {
     public static String getProdAdd() {
         return prodAdd[language];
     }
+    public static String getProdEditTitle() {
+        return prodEditTitle[language];
+    }
 
     public static String getProdErrName() {
         return prodErrName[language];
@@ -156,6 +161,9 @@ public class Language {
 
     public static String getProdErrPrice() {
         return prodErrPrice[language];
+    }
+    public static String getProdErrProd() {
+        return prodErrProd[language];
     }
     //AccountSettings 
     private static String[] editPhoneSettings =         {"Phone number", "Telefonnummer"};

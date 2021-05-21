@@ -117,17 +117,6 @@ public class AddProductPage {
 
     public void fillComboBoxes() {
         new FillCombos().start();
-//        ObservableList<Supplier> supplierList = FXCollections.observableArrayList();
-//        supplierList.addAll(facilitator.getSupplierList());
-//        suppliers.setItems(supplierList);
-//
-//        ObservableList<Category> categoryList = FXCollections.observableArrayList();
-//        categoryList.addAll(facilitator.getCategoryList());
-//        categories.setItems(categoryList);
-//
-//        ObservableList<String> shelfList = FXCollections.observableArrayList();
-//        shelfList.addAll(facilitator.getShelfList());
-//        shelves.setItems(shelfList);
     }
 
     /**
