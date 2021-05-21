@@ -169,6 +169,39 @@ public class Language {
     public static String getProdErrProd() {
         return prodErrProd[language];
     }
+
+    //Add & Edit Supplier
+    private static String[] supTitle = {"Add a supplier", "Lägg till en leverantör"};
+    private static String[] supEditTitle = {"Edit supplier", "Redigera leverantör"};
+    private static String[] supErrName = {"The supplier must have a name", "Leverantören måste ha ett namn"};
+    private static String[] supErrStreet = {"Enter a valid street name", "Ange ett giltigt gatunamn"};
+    private static String[] supErrCity = {"Enter a valid city name", "Ange en giltig stad"};
+    private static String[] supErrSup = {"Select a supplier to edit", "Välj en leverantör att redigera"};
+    private static String[] supErrPhone = {"Enter a valid phone number", "Ange ett giltigt telefonnummer"};
+
+    public static String getSupTitle() {
+        return supTitle[language];
+    }
+    public static String getSupEditTitle() {
+        return supEditTitle[language];
+    }
+    public static String getSupErrName() {
+        return supErrName[language];
+    }
+    public static String getSupErrStreet() {
+        return supErrStreet[language];
+    }
+    public static String getSupErrCity() {
+        return supErrCity[language];
+    }
+    public static String getSupErrSup() {
+        return supErrSup[language];
+    }
+
+    public static String getSupErrPhone(){
+        return supErrPhone[language];
+    }
+
     //AccountSettings 
     private static String[] editPhoneSettings =         {"Phone number", "Telefonnummer"};
     private static String[] editAddressSettings =       {"Address", "Adress"};

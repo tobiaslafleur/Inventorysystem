@@ -52,13 +52,13 @@ public class RegistrationPageHandling {
 
     public static boolean isPhoneValid(String phone) {
         try{
-            if(Integer.parseInt(phone) > 10000000) {
+            if(Integer.parseInt(phone) < 10000000) {
                 return true;
             } else {
                 return false;
             }
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }

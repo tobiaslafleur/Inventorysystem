@@ -20,11 +20,11 @@
         <Button id="btn-supplier" fx:id="updateSupplierBtn" layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#updateSupplier" prefHeight="40.0" prefWidth="257.0" text="Update supplier" />
       <TextField id="txt-supplier" fx:id="email" layoutX="51.0" layoutY="364.0" promptText="Email" />
       <ComboBox id="cmb-she" fx:id="countries" layoutX="50.0" layoutY="327.0" prefWidth="150.0" promptText="Country" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
-      <Label fx:id="supplierLbl" layoutY="98.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
-      <Label fx:id="nameLbl" layoutX="-1.0" layoutY="146.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
-      <Label fx:id="phoneLbl" layoutY="197.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
-      <Label fx:id="streetLbl" layoutY="248.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
-      <Label fx:id="cityLbl" layoutY="301.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
-      <Label fx:id="emailLbl" layoutY="389.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblSupplier" layoutY="98.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblName" layoutX="-1.0" layoutY="146.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblPhone" layoutY="197.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblStreet" layoutY="248.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblCity" layoutY="301.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblEmail" layoutY="389.0" prefHeight="17.0" prefWidth="256.0" style="-fx-alignment: center;" />
     </children>
 </AnchorPane>

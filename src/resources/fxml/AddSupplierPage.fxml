@@ -4,26 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="supplier-bg" prefHeight="437.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddSupplierPage">
+<AnchorPane id="supplier-bg" prefHeight="431.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddSupplierPage">
     <children>
-        <TextField id="txt-supplier" fx:id="name" layoutX="59.0" layoutY="82.0" promptText="Name" />
-        <TextField id="txt-supplier" fx:id="phone" layoutX="61.0" layoutY="132.0" promptText="Phone" />
-        <TextField id="txt-supplier" fx:id="email" layoutX="64.0" layoutY="340.0" prefHeight="25.0" prefWidth="150.0" promptText="Email" />
-        <Label fx:id="lblTitle" layoutX="88.0" layoutY="33.0" text="Add Supplier">
+        <TextField id="txt-supplier" fx:id="name" layoutX="65.0" layoutY="81.0" promptText="Name" />
+        <TextField id="txt-supplier" fx:id="phone" layoutX="65.0" layoutY="134.0" promptText="Phone" />
+        <TextField id="txt-supplier" fx:id="email" layoutX="64.0" layoutY="336.0" prefHeight="25.0" prefWidth="150.0" promptText="Email" />
+        <Label fx:id="lblTitle" layoutX="-1.0" layoutY="40.0" prefHeight="26.0" prefWidth="278.0" style="-fx-alignment: center;" text="Add Supplier">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
         <Hyperlink id="hyper-cancel" layoutX="224.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
-        <Button id="btn-supplier" fx:id="addSupplierBtn" layoutX="-1.0" layoutY="404.0" mnemonicParsing="false" onAction="#addSupplier" prefHeight="40.0" prefWidth="279.0" text="Add supplier" />
-      <TextField id="txt-supplier" fx:id="street" layoutX="59.0" layoutY="182.0" promptText="Street" />
-      <TextField id="txt-supplier" fx:id="city" layoutX="61.0" layoutY="235.0" promptText="City" />
-      <ComboBox id="cmb-she" fx:id="countries" layoutX="61.0" layoutY="289.0" prefWidth="150.0" promptText="Country" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
-      <Label fx:id="nameLbl" layoutY="108.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
-      <Label fx:id="phoneLbl" layoutX="-1.0" layoutY="157.0" prefHeight="17.0" prefWidth="279.0" style="-fx-alignment: center;" />
-      <Label fx:id="streetLbl" layoutY="207.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
-      <Label fx:id="cityLbl" layoutY="260.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
-      <Label fx:id="countryLbl" layoutY="315.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
-      <Label fx:id="emailLbl" layoutY="365.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
+        <Button id="btn-supplier" fx:id="addSupplierBtn" layoutX="-1.0" layoutY="402.0" mnemonicParsing="false" onAction="#addSupplier" prefHeight="40.0" prefWidth="279.0" text="Add supplier" />
+      <TextField id="txt-supplier" fx:id="street" layoutX="64.0" layoutY="188.0" promptText="Street" />
+      <TextField id="txt-supplier" fx:id="city" layoutX="65.0" layoutY="242.0" promptText="City" />
+      <ComboBox id="cmb-she" fx:id="countries" layoutX="64.0" layoutY="293.0" prefWidth="150.0" promptText="Country" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+      <Label fx:id="lblName" layoutY="106.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblPhone" layoutX="-1.0" layoutY="159.0" prefHeight="17.0" prefWidth="279.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblStreet" layoutY="213.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblCity" layoutY="267.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
+      <Label fx:id="lblEmail" layoutY="361.0" prefHeight="17.0" prefWidth="278.0" style="-fx-alignment: center;" />
     </children>
 </AnchorPane>

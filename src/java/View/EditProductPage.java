@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class EditProductPage {
     private GUIFacilitator facilitator;
@@ -28,6 +29,8 @@ public class EditProductPage {
     @FXML ComboBox<Category> categories;
     @FXML ComboBox<String> shelves;
     @FXML ComboBox<Supplier> suppliers;
+    private ArrayList<Category> categoryList;
+    private ArrayList<Supplier> supplierList;
 
     @FXML Label lblTitle;
     @FXML Label lblEditName;
@@ -114,9 +117,28 @@ public class EditProductPage {
             quantity.setText(String.valueOf(products.getValue().getStock()));
             price.setText(String.valueOf(products.getValue().getPrice()));
             cost.setText(String.valueOf(products.getValue().getCost()));
-            Category category = new Category(products.getValue().getCategory(), 1);
-            categories.setValue(category);
             shelves.setValue(products.getValue().getShelfPosition());
+
+            categoryList = facilitator.getCategoryList();
+            Category category = null;
+            for(Category c : categoryList) {
+                if(c.getName().equals(products.getValue().getCategory())) {
+                    category = c;
+                    break;
+                }
+            }
+
+            categories.setValue(category);
+
+            supplierList = facilitator.getSupplierList();
+            Supplier supplier = null;
+            for(Supplier s : supplierList) {
+                if(s.getId() == products.getValue().getSupplierID()) {
+                    supplier = s;
+                    break;
+                }
+            }
+            suppliers.setValue(supplier);
         }
 
         name.setStyle("-fx-border-color: black;");
@@ -170,7 +192,7 @@ public class EditProductPage {
             allOk = ProductErrorHandling.updateErrorHandling(id, name, quantity.getText(), price.getText(), cost.getText(), categoryName, shelf);
         } catch (NullPointerException exc) {
             allOk = false;
-            exc.printStackTrace();
+//            exc.printStackTrace();
         }
 
         if(allOk) {
