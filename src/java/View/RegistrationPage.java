@@ -40,7 +40,7 @@ public class RegistrationPage {
 
     @FXML private Button btnCheck;
 
-    @FXML private ComboBox<String> cmbAreaCodes;
+//    @FXML private ComboBox<String> cmbAreaCodes;
 
     @FXML private Label lblEnterAllFields;
 
@@ -61,8 +61,8 @@ public class RegistrationPage {
         lblRepeatWarning.setText("");
         lblEnterAllFields.setVisible(false);
 
-        cmbAreaCodes.getItems().addAll("+46");
-        cmbAreaCodes.setId("cmb-area");
+//        cmbAreaCodes.getItems().addAll("+46");
+//        cmbAreaCodes.setId("cmb-area");
 
         btnCheck.setId("check-btn");
         btnCheck.setOnAction(actionEvent -> checkUsername());
@@ -88,7 +88,7 @@ public class RegistrationPage {
         });
 
         phone.setOnKeyTyped(actionEvent -> {
-            if(RegistrationPageHandling.isPhoneValid(phone.getText()) && !(cmbAreaCodes.getValue() == null)){
+            if(RegistrationPageHandling.isPhoneValid(phone.getText())/* && !(cmbAreaCodes.getValue() == null)*/){
                 phone.setStyle("-fx-border-color: #8EFF8B;");
                 lblPhoneWarning.setText("");
             } else {
@@ -179,13 +179,13 @@ public class RegistrationPage {
     }
 
     public void register(javafx.event.ActionEvent event) {
-        boolean allOk = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), cmbAreaCodes.getValue(), password.getText(), repeatedPW.getText(), facilitator);
+        boolean allOk = RegistrationPageHandling.errorHandling(username.getText(), email.getText(), phone.getText(), /*cmbAreaCodes.getValue(),*/ password.getText(), repeatedPW.getText(), facilitator);
         checkUsername();
 
         //If no warnings, create account
         if(allOk){
-            String areacode = cmbAreaCodes.getValue();
-            String number;
+//            String areacode = cmbAreaCodes.getValue();
+            String number = "";
             if(phone.getText().toCharArray()[0] == '0'){
                 char[] temp = Arrays.copyOfRange(phone.getText().toCharArray(), 1, phone.getText().length());
 
@@ -194,18 +194,18 @@ public class RegistrationPage {
                     strBuilder.append(c);
                 }
                 String str = strBuilder.toString();
-                number = areacode + str;
+                number = str;
 
             } else {
-                number = areacode + phone.getText();
+//                number = areacode + phone.getText();
             }
-            System.out.println(number);
+//            System.out.println(number);
             facilitator.changeWindow(event, "/fxml/LoginPage.fxml");
             facilitator.createUser(username.getText(), password.getText(), email.getText(), number, address.getText());
         } else {
-            if(!RegistrationPageHandling.isAreaCodeValid(cmbAreaCodes.getValue())) {
-                cmbAreaCodes.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
-            }
+//            if(!RegistrationPageHandling.isAreaCodeValid(cmbAreaCodes.getValue())) {
+//                cmbAreaCodes.setStyle("-fx-background-color: #EB5D5D, #EB5D5D, #EB5D5D, #EB5D5D;");
+//            }
             lblEnterAllFields.setVisible(true);
         }
     }
