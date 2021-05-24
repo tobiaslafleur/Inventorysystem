@@ -10,7 +10,7 @@ public class RegistrationPageHandling {
     private static ArrayList<String> warnings = new ArrayList<>();
 
 
-    public static boolean errorHandling(String username, String email, String phone, String areacode, String password, String repeated, GUIFacilitator facilitator) {
+    public static boolean errorHandling(String username, String email, String phone, /*String areacode,*/ String password, String repeated, GUIFacilitator facilitator) {
         //username
         if(!isUsernameValid(username, facilitator)){
             return false;
@@ -36,9 +36,9 @@ public class RegistrationPageHandling {
             return false;
         }
 
-        if(!isAreaCodeValid(areacode)) {
-            return false;
-        }
+//        if(!isAreaCodeValid(areacode)) {
+//            return false;
+//        }
         return true;
     }
 
@@ -52,7 +52,7 @@ public class RegistrationPageHandling {
 
     public static boolean isPhoneValid(String phone) {
         try{
-            if(Integer.parseInt(phone) < 10000000) {
+            if(Integer.parseInt(phone) > 1000/* > 100000*/) {
                 return true;
             } else {
                 return false;

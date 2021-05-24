@@ -68,8 +68,8 @@ public class Language {
     private static String[] regErrUsernameOne = {"Enter a username", "Fyll i ett användarnamn"};
     private static String[] regErrUsernameTwo = {"Check if username is available", "Kolla om användarnamnet är tillgängligt"};
     private static String[] regErrUsernameThree = {"Username already in use", "Användarnamnet finns redan"};
-    private static String[] regErrEmail = {"Enter a valid email", "Fyll i en korrekt E-postadress"};
-    private static String[] regErrPhone = {"Enter a valid number and select area code", "Fyll i ett korrekt telefonnummer samt riktnummer"};
+    private static String[] regErrEmail = {"Enter a valid email", "Fyll i en giltig E-postadress"};
+    private static String[] regErrPhone = {"Enter a valid number", "Fyll i ett giltigt telefonnummer"};
     private static String[] regErrAddress = {"Enter a valid address", "Fyll i en giltlig adress"};
     private static String[] regErrPassword = {"Password must be at least 8 characters long \n and contain at least one uppercase letter and one number", "Lösenordet måste vara minst 8 bokstäver långt \n och innehålla minst en stor bokstav samt en siffra"};
     private static String[] regErrRepeatPassword = {"Password must match", "Lösenorden måste matcha"};
