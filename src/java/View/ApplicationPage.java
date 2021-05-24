@@ -136,7 +136,7 @@ public class ApplicationPage {
         if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
             facilitator.openSecondStage(e, "/fxml/AddSupplierPage.fxml");
         }
-        else if(tableBox.getValue().equals(Language.getAppCmbSupplier())) {
+        else if(tableBox.getValue().equals(Language.getAppCmbCategory())) {
             facilitator.openSecondStage(e, "/fxml/AddCategoryPage.fxml");
         } else {
             if(facilitator.getCategoryList().isEmpty() || facilitator.getSupplierList().isEmpty()) {
