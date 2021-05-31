@@ -3,17 +3,12 @@ package View;
 import Controller.ErrorHandling.SupplierErrorHandling;
 import Controller.Main;
 import Model.Countries;
-import Model.Product;
 import Model.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
-import javax.swing.*;
+import javafx.scene.control.*;
 
 public class EditSupplierPage {
     private GUIFacilitator facilitator;
@@ -32,6 +27,10 @@ public class EditSupplierPage {
     @FXML private Label lblCity;
     @FXML private Label lblEmail;
 
+    @FXML private Button updateSupplierBtn;
+    @FXML private Label lblTitle;
+    @FXML private Hyperlink cancel;
+
     @FXML public void initialize() {
         this.facilitator = Main.getInstance().getFacilitator();
 
@@ -43,6 +42,7 @@ public class EditSupplierPage {
         countryList.addAll(Countries.values());
         countries.setItems(countryList);
 
+        setText();
         errorHandling();
     }
 
@@ -204,6 +204,20 @@ public class EditSupplierPage {
             }
         }
     }
+
+    private void setText() {
+        cancel.setText(Language.getEdtSupCancel());
+        lblTitle.setText(Language.getEdtSupTitle());
+        suppliers.setPromptText(Language.getEdtSupSupplier());
+        name.setPromptText(Language.getEdtSupName());
+        phone.setPromptText(Language.getEdtSupPhone());
+        street.setPromptText(Language.getEdtSupStreet());
+        city.setPromptText(Language.getEdtSupCity());
+        countries.setPromptText(Language.getEdtSupCountry());
+        email.setPromptText(Language.getEdtSupEmail());
+        updateSupplierBtn.setText(Language.getEdtSupButton());
+    }
+
     public void cancel(ActionEvent event) {
         facilitator.closeSecondStage(event);
     }

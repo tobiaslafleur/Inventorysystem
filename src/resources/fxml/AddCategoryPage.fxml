@@ -8,7 +8,7 @@
 
 <AnchorPane id="cat-bg" prefHeight="226.0" prefWidth="214.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddCategoryPage">
    <children>
-      <Label layoutX="55.0" layoutY="42.0" text="Create a new category" />
+      <Label fx:id="createCategory" layoutX="55.0" layoutY="42.0" text="Create a new category" />
       <TextField id="txt-cat" fx:id="categoryName" layoutX="40.0" layoutY="100.0" />
       <Button id="btn-cat" fx:id="addCategoryBtn" layoutY="186.0" mnemonicParsing="false" onAction="#addCategory" prefHeight="40.0" prefWidth="229.0" style="-fx-text-fill: #f2f2f2;" text="Add category" />
       <Hyperlink fx:id="cancel" layoutX="181.0" layoutY="4.0" onAction="#cancel" style="-fx-text-fill: #9a9a9a;" text="Cancel" />
