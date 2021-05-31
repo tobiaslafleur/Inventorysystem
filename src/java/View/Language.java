@@ -252,13 +252,6 @@ public class Language {
         return editErrNewPasswordSettings[language];
     }
 
-    //Category
-    private static String[] categoryError = {"Category must have a name","Kategorin måste ha ett namn"};
-
-    public static String getCategoryError() {
-        return categoryError[language];
-    }
-
     //Delete product
     private static String[] delProdErr = {"You must choose a product to delete", "Du måste välja en produkt att ta bort"};
     private static String[] delTitle = {"Remove product", "Ta bort produkt"};
@@ -406,4 +399,50 @@ public class Language {
     public static String getAppColSupEmail() {
         return appColSupEmail[language];
     }
+
+    //Add Category
+    private static String[] addCatCancel = {"Cancel", "Avbryt"};
+    private static String[] addCatCreateCategory = {"Create a new category", "Skapa en ny kategori"};
+    private static String[] addCatError = {"Category must have a name","Kategorin måste ha ett namn"};
+    private static String[] addCatButton = {"Add category", "Lägg till kategori"};
+
+    public static String getAddCatCancel() { return addCatCancel[language]; }
+
+    public static String getAddCatCreateCategory() { return addCatCreateCategory[language]; }
+
+    public static String getAddCatError() { return addCatError[language]; }
+
+    public static String getAddCatButton() { return addCatButton[language]; }
+
+    //Edit Supplier
+    private static String[] edtSupCancel = {"Cancel", "Avbryt"};
+    private static String[] edtSupTitle = {"Edit Supplier", "Redigera leverantör"};
+    private static String[] edtSupSupplier = {"Supplier", "Leverantör"};
+    private static String[] edtSupName = {"Name", "Namn"};
+    private static String[] edtSupPhone = {"Phone", "Telefon"};
+    private static String[] edtSupStreet = {"Street", "Adress"};
+    private static String[] edtSupCity = {"City", "Stad"};
+    private static String[] edtSupCountry = {"Country", "Land"};
+    private static String[] edtSupEmail = {"Email", "Email"};
+    private static String[] edtSupButton = {"Update Supplier", "Uppdatera leverantör"};
+
+    public static String getEdtSupCancel() { return edtSupCancel[language]; }
+
+    public static String getEdtSupTitle() { return edtSupTitle[language]; }
+
+    public static String getEdtSupSupplier() { return edtSupSupplier[language]; }
+
+    public static String getEdtSupName() { return edtSupName[language]; }
+
+    public static String getEdtSupPhone() { return edtSupPhone[language]; }
+
+    public static String getEdtSupStreet() { return edtSupStreet[language]; }
+
+    public static String getEdtSupCity() { return edtSupCity[language]; }
+
+    public static String getEdtSupCountry() { return edtSupCountry[language]; }
+
+    public static String getEdtSupEmail() { return edtSupEmail[language]; }
+
+    public static String getEdtSupButton() { return edtSupButton[language]; }
 }

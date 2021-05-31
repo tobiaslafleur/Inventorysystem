@@ -75,6 +75,7 @@ public class ApplicationPage {
         dragAnchor();
         initProductTable();
         initTableSelection();
+        changeLangOnPage();
 
         searchText.setOnKeyTyped(actionEvent -> {
             search();
@@ -293,11 +294,15 @@ public class ApplicationPage {
 
     public void changeLanguage(ActionEvent event) {
         if(event.getSource().equals(english)) {
-            facilitator.setLanguage(0);
-            changeLangOnPage();
+            if(Language.getLanguage() != 0) {
+                facilitator.setLanguage(0);
+                changeLangOnPage();
+            }
         } else if (event.getSource().equals(swedish)){
-            facilitator.setLanguage(1);
-            changeLangOnPage();
+            if(Language.getLanguage() != 1) {
+                facilitator.setLanguage(1);
+                changeLangOnPage();
+            }
         }
     }
     public void logOut(ActionEvent event) {
