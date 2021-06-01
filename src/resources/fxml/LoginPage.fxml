@@ -32,10 +32,6 @@
          <font>
             <Font size="14.0" />
          </font></PasswordField>
-      <Hyperlink fx:id="forgotPassword" layoutX="80.0" layoutY="381.0" text="Forgot password?" textFill="#fff9f9">
-         <font>
-            <Font size="15.0" />
-         </font></Hyperlink>
       <Button fx:id="loginBtn" layoutY="461.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="301.0" text="Log in" />
       <Hyperlink fx:id="minimize" layoutX="245.0" layoutY="-3.0" onAction="#minimize" prefHeight="42.0" prefWidth="21.0" text="-">
          <font>

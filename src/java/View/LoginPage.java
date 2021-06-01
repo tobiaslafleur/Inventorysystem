@@ -20,7 +20,6 @@ public class LoginPage {
     @FXML private TextField username = new TextField();
     @FXML private PasswordField password = new PasswordField();
     @FXML private Button loginBtn = new Button();
-    @FXML private Hyperlink forgotPassword;
     @FXML private Hyperlink register;
     @FXML private Hyperlink English;
     @FXML private Label lblFailed;
@@ -98,7 +97,6 @@ public class LoginPage {
         register.setText(Language.getLogCreateAccount());
         username.setPromptText(Language.getLogUsername());
         password.setPromptText(Language.getLogPassword());
-        forgotPassword.setText(Language.getLogForgotPassword());
         lblFailed.setText(Language.getLogIncorrectInfo());
         loginBtn.setText(Language.getLogLoginBtn());
     }
