@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="shelf-bg" prefHeight="400.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddShelfPage">
+<AnchorPane id="shelf-bg" prefHeight="400.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddShelfPage">
    <children>
       <Label layoutX="97.0" layoutY="38.0" text="Add a shelf">
          <font>
@@ -24,5 +20,6 @@
       </Label>
       <Hyperlink id="hyper-sh-close" fx:id="cancel" layoutX="238.0" layoutY="3.0" onAction="#cancel" style="-fx-text-fill: #9a9a9a;" text="Close" />
       <Button id="AddShelfBtn" fx:id="add" layoutX="207.0" layoutY="100.0" mnemonicParsing="false" onAction="#addShelf" text="Add" />
+      <Label fx:id="errorLabel" layoutY="127.0" prefHeight="17.0" prefWidth="280.0" style="-fx-alignment: center;" />
    </children>
 </AnchorPane>

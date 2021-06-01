@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -12,10 +13,17 @@ public class AddShelfPage {
     private GUIFacilitator facilitator;
     @FXML private ListView<String> shelfList;
     @FXML private TextField shelfName;
+    @FXML private Label errorLabel;
 
     @FXML public void initialize() {
         facilitator = Main.getInstance().getFacilitator();
         initShelfList();
+
+        shelfName.setOnKeyTyped(e -> {
+            if(!shelfName.getText().equals("") || shelfName.getText() != null) {
+                errorLabel.setText("");
+            }
+        });
     }
 
     public void initShelfList() {
@@ -25,8 +33,12 @@ public class AddShelfPage {
     }
 
     public void addShelf() {
-        facilitator.addShelf(shelfName.getText());
-        initShelfList();
+        if(!shelfName.getText().equals("") && shelfName.getText() != null) {
+            facilitator.addShelf(shelfName.getText());
+            initShelfList();
+        } else{
+            errorLabel.setText("Shelf must have a name");
+        }
     }
 
     public void cancel(ActionEvent event) {
