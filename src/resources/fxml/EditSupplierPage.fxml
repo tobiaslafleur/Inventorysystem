@@ -6,7 +6,7 @@
 
 <AnchorPane id="supplier-bg" prefHeight="459.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.EditSupplierPage">
     <children>
-        <Label fx:id="lblTitle" layoutX="80.0" layoutY="25.0" text="Edit Supplier">
+        <Label fx:id="lblTitle" layoutX="-1.0" layoutY="25.0" prefHeight="26.0" prefWidth="256.0" style="-fx-alignment: center;" text="Edit Supplier">
             <font>
                 <Font size="17.0" />
             </font>

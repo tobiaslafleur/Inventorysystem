@@ -10,9 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -31,7 +29,8 @@ public class EditProductPage {
     @FXML ComboBox<Supplier> suppliers;
     private ArrayList<Category> categoryList;
     private ArrayList<Supplier> supplierList;
-
+    @FXML private Hyperlink cancel;
+    @FXML Button updateBtn;
     @FXML Label lblTitle;
     @FXML Label lblEditName;
     @FXML Label lblEditPrice;
@@ -45,6 +44,16 @@ public class EditProductPage {
         fillComboBoxes();
 
         lblTitle.setText(Language.getProdEditTitle());
+        products.setPromptText(Language.getProdCmbBoxEdit());
+        name.setPromptText(Language.getProdName());
+        quantity.setPromptText(Language.getProdStock());
+        price.setPromptText(Language.getProdPrice());
+        cost.setPromptText(Language.getProdCost());
+        categories.setPromptText(Language.getAppCmbCategory());
+        shelves.setPromptText(Language.getProdShelf());
+        suppliers.setPromptText(Language.getAppCmbSupplier());
+        cancel.setText(Language.getProdCancel());
+        updateBtn.setText(Language.getProdEditBtn());
         errorHandling();
     }
 

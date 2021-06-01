@@ -8,7 +8,7 @@ public class Language {
         Language.language = language;
     }
 
-    public static int getLanguage(){
+    public static int getLanguage() {
         return language;
     }
 
@@ -20,17 +20,29 @@ public class Language {
     private static String[] logIncorrectInfo = {"Incorrect username or password.", "Felaktigt användarnamn eller lösenord."};
     private static String[] logLoginBtn = {"Log in", "Logga in"};
 
-    public static String getLogCreateAccount() { return logCreateAccount[language]; }
+    public static String getLogCreateAccount() {
+        return logCreateAccount[language];
+    }
 
-    public static String getLogUsername() { return logUsername[language]; }
+    public static String getLogUsername() {
+        return logUsername[language];
+    }
 
-    public static String getLogPassword() { return logPassword[language]; }
+    public static String getLogPassword() {
+        return logPassword[language];
+    }
 
-    public static String getLogForgotPassword() { return logForgotPassword[language]; }
+    public static String getLogForgotPassword() {
+        return logForgotPassword[language];
+    }
 
-    public static String getLogIncorrectInfo() { return logIncorrectInfo[language]; }
+    public static String getLogIncorrectInfo() {
+        return logIncorrectInfo[language];
+    }
 
-    public static String getLogLoginBtn() { return logLoginBtn[language]; }
+    public static String getLogLoginBtn() {
+        return logLoginBtn[language];
+    }
 
     //RegistrationPage
     private static String[] regCancel = {"Cancel", "Avbryt"};
@@ -44,25 +56,45 @@ public class Language {
     private static String[] regRepeatPassword = {"Repeat password", "Upprepa lösenord"};
     private static String[] regRegisterAccountBtn = {"Register Account", "Registrera Konto"};
 
-    public static String getRegCancel() { return regCancel[language]; }
+    public static String getRegCancel() {
+        return regCancel[language];
+    }
 
-    public static String getRegCreateAccount() { return regCreateAccount[language]; }
+    public static String getRegCreateAccount() {
+        return regCreateAccount[language];
+    }
 
-    public static String getRegUsername() { return regUsername[language]; }
+    public static String getRegUsername() {
+        return regUsername[language];
+    }
 
-    public static String getRegCheckAvailability() { return regCheckAvailability[language]; }
+    public static String getRegCheckAvailability() {
+        return regCheckAvailability[language];
+    }
 
-    public static String getRegEmail() { return regEmail[language]; }
+    public static String getRegEmail() {
+        return regEmail[language];
+    }
 
-    public static String getRegPhone() { return regPhone[language]; }
+    public static String getRegPhone() {
+        return regPhone[language];
+    }
 
-    public static String getRegAddress() { return regAddress[language]; }
+    public static String getRegAddress() {
+        return regAddress[language];
+    }
 
-    public static String getRegPassword() { return regPassword[language]; }
+    public static String getRegPassword() {
+        return regPassword[language];
+    }
 
-    public static String getRegRepeatPassword() { return regRepeatPassword[language]; }
+    public static String getRegRepeatPassword() {
+        return regRepeatPassword[language];
+    }
 
-    public static String getRegRegisterAccountBtn() { return regRegisterAccountBtn[language]; }
+    public static String getRegRegisterAccountBtn() {
+        return regRegisterAccountBtn[language];
+    }
 
     //RegistrationPage error handling
     private static String[] regErrUsernameOne = {"Enter a username", "Fyll i ett användarnamn"};
@@ -74,23 +106,39 @@ public class Language {
     private static String[] regErrPassword = {"Password must be at least 8 characters long \n and contain at least one uppercase letter and one number", "Lösenordet måste vara minst 8 bokstäver långt \n och innehålla minst en stor bokstav samt en siffra"};
     private static String[] regErrRepeatPassword = {"Password must match", "Lösenorden måste matcha"};
 
-    public static String getRegErrUsernameOne() { return regErrUsernameOne[language]; }
+    public static String getRegErrUsernameOne() {
+        return regErrUsernameOne[language];
+    }
 
-    public static String getRegErrUsernameTwo() { return regErrUsernameTwo[language]; }
+    public static String getRegErrUsernameTwo() {
+        return regErrUsernameTwo[language];
+    }
 
-    public static String getRegErrUsernameThree() { return regErrUsernameThree[language]; }
+    public static String getRegErrUsernameThree() {
+        return regErrUsernameThree[language];
+    }
 
-    public static String getRegErrEmail() { return regErrEmail[language]; }
+    public static String getRegErrEmail() {
+        return regErrEmail[language];
+    }
 
-    public static String getRegErrPhone() { return regErrPhone[language]; }
+    public static String getRegErrPhone() {
+        return regErrPhone[language];
+    }
 
-    public static String getRegErrAddress() { return regErrAddress[language]; }
+    public static String getRegErrAddress() {
+        return regErrAddress[language];
+    }
 
-    public static String getRegErrPassword() { return regErrPassword[language]; }
+    public static String getRegErrPassword() {
+        return regErrPassword[language];
+    }
 
-    public static String getRegErrRepeatPassword() { return regErrRepeatPassword[language]; }
+    public static String getRegErrRepeatPassword() {
+        return regErrRepeatPassword[language];
+    }
 
-    //Add Product
+    //Add & Edit Product
     private static String[] prodTitle = {"Add Product", "Lägg till produkt"};
     private static String[] prodCancel = {"Cancel", "Avbryt"};
     private static String[] prodName = {"Product name", "Produktnamn"};
@@ -107,6 +155,16 @@ public class Language {
     private static String[] prodErrPrice = {"Only use numbers. If decimals are needed, use a . to separate ", "Använd endast heltal. Om decimaler behövs, använd . för att separera"};
     private static String[] prodErrProd = {"Select a product to edit", "Välj en produkt att ändra"};
     private static String[] prodEditTitle = {"Edit product", "Redigera produkt"};
+    private static String[] prodCmbBoxEdit = {"Products", "Produkter"};
+    private static String[] prodEditBtn = {"Update product", "Uppdatera produkt"};
+
+    public static String getProdEditBtn() {
+        return prodEditBtn[language];
+    }
+
+    public static String getProdCmbBoxEdit() {
+        return prodCmbBoxEdit[language];
+    }
 
     public static String getProdTitle() {
         return prodTitle[language];
@@ -147,9 +205,6 @@ public class Language {
     public static String getProdAdd() {
         return prodAdd[language];
     }
-    public static String getProdEditTitle() {
-        return prodEditTitle[language];
-    }
 
     public static String getProdErrName() {
         return prodErrName[language];
@@ -166,8 +221,13 @@ public class Language {
     public static String getProdErrPrice() {
         return prodErrPrice[language];
     }
+
     public static String getProdErrProd() {
         return prodErrProd[language];
+    }
+
+    public static String getProdEditTitle() {
+        return prodEditTitle[language];
     }
 
     //Add & Edit Supplier
@@ -178,76 +238,95 @@ public class Language {
     private static String[] supErrCity = {"Enter a valid city name", "Ange en giltig stad"};
     private static String[] supErrSup = {"Select a supplier to edit", "Välj en leverantör att redigera"};
     private static String[] supErrPhone = {"Enter a valid phone number", "Ange ett giltigt telefonnummer"};
+    private static String[] addSupplierBtn = {"Add supplier", "Lägg till leverantör"};
+
+    public static String getAddSupplierBtn() {
+        return addSupplierBtn[language];
+    }
 
     public static String getSupTitle() {
         return supTitle[language];
     }
+
     public static String getSupEditTitle() {
         return supEditTitle[language];
     }
+
     public static String getSupErrName() {
         return supErrName[language];
     }
+
     public static String getSupErrStreet() {
         return supErrStreet[language];
     }
+
     public static String getSupErrCity() {
         return supErrCity[language];
     }
+
     public static String getSupErrSup() {
         return supErrSup[language];
     }
 
-    public static String getSupErrPhone(){
+    public static String getSupErrPhone() {
         return supErrPhone[language];
     }
 
     //AccountSettings 
-    private static String[] editPhoneSettings =         {"Phone number", "Telefonnummer"};
-    private static String[] editAddressSettings =       {"Address", "Adress"};
-    private static String[] editPasswordSettings =      {"Password", "Lösenord"};
-    private static String[] editNewPasswordSettings =   {"New Password", "Nytt lösenord"};
-    private static String[] editSaveSettings =          {"Save settings", "Spara ändringar"};
-    private static String[] editCancel =                {"Cancel", "Avbryt"};
-    private static String[] getEditLblTitle =           {"Account Settings", "Kontoinställningar"};
+    private static String[] editPhoneSettings = {"Phone number", "Telefonnummer"};
+    private static String[] editAddressSettings = {"Address", "Adress"};
+    private static String[] editPasswordSettings = {"Password", "Lösenord"};
+    private static String[] editNewPasswordSettings = {"New Password", "Nytt lösenord"};
+    private static String[] editSaveSettings = {"Save settings", "Spara ändringar"};
+    private static String[] editCancel = {"Cancel", "Avbryt"};
+    private static String[] getEditLblTitle = {"Account Settings", "Kontoinställningar"};
 
     public static String getPhoneSettingsAS() {
         return editPhoneSettings[language];
     }
+
     public static String getEditAddressAS() {
         return editAddressSettings[language];
     }
+
     public static String getPasswordAS() {
         return editPasswordSettings[language];
     }
+
     public static String getNewPasswordAS() {
         return editNewPasswordSettings[language];
     }
+
     public static String getSaveSettingsAS() {
         return editSaveSettings[language];
     }
+
     public static String getEditCancelAS() {
         return editCancel[language];
     }
+
     public static String getEditLblTitle() {
         return getEditLblTitle[language];
     }
 
     //AccountSettings label errorhandling
-    private static String[] editErrPhoneSettings =          {"Enter a valid number and area code.", "Ange ett riktigt telefonnummer och riktnummer."};
-    private static String[] editErrNewPasswordSettings =    {"You can't change to ur current password.\n ","Password must be: 8 characters long, one","uppercase letter and one number.", "Du kan inte ändra till ditt nuvarande lösenord. \n Lösenordet måste vara: 8 bokstäver långt, en stor bokstav och ett nummer"};
-    private static String[] editErrAddressSettings =        {"Enter a valid address.", "Ange en riktigt adress."};
-    private static String[] editErrOldPasswordSettings =    {"Incorrect password", "Felaktigt lösenord."};
+    private static String[] editErrPhoneSettings = {"Enter a valid number and area code.", "Ange ett riktigt telefonnummer och riktnummer."};
+    private static String[] editErrNewPasswordSettings = {"You can't change to ur current password.\n ", "Password must be: 8 characters long, one", "uppercase letter and one number.", "Du kan inte ändra till ditt nuvarande lösenord. \n Lösenordet måste vara: 8 bokstäver långt, en stor bokstav och ett nummer"};
+    private static String[] editErrAddressSettings = {"Enter a valid address.", "Ange en riktigt adress."};
+    private static String[] editErrOldPasswordSettings = {"Incorrect password", "Felaktigt lösenord."};
 
     public static String getErrPhonePasswordAS() {
         return editErrPhoneSettings[language];
     }
+
     public static String getErrAddressAS() {
         return editErrAddressSettings[language];
     }
+
     public static String getOldPasswordAS() {
         return editErrOldPasswordSettings[language];
     }
+
     public static String getRepeatPasswordAS() {
         return editErrNewPasswordSettings[language];
     }
@@ -274,7 +353,7 @@ public class Language {
     //APPLICATION PAGE
     private static String[] appImport = {"Import CSV", "Importera CSV"};
     private static String[] appSettings = {"Account Settings", "Kontoinställningar"};
-    private static String[] appAddShelf = {"Add a shelf", "Lägg till fack"};
+    private static String[] appAddShelf = {"Add a shelf", "Lägg till hylla"};
     private static String[] appLogout = {"Log out", "Logga ut"};
     private static String[] appSearch = {"Search", "Sök"};
     private static String[] appColId = {"Product ID", "Produkt ID"};
@@ -282,13 +361,13 @@ public class Language {
     private static String[] appColQuantity = {"Quantity", "Antal"};
     private static String[] appColPrice = {"Price", "Pris"};
     private static String[] appColCategory = {"Category", "Kategori"};
-    private static String[] appColShelf = {"Shelf", "Fack"};
+    private static String[] appColShelf = {"Shelf", "Hylla"};
     private static String[] appColSupplier = {"Supplier", "Leverantör"};
     private static String[] appColSupplierId = {"Supplier ID", "Leverantör ID"};
     private static String[] appColCost = {"Cost", "Kostnad"};
-    private static String[] appCmbProd = {"Product", "Produkt"};
-    private static String[] appCmbSupplier = {"Supplier", "Leverantör"};
-    private static String[] appCmbCategory = {"Category", "Kategori"};
+    private static String[] appCmbProd = {"Products", "Produkter"};
+    private static String[] appCmbSupplier = {"Suppliers", "Leverantörer"};
+    private static String[] appCmbCategory = {"Categories", "Kategorier"};
 
     private static String[] appColCatId = {"Category ID", "Kategori ID"};
     private static String[] appColCatName = {"Category Name", "Kategorinamn"};
@@ -403,16 +482,24 @@ public class Language {
     //Add Category
     private static String[] addCatCancel = {"Cancel", "Avbryt"};
     private static String[] addCatCreateCategory = {"Create a new category", "Skapa en ny kategori"};
-    private static String[] addCatError = {"Category must have a name","Kategorin måste ha ett namn"};
+    private static String[] addCatError = {"Category must have a name", "Kategorin måste ha ett namn"};
     private static String[] addCatButton = {"Add category", "Lägg till kategori"};
 
-    public static String getAddCatCancel() { return addCatCancel[language]; }
+    public static String getAddCatCancel() {
+        return addCatCancel[language];
+    }
 
-    public static String getAddCatCreateCategory() { return addCatCreateCategory[language]; }
+    public static String getAddCatCreateCategory() {
+        return addCatCreateCategory[language];
+    }
 
-    public static String getAddCatError() { return addCatError[language]; }
+    public static String getAddCatError() {
+        return addCatError[language];
+    }
 
-    public static String getAddCatButton() { return addCatButton[language]; }
+    public static String getAddCatButton() {
+        return addCatButton[language];
+    }
 
     //Edit Supplier
     private static String[] edtSupCancel = {"Cancel", "Avbryt"};
@@ -423,26 +510,77 @@ public class Language {
     private static String[] edtSupStreet = {"Street", "Adress"};
     private static String[] edtSupCity = {"City", "Stad"};
     private static String[] edtSupCountry = {"Country", "Land"};
-    private static String[] edtSupEmail = {"Email", "Email"};
+    private static String[] edtSupEmail = {"Email", "E-post"};
     private static String[] edtSupButton = {"Update Supplier", "Uppdatera leverantör"};
 
-    public static String getEdtSupCancel() { return edtSupCancel[language]; }
+    public static String getEdtSupCancel() {
+        return edtSupCancel[language];
+    }
 
-    public static String getEdtSupTitle() { return edtSupTitle[language]; }
+    public static String getEdtSupTitle() {
+        return edtSupTitle[language];
+    }
 
-    public static String getEdtSupSupplier() { return edtSupSupplier[language]; }
+    public static String getEdtSupSupplier() {
+        return edtSupSupplier[language];
+    }
 
-    public static String getEdtSupName() { return edtSupName[language]; }
+    public static String getEdtSupName() {
+        return edtSupName[language];
+    }
 
-    public static String getEdtSupPhone() { return edtSupPhone[language]; }
+    public static String getEdtSupPhone() {
+        return edtSupPhone[language];
+    }
 
-    public static String getEdtSupStreet() { return edtSupStreet[language]; }
+    public static String getEdtSupStreet() {
+        return edtSupStreet[language];
+    }
 
-    public static String getEdtSupCity() { return edtSupCity[language]; }
+    public static String getEdtSupCity() {
+        return edtSupCity[language];
+    }
 
-    public static String getEdtSupCountry() { return edtSupCountry[language]; }
+    public static String getEdtSupCountry() {
+        return edtSupCountry[language];
+    }
 
-    public static String getEdtSupEmail() { return edtSupEmail[language]; }
+    public static String getEdtSupEmail() {
+        return edtSupEmail[language];
+    }
 
-    public static String getEdtSupButton() { return edtSupButton[language]; }
+    public static String getEdtSupButton() {
+        return edtSupButton[language];
+    }
+
+    //Add Shelf
+    private static String[] addShelfTitle = {"Add shelf", "Lägg till hylla"};
+    private static String[] addShelfClose = {"Close", "Stäng"};
+    private static String[] addShelfBtn = {"Add", "Lägg till"};
+    private static String[] storedShelvesLabel = {"Stored shelves", "Sparade hyllor"};
+
+    public static String getAddShelfName() {
+        return addShelfName[language];
+    }
+
+    private static String[] addShelfName = {"Shelf name", "Hyllans namn"};
+
+    public static String getAddShelfTitle() {
+        return addShelfTitle[language];
+    }
+
+    public static String getAddShelfClose() {
+        return addShelfClose[language];
+    }
+
+    public static String getAddShelfBtn() {
+        return addShelfBtn[language];
+    }
+
+    public static String getStoredShelvesLabel() {
+        return storedShelvesLabel[language];
+    }
+
+
+
 }
