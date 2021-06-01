@@ -21,7 +21,7 @@ public class AccountSettingsPage {
     @FXML private Stage stage;
 
     @FXML private Label lblAccountSettings;
-    @FXML private ComboBox<String> cmbAreaCodes;
+//    @FXML private ComboBox<String> cmbAreaCodes;
     @FXML private Label lblPhone;
     @FXML private Label lblAddress;
     @FXML private Label lblPw;
@@ -42,7 +42,7 @@ public class AccountSettingsPage {
 
         fixFocus();
 
-        cmbAreaCodes.getItems().addAll();
+//        cmbAreaCodes.getItems().addAll();
 
         lblPhone.setText("");
         lblAddress.setText("");
@@ -52,7 +52,7 @@ public class AccountSettingsPage {
 
         phoneNmbr.setOnKeyTyped(actionEvent -> {
 
-            if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+            if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText())/* && !(cmbAreaCodes.getValue() == null)*/){
                 phoneNmbr.setStyle("-fx-border-color: #1F701D;");
                 lblPhone.setText("");
             } else {
@@ -110,9 +110,9 @@ public class AccountSettingsPage {
         String userPhone = null;
         String userAddress = null;
         String userNewPassword = null;
-        String areaCode = cmbAreaCodes.getValue();
+//        String areaCode = cmbAreaCodes.getValue();
 
-        if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText()) && !(cmbAreaCodes.getValue() == null)){
+        if(EditAccountSettingHandling.isPhoneValid(phoneNmbr.getText())/* && !(cmbAreaCodes.getValue() == null)*/){
             if(phoneNmbr.getText().toCharArray()[0] == '0'){
                 char[] temp = Arrays.copyOfRange(phoneNmbr.getText().toCharArray(), 1, phoneNmbr.getText().length());
 
@@ -121,10 +121,10 @@ public class AccountSettingsPage {
                     strBuilder.append(c);
                 }
                 String str = strBuilder.toString();
-                userPhone = areaCode + str;
+                userPhone = /*areaCode +*/ str;
 
             } else {
-                userPhone = areaCode + phoneNmbr.getText();
+                userPhone = /*areaCode */ phoneNmbr.getText();
                 System.out.println(userPhone);
             }
 

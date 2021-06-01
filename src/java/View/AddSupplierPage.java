@@ -7,9 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class AddSupplierPage {
 //    private static AddSupplierPage instance;
@@ -20,7 +18,8 @@ public class AddSupplierPage {
     @FXML private TextField city;
     @FXML private TextField email;
     @FXML private ComboBox<Countries> countries;
-
+    @FXML private Hyperlink cancel;
+    @FXML Button addSupplierBtn;
     @FXML private Label lblTitle;
     @FXML private Label lblName;
     @FXML private Label lblPhone;
@@ -40,7 +39,7 @@ public class AddSupplierPage {
         countryList.addAll(Countries.values());
         countries.setItems(countryList);
 
-        lblTitle.setText(Language.getSupTitle());
+        setText();
         errorHandling();
     }
 
@@ -186,6 +185,18 @@ public class AddSupplierPage {
             }
         }
 
+    }
+
+    private void setText() {
+        cancel.setText(Language.getProdCancel());
+        lblTitle.setText(Language.getSupTitle());
+        name.setPromptText(Language.getEdtSupName());
+        phone.setPromptText(Language.getEdtSupPhone());
+        street.setPromptText(Language.getEdtSupStreet());
+        city.setPromptText(Language.getEdtSupCity());
+        countries.setPromptText(Language.getEdtSupCountry());
+        email.setPromptText(Language.getEdtSupEmail());
+        addSupplierBtn.setText(Language.getAddSupplierBtn());
     }
 
     /**

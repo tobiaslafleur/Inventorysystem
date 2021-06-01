@@ -351,6 +351,7 @@ public class ApplicationPage {
         ObservableList<String> tables = FXCollections.observableArrayList();
         tables.addAll(Language.getAppCmbProd(), Language.getAppCmbCategory(), Language.getAppCmbSupplier());
         tableBox.setValue(Language.getAppCmbProd());
+        tableBox.setPromptText(Language.getAppCmbProd());
         tableBox.setItems(tables);
 
         //Search

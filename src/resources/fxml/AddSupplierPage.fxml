@@ -14,7 +14,7 @@
                 <Font size="17.0" />
             </font>
         </Label>
-        <Hyperlink id="hyper-cancel" layoutX="224.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
+        <Hyperlink id="hyper-cancel" fx:id="cancel" layoutX="224.0" layoutY="10.0" onAction="#cancel" text="Cancel" />
         <Button id="btn-supplier" fx:id="addSupplierBtn" layoutX="-1.0" layoutY="402.0" mnemonicParsing="false" onAction="#addSupplier" prefHeight="40.0" prefWidth="279.0" text="Add supplier" />
       <TextField id="txt-supplier" fx:id="street" layoutX="64.0" layoutY="188.0" promptText="Street" />
       <TextField id="txt-supplier" fx:id="city" layoutX="65.0" layoutY="242.0" promptText="City" />
