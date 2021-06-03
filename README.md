@@ -3,6 +3,7 @@
 ## How to run
 1. Clone the repository<br/><br/>
 ![Screenshot](src/resources/images/readme/clone.png)
+   Länk: https://github.com/tobiaslafleur/Inventorysystem.git
 
 2. Download the javafx SDK for your operating system from https://gluonhq.com/products/javafx/<br/><br/>
 ![Screenshot](src/resources/images/readme/download_sdk.png)
