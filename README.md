@@ -1,5 +1,7 @@
 # ECINV
 
+#Link: https://github.com/tobiaslafleur/Inventorysystem.git
+
 ## How to run
 1. Clone the repository<br/><br/>
 ![Screenshot](src/resources/images/readme/clone.png)
